@@ -37,3 +37,4 @@ es
 dist
 .fatherrc.js
 .umirc.js
+pnpm-lock.yaml
