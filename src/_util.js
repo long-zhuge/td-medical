@@ -102,13 +102,13 @@ export function outPutFormValues(currentValues = {}, fieldList = []) {
       const valuesKey = keys.length >= 2 ? keys.join('_') : keys[0];
 
       if (previousObj) {
-        previousObj.values[valuesKey] = currentValues[item];
+        previousObj.values[valuesKey] = `${currentValues[item]}`;
       } else {
         values[key] = {
           ...obj,
           values: {
             order: 0,
-            [valuesKey]: currentValues[item],
+            [valuesKey]: `${currentValues[item]}`,
           },
         };
       }
