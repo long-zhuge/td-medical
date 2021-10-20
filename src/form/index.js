@@ -79,7 +79,7 @@ const MedicalElement = (props) => {
         {template.map((item, index) => {
           const Component = filterEleMapToComponent(ele, item.modeEn);
 
-          return <Component {...item} index={index} />;
+          return <Component {...item} index={index} key={item.modeEn} />;
         })}
       </Form>
       <div className="submit_div" hidden={!template[0]}>

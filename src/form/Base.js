@@ -43,7 +43,7 @@ const Base = (props) => {
           const names = getFormName(item.valueToName, index);
 
           return (
-            <Col span={isMobile ? 24 : 12}>
+            <Col span={isMobile ? 24 : 12} key={item.fieldNo}>
               <Component
                 {...item}
                 label={item.cn}

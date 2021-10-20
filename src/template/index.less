@@ -1,0 +1,48 @@
+.td-template-container {
+  display: flex;
+}
+
+.td-template-left, .center, .right {
+  flex: 1;
+}
+
+// 左边组件库
+.td-template-left {
+  flex: 0 0 200px;
+  padding: 6px;
+  background: #f3f5f5;
+}
+
+.left-header {
+  text-align: center;
+  font-size: 18px;
+  font-weight: 500;
+}
+
+.left-item {
+  display: flex;
+  justify-content: space-between;
+  margin: 10px 0;
+  border-radius: 4px;
+  background: #fff;
+  padding: 6px;
+}
+
+.left-item-action {
+  flex: 0 0 22px;
+  text-align: center;
+  cursor: pointer;
+
+  &:hover {
+    background: #f3f5f5;
+  }
+}
+
+.center {
+  border-left: 1px solid #ebedf1;
+  border-right: 1px solid #ebedf1;
+}
+
+.right {
+  flex: 0 0 300px;
+}

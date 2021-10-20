@@ -26,7 +26,7 @@ export default (props) => {
       ]}
     >
       <Radio.Group>
-        {map.map(i => <Radio value={i}>{i}</Radio>)}
+        {map.map(i => <Radio key={i} value={i}>{i}</Radio>)}
       </Radio.Group>
     </Form.Item>
   );
