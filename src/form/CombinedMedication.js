@@ -2,14 +2,15 @@
 * 合并用药，包含：药物名称、用法、用量、开始日期、结束日期、末次就诊时仍使用
 * */
 
-import React, { useContext, useState, useEffect } from 'react';
-import SaveOutlined from '@ant-design/icons/SaveOutlined';
+import React, { useContext, useState } from 'react';
 import DeleteOutlined from '@ant-design/icons/DeleteOutlined';
-import { Divider, Table } from 'antd';
+import { Table } from 'antd';
 import LinkBtn from 'td-antd/es/link-btn';
 import tools from 'td-antd/es/tools';
-import { getFormName, outPutFormValues, clone, getFormValues } from '../_util';
+import { getFormName, clone, getFormValues } from '../_util';
 import './index.less';
+
+import FormBox from './FormBox';
 
 // 表单组件
 import Text from '../_components/Text';
@@ -22,12 +23,11 @@ import { EleContext } from './index';
 
 const CombinedMedication = (props) => {
   const {
-    modeCn,
     index = 0,
     fieldList = [],
   } = props;
 
-  const { form, data, onFinish } = useContext(EleContext);
+  const { form, data } = useContext(EleContext);
   const [dataSource, setDataSource] = useState([]);
 
   const columns = [
@@ -69,29 +69,6 @@ const CombinedMedication = (props) => {
     },
   ];
 
-  useEffect(() => {
-    if (data) {
-      const { values, newDataSource = [] } = getFormValues(data, fieldList, index);
-
-      setDataSource(newDataSource);
-      form.setFieldsValue(values);
-    }
-  }, [data]);
-
-  const onSave = () => {
-    const fields = fieldList.reduce((p, c) => {
-      const fieldsArray = dataSource.reduce((p2, c2) => [...p2, `${getFormName(c.valueToName, index)[0]}_${c2.order}`], []);
-
-      return [...p, ...fieldsArray];
-    }, []);
-
-    form.validateFields(fields).then(values => {
-      onFinish(outPutFormValues(values, fieldList));
-    }).catch((err) => {
-      console.log(err);
-    })
-  };
-
   // 移除某一行
   const onRemove = (order) => {
     const newDataSource = dataSource.filter(item => item.order !== order);
@@ -107,8 +84,22 @@ const CombinedMedication = (props) => {
   };
 
   return (
-    <React.Fragment>
-      <Divider>{modeCn}<SaveOutlined style={{ marginLeft: 6, color: '#5468ff' }} onClick={onSave} /></Divider>
+    <FormBox
+      {...props}
+      customSetFieldsValue={() => {
+        const { values, newDataSource = [] } = getFormValues(data, fieldList, index);
+
+        setDataSource(newDataSource);
+        form.setFieldsValue(values);
+      }}
+      onBeforeSave={() => {
+        return fieldList.reduce((p, c) => {
+          const fieldsArray = dataSource.reduce((p2, c2) => [...p2, `${getFormName(c.valueToName, index)[0]}_${c2.order}`], []);
+
+          return [...p, ...fieldsArray];
+        }, []);
+      }}
+    >
       <Table
         bordered
         rowKey="order"
@@ -118,7 +109,7 @@ const CombinedMedication = (props) => {
         rowClassName="td-editable-row"
       />
       <div className="medical_element_add" onClick={onAdd}>+</div>
-    </React.Fragment>
+    </FormBox>
   );
 };
 

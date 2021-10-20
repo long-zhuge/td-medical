@@ -50,8 +50,11 @@ export function renderValue(params = {}) {
 
 /*
 * 重组 form 生成的 values，详细介绍，请查看文档
+*   currentValues: 当前表单字段的 values
+*   fieldList: 当前组件列表
+*   mainParams: 主对象属性
 * */
-export function outPutFormValues(currentValues = {}, fieldList = []) {
+export function outPutFormValues(currentValues = {}, fieldList = [], mainParams = {}) {
   const values = {};
 
   // 将 { bloodPressure_min_0: 60, bloodPressure_max_0: 90 } 转为 ['bloodPressure_min_0', 'bloodPressure_max_0'] 进行遍历
@@ -84,6 +87,7 @@ export function outPutFormValues(currentValues = {}, fieldList = []) {
       } else {
         values[key] = {
           ...obj,
+          ...mainParams,
           values: [
             {
               order: 0,
@@ -106,6 +110,7 @@ export function outPutFormValues(currentValues = {}, fieldList = []) {
       } else {
         values[key] = {
           ...obj,
+          ...mainParams,
           values: {
             order: 0,
             [valuesKey]: `${currentValues[item]}`,
