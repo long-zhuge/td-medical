@@ -2,26 +2,23 @@
 * 精液常规检查指标，包含：精液量、精子浓度、前向运动精子、正常形态精子
 * */
 
-import React, { useContext, useEffect } from 'react';
-import SaveOutlined from '@ant-design/icons/SaveOutlined';
+import React  from 'react';
 import ExclamationCircleOutlined from '@ant-design/icons/ExclamationCircleOutlined';
-import { Divider, Table } from 'antd';
-import { getFormName, outPutFormValues, getFormValues, isMobile } from '../_util';
+import { Table } from 'antd';
+import { getFormName, isMobile } from '../_util';
+
+import FormBox from './FormBox';
 
 // 表单组件
 import Number from '../_components/Number';
 import Text from '../_components/Text';
 
-import { EleContext } from './index';
-
 const SemenRoutineQuota = (props) => {
   const {
-    modeCn,
     index = 0,
     fieldList = [],
   } = props;
 
-  const { form, data, onFinish } = useContext(EleContext);
   const message = isMobile ? <ExclamationCircleOutlined /> : undefined;
 
   const columns = [
@@ -45,31 +42,8 @@ const SemenRoutineQuota = (props) => {
     },
   ];
 
-  useEffect(() => {
-    if (data) {
-      const { values } = getFormValues(data, fieldList, index);
-
-      form.setFieldsValue(values);
-    }
-  }, [data]);
-
-  const onSave = () => {
-    const fields = fieldList.reduce((p, c) => {
-      const fieldsArray = getFormName(c.valueToName, index);
-
-      return [...p, ...fieldsArray];
-    }, []);
-
-    form.validateFields(fields).then(values => {
-      onFinish(outPutFormValues(values, fieldList));
-    }).catch((err) => {
-      console.log(err);
-    })
-  };
-
   return (
-    <React.Fragment>
-      <Divider>{modeCn}<SaveOutlined style={{ marginLeft: 6, color: '#5468ff' }} onClick={onSave} /></Divider>
+    <FormBox {...props}>
       <Table
         bordered
         columns={columns}
@@ -77,7 +51,7 @@ const SemenRoutineQuota = (props) => {
         dataSource={fieldList}
         rowClassName="td-editable-row"
       />
-    </React.Fragment>
+    </FormBox>
   );
 };
 

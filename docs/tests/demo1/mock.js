@@ -3,9 +3,6 @@ export default [{
   "modeEn": "base",
   "modeCn": "基本信息",
   "fieldList": [{
-    "elementNo": "E00001",
-    "modeEn": "base",
-    "modeCn": "基本信息",
     "fieldNo": "F00001",
     "cn": "病历号",
     "en": "medicalNumber",
@@ -18,9 +15,6 @@ export default [{
     "valueToName": "value1=medicalNumber",
     "valueType": "object"
   }, {
-    "elementNo": "E00001",
-    "modeEn": "base",
-    "modeCn": "基本信息",
     "fieldNo": "F00002",
     "cn": "姓名",
     "en": "name",
@@ -33,9 +27,6 @@ export default [{
     "valueToName": "value1=name",
     "valueType": "object"
   }, {
-    "elementNo": "E00001",
-    "modeEn": "base",
-    "modeCn": "基本信息",
     "fieldNo": "F00003",
     "cn": "性别",
     "en": "sex",
@@ -48,9 +39,6 @@ export default [{
     "valueToName": "value1=sex",
     "valueType": "object"
   }, {
-    "elementNo": "E00001",
-    "modeEn": "base",
-    "modeCn": "基本信息",
     "fieldNo": "F00004",
     "cn": "民族",
     "en": "nation",
@@ -63,9 +51,6 @@ export default [{
     "valueToName": "value1=nation",
     "valueType": "object"
   }, {
-    "elementNo": "E00001",
-    "modeEn": "base",
-    "modeCn": "基本信息",
     "fieldNo": "F00005",
     "cn": "出生日期",
     "en": "birthDate",
@@ -78,9 +63,6 @@ export default [{
     "valueToName": "value1=birthDate",
     "valueType": "object"
   }, {
-    "elementNo": "E00001",
-    "modeEn": "base",
-    "modeCn": "基本信息",
     "fieldNo": "F00006",
     "cn": "费别",
     "en": "costType",
@@ -93,9 +75,6 @@ export default [{
     "valueToName": "value1=costType",
     "valueType": "object"
   }, {
-    "elementNo": "E00001",
-    "modeEn": "base",
-    "modeCn": "基本信息",
     "fieldNo": "F00007",
     "cn": "地址",
     "en": "adress",
@@ -108,9 +87,6 @@ export default [{
     "valueToName": "value1=adress",
     "valueType": "object"
   }, {
-    "elementNo": "E00001",
-    "modeEn": "base",
-    "modeCn": "基本信息",
     "fieldNo": "F00008",
     "cn": "科室",
     "en": "hospitalDepartments",
@@ -123,9 +99,6 @@ export default [{
     "valueToName": "value1=hospitalDepartments",
     "valueType": "object"
   }, {
-    "elementNo": "E00001",
-    "modeEn": "base",
-    "modeCn": "基本信息",
     "fieldNo": "F00009",
     "cn": "就诊日期",
     "en": "visitDate",
@@ -138,9 +111,6 @@ export default [{
     "valueToName": "value1=visitDate",
     "valueType": "object"
   }, {
-    "elementNo": "E00001",
-    "modeEn": "base",
-    "modeCn": "基本信息",
     "fieldNo": "F00010",
     "cn": "联系电话",
     "en": "phone",
@@ -153,9 +123,6 @@ export default [{
     "valueToName": "value1=phone",
     "valueType": "object"
   }, {
-    "elementNo": "E00001",
-    "modeEn": "base",
-    "modeCn": "基本信息",
     "fieldNo": "F00011",
     "cn": "身高",
     "en": "height",
@@ -168,9 +135,6 @@ export default [{
     "valueToName": "value1=height",
     "valueType": "object"
   }, {
-    "elementNo": "E00001",
-    "modeEn": "base",
-    "modeCn": "基本信息",
     "fieldNo": "F00012",
     "cn": "体重",
     "en": "weight",
@@ -188,9 +152,6 @@ export default [{
   "modeEn": "vitalSigns",
   "modeCn": "生命体征",
   "fieldList": [{
-    "elementNo": "E00003",
-    "modeEn": "vitalSigns",
-    "modeCn": "生命体征",
     "fieldNo": "F00020",
     "cn": "体温",
     "en": "temperature",
@@ -203,9 +164,6 @@ export default [{
     "valueToName": "value1=temperature",
     "valueType": "object"
   }, {
-    "elementNo": "E00003",
-    "modeEn": "vitalSigns",
-    "modeCn": "生命体征",
     "fieldNo": "F00021",
     "cn": "血压",
     "en": "bloodPressure",
@@ -218,9 +176,6 @@ export default [{
     "valueToName": "value1=bloodPressure_min,value2=bloodPressure_max",
     "valueType": "object"
   }, {
-    "elementNo": "E00003",
-    "modeEn": "vitalSigns",
-    "modeCn": "生命体征",
     "fieldNo": "F00022",
     "cn": "脉搏",
     "en": "pulse",
@@ -233,9 +188,6 @@ export default [{
     "valueToName": "value1=pulse",
     "valueType": "object"
   }, {
-    "elementNo": "E00003",
-    "modeEn": "vitalSigns",
-    "modeCn": "生命体征",
     "fieldNo": "F00023",
     "cn": "呼吸",
     "en": "breathing",
@@ -253,9 +205,6 @@ export default [{
   "modeEn": "routineBloodTest",
   "modeCn": "血常规检查",
   "fieldList": [{
-    "elementNo": "E00008",
-    "modeEn": "routineBloodTest",
-    "modeCn": "血常规检查",
     "fieldNo": "F00042",
     "cn": "取样日期",
     "en": "sampleDate",
@@ -268,9 +217,6 @@ export default [{
     "valueToName": "value1=sampleDate",
     "valueType": "object"
   }, {
-    "elementNo": "E00008",
-    "modeEn": "routineBloodTest",
-    "modeCn": "血常规检查",
     "fieldNo": "F00043",
     "cn": "RBC",
     "en": "rbc",
@@ -283,9 +229,6 @@ export default [{
     "valueToName": "value1=rbc_result,value2=rbc_judge,value3=rbc_remark",
     "valueType": "object"
   }, {
-    "elementNo": "E00008",
-    "modeEn": "routineBloodTest",
-    "modeCn": "血常规检查",
     "fieldNo": "F00044",
     "cn": "Hb",
     "en": "hb",
@@ -298,9 +241,6 @@ export default [{
     "valueToName": "value1=hb_result,value2=hb_judge,value3=hb_remark",
     "valueType": "object"
   }, {
-    "elementNo": "E00008",
-    "modeEn": "routineBloodTest",
-    "modeCn": "血常规检查",
     "fieldNo": "F00045",
     "cn": "WBC",
     "en": "wbc",
@@ -313,9 +253,6 @@ export default [{
     "valueToName": "value1=wbc_result,value2=wbc_judge,value3=wbc_remark",
     "valueType": "object"
   }, {
-    "elementNo": "E00008",
-    "modeEn": "routineBloodTest",
-    "modeCn": "血常规检查",
     "fieldNo": "F00046",
     "cn": "PLT",
     "en": "plt",
@@ -333,9 +270,6 @@ export default [{
   "modeEn": "semenRoutineQuota",
   "modeCn": "精液常规检查指标",
   "fieldList": [{
-    "elementNo": "E00004",
-    "modeEn": "semenRoutineQuota",
-    "modeCn": "精液常规检查指标",
     "fieldNo": "F00024",
     "cn": "精液量",
     "en": "semenAmount",
@@ -348,9 +282,6 @@ export default [{
     "valueToName": "value1=semenAmount_result,value2=semenAmount_clinicalJudgment",
     "valueType": "object"
   }, {
-    "elementNo": "E00004",
-    "modeEn": "semenRoutineQuota",
-    "modeCn": "精液常规检查指标",
     "fieldNo": "F00025",
     "cn": "精子浓度",
     "en": "spermConcentration",
@@ -363,9 +294,6 @@ export default [{
     "valueToName": "value1=spermConcentration_result,value2=spermConcentration_clinicalJudgment",
     "valueType": "object"
   }, {
-    "elementNo": "E00004",
-    "modeEn": "semenRoutineQuota",
-    "modeCn": "精液常规检查指标",
     "fieldNo": "F00026",
     "cn": "前向运动精子",
     "en": "forwardMotion",
@@ -378,9 +306,6 @@ export default [{
     "valueToName": "value1=forwardMotion_result,value2=forwardMotion_clinicalJudgment",
     "valueType": "object"
   }, {
-    "elementNo": "E00004",
-    "modeEn": "semenRoutineQuota",
-    "modeCn": "精液常规检查指标",
     "fieldNo": "F00027",
     "cn": "正常形态精子",
     "en": "spermNormal",
@@ -398,9 +323,6 @@ export default [{
   "modeEn": "combinedMedication",
   "modeCn": "合并用药",
   "fieldList": [{
-    "elementNo": "E00005",
-    "modeEn": "combinedMedication",
-    "modeCn": "合并用药",
     "fieldNo": "F00028",
     "cn": "药物名称",
     "en": "drugName",
@@ -413,9 +335,6 @@ export default [{
     "valueToName": "value1=drugName",
     "valueType": "list"
   }, {
-    "elementNo": "E00005",
-    "modeEn": "combinedMedication",
-    "modeCn": "合并用药",
     "fieldNo": "F00029",
     "cn": "用法",
     "en": "usage",
@@ -428,9 +347,6 @@ export default [{
     "valueToName": "value1=usage",
     "valueType": "list"
   }, {
-    "elementNo": "E00005",
-    "modeEn": "combinedMedication",
-    "modeCn": "合并用药",
     "fieldNo": "F00030",
     "cn": "用量",
     "en": "dosage",
@@ -443,9 +359,6 @@ export default [{
     "valueToName": "value1=dosage",
     "valueType": "list"
   }, {
-    "elementNo": "E00005",
-    "modeEn": "combinedMedication",
-    "modeCn": "合并用药",
     "fieldNo": "F00031",
     "cn": "开始日期",
     "en": "startDate",
@@ -458,9 +371,6 @@ export default [{
     "valueToName": "value1=startDate",
     "valueType": "list"
   }, {
-    "elementNo": "E00005",
-    "modeEn": "combinedMedication",
-    "modeCn": "合并用药",
     "fieldNo": "F00032",
     "cn": "结束日期",
     "en": "endDate",
@@ -473,9 +383,6 @@ export default [{
     "valueToName": "value1=endDate",
     "valueType": "list"
   }, {
-    "elementNo": "E00005",
-    "modeEn": "combinedMedication",
-    "modeCn": "合并用药",
     "fieldNo": "F00033",
     "cn": "末次就诊时仍使用",
     "en": "lastUse",
