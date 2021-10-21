@@ -75,7 +75,7 @@ const MedicalElement = (props) => {
         onFinish,
       }}
     >
-      <Form form={form} layout={isMobile ? 'vertical' : 'horizontal'} scrollToFirstError>
+      <Form form={form} layout={isMobile ? 'vertical' : 'horizontal'} className="td-medical-form" scrollToFirstError>
         {template.map((item, index) => {
           const Component = filterEleMapToComponent(ele, item.modeEn);
 

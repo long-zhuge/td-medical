@@ -1,4 +1,5 @@
 // 判断数据类型
+import InnerHtml from 'td-antd/es/inner-html';
 import tools from 'td-antd/es/tools';
 
 const { typeOf } = tools;
@@ -46,6 +47,16 @@ export function renderValue(params = {}) {
   }
 
   return '--';
+}
+
+// 单位的特殊处理，如将 10^12/L 转为 10的12次方
+export function toUnit(unit = '') {
+  if (unit.includes('^')) {
+    const newUnit = unit.replace('^', '<sup>').replace('/', '</sup>/');
+    return <InnerHtml html={newUnit} />;
+  }
+
+  return unit;
 }
 
 /*
@@ -189,3 +200,6 @@ export function filterEleMapToComponent(ele, modeEn) {
 
   return Component;
 }
+
+// 如果是移动端，则 table 样式的组件请添加如下属性
+export const mobileTableProps = isMobile && { size: 'small', scroll: { x: 1000 }, title: () => '右滑还有内容哦' };

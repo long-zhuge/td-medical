@@ -5,7 +5,7 @@
 import React  from 'react';
 import ExclamationCircleOutlined from '@ant-design/icons/ExclamationCircleOutlined';
 import { Table } from 'antd';
-import { getFormName, isMobile } from '../_util';
+import { getFormName, isMobile, mobileTableProps } from '../_util';
 import './index.less';
 
 import FormBox from './FormBox';
@@ -60,6 +60,7 @@ const Inspect = (props) => {
         pagination={false}
         dataSource={fieldList.filter(i => i.en !== 'sampleDate')}
         rowClassName="td-editable-row"
+        {...mobileTableProps}
       />
     </FormBox>
   );

@@ -5,7 +5,7 @@
 import React  from 'react';
 import ExclamationCircleOutlined from '@ant-design/icons/ExclamationCircleOutlined';
 import { Table } from 'antd';
-import { getFormName, isMobile } from '../_util';
+import { getFormName, isMobile, mobileTableProps } from '../_util';
 
 import FormBox from './FormBox';
 
@@ -50,6 +50,7 @@ const SemenRoutineQuota = (props) => {
         pagination={false}
         dataSource={fieldList}
         rowClassName="td-editable-row"
+        {...mobileTableProps}
       />
     </FormBox>
   );

@@ -7,7 +7,7 @@ import DeleteOutlined from '@ant-design/icons/DeleteOutlined';
 import { Table } from 'antd';
 import LinkBtn from 'td-antd/es/link-btn';
 import tools from 'td-antd/es/tools';
-import { getFormName, clone, getFormValues } from '../_util';
+import { getFormName, clone, getFormValues, mobileTableProps } from '../_util';
 import './index.less';
 
 import FormBox from './FormBox';
@@ -62,7 +62,7 @@ const CombinedMedication = (props) => {
       render: ({ order }) => <CheckBox name={`lastUse_${index}_${order}`} />,
     },
     {
-      width: 50,
+      width: 100,
       align: 'center',
       title: '操作',
       render: ({ order }) => <LinkBtn onClick={() => onRemove(order)}><DeleteOutlined /></LinkBtn>,
@@ -107,6 +107,7 @@ const CombinedMedication = (props) => {
         pagination={false}
         dataSource={dataSource}
         rowClassName="td-editable-row"
+        {...mobileTableProps}
       />
       <div className="medical_element_add" onClick={onAdd}>+</div>
     </FormBox>
