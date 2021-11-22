@@ -4,11 +4,20 @@ sidemenu: false
 toc: false
 ---
 
-## 表单
+## 病例收集表单
 
 ```jsx
 import React, { useState } from 'react';
-import Demo from './tests/demo1';
+import MedicalDemo from './tests/medical';
 
-export default () => <Demo />;
+export default () => <MedicalDemo />;
+```
+
+## 问卷表单
+
+```jsx
+import React, { useState } from 'react';
+import QuestionDemo from './tests/question';
+
+export default () => <QuestionDemo />;
 ```
