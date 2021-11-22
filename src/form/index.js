@@ -44,6 +44,7 @@ const MedicalElement = (props) => {
     onFinish = () => {},
     dept, // 医院科室数据
     backurl,
+    footerHidden = false, // 隐藏按钮
   } = props;
 
   const [form] = Form.useForm();
@@ -82,12 +83,14 @@ const MedicalElement = (props) => {
           return <Component {...item} index={index} />;
         })}
       </Form>
-      <div className="submit_div" hidden={!template[0]}>
-        <Back url={backurl} />
-        <Button type="primary" onClick={onSubmit}>
-          保存
-        </Button>
-      </div>
+      {footerHidden ? null : (
+        <div className="submit_div" hidden={!template[0]}>
+          <Back url={backurl} />
+          <Button type="primary" onClick={onSubmit}>
+            保存
+          </Button>
+        </div>
+      )}
     </EleContext.Provider>
   );
 };
