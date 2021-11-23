@@ -11,8 +11,8 @@
 * }
 * */
 
-import React, { useState, useReducer, useEffect, useRef } from 'react';
-import { Divider, Form, Carousel, Button, message } from 'antd';
+import React, { useState, useReducer, useEffect, useCallback } from 'react';
+import { Divider, Form, Tabs, Button, message } from 'antd';
 import Back from '../_components/Back';
 
 // 问卷表单组件
@@ -22,6 +22,8 @@ import QuestionCheckbox from './_components/QuestionCheckbox';
 
 // 组件样式
 import './index.less';
+
+const { TabPane } = Tabs;
 
 const QUESTION_TYPE = {
   score: QuestionScore,
@@ -41,11 +43,12 @@ export default function QuestionForm(props) {
   } = props;
 
   const [form] = Form.useForm();
-  const carouselRef = useRef(null);
   // eslint-disable-next-line
   const [ignored, forceUpdate] = useReducer(x => x + 1, 0);
   const [currentQuestions, setCurrentQuestions] = useState([]);
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
+
+  const renderTabBar = useCallback(() => null, []);
 
   // 获取到回显数据后，进行表单赋值
   useEffect(() => {
@@ -74,7 +77,7 @@ export default function QuestionForm(props) {
   // 控制提交按钮禁用
   const canSubmit = () => {
     const currentlastQuestion = currentQuestions[currentQuestions.length - 1];
-    const currentlastQuestionValue = form.getFieldsValue()[currentlastQuestion?.questionNo];
+    const currentlastQuestionValue = form.getFieldsValue(true)[currentlastQuestion?.questionNo];
     return currentQuestions.length
       && !currentlastQuestion.optionList[0].skipQuestionNo // 没有更多题目
       && currentlastQuestionValue?.optionNos?.length; // 已经完成最后一题
@@ -83,7 +86,6 @@ export default function QuestionForm(props) {
   // 上一题
   const goPreview = () => {
     setCurrentQuestionIndex(prev => prev - 1);
-    carouselRef.current.prev();
   }
 
   // 下一题
@@ -96,7 +98,6 @@ export default function QuestionForm(props) {
       return;
     }
     setCurrentQuestionIndex(prev => prev + 1);
-    carouselRef.current.next();
   }
 
   const handleFillQuestion = (currentQuestionValue) => {
@@ -112,7 +113,7 @@ export default function QuestionForm(props) {
         });
       }
     } else {
-      forceUpdate();
+      forceUpdate(); // 强制更新操作按钮状态
     }
   }
 
@@ -153,18 +154,22 @@ export default function QuestionForm(props) {
   return (
     <div>
       <Divider>{questionBankName}</Divider>
-      <Form form={form} layout="vertical">
+      <Form form={form} layout="vertical" preserve={false}>
         {React.createElement(
-          readOnly ? 'div' : Carousel,
+          readOnly ? React.Fragment : Tabs,
           readOnly ? null : {
-            className: "td-medical-question-form-carousel",
-            ref: carouselRef,
-            dots: false,
-            easing: "ease-in",
+            className: "td-medical-question-form-tabs",
+            activeKey: String(currentQuestionIndex),
+            animated: true,
+            renderTabBar,
           },
           currentQuestions.map((q, index) => {
             const Component = QUESTION_TYPE[q.questionType];
-            return (
+            return React.createElement(
+              readOnly ? React.Fragment : TabPane,
+              readOnly ? null : {
+                key: index,
+              },
               <Form.Item
                 key={q.questionNo}
                 label={`${index + 1}. ${q.questionName}`}

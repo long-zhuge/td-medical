@@ -40,6 +40,21 @@ export default function QuestionCheckbox(props) {
     });
   }
 
+  const renderOtherText = (o) => {
+    const text = value.otherText?.[o.optionNo];
+    if (readOnly) {
+      return <span className="td-medical-question-checkbox-option-text">{text}</span>;
+    }
+    return o.optionType === 'input' ? (
+      <Input
+        style={{ minWidth: 240 }}
+        value={text}
+        disabled={!value.optionNos?.includes(o.optionNo)}
+        onChange={handleInput.bind(null, o.optionNo)}
+      />
+    ) : null;
+  }
+
   return (
     <Checkbox.Group
       disabled={readOnly}
@@ -52,14 +67,7 @@ export default function QuestionCheckbox(props) {
           <Checkbox value={o.optionNo}>
             <div className="td-medical-question-checkbox-option">
               <span>{o.optionName}</span>
-              {o.optionType === 'input' ? (
-                <Input
-                  style={{ minWidth: 240 }}
-                  value={value.otherText?.[o.optionNo]}
-                  disabled={!value.optionNos?.includes(o.optionNo)}
-                  onChange={handleInput.bind(null, o.optionNo)}
-                />
-              ) : null}
+              {renderOtherText(o)}
             </div>
           </Checkbox>
         </div>
