@@ -27,7 +27,7 @@ export default function QuestionCheckbox(props) {
         ? inputOptionChecked
           ? value.otherText?.[inputOptionNo] ? '' : NO_INPUT_ERROR_MSG
           : ''
-        : '请完成本题目',
+        : '请先完成本题',
     });
   };
 

@@ -109,6 +109,15 @@ export default function QuestionForm(props) {
       } else if (currentQuestions[currentQuestionIndex + 1].questionNo !== nextQuestionNo) {
         setCurrentQuestions((prev) => {
           const preservedQuestions = prev.slice(0, currentQuestionIndex + 1);
+          const droppedQuestions = prev.slice(currentQuestionIndex + 1);
+          const formValue = form.getFieldsValue();
+          const preservedValues = preservedQuestions.reduce((value, q, index) => (
+            { ...value, [q.questionNo]: index === currentQuestionIndex ? currentQuestionValue : formValue[q.questionNo] }
+          ), {});
+          const droppedValues = droppedQuestions.reduce((value, q) => (
+            { ...value, [q.questionNo]: undefined }
+          ), {});
+          form.setFieldsValue({ ...preservedValues, ...droppedValues });
           return preservedQuestions.concat(nextQuestion);
         });
       }
@@ -119,12 +128,12 @@ export default function QuestionForm(props) {
 
   const onSubmit = () => {
     // 校验答题
-    const formValue = form.getFieldsValue();
+    const formValue = form.getFieldsValue(true);
     let error = null;
     currentQuestions.every((q, index) => {
       const questionValue = formValue[q.questionNo];
       if (!questionValue?.optionNos?.length) {
-        error = `请完成第${index + 1}题`;
+        error = currentQuestionIndex === index ? '请先完成本题' : `请先完成第${index + 1}题`;
         return false;
       }
       if (questionValue?.error) {
@@ -154,7 +163,7 @@ export default function QuestionForm(props) {
   return (
     <div>
       <Divider>{questionBankName}</Divider>
-      <Form form={form} layout="vertical" preserve={false}>
+      <Form form={form} layout="vertical">
         {React.createElement(
           readOnly ? React.Fragment : Tabs,
           readOnly ? null : {
