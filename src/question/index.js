@@ -119,12 +119,12 @@ export default function QuestionForm(props) {
 
   const onSubmit = () => {
     // 校验答题
-    const formValue = form.getFieldsValue();
+    const formValue = form.getFieldsValue(true);
     let error = null;
     currentQuestions.every((q, index) => {
       const questionValue = formValue[q.questionNo];
       if (!questionValue?.optionNos?.length) {
-        error = `请完成第${index + 1}题`;
+        error = currentQuestionIndex === index ? '请先完成本题' : `请先完成第${index + 1}题`;
         return false;
       }
       if (questionValue?.error) {
