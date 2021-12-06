@@ -12,7 +12,7 @@
 * */
 
 import React, { useState, useReducer, useEffect, useCallback } from 'react';
-import { Divider, Form, Tabs, Button, message } from 'antd';
+import { Divider, Empty, Form, Tabs, Button, message } from 'antd';
 import Back from '../_components/Back';
 
 // 问卷表单组件
@@ -163,33 +163,40 @@ export default function QuestionForm(props) {
   return (
     <div>
       <Divider>{questionBankName}</Divider>
-      <Form form={form} layout="vertical">
-        {React.createElement(
-          readOnly ? React.Fragment : Tabs,
-          readOnly ? null : {
-            className: "td-medical-question-form-tabs",
-            activeKey: String(currentQuestionIndex),
-            animated: true,
-            renderTabBar,
-          },
-          currentQuestions.map((q, index) => {
-            const Component = QUESTION_TYPE[q.questionType];
-            return React.createElement(
-              readOnly ? React.Fragment : TabPane,
-              readOnly ? null : {
-                key: index,
-              },
-              <Form.Item
-                key={q.questionNo}
-                label={`${index + 1}. ${q.questionName}`}
-                name={q.questionNo}
-              >
-                <Component readOnly={readOnly} options={q.optionList} onChange={handleFillQuestion} />
-              </Form.Item>
-            );
-          })
-        )}
-      </Form>
+      {readOnly && !data?.length ? (
+        <Empty
+          image={Empty.PRESENTED_IMAGE_SIMPLE}
+          description="问卷未完成"
+        />
+      ) : (
+        <Form form={form} layout="vertical">
+          {React.createElement(
+            readOnly ? React.Fragment : Tabs,
+            readOnly ? null : {
+              className: "td-medical-question-form-tabs",
+              activeKey: String(currentQuestionIndex),
+              animated: true,
+              renderTabBar,
+            },
+            currentQuestions.map((q, index) => {
+              const Component = QUESTION_TYPE[q.questionType];
+              return React.createElement(
+                readOnly ? React.Fragment : TabPane,
+                readOnly ? null : {
+                  key: index,
+                },
+                <Form.Item
+                  key={q.questionNo}
+                  label={`${index + 1}. ${q.questionName}`}
+                  name={q.questionNo}
+                >
+                  <Component readOnly={readOnly} options={q.optionList} onChange={handleFillQuestion} />
+                </Form.Item>
+              );
+            })
+          )}
+        </Form>
+      )}
       {footerHidden ? null : (
         <div className="td-medical-question-form-navigation">
           <Back url={backurl} />
