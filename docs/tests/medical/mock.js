@@ -147,7 +147,97 @@ export default [{
     "valueToName": "value1=weight",
     "valueType": "object",
   }],
-}, {
+},
+  {
+    "elementNo": "E00002",
+    "modeEn": "outpatientContent",
+    "modeCn": "门诊主体",
+    "fieldList": [{
+      "fieldNo": "F00013",
+      "cn": "主诉",
+      "en": "ccph",
+      "meddra": "",
+      "inputType": "textarea",
+      "map": "",
+      "unit": "",
+      "rule": "",
+      "ruleMessage": "",
+      "valueToName": "value1=ccph",
+      "valueType": "object"
+    }, {
+      "fieldNo": "F00014",
+      "cn": "诊断",
+      "en": "diagnosis",
+      "meddra": "",
+      "inputType": "textarea",
+      "map": "",
+      "unit": "",
+      "rule": "",
+      "ruleMessage": "",
+      "valueToName": "value1=diagnosis",
+      "valueType": "object"
+    }, {
+      "fieldNo": "F00015",
+      "cn": "现病史",
+      "en": "medicalHistory",
+      "meddra": "",
+      "inputType": "textarea",
+      "map": "",
+      "unit": "",
+      "rule": "",
+      "ruleMessage": "",
+      "valueToName": "value1=medicalHistory",
+      "valueType": "object"
+    }, {
+      "fieldNo": "F00016",
+      "cn": "诊疗意见",
+      "en": "opinion",
+      "meddra": "",
+      "inputType": "textarea",
+      "map": "",
+      "unit": "",
+      "rule": "",
+      "ruleMessage": "",
+      "valueToName": "value1=opinion",
+      "valueType": "object"
+    }, {
+      "fieldNo": "F00017",
+      "cn": "检验检查",
+      "en": "inspect",
+      "meddra": "",
+      "inputType": "textarea",
+      "map": "",
+      "unit": "",
+      "rule": "",
+      "ruleMessage": "",
+      "valueToName": "value1=inspect",
+      "valueType": "object"
+    }, {
+      "fieldNo": "F00018",
+      "cn": "医生",
+      "en": "doctor",
+      "meddra": "",
+      "inputType": "text",
+      "map": "",
+      "unit": "",
+      "rule": "",
+      "ruleMessage": "",
+      "valueToName": "value1=doctor",
+      "valueType": "object"
+    }, {
+      "fieldNo": "F00019",
+      "cn": "诊疗时间",
+      "en": "diagnosisDate",
+      "meddra": "",
+      "inputType": "datetime",
+      "map": "",
+      "unit": "",
+      "rule": "YYYY-MM-DD hh:mm:ss",
+      "ruleMessage": "",
+      "valueToName": "value1=diagnosisDate",
+      "valueType": "object"
+    }]
+  }, {
   "elementNo": "E00003",
   "modeEn": "vitalSigns",
   "modeCn": "生命体征",

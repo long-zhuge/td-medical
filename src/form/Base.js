@@ -31,9 +31,31 @@ const ele = {
 
 const Base = (props) => {
   const {
+    modeEn,
     index = 0,
     fieldList = [],
   } = props;
+
+  // 如果是 "门诊主体" 则平铺显示
+  if (modeEn === 'outpatientContent') {
+    return (
+      <FormBox {...props}>
+        {fieldList.map(item => {
+          const Component = ele[item.inputType];
+          const names = getFormName(item.valueToName, index);
+
+          return (
+            <Component
+              {...item}
+              label={item.cn}
+              name={names[0]}
+              name2={names[1]}
+            />
+          )
+        })}
+      </FormBox>
+    );
+  }
 
   return (
     <FormBox {...props}>

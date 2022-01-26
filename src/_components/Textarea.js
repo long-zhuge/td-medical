@@ -22,7 +22,7 @@ export default (props) => {
         },
       ]}
     >
-      <Input.TextArea rows={2} showCount maxLength={200} />
+      <Input.TextArea rows={2} />
     </Form.Item>
   );
 }
