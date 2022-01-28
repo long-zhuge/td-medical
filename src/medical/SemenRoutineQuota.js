@@ -10,8 +10,8 @@ import { getFormName, isMobile, mobileTableProps } from '../_util';
 import FormBox from './FormBox';
 
 // 表单组件
-import Number from '../_components/Number';
-import Text from '../_components/Text';
+import Number from './_components/Number';
+import Text from './_components/Text';
 
 const SemenRoutineQuota = (props) => {
   const {

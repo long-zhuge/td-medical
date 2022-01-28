@@ -4,7 +4,7 @@
 
 import React from 'react';
 import { Form, Input } from 'antd';
-import { regExp } from '../_util';
+import { regExp } from '../../_util';
 
 export default (props) => {
   const {

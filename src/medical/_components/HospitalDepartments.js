@@ -1,18 +1,19 @@
 /*
-* 类型：select
+* 类型：hospitalDepartments
 * */
 
-import React from 'react';
-import { Form } from 'antd';
-import SelectMap from 'td-antd/es/select-map';
-import { toMap } from '../_util';
+import React, { useContext } from 'react';
+import { Form, TreeSelect } from 'antd';
+
+import { EleContext } from '../index';
 
 export default (props) => {
   const {
-    map,
     label = '',
     name = '',
   } = props;
+
+  const { dept } = useContext(EleContext);
 
   return (
     <Form.Item
@@ -25,10 +26,7 @@ export default (props) => {
         },
       ]}
     >
-      <SelectMap
-        data={toMap(map)}
-        style={{ width: '100%' }}
-      />
+      <TreeSelect treeData={dept} />
     </Form.Item>
   );
 }

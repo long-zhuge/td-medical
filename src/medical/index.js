@@ -16,7 +16,7 @@ import Back from '../_components/Back';
 import { outPutFormValues, isMobile, filterEleMapToComponent } from '../_util';
 
 // 病历组件
-import Detail from '../detail';
+import Detail from './detail';
 import Base from './Base';
 import Inspect from './Inspect';
 import SemenRoutineQuota from './SemenRoutineQuota';
@@ -44,6 +44,7 @@ const MedicalElement = (props) => {
     onFinish = () => {},
     dept, // 医院科室数据
     backurl,
+    footerHidden = false, // 隐藏按钮
   } = props;
 
   const [form] = Form.useForm();
@@ -82,12 +83,14 @@ const MedicalElement = (props) => {
           return <Component {...item} index={index} key={item.modeEn} />;
         })}
       </Form>
-      <div className="submit_div" hidden={!template[0]}>
-        <Back url={backurl} />
-        <Button type="primary" onClick={onSubmit}>
-          保存
-        </Button>
-      </div>
+      {footerHidden ? null : (
+        <div className="submit_div" hidden={!template[0]}>
+          <Back url={backurl} />
+          <Button type="primary" onClick={onSubmit}>
+            保存
+          </Button>
+        </div>
+      )}
     </EleContext.Provider>
   );
 };

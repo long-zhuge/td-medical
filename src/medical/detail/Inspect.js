@@ -4,7 +4,7 @@
 
 import React, { useContext, useEffect, useState } from 'react';
 import { Divider, Table } from 'antd';
-import { getFormName, getFormValues } from '../_util';
+import { getFormName, getFormValues } from '../../_util';
 
 import { EleDetailContext } from './index';
 

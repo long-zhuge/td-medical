@@ -13,9 +13,9 @@ import './index.less';
 import FormBox from './FormBox';
 
 // 表单组件
-import Text from '../_components/Text';
-import Date from '../_components/Date';
-import CheckBox from '../_components/CheckBox';
+import Text from './_components/Text';
+import Date from './_components/Date';
+import CheckBox from './_components/CheckBox';
 
 const { genNonDuplicateID } = tools;
 

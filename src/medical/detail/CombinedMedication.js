@@ -5,7 +5,7 @@
 import React, { useContext, useState, useEffect } from 'react';
 import CheckOutlined from '@ant-design/icons/CheckOutlined';
 import { Divider, Table } from 'antd';
-import { getFormValues } from '../_util';
+import { getFormValues } from '../../_util';
 
 import { EleDetailContext } from './index';
 

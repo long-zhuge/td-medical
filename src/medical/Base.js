@@ -9,14 +9,14 @@ import { getFormName, isMobile } from '../_util';
 import FormBox from './FormBox';
 
 // 表单组件
-import Text from '../_components/Text';
-import Date from '../_components/Date';
-import Number from '../_components/Number';
-import Select from '../_components/Select';
-import DateTime from '../_components/DateTime';
-import Textarea from '../_components/Textarea';
-import NumberDouble from '../_components/NumberDouble';
-import HospitalDepartments from '../_components/HospitalDepartments';
+import Text from './_components/Text';
+import Date from './_components/Date';
+import Number from './_components/Number';
+import Select from './_components/Select';
+import DateTime from './_components/DateTime';
+import Textarea from './_components/Textarea';
+import NumberDouble from './_components/NumberDouble';
+import HospitalDepartments from './_components/HospitalDepartments';
 
 const ele = {
   text: Text,
@@ -31,9 +31,32 @@ const ele = {
 
 const Base = (props) => {
   const {
+    modeEn,
     index = 0,
     fieldList = [],
   } = props;
+
+  // 如果是 "门诊主体" 则平铺显示
+  if (modeEn === 'outpatientContent') {
+    return (
+      <FormBox {...props}>
+        {fieldList.map(item => {
+          const Component = ele[item.inputType];
+          const names = getFormName(item.valueToName, index);
+
+          return (
+            <Component
+              {...item}
+              key={item.fieldNo}
+              label={item.cn}
+              name={names[0]}
+              name2={names[1]}
+            />
+          )
+        })}
+      </FormBox>
+    );
+  }
 
   return (
     <FormBox {...props}>

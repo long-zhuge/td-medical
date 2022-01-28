@@ -1,19 +1,15 @@
 /*
-* 类型：hospitalDepartments
+* 类型：textarea
 * */
 
-import React, { useContext } from 'react';
-import { Form, TreeSelect } from 'antd';
-
-import { EleContext } from '../form';
+import React from 'react';
+import { Form, Input } from 'antd';
 
 export default (props) => {
   const {
     label = '',
     name = '',
   } = props;
-
-  const { dept } = useContext(EleContext);
 
   return (
     <Form.Item
@@ -26,7 +22,7 @@ export default (props) => {
         },
       ]}
     >
-      <TreeSelect treeData={dept} />
+      <Input.TextArea rows={2} />
     </Form.Item>
   );
 }

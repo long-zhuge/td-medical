@@ -1,11 +1,12 @@
 import React from 'react';
-import { MedicalForm } from 'td-medical';
-import templateJson from './mock';
+import { Question } from 'td-medical';
+import questionsData from './mock';
 
 const Demo = () => {
   return (
-    <MedicalForm
-      template={templateJson}
+    <Question
+      questionBankName="问卷调查"
+      questions={questionsData}
       onFinish={(values) => {
         console.log(values);
       }}

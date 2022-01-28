@@ -5,12 +5,13 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { Divider } from 'antd';
 import DescList from 'td-antd/es/desc-list';
-import { getFormValues, getFormName, renderValue } from '../_util';
+import { getFormValues, getFormName, renderValue } from '../../_util';
 
 import { EleDetailContext } from './index';
 
 const Base = (props) => {
   const {
+    modeEn,
     modeCn,
     index = 0,
     fieldList = [],
@@ -40,6 +41,7 @@ const Base = (props) => {
     <React.Fragment>
       <Divider>{modeCn}</Divider>
       <DescList
+        column={modeEn === 'outpatientContent' ? 1 : 2}
         columns={columns}
         dataSource={dataObject}
       />

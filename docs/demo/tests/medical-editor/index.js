@@ -1,10 +1,10 @@
 import React from 'react';
-import { MedicalTemplate } from 'td-medical';
+import { MedicalEditor } from 'td-medical';
 import { elementList } from './mock';
 
 const Demo = () => {
   return (
-    <MedicalTemplate
+    <MedicalEditor
       elementList={elementList}
     />
   );

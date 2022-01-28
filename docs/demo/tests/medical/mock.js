@@ -13,7 +13,7 @@ export default [{
     "rule": "",
     "ruleMessage": "",
     "valueToName": "value1=medicalNumber",
-    "valueType": "object"
+    "valueType": "object",
   }, {
     "fieldNo": "F00002",
     "cn": "姓名",
@@ -25,7 +25,7 @@ export default [{
     "rule": "",
     "ruleMessage": "",
     "valueToName": "value1=name",
-    "valueType": "object"
+    "valueType": "object",
   }, {
     "fieldNo": "F00003",
     "cn": "性别",
@@ -37,7 +37,7 @@ export default [{
     "rule": "",
     "ruleMessage": "",
     "valueToName": "value1=sex",
-    "valueType": "object"
+    "valueType": "object",
   }, {
     "fieldNo": "F00004",
     "cn": "民族",
@@ -49,7 +49,7 @@ export default [{
     "rule": "",
     "ruleMessage": "",
     "valueToName": "value1=nation",
-    "valueType": "object"
+    "valueType": "object",
   }, {
     "fieldNo": "F00005",
     "cn": "出生日期",
@@ -61,7 +61,7 @@ export default [{
     "rule": "YYYY-MM-DD",
     "ruleMessage": "",
     "valueToName": "value1=birthDate",
-    "valueType": "object"
+    "valueType": "object",
   }, {
     "fieldNo": "F00006",
     "cn": "费别",
@@ -73,7 +73,7 @@ export default [{
     "rule": "",
     "ruleMessage": "",
     "valueToName": "value1=costType",
-    "valueType": "object"
+    "valueType": "object",
   }, {
     "fieldNo": "F00007",
     "cn": "地址",
@@ -85,7 +85,7 @@ export default [{
     "rule": "",
     "ruleMessage": "",
     "valueToName": "value1=adress",
-    "valueType": "object"
+    "valueType": "object",
   }, {
     "fieldNo": "F00008",
     "cn": "科室",
@@ -97,7 +97,7 @@ export default [{
     "rule": "",
     "ruleMessage": "",
     "valueToName": "value1=hospitalDepartments",
-    "valueType": "object"
+    "valueType": "object",
   }, {
     "fieldNo": "F00009",
     "cn": "就诊日期",
@@ -109,7 +109,7 @@ export default [{
     "rule": "YYYY-MM-DD",
     "ruleMessage": "",
     "valueToName": "value1=visitDate",
-    "valueType": "object"
+    "valueType": "object",
   }, {
     "fieldNo": "F00010",
     "cn": "联系电话",
@@ -121,7 +121,7 @@ export default [{
     "rule": "",
     "ruleMessage": "",
     "valueToName": "value1=phone",
-    "valueType": "object"
+    "valueType": "object",
   }, {
     "fieldNo": "F00011",
     "cn": "身高",
@@ -133,7 +133,7 @@ export default [{
     "rule": "^//d+(//.//d+)?$",
     "ruleMessage": "必须是大于或等于零的值",
     "valueToName": "value1=height",
-    "valueType": "object"
+    "valueType": "object",
   }, {
     "fieldNo": "F00012",
     "cn": "体重",
@@ -145,9 +145,99 @@ export default [{
     "rule": "^//d+(//.//d+)?$",
     "ruleMessage": "必须是大于或等于零的值",
     "valueToName": "value1=weight",
-    "valueType": "object"
-  }]
-}, {
+    "valueType": "object",
+  }],
+},
+  {
+    "elementNo": "E00002",
+    "modeEn": "outpatientContent",
+    "modeCn": "门诊主体",
+    "fieldList": [{
+      "fieldNo": "F00013",
+      "cn": "主诉",
+      "en": "ccph",
+      "meddra": "",
+      "inputType": "textarea",
+      "map": "",
+      "unit": "",
+      "rule": "",
+      "ruleMessage": "",
+      "valueToName": "value1=ccph",
+      "valueType": "object"
+    }, {
+      "fieldNo": "F00014",
+      "cn": "诊断",
+      "en": "diagnosis",
+      "meddra": "",
+      "inputType": "textarea",
+      "map": "",
+      "unit": "",
+      "rule": "",
+      "ruleMessage": "",
+      "valueToName": "value1=diagnosis",
+      "valueType": "object"
+    }, {
+      "fieldNo": "F00015",
+      "cn": "现病史",
+      "en": "medicalHistory",
+      "meddra": "",
+      "inputType": "textarea",
+      "map": "",
+      "unit": "",
+      "rule": "",
+      "ruleMessage": "",
+      "valueToName": "value1=medicalHistory",
+      "valueType": "object"
+    }, {
+      "fieldNo": "F00016",
+      "cn": "诊疗意见",
+      "en": "opinion",
+      "meddra": "",
+      "inputType": "textarea",
+      "map": "",
+      "unit": "",
+      "rule": "",
+      "ruleMessage": "",
+      "valueToName": "value1=opinion",
+      "valueType": "object"
+    }, {
+      "fieldNo": "F00017",
+      "cn": "检验检查",
+      "en": "inspect",
+      "meddra": "",
+      "inputType": "textarea",
+      "map": "",
+      "unit": "",
+      "rule": "",
+      "ruleMessage": "",
+      "valueToName": "value1=inspect",
+      "valueType": "object"
+    }, {
+      "fieldNo": "F00018",
+      "cn": "医生",
+      "en": "doctor",
+      "meddra": "",
+      "inputType": "text",
+      "map": "",
+      "unit": "",
+      "rule": "",
+      "ruleMessage": "",
+      "valueToName": "value1=doctor",
+      "valueType": "object"
+    }, {
+      "fieldNo": "F00019",
+      "cn": "诊疗时间",
+      "en": "diagnosisDate",
+      "meddra": "",
+      "inputType": "datetime",
+      "map": "",
+      "unit": "",
+      "rule": "YYYY-MM-DD hh:mm:ss",
+      "ruleMessage": "",
+      "valueToName": "value1=diagnosisDate",
+      "valueType": "object"
+    }]
+  }, {
   "elementNo": "E00003",
   "modeEn": "vitalSigns",
   "modeCn": "生命体征",
@@ -162,7 +252,7 @@ export default [{
     "rule": "^//d+(//.//d+)?$",
     "ruleMessage": "必须是大于或等于零的值",
     "valueToName": "value1=temperature",
-    "valueType": "object"
+    "valueType": "object",
   }, {
     "fieldNo": "F00021",
     "cn": "血压",
@@ -174,7 +264,7 @@ export default [{
     "rule": "^[1-9]//d*$",
     "ruleMessage": "必须是大于零的整数",
     "valueToName": "value1=bloodPressure_min,value2=bloodPressure_max",
-    "valueType": "object"
+    "valueType": "object",
   }, {
     "fieldNo": "F00022",
     "cn": "脉搏",
@@ -186,7 +276,7 @@ export default [{
     "rule": "^[1-9]//d*$",
     "ruleMessage": "必须是大于零的整数",
     "valueToName": "value1=pulse",
-    "valueType": "object"
+    "valueType": "object",
   }, {
     "fieldNo": "F00023",
     "cn": "呼吸",
@@ -198,8 +288,8 @@ export default [{
     "rule": "^[1-9]//d*$",
     "ruleMessage": "必须是大于零的整数",
     "valueToName": "value1=breathing",
-    "valueType": "object"
-  }]
+    "valueType": "object",
+  }],
 }, {
   "elementNo": "E00008",
   "modeEn": "routineBloodTest",
@@ -215,7 +305,7 @@ export default [{
     "rule": "YYYY-MM-DD",
     "ruleMessage": "",
     "valueToName": "value1=sampleDate",
-    "valueType": "object"
+    "valueType": "object",
   }, {
     "fieldNo": "F00043",
     "cn": "RBC",
@@ -227,7 +317,7 @@ export default [{
     "rule": "^//d+(//.//d+)?$",
     "ruleMessage": "必须是大于或等于零的值",
     "valueToName": "value1=rbc_result,value2=rbc_judge,value3=rbc_remark",
-    "valueType": "object"
+    "valueType": "object",
   }, {
     "fieldNo": "F00044",
     "cn": "Hb",
@@ -239,7 +329,7 @@ export default [{
     "rule": "^//d+(//.//d+)?$",
     "ruleMessage": "必须是大于或等于零的值",
     "valueToName": "value1=hb_result,value2=hb_judge,value3=hb_remark",
-    "valueType": "object"
+    "valueType": "object",
   }, {
     "fieldNo": "F00045",
     "cn": "WBC",
@@ -251,7 +341,7 @@ export default [{
     "rule": "^//d+(//.//d+)?$",
     "ruleMessage": "必须是大于或等于零的值",
     "valueToName": "value1=wbc_result,value2=wbc_judge,value3=wbc_remark",
-    "valueType": "object"
+    "valueType": "object",
   }, {
     "fieldNo": "F00046",
     "cn": "PLT",
@@ -263,8 +353,8 @@ export default [{
     "rule": "^//d+(//.//d+)?$",
     "ruleMessage": "必须是大于或等于零的值",
     "valueToName": "value1=plt_result,value2=plt_judge,value3=plt_remark",
-    "valueType": "object"
-  }]
+    "valueType": "object",
+  }],
 }, {
   "elementNo": "E00004",
   "modeEn": "semenRoutineQuota",
@@ -280,7 +370,7 @@ export default [{
     "rule": "^//d+(//.//d+)?$",
     "ruleMessage": "必须是大于或等于零的值",
     "valueToName": "value1=semenAmount_result,value2=semenAmount_clinicalJudgment",
-    "valueType": "object"
+    "valueType": "object",
   }, {
     "fieldNo": "F00025",
     "cn": "精子浓度",
@@ -292,7 +382,7 @@ export default [{
     "rule": "^//d+(//.//d+)?$",
     "ruleMessage": "必须是大于或等于零的值",
     "valueToName": "value1=spermConcentration_result,value2=spermConcentration_clinicalJudgment",
-    "valueType": "object"
+    "valueType": "object",
   }, {
     "fieldNo": "F00026",
     "cn": "前向运动精子",
@@ -304,7 +394,7 @@ export default [{
     "rule": "^//d+(//.//d+)?$",
     "ruleMessage": "必须是大于或等于零的值",
     "valueToName": "value1=forwardMotion_result,value2=forwardMotion_clinicalJudgment",
-    "valueType": "object"
+    "valueType": "object",
   }, {
     "fieldNo": "F00027",
     "cn": "正常形态精子",
@@ -316,8 +406,8 @@ export default [{
     "rule": "^//d+(//.//d+)?$",
     "ruleMessage": "必须是大于或等于零的值",
     "valueToName": "value1=spermNormal_result,value2=spermNormal_clinicalJudgment",
-    "valueType": "object"
-  }]
+    "valueType": "object",
+  }],
 }, {
   "elementNo": "E00005",
   "modeEn": "combinedMedication",
@@ -333,7 +423,7 @@ export default [{
     "rule": "",
     "ruleMessage": "",
     "valueToName": "value1=drugName",
-    "valueType": "list"
+    "valueType": "list",
   }, {
     "fieldNo": "F00029",
     "cn": "用法",
@@ -345,7 +435,7 @@ export default [{
     "rule": "",
     "ruleMessage": "",
     "valueToName": "value1=usage",
-    "valueType": "list"
+    "valueType": "list",
   }, {
     "fieldNo": "F00030",
     "cn": "用量",
@@ -357,7 +447,7 @@ export default [{
     "rule": "",
     "ruleMessage": "",
     "valueToName": "value1=dosage",
-    "valueType": "list"
+    "valueType": "list",
   }, {
     "fieldNo": "F00031",
     "cn": "开始日期",
@@ -369,7 +459,7 @@ export default [{
     "rule": "",
     "ruleMessage": "",
     "valueToName": "value1=startDate",
-    "valueType": "list"
+    "valueType": "list",
   }, {
     "fieldNo": "F00032",
     "cn": "结束日期",
@@ -381,7 +471,7 @@ export default [{
     "rule": "",
     "ruleMessage": "",
     "valueToName": "value1=endDate",
-    "valueType": "list"
+    "valueType": "list",
   }, {
     "fieldNo": "F00033",
     "cn": "末次就诊时仍使用",
@@ -393,6 +483,6 @@ export default [{
     "rule": "",
     "ruleMessage": "",
     "valueToName": "value1=lastUse",
-    "valueType": "list"
-  }]
+    "valueType": "list",
+  }],
 }];

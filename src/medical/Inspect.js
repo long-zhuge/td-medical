@@ -11,10 +11,10 @@ import './index.less';
 import FormBox from './FormBox';
 
 // 表单组件
-import Text from '../_components/Text';
-import Date from '../_components/Date';
-import Radio from '../_components/Radio';
-import Number from '../_components/Number';
+import Text from './_components/Text';
+import Date from './_components/Date';
+import Radio from './_components/Radio';
+import Number from './_components/Number';
 
 const Inspect = (props) => {
   const {

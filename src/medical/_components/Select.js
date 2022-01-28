@@ -1,12 +1,15 @@
 /*
-* 类型：textarea
+* 类型：select
 * */
 
 import React from 'react';
-import { Form, Input } from 'antd';
+import { Form } from 'antd';
+import SelectMap from 'td-antd/es/select-map';
+import { toMap } from '../../_util';
 
 export default (props) => {
   const {
+    map,
     label = '',
     name = '',
   } = props;
@@ -22,7 +25,10 @@ export default (props) => {
         },
       ]}
     >
-      <Input.TextArea rows={2} showCount maxLength={200} />
+      <SelectMap
+        data={toMap(map)}
+        style={{ width: '100%' }}
+      />
     </Form.Item>
   );
 }

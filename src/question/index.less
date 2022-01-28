@@ -1,0 +1,41 @@
+.td-medical-question {
+  &-form {
+    &-tabs {
+      min-height: 160px;
+    }
+  
+    &-navigation {
+      display: flex;
+      justify-content: center;
+    
+      button {
+        margin: 20px 2%;
+      }
+    }
+  }
+
+  &-score {
+    display: inline-flex;
+    flex-direction: column;
+  
+    &-remark {
+      display: flex;
+      justify-content: space-between;
+    }
+  }
+
+  &-checkbox {
+    &-option {
+      display: flex;
+      align-items: center;
+
+      & > span {
+        white-space: nowrap;
+      }
+
+      &-text {
+        text-decoration: underline;
+      }
+    }
+  }
+}
