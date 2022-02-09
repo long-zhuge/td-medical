@@ -1,0 +1,69 @@
+.td-template-left {
+  flex: 0 0 200px;
+  padding: 6px;
+  background: #f3f5f5;
+  transition: all .3s;
+
+  .ant-tabs-nav {
+    margin: 0 !important;
+  }
+}
+
+.left-item-header {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 10px;
+  background: #fff;
+  padding: 6px;
+}
+
+.left-item-text {
+  flex: 0 0 145px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.left-item-action {
+  text-align: center;
+  cursor: pointer;
+  font-size: 12px;
+  display: flex;
+  align-items: center;
+}
+
+.left-item-content {
+  display: flex;
+  flex-wrap: wrap;
+  align-content: space-between;
+  background: #fff;
+  border-top: 1px solid #ebedf1;
+}
+
+.left-item-tag {
+  margin: 4px;
+  padding: 2px;
+  position: relative;
+  cursor: pointer;
+
+  &:hover {
+    .left-item-tag-mask {
+      display: block;
+    }
+  }
+}
+
+.left-item-tag-mask {
+  display: none;
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  top: 0;
+  background-color: #00000073;
+  color: #fff;
+  font-size: 18px;
+  text-align: center;
+  font-weight: 500;
+  line-height: 26px;
+}

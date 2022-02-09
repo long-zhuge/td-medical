@@ -1,0 +1,56 @@
+[
+  {
+    "elementNo": "E00003",
+    "modeEn": "vitalSigns",
+    "modeCn": "生命体征",
+    "fieldList": [{
+      "fieldNo": "F00020",
+      "cn": "体温",
+      "en": "temperature",
+      "meddra": "",
+      "inputType": "number",
+      "map": "",
+      "unit": "°C",
+      "rule": "^//d+(//.//d+)?$",
+      "ruleMessage": "必须是大于或等于零的值",
+      "valueToName": "value1=temperature",
+      "valueType": "object"
+    }, {
+      "fieldNo": "F00021",
+      "cn": "血压",
+      "en": "bloodPressure",
+      "meddra": "",
+      "inputType": "number_double",
+      "map": "",
+      "unit": "mmHg",
+      "rule": "^[1-9]//d*$",
+      "ruleMessage": "必须是大于零的整数",
+      "valueToName": "value1=bloodPressure_min,value2=bloodPressure_max",
+      "valueType": "object"
+    }, {
+      "fieldNo": "F00022",
+      "cn": "脉搏",
+      "en": "pulse",
+      "meddra": "",
+      "inputType": "number",
+      "map": "",
+      "unit": "次/分",
+      "rule": "^[1-9]//d*$",
+      "ruleMessage": "必须是大于零的整数",
+      "valueToName": "value1=pulse",
+      "valueType": "object"
+    }, {
+      "fieldNo": "F00023",
+      "cn": "呼吸",
+      "en": "breathing",
+      "meddra": "",
+      "inputType": "number",
+      "map": "",
+      "unit": "次/分",
+      "rule": "^[1-9]//d*$",
+      "ruleMessage": "必须是大于零的整数",
+      "valueToName": "value1=breathing",
+      "valueType": "object"
+    }]
+  }
+]
