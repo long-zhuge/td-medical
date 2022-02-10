@@ -4,6 +4,7 @@ import speciallyJson from './specially.json';
 import './index.less';
 
 import Left from './Left';
+import Middle from './Middle';
 
 export const EditorContext = React.createContext({});
 
@@ -15,6 +16,8 @@ const Editor = () => {
   });
   // 当前左侧组件栏中渲染的数据
   const [elementList, setElementList] = useState(baseJson);
+  // 当前选中的一级组件数据
+  const [selectedElementList, setSelectedElementList] = useState([]);
 
   return (
     <EditorContext.Provider
@@ -22,11 +25,13 @@ const Editor = () => {
         dataSource,
         elementList,
         setElementList,
+        selectedElementList,
+        setSelectedElementList,
       }}
     >
-      <div className="td-template-container">
+      <div className="td-medical-editor-container">
         <Left />
-        <div className="center">123</div>
+        <Middle />
         <div className="right">123</div>
       </div>
     </EditorContext.Provider>

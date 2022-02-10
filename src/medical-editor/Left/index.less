@@ -1,24 +1,45 @@
-.td-template-left {
+.td-medical-editor-left {
+  max-width: 200px;
   flex: 0 0 200px;
   padding: 6px;
   background: #f3f5f5;
   transition: all .3s;
 
+  // 修改 Tabs 组件的边距
   .ant-tabs-nav {
     margin: 0 !important;
   }
 }
 
 .left-item-header {
-  display: flex;
-  justify-content: space-between;
   margin-top: 10px;
   background: #fff;
-  padding: 6px;
+  padding: 4px 6px;
+  position: relative;
+
+  &:hover {
+    .left-item-header-mask {
+      display: block;
+    }
+  }
+
+  .left-item-header-mask {
+    display: none;
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    top: 0;
+    background-color: #00000073;
+    color: #fff;
+    text-align: center;
+    font-weight: 500;
+    line-height: 30px;
+  }
 }
 
 .left-item-text {
-  flex: 0 0 145px;
+  width: 100%;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
@@ -43,27 +64,4 @@
 .left-item-tag {
   margin: 4px;
   padding: 2px;
-  position: relative;
-  cursor: pointer;
-
-  &:hover {
-    .left-item-tag-mask {
-      display: block;
-    }
-  }
-}
-
-.left-item-tag-mask {
-  display: none;
-  position: absolute;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  top: 0;
-  background-color: #00000073;
-  color: #fff;
-  font-size: 18px;
-  text-align: center;
-  font-weight: 500;
-  line-height: 26px;
 }

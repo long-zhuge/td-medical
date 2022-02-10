@@ -1,6 +1,5 @@
-import React, { useState, useEffect, useContext } from 'react';
-import { Tabs, Button, Space, Popconfirm } from 'antd';
-import { TablePage, tools, ModalBox, FormItem, SelectMap, DateEasily, LinkBtn } from 'td-antd';
+import React, { useContext } from 'react';
+import { Tabs } from 'antd';
 import './index.less';
 
 import { EditorContext } from '../index';
@@ -10,7 +9,7 @@ const Left = () => {
   const { elementList, setElementList, dataSource } = useContext(EditorContext);
 
   return (
-    <div className="td-template-left">
+    <div className="td-medical-editor-left">
       <Tabs
         centered
         style={{ margin: 0 }}
@@ -19,7 +18,7 @@ const Left = () => {
         <Tabs.TabPane tab="基础组件" key="baseJson" />
         <Tabs.TabPane tab="特殊组件" key="speciallyJson" />
       </Tabs>
-      {elementList.map(item => <Item key={item.modeEn} dataSource={item} />)}
+      {elementList.map(item => <Item key={item.enName} data={item} />)}
     </div>
   );
 };
