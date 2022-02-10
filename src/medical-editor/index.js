@@ -5,10 +5,11 @@ import './index.less';
 
 import Left from './Left';
 import Middle from './Middle';
+import Right from './Right';
 
 export const EditorContext = React.createContext({});
 
-const Editor = () => {
+const Editor = ({ onFinish = () => {} }) => {
   // 总数据
   const [dataSource] = useState({
     baseJson,
@@ -18,6 +19,8 @@ const Editor = () => {
   const [elementList, setElementList] = useState(baseJson);
   // 当前选中的一级组件数据
   const [selectedElementList, setSelectedElementList] = useState([]);
+  // 需要编辑的字段
+  const [formData, setFormData] = useState({});
 
   return (
     <EditorContext.Provider
@@ -27,12 +30,15 @@ const Editor = () => {
         setElementList,
         selectedElementList,
         setSelectedElementList,
+        formData,
+        setFormData,
+        onFinish,
       }}
     >
       <div className="td-medical-editor-container">
         <Left />
         <Middle />
-        <div className="right">123</div>
+        <Right />
       </div>
     </EditorContext.Provider>
   );

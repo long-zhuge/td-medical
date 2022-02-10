@@ -26,7 +26,7 @@ const Inspect = (props) => {
   const columns = [
     {
       title: '检查项目',
-      dataIndex: 'cn',
+      dataIndex: 'cnName',
     },
     {
       title: '结果',
@@ -58,7 +58,7 @@ const Inspect = (props) => {
         bordered
         columns={columns}
         pagination={false}
-        dataSource={fieldList.filter(i => i.en !== 'sampleDate')}
+        dataSource={fieldList.filter(i => i.enName !== 'sampleDate')}
         rowClassName="td-editable-row"
         {...mobileTableProps}
       />

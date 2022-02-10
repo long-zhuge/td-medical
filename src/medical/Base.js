@@ -31,13 +31,13 @@ const ele = {
 
 const Base = (props) => {
   const {
-    modeEn,
+    enName,
     index = 0,
     fieldList = [],
   } = props;
 
   // 如果是 "门诊主体" 则平铺显示
-  if (modeEn === 'outpatientContent') {
+  if (enName === 'outpatientContent') {
     return (
       <FormBox {...props}>
         {fieldList.map(item => {
@@ -48,7 +48,7 @@ const Base = (props) => {
             <Component
               {...item}
               key={item.fieldNo}
-              label={item.cn}
+              label={item.cnName}
               name={names[0]}
               name2={names[1]}
             />
@@ -69,7 +69,7 @@ const Base = (props) => {
             <Col span={isMobile ? 24 : 12} key={item.fieldNo}>
               <Component
                 {...item}
-                label={item.cn}
+                label={item.cnName}
                 name={names[0]}
                 name2={names[1]}
               />

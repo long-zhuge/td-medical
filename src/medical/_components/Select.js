@@ -4,7 +4,7 @@
 
 import React from 'react';
 import { Form } from 'antd';
-import SelectMap from 'td-antd/es/select-map';
+import SelectList from 'td-antd/es/select-list';
 import { toMap } from '../../_util';
 
 export default (props) => {
@@ -25,8 +25,8 @@ export default (props) => {
         },
       ]}
     >
-      <SelectMap
-        data={toMap(map)}
+      <SelectList
+        localData={toMap(map)}
         style={{ width: '100%' }}
       />
     </Form.Item>

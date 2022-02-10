@@ -11,7 +11,7 @@ import { EleDetailContext } from './index';
 
 const CombinedMedication = (props) => {
   const {
-    modeCn,
+    cnName,
     index = 0,
     fieldList = [],
   } = props;
@@ -64,7 +64,7 @@ const CombinedMedication = (props) => {
 
   return (
     <React.Fragment>
-      <Divider>{modeCn}</Divider>
+      <Divider>{cnName}</Divider>
       <Table
         bordered
         rowKey="order"

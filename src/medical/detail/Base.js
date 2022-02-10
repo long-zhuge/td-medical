@@ -11,8 +11,8 @@ import { EleDetailContext } from './index';
 
 const Base = (props) => {
   const {
-    modeEn,
-    modeCn,
+    enName,
+    cnName,
     index = 0,
     fieldList = [],
   } = props;
@@ -21,7 +21,7 @@ const Base = (props) => {
   const [dataObject, setDataObject] = useState({});
 
   const columns = fieldList.map(item => ({
-    title: item.cn,
+    title: item.cnName,
     render: () => renderValue({
       dataObject,
       keys: getFormName(item.valueToName, index),
@@ -39,9 +39,9 @@ const Base = (props) => {
 
   return (
     <React.Fragment>
-      <Divider>{modeCn}</Divider>
+      <Divider>{cnName}</Divider>
       <DescList
-        column={modeEn === 'outpatientContent' ? 1 : 2}
+        column={enName === 'outpatientContent' ? 1 : 2}
         columns={columns}
         dataSource={dataObject}
       />

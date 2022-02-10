@@ -42,7 +42,7 @@ const MedicalDetail = (props) => {
       }}
     >
       {template.map((item, index) => {
-        const Component = filterEleMapToComponent(ele, item.modeEn);
+        const Component = filterEleMapToComponent(ele, item.enName);
 
         return <Component {...item} index={index} />;
       })}

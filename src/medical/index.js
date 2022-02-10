@@ -10,6 +10,8 @@
 * }
 * */
 
+// todo list: 疾病史、导联心电图检查 未开发
+
 import React from 'react';
 import { Form, Button } from 'antd';
 import Back from '../_components/Back';
@@ -78,9 +80,9 @@ const MedicalElement = (props) => {
     >
       <Form form={form} layout={isMobile ? 'vertical' : 'horizontal'} className="td-medical-form" scrollToFirstError>
         {template.map((item, index) => {
-          const Component = filterEleMapToComponent(ele, item.modeEn);
+          const Component = filterEleMapToComponent(ele, item.enName);
 
-          return <Component {...item} index={index} key={item.modeEn} />;
+          return <Component {...item} index={index} key={item.enName} />;
         })}
       </Form>
       {footerHidden ? null : (

@@ -1,0 +1,60 @@
+.td-medical-editor-middle {
+  padding: 0 6px;
+}
+
+.td-medical-editor-middle-item {
+  margin-bottom: 10px;
+  border: 1px solid #f3f5f5;
+}
+
+.middle-item-header {
+  text-align: center;
+  padding: 4px 6px;
+  font-weight: 500;
+  border-bottom: 1px solid #ebedf1;
+}
+
+.middle-item-content {
+  padding: 6px;
+  display: flex;
+  flex-wrap: wrap;
+  align-content: space-between;
+}
+
+.middle-item-content-field {
+  position: relative;
+  margin: 4px;
+  text-align: center;
+  min-width: 60px;
+
+  &:hover {
+    .middle-item-content-field-mask {
+      display: block;
+    }
+  }
+}
+
+.middle-item-content-field-mask {
+  display: none;
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  top: 0;
+  background-color: #00000073;
+  color: #fff;
+  text-align: center;
+  font-weight: 500;
+  line-height: 22px;
+}
+
+.middle-item-content-field-disabled {
+  color: #aaa;
+  text-decoration: line-through;
+}
+
+.middle-item-footer {
+  text-align: center;
+  padding-top: 14px;
+}
+

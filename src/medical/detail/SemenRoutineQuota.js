@@ -10,7 +10,7 @@ import { EleDetailContext } from './index';
 
 const SemenRoutineQuota = (props) => {
   const {
-    modeCn,
+    cnName,
     index = 0,
     fieldList = [],
   } = props;
@@ -21,7 +21,7 @@ const SemenRoutineQuota = (props) => {
   const columns = [
     {
       title: '检查项目',
-      dataIndex: 'cn',
+      dataIndex: 'cnName',
     },
     {
       title: '单位',
@@ -49,7 +49,7 @@ const SemenRoutineQuota = (props) => {
 
   return (
     <React.Fragment>
-      <Divider>{modeCn}</Divider>
+      <Divider>{cnName}</Divider>
       <Table
         bordered
         columns={columns}

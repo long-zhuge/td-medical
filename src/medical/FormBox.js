@@ -11,8 +11,8 @@ import { EleContext } from './index';
 
 const FormBox = (props) => {
   const {
-    modeCn,
-    modeEn,
+    cnName,
+    enName,
     elementNo,
     index = 0,
     fieldList = [],
@@ -20,7 +20,7 @@ const FormBox = (props) => {
     onBeforeSave, // 保存前的回调函数，必须返回 fields 相关内容
   } = props;
 
-  const mainParams = { elementNo, modeEn, modeCn }; // 主对象属性。在提交给后端的数据中，必须携带
+  const mainParams = { elementNo, enName, cnName }; // 主对象属性。在提交给后端的数据中，必须携带
   const { form, data, onFinish } = useContext(EleContext);
 
   // 获取到回显数据后，进行表单赋值
@@ -56,7 +56,7 @@ const FormBox = (props) => {
 
   return (
     <React.Fragment>
-      <Divider>{modeCn}<SaveOutlined style={{ marginLeft: 6, color: '#5468ff' }} onClick={onSave} /></Divider>
+      <Divider>{cnName}<SaveOutlined style={{ marginLeft: 6, color: '#5468ff' }} onClick={onSave} /></Divider>
       {props.children}
     </React.Fragment>
   );

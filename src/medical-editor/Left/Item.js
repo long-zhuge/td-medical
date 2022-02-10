@@ -3,6 +3,7 @@ import DownOutlined from '@ant-design/icons/DownOutlined';
 import UpOutlined from '@ant-design/icons/UpOutlined';
 import PlusOutlined from '@ant-design/icons/PlusOutlined';
 import { Space, Modal } from 'antd';
+import { clone } from '../../_util';
 import './index.less';
 
 import { EditorContext } from '../index';
@@ -25,12 +26,16 @@ const Left = ({ data = {} }) => {
         okText: '取消',
         cancelText: '继续添加',
         onCancel() {
-          setSelectedElementList([...selectedElementList, data]);
+          setData();
         },
       });
     } else {
-      setSelectedElementList([...selectedElementList, data]);
+      setData();
     }
+  };
+
+  const setData = () => {
+    setSelectedElementList(clone([...selectedElementList, data]));
   };
 
   return (

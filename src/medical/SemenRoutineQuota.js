@@ -24,7 +24,7 @@ const SemenRoutineQuota = (props) => {
   const columns = [
     {
       title: '检查项目',
-      dataIndex: 'cn',
+      dataIndex: 'cnName',
     },
     {
       title: '单位',

@@ -68,6 +68,7 @@ module.exports = {
     "no-param-reassign": [0],
     "no-plusplus": [0],
     "no-extra-boolean-cast": [0],
+    "react/no-array-index-key": [0],
   },
   parserOptions: {
     ecmaFeatures: {
