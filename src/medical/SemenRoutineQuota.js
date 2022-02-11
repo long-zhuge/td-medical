@@ -19,6 +19,8 @@ const SemenRoutineQuota = (props) => {
     fieldList = [],
   } = props;
 
+  console.log(fieldList);
+
   const message = isMobile ? <ExclamationCircleOutlined /> : undefined;
 
   const columns = [
@@ -46,6 +48,7 @@ const SemenRoutineQuota = (props) => {
     <FormBox {...props}>
       <Table
         bordered
+        rowKey="fieldNo"
         columns={columns}
         pagination={false}
         dataSource={fieldList}

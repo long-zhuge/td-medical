@@ -1,15 +1,17 @@
 /*
-* 合并用药
+* table 样式的表单详情数据
+*  PS：合并用药
 * */
 
 import React, { useContext, useState, useEffect } from 'react';
 import CheckOutlined from '@ant-design/icons/CheckOutlined';
 import { Divider, Table } from 'antd';
+import typeOf from 'td-antd/es/tools/typeOf';
 import { getFormValues } from '../../_util';
 
 import { EleDetailContext } from './index';
 
-const CombinedMedication = (props) => {
+const BaseTable = (props) => {
   const {
     cnName,
     index = 0,
@@ -20,38 +22,19 @@ const CombinedMedication = (props) => {
   const [dataSource, setDataSource] = useState([]);
   const [dataObject, setDataObject] = useState({});
 
-  const columns = [
-    {
-      align: 'center',
-      title: '药物名称',
-      render: ({ order }) => dataObject[`drugName_${index}_${order}`],
+  const columns = fieldList.map(item => ({
+    align: 'center',
+    title: item.cnName,
+    render: ({ order }) => {
+      const text = dataObject[`${item.enName}_${index}_${order}`];
+
+      if (typeOf(text, 'Boolean')) {
+        return text && <CheckOutlined />;
+      }
+
+      return text;
     },
-    {
-      align: 'center',
-      title: '用法',
-      render: ({ order }) => dataObject[`usage_${index}_${order}`],
-    },
-    {
-      align: 'center',
-      title: '用量',
-      render: ({ order }) => dataObject[`dosage_${index}_${order}`],
-    },
-    {
-      align: 'center',
-      title: '开始日期',
-      render: ({ order }) => dataObject[`startDate_${index}_${order}`],
-    },
-    {
-      align: 'center',
-      title: '结束日期',
-      render: ({ order }) => dataObject[`endDate_${index}_${order}`],
-    },
-    {
-      align: 'center',
-      title: '末次就诊时仍使用',
-      render: ({ order }) => dataObject[`lastUse_${index}_${order}`] && <CheckOutlined />,
-    },
-  ];
+  }));
 
   useEffect(() => {
     if (data) {
@@ -76,4 +59,4 @@ const CombinedMedication = (props) => {
   );
 };
 
-export default CombinedMedication;
+export default BaseTable;

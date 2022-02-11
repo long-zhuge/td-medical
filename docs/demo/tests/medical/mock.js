@@ -2,6 +2,7 @@ export default [
   {
     "cnName": "基本信息",
     "elementNo": "E00001",
+    "method": "default",
     "enName": "base",
     "fieldList": [
       {
@@ -15,7 +16,8 @@ export default [
         "rule": "",
         "unit": "",
         "valueToName": "value1=medicalNumber",
-        "valueType": "object"
+        "valueType": "object",
+        "required": true
       },
       {
         "cnName": "姓名",
@@ -28,11 +30,11 @@ export default [
         "rule": "",
         "unit": "",
         "valueToName": "value1=name",
-        "valueType": "object"
+        "valueType": "object",
+        "required": true
       },
       {
         "cnName": "性别",
-
         "enName": "sex",
         "fieldNo": "F00003",
         "inputType": "select",
@@ -42,7 +44,8 @@ export default [
         "rule": "",
         "unit": "",
         "valueToName": "value1=sex",
-        "valueType": "object"
+        "valueType": "object",
+        "required": true
       },
       {
         "cnName": "民族",
@@ -55,7 +58,8 @@ export default [
         "rule": "",
         "unit": "",
         "valueToName": "value1=nation",
-        "valueType": "object"
+        "valueType": "object",
+        "required": true
       },
       {
         "cnName": "出生日期",
@@ -68,7 +72,8 @@ export default [
         "rule": "YYYY-MM-DD",
         "unit": "",
         "valueToName": "value1=birthDate",
-        "valueType": "object"
+        "valueType": "object",
+        "required": true
       },
       {
         "cnName": "费别",
@@ -81,7 +86,8 @@ export default [
         "rule": "",
         "unit": "",
         "valueToName": "value1=costType",
-        "valueType": "object"
+        "valueType": "object",
+        "required": true
       },
       {
         "cnName": "地址",
@@ -94,7 +100,8 @@ export default [
         "rule": "",
         "unit": "",
         "valueToName": "value1=adress",
-        "valueType": "object"
+        "valueType": "object",
+        "required": true
       },
       {
         "cnName": "就诊科室",
@@ -105,7 +112,8 @@ export default [
         "remarks": "基本信息",
         "unit": "",
         "valueToName": "value1=hospitalDepartments",
-        "valueType": "object"
+        "valueType": "object",
+        "required": true
       },
       {
         "cnName": "就诊日期",
@@ -118,7 +126,8 @@ export default [
         "rule": "YYYY-MM-DD",
         "unit": "",
         "valueToName": "value1=visitDate",
-        "valueType": "object"
+        "valueType": "object",
+        "required": true
       },
       {
         "cnName": "联系电话",
@@ -131,7 +140,8 @@ export default [
         "rule": "",
         "unit": "",
         "valueToName": "value1=phone",
-        "valueType": "object"
+        "valueType": "object",
+        "required": true
       },
       {
         "cnName": "身高",
@@ -141,10 +151,11 @@ export default [
         "map": "",
         "meddra": "",
         "remarks": "基本信息",
-        "rule": "^//d+(//.//d+)?$",
+        "rule": "",
         "unit": "cm",
         "valueToName": "value1=height",
-        "valueType": "object"
+        "valueType": "object",
+        "required": true
       },
       {
         "cnName": "体重",
@@ -154,10 +165,11 @@ export default [
         "map": "",
         "meddra": "",
         "remarks": "基本信息",
-        "rule": "^//d+(//.//d+)?$",
+        "rule": "",
         "unit": "kg",
         "valueToName": "value1=weight",
-        "valueType": "object"
+        "valueType": "object",
+        "required": true
       }
     ],
     "meddra": "",
@@ -166,6 +178,7 @@ export default [
   {
     "cnName": "门诊主体",
     "elementNo": "E00002",
+    "method": "default",
     "enName": "outpatientContent",
     "fieldList": [
       {
@@ -179,7 +192,8 @@ export default [
         "rule": "",
         "unit": "",
         "valueToName": "value1=ccph",
-        "valueType": "object"
+        "valueType": "object",
+        "required": true
       },
       {
         "cnName": "诊断",
@@ -192,7 +206,8 @@ export default [
         "rule": "",
         "unit": "",
         "valueToName": "value1=diagnosis",
-        "valueType": "object"
+        "valueType": "object",
+        "required": true
       },
       {
         "cnName": "现病史",
@@ -205,7 +220,8 @@ export default [
         "rule": "",
         "unit": "",
         "valueToName": "value1=medicalHistory",
-        "valueType": "object"
+        "valueType": "object",
+        "required": true
       },
       {
         "cnName": "诊疗意见",
@@ -218,7 +234,8 @@ export default [
         "rule": "",
         "unit": "",
         "valueToName": "value1=opinion",
-        "valueType": "object"
+        "valueType": "object",
+        "required": true
       },
       {
         "cnName": "检验检查",
@@ -231,7 +248,8 @@ export default [
         "rule": "",
         "unit": "",
         "valueToName": "value1=inspect",
-        "valueType": "object"
+        "valueType": "object",
+        "required": true
       },
       {
         "cnName": "医生",
@@ -244,7 +262,8 @@ export default [
         "rule": "",
         "unit": "",
         "valueToName": "value1=doctor",
-        "valueType": "object"
+        "valueType": "object",
+        "required": true
       },
       {
         "cnName": "诊疗时间",
@@ -257,89 +276,257 @@ export default [
         "rule": "YYYY-MM-DD hh:mm:ss",
         "unit": "",
         "valueToName": "value1=diagnosisDate",
-        "valueType": "object"
+        "valueType": "object",
+        "required": true
       }
     ],
     "meddra": "",
     "remarks": ""
   },
   {
-    "cnName": "疾病史",
-    "elementNo": "E00007",
-    "enName": "diseaseHistory",
+    "cnName": "生命体征",
+    "elementNo": "E00003",
+    "method": "default",
+    "enName": "vitalSigns",
     "fieldList": [
       {
-        "cnName": "确诊日期",
-        "enName": "historyDiagnosisDate",
-        "fieldNo": "F00037",
-        "inputType": "date",
+        "cnName": "体温",
+        "enName": "temperature",
+        "fieldNo": "F00020",
+        "inputType": "number",
         "map": "",
         "meddra": "",
-        "remarks": "疾病史",
-        "rule": "YYYY-MM-DD",
-        "unit": "",
-        "valueToName": "value1=historyDiagnosisDate",
-        "valueType": "list"
+        "remarks": "生命体征",
+        "rule": "",
+        "unit": "°C",
+        "valueToName": "value1=temperature",
+        "valueType": "object",
+        "required": true
       },
       {
-        "cnName": "疾病名称",
-        "enName": "historyDiseaseName",
-        "fieldNo": "F00038",
+        "cnName": "血压",
+        "enName": "bloodPressure",
+        "fieldNo": "F00021",
+        "inputType": "number_double",
+        "map": "",
+        "meddra": "",
+        "remarks": "生命体征",
+        "rule": "",
+        "unit": "mmHg",
+        "valueToName": "value1=bloodPressure_min,value2=bloodPressure_max",
+        "valueType": "object",
+        "required": true
+      },
+      {
+        "cnName": "脉搏",
+        "enName": "pulse",
+        "fieldNo": "F00022",
+        "inputType": "number",
+        "map": "",
+        "meddra": "",
+        "remarks": "生命体征",
+        "rule": "",
+        "unit": "次/分",
+        "valueToName": "value1=pulse",
+        "valueType": "object",
+        "required": true
+      },
+      {
+        "cnName": "呼吸",
+        "enName": "breathing",
+        "fieldNo": "F00023",
+        "inputType": "number",
+        "map": "",
+        "meddra": "",
+        "remarks": "生命体征",
+        "rule": "",
+        "unit": "次/分",
+        "valueToName": "value1=breathing",
+        "valueType": "object",
+        "required": true
+      }
+    ],
+    "meddra": "",
+    "remarks": ""
+  },
+  {
+    "cnName": "合并用药",
+    "elementNo": "E00005",
+    "method": "default",
+    "enName": "combinedMedication",
+    "fieldList": [
+      {
+        "cnName": "药物名称",
+        "enName": "drugName",
+        "fieldNo": "F00028",
         "inputType": "text",
         "map": "",
         "meddra": "",
-        "remarks": "疾病史",
+        "remarks": "合并用药",
         "rule": "",
         "unit": "",
-        "valueToName": "value1=historyDiseaseName",
-        "valueType": "list"
+        "valueToName": "value1=drugName",
+        "valueType": "list",
+        "required": true
       },
       {
-        "cnName": "完全控制",
-        "enName": "historyControl",
-        "fieldNo": "F00039",
+        "cnName": "用法",
+        "enName": "usage",
+        "fieldNo": "F00029",
+        "inputType": "text",
+        "map": "",
+        "meddra": "",
+        "remarks": "合并用药",
+        "rule": "",
+        "unit": "",
+        "valueToName": "value1=usage",
+        "valueType": "list",
+        "required": true
+      },
+      {
+        "cnName": "用量",
+        "enName": "dosage",
+        "fieldNo": "F00030",
+        "inputType": "text",
+        "map": "",
+        "meddra": "",
+        "remarks": "合并用药",
+        "rule": "",
+        "unit": "",
+        "valueToName": "value1=dosage",
+        "valueType": "list",
+        "required": true
+      },
+      {
+        "cnName": "开始日期",
+        "enName": "startDate",
+        "fieldNo": "F00031",
+        "inputType": "date",
+        "map": "",
+        "meddra": "",
+        "remarks": "合并用药",
+        "rule": "",
+        "unit": "",
+        "valueToName": "value1=startDate",
+        "valueType": "list",
+        "required": true
+      },
+      {
+        "cnName": "结束日期",
+        "enName": "endDate",
+        "fieldNo": "F00032",
+        "inputType": "date",
+        "map": "",
+        "meddra": "",
+        "remarks": "合并用药",
+        "rule": "",
+        "unit": "",
+        "valueToName": "value1=endDate",
+        "valueType": "list",
+        "required": true
+      },
+      {
+        "cnName": "末次就诊时仍使用",
+        "enName": "lastUse",
+        "fieldNo": "F00033",
         "inputType": "checkbox",
         "map": "",
         "meddra": "",
-        "remarks": "疾病史",
+        "remarks": "合并用药",
         "rule": "",
         "unit": "",
-        "valueToName": "value1=historyControl",
-        "valueType": "list"
-      },
-      {
-        "cnName": "好转",
-        "enName": "historyBetter",
-        "fieldNo": "F00040",
-        "inputType": "checkbox",
-        "map": "",
-        "meddra": "",
-        "remarks": "疾病史",
-        "rule": "",
-        "unit": "",
-        "valueToName": "value1=historyBetter",
-        "valueType": "list"
-      },
-      {
-        "cnName": "未控制或加重",
-        "enName": "historyNoControl",
-        "fieldNo": "F00041",
-        "inputType": "checkbox",
-        "map": "",
-        "meddra": "",
-        "remarks": "疾病史",
-        "rule": "",
-        "unit": "",
-        "valueToName": "value1=historyNoControl",
-        "valueType": "list"
+        "valueToName": "value1=lastUse",
+        "valueType": "list",
+        "required": false
       }
     ],
     "meddra": "",
     "remarks": ""
   },
+  // {
+  //   "cnName": "疾病史",
+  //   "elementNo": "E00007",
+  //   "method": "special",
+  //   "enName": "diseaseHistory",
+  //   "fieldList": [
+  //     {
+  //       "cnName": "确诊日期",
+  //       "enName": "historyDiagnosisDate",
+  //       "fieldNo": "F00037",
+  //       "inputType": "date",
+  //       "map": "",
+  //       "meddra": "",
+  //       "remarks": "疾病史",
+  //       "rule": "YYYY-MM-DD",
+  //       "unit": "",
+  //       "valueToName": "value1=historyDiagnosisDate",
+  //       "valueType": "list",
+  //       "required": true
+  //     },
+  //     {
+  //       "cnName": "疾病名称",
+  //       "enName": "historyDiseaseName",
+  //       "fieldNo": "F00038",
+  //       "inputType": "text",
+  //       "map": "",
+  //       "meddra": "",
+  //       "remarks": "疾病史",
+  //       "rule": "",
+  //       "unit": "",
+  //       "valueToName": "value1=historyDiseaseName",
+  //       "valueType": "list",
+  //       "required": true
+  //     },
+  //     {
+  //       "cnName": "完全控制",
+  //       "enName": "historyControl",
+  //       "fieldNo": "F00039",
+  //       "inputType": "checkbox",
+  //       "map": "",
+  //       "meddra": "",
+  //       "remarks": "疾病史",
+  //       "rule": "",
+  //       "unit": "",
+  //       "valueToName": "value1=historyControl",
+  //       "valueType": "list",
+  //       "required": true
+  //     },
+  //     {
+  //       "cnName": "好转",
+  //       "enName": "historyBetter",
+  //       "fieldNo": "F00040",
+  //       "inputType": "checkbox",
+  //       "map": "",
+  //       "meddra": "",
+  //       "remarks": "疾病史",
+  //       "rule": "",
+  //       "unit": "",
+  //       "valueToName": "value1=historyBetter",
+  //       "valueType": "list",
+  //       "required": true
+  //     },
+  //     {
+  //       "cnName": "未控制或加重",
+  //       "enName": "historyNoControl",
+  //       "fieldNo": "F00041",
+  //       "inputType": "checkbox",
+  //       "map": "",
+  //       "meddra": "",
+  //       "remarks": "疾病史",
+  //       "rule": "",
+  //       "unit": "",
+  //       "valueToName": "value1=historyNoControl",
+  //       "valueType": "list",
+  //       "required": true
+  //     }
+  //   ],
+  //   "meddra": "",
+  //   "remarks": ""
+  // },
   {
     "cnName": "血常规检查",
     "elementNo": "E00008",
+    "method": "special",
     "enName": "routineBloodTest",
     "fieldList": [
       {
@@ -353,7 +540,8 @@ export default [
         "rule": "YYYY-MM-DD",
         "unit": "",
         "valueToName": "value1=sampleDate",
-        "valueType": "object"
+        "valueType": "object",
+        "required": true
       },
       {
         "cnName": "RBC",
@@ -363,10 +551,11 @@ export default [
         "map": "",
         "meddra": "",
         "remarks": "血常规检查",
-        "rule": "^//d+(//.//d+)?$",
+        "rule": "",
         "unit": "10^12/L",
         "valueToName": "value1=rbc_result,value2=rbc_judge,value3=rbc_remark",
-        "valueType": "object"
+        "valueType": "object",
+        "required": true
       },
       {
         "cnName": "Hb",
@@ -376,10 +565,11 @@ export default [
         "map": "",
         "meddra": "",
         "remarks": "血常规检查",
-        "rule": "^//d+(//.//d+)?$",
+        "rule": "",
         "unit": "g/L",
         "valueToName": "value1=hb_result,value2=hb_judge,value3=hb_remark",
-        "valueType": "object"
+        "valueType": "object",
+        "required": true
       },
       {
         "cnName": "WBC",
@@ -389,10 +579,11 @@ export default [
         "map": "",
         "meddra": "",
         "remarks": "血常规检查",
-        "rule": "^//d+(//.//d+)?$",
+        "rule": "",
         "unit": "10^9/L",
         "valueToName": "value1=wbc_result,value2=wbc_judge,value3=wbc_remark",
-        "valueType": "object"
+        "valueType": "object",
+        "required": true
       },
       {
         "cnName": "PLT",
@@ -402,10 +593,11 @@ export default [
         "map": "",
         "meddra": "",
         "remarks": "血常规检查",
-        "rule": "^//d+(//.//d+)?$",
+        "rule": "",
         "unit": "10^10/L",
         "valueToName": "value1=plt_result,value2=plt_judge,value3=plt_remark",
-        "valueType": "object"
+        "valueType": "object",
+        "required": true
       }
     ],
     "meddra": "",
@@ -414,6 +606,7 @@ export default [
   {
     "cnName": "尿常规",
     "elementNo": "E00009",
+    "method": "special",
     "enName": "urinalysis",
     "fieldList": [
       {
@@ -437,7 +630,7 @@ export default [
         "map": "",
         "meddra": "",
         "remarks": "尿常规",
-        "rule": "^//d+(//.//d+)?$",
+        "rule": "",
         "unit": "",
         "valueToName": "value1=urineProtein_result,value2=urineProtein_judge,value3=urineProtein_remark",
         "valueType": "object"
@@ -450,7 +643,7 @@ export default [
         "map": "",
         "meddra": "",
         "remarks": "尿常规",
-        "rule": "^//d+(//.//d+)?$",
+        "rule": "",
         "unit": "",
         "valueToName": "value1=redBloodCell_result,value2=redBloodCell_judge,value3=redBloodCell_remark",
         "valueType": "object"
@@ -463,7 +656,7 @@ export default [
         "map": "",
         "meddra": "",
         "remarks": "尿常规",
-        "rule": "^//d+(//.//d+)?$",
+        "rule": "",
         "unit": "",
         "valueToName": "value1=whiteBloodCell_result,value2=whiteBloodCell_judge,value3=whiteBloodCell_remark",
         "valueType": "object"
@@ -476,7 +669,7 @@ export default [
         "map": "",
         "meddra": "",
         "remarks": "尿常规",
-        "rule": "^//d+(//.//d+)?$",
+        "rule": "",
         "unit": "",
         "valueToName": "value1=urineSugar_result,value2=urineSugar_judge,value3=urineSugar_remark",
         "valueType": "object"
@@ -488,6 +681,7 @@ export default [
   {
     "cnName": "肝肾功能检查",
     "elementNo": "E00010",
+    "method": "special",
     "enName": "liverKidneyTest",
     "fieldList": [
       {
@@ -511,7 +705,7 @@ export default [
         "map": "",
         "meddra": "",
         "remarks": "肝肾功能检查",
-        "rule": "^//d+(//.//d+)?$",
+        "rule": "",
         "unit": "IU/L",
         "valueToName": "value1=alt_result,value2=alt_judge,value3=alt_remark",
         "valueType": "object"
@@ -524,7 +718,7 @@ export default [
         "map": "",
         "meddra": "",
         "remarks": "肝肾功能检查",
-        "rule": "^//d+(//.//d+)?$",
+        "rule": "",
         "unit": "IU/L",
         "valueToName": "value1=ast_result,value2=ast_judge,value3=ast_remark",
         "valueType": "object"
@@ -537,7 +731,7 @@ export default [
         "map": "",
         "meddra": "",
         "remarks": "肝肾功能检查",
-        "rule": "^//d+(//.//d+)?$",
+        "rule": "",
         "unit": "mmol/L",
         "valueToName": "value1=bloodSugar_result,value2=bloodSugar_judge,value3=bloodSugar_remark",
         "valueType": "object"
@@ -550,7 +744,7 @@ export default [
         "map": "",
         "meddra": "",
         "remarks": "肝肾功能检查",
-        "rule": "^//d+(//.//d+)?$",
+        "rule": "",
         "unit": "mmol/L",
         "valueToName": "value1=bun_result,value2=bun_judge,value3=bun_remark",
         "valueType": "object"
@@ -563,7 +757,7 @@ export default [
         "map": "",
         "meddra": "",
         "remarks": "肝肾功能检查",
-        "rule": "^//d+(//.//d+)?$",
+        "rule": "",
         "unit": "mmol/L",
         "valueToName": "value1=cr_result,value2=cr_judge,value3=cr_remark",
         "valueType": "object"
@@ -571,5 +765,134 @@ export default [
     ],
     "meddra": "",
     "remarks": ""
-  }
+  },
+  {
+    "cnName": "精液常规检查指标",
+    "elementNo": "E00004",
+    "method": "special",
+    "enName": "semenRoutineQuota",
+    "fieldList": [
+      {
+        "cnName": "精液量",
+        "enName": "semenAmount",
+        "fieldNo": "F00024",
+        "inputType": "number",
+        "map": "",
+        "meddra": "",
+        "remarks": "精液常规检查指标",
+        "rule": "",
+        "unit": "ml",
+        "valueToName": "value1=semenAmount_result,value2=semenAmount_clinicalJudgment",
+        "valueType": "object"
+      },
+      {
+        "cnName": "精子浓度",
+        "enName": "spermConcentration",
+        "fieldNo": "F00025",
+        "inputType": "number",
+        "map": "",
+        "meddra": "",
+        "remarks": "精液常规检查指标",
+        "rule": "",
+        "unit": "/ml",
+        "valueToName": "value1=spermConcentration_result,value2=spermConcentration_clinicalJudgment",
+        "valueType": "object"
+      },
+      {
+        "cnName": "前向运动精子",
+        "enName": "forwardMotion",
+        "fieldNo": "F00026",
+        "inputType": "number",
+        "map": "",
+        "meddra": "",
+        "remarks": "精液常规检查指标",
+        "rule": "",
+        "unit": "%",
+        "valueToName": "value1=forwardMotion_result,value2=forwardMotion_clinicalJudgment",
+        "valueType": "object"
+      },
+      {
+        "cnName": "正常形态精子",
+        "enName": "spermNormal",
+        "fieldNo": "F00027",
+        "inputType": "number",
+        "map": "",
+        "meddra": "",
+        "remarks": "精液常规检查指标",
+        "rule": "",
+        "unit": "%",
+        "valueToName": "value1=spermNormal_result,value2=spermNormal_clinicalJudgment",
+        "valueType": "object"
+      }
+    ],
+    "meddra": "",
+    "remarks": ""
+  },
+  {
+    "cnName": "精液增加检查指标",
+    "elementNo": "E00006",
+    "method": "special",
+    "enName": "semenRoutineQuotaAdd",
+    "fieldList": [
+      {
+        "cnName": "精液PH",
+        "enName": "semenPH",
+        "fieldNo": "F00034",
+        "inputType": "number",
+        "map": "",
+        "meddra": "",
+        "remarks": "精液增加检查指标",
+        "rule": "",
+        "unit": "",
+        "valueToName": "value1=semenPH_result,value2=semenPH_clinicalJudgment",
+        "valueType": "object"
+      },
+      {
+        "cnName": "DFI",
+        "enName": "semenDFI",
+        "fieldNo": "F00035",
+        "inputType": "number",
+        "map": "",
+        "meddra": "",
+        "remarks": "精液增加检查指标",
+        "rule": "",
+        "unit": "%",
+        "valueToName": "value1=semenDFI_result,value2=semenDFI_clinicalJudgment",
+        "valueType": "object"
+      },
+      {
+        "cnName": "HDS",
+        "enName": "semenHDS",
+        "fieldNo": "F00036",
+        "inputType": "number",
+        "map": "",
+        "meddra": "",
+        "remarks": "精液增加检查指标",
+        "rule": "",
+        "unit": "%",
+        "valueToName": "value1=semenHDS_result,value2=semenHDS_clinicalJudgment",
+        "valueType": "object"
+      }
+    ],
+    "meddra": "",
+    "remarks": ""
+  },
+  // {
+  //   "cnName": "导联心电图检查",
+  //   "elementNo": "E00011",
+  //   "method": "special",
+  //   "enName": "electrocardiogramTest",
+  //   "fieldList": [
+  //     {
+  //       "cnName": "临床意义",
+  //       "enName": "clinicalMeaning",
+  //       "fieldNo": "F00059",
+  //       "inputType": "text",
+  //       "remarks": "clinicalMeaning_status：正常还是异常\nclinicalMeaning_abnormalDesc：异常的详细说明\nclinicalMeaning_is：该异常是否有临床意义",
+  //       "valueToName": "value1=clinicalMeaning_status,value2=clinicalMeaning_abnormalDesc,value3=clinicalMeaning_is",
+  //       "valueType": "object"
+  //     }
+  //   ],
+  //   "remarks": "包含元件：检查日期、心率、QTC、临床意义"
+  // },
 ];

@@ -57,6 +57,7 @@ const SemenRoutineQuota = (props) => {
       <Divider>{cnName}：{dataObject[`sampleDate_${index}`]}</Divider>
       <Table
         bordered
+        rowKey="fieldNo"
         columns={columns}
         pagination={false}
         dataSource={fieldList.filter(i => i.enName !== 'sampleDate')}

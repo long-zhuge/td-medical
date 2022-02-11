@@ -16,7 +16,7 @@ export default (props) => {
     <FormItem
       label={label}
       name={name}
-      inputProps={{ style: { width: '100%' } }}
+      inputProps={{ style: { width: '100%' }, placeholder: rest.placeholder }}
       {...rest}
     />
   );

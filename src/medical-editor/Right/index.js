@@ -46,10 +46,6 @@ const Right = () => {
                 label="组件名"
               />
               <FormItem
-                name="enName"
-                label="组件英文名"
-              />
-              <FormItem
                 name="meddra"
                 label="MedDRA"
                 required={false}
@@ -75,6 +71,11 @@ const Right = () => {
               >
                 <Checkbox>必填</Checkbox>
               </FormItem>
+              <FormItem
+                name="placeholder"
+                label="输入框提示语"
+                required={false}
+              />
               <FormItem noStyle shouldUpdate>
                 {({ getFieldValue }) => {
                   if (['select'].includes(getFieldValue('inputType'))) {

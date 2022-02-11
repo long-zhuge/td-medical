@@ -1,85 +1,5 @@
 [
   {
-    "cnName": "疾病史",
-    "elementNo": "E00007",
-    "method": "special",
-    "enName": "diseaseHistory",
-    "fieldList": [
-      {
-        "cnName": "确诊日期",
-        "enName": "historyDiagnosisDate",
-        "fieldNo": "F00037",
-        "inputType": "date",
-        "map": "",
-        "meddra": "",
-        "remarks": "疾病史",
-        "rule": "YYYY-MM-DD",
-        "unit": "",
-        "valueToName": "value1=historyDiagnosisDate",
-        "valueType": "list",
-        "required": true
-      },
-      {
-        "cnName": "疾病名称",
-        "enName": "historyDiseaseName",
-        "fieldNo": "F00038",
-        "inputType": "text",
-        "map": "",
-        "meddra": "",
-        "remarks": "疾病史",
-        "rule": "",
-        "unit": "",
-        "valueToName": "value1=historyDiseaseName",
-        "valueType": "list",
-        "required": true
-      },
-      {
-        "cnName": "完全控制",
-        "enName": "historyControl",
-        "fieldNo": "F00039",
-        "inputType": "checkbox",
-        "map": "",
-        "meddra": "",
-        "remarks": "疾病史",
-        "rule": "",
-        "unit": "",
-        "valueToName": "value1=historyControl",
-        "valueType": "list",
-        "required": true
-      },
-      {
-        "cnName": "好转",
-        "enName": "historyBetter",
-        "fieldNo": "F00040",
-        "inputType": "checkbox",
-        "map": "",
-        "meddra": "",
-        "remarks": "疾病史",
-        "rule": "",
-        "unit": "",
-        "valueToName": "value1=historyBetter",
-        "valueType": "list",
-        "required": true
-      },
-      {
-        "cnName": "未控制或加重",
-        "enName": "historyNoControl",
-        "fieldNo": "F00041",
-        "inputType": "checkbox",
-        "map": "",
-        "meddra": "",
-        "remarks": "疾病史",
-        "rule": "",
-        "unit": "",
-        "valueToName": "value1=historyNoControl",
-        "valueType": "list",
-        "required": true
-      }
-    ],
-    "meddra": "",
-    "remarks": ""
-  },
-  {
     "cnName": "血常规检查",
     "elementNo": "E00008",
     "method": "special",
@@ -432,23 +352,5 @@
     ],
     "meddra": "",
     "remarks": ""
-  },
-  {
-    "cnName": "导联心电图检查",
-    "elementNo": "E00011",
-    "method": "special",
-    "enName": "electrocardiogramTest",
-    "fieldList": [
-      {
-        "cnName": "临床意义",
-        "enName": "clinicalMeaning",
-        "fieldNo": "F00059",
-        "inputType": "text",
-        "remarks": "clinicalMeaning_status：正常还是异常\nclinicalMeaning_abnormalDesc：异常的详细说明\nclinicalMeaning_is：该异常是否有临床意义",
-        "valueToName": "value1=clinicalMeaning_status,value2=clinicalMeaning_abnormalDesc,value3=clinicalMeaning_is",
-        "valueType": "object"
-      }
-    ],
-    "remarks": "包含元件：检查日期、心率、QTC、临床意义"
   }
 ]

@@ -75,7 +75,15 @@ const Middle = () => {
             </Space>
           </div>
           <div className="middle-item-content">
-            {ele.fieldList.map((item, index2) => <Field data={item} index={index} index2={index2} key={`${item.fieldNo}_${index}`} />)}
+            {ele.fieldList.map((item, index2) => (
+              <Field
+                data={item}
+                index={index}
+                index2={index2}
+                method={ele.method}
+                key={`${item.fieldNo}_${index}`}
+              />
+            ))}
           </div>
         </div>
       ))}

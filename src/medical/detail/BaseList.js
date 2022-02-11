@@ -9,7 +9,7 @@ import { getFormValues, getFormName, renderValue } from '../../_util';
 
 import { EleDetailContext } from './index';
 
-const Base = (props) => {
+const BaseList = (props) => {
   const {
     enName,
     cnName,
@@ -49,4 +49,4 @@ const Base = (props) => {
   );
 };
 
-export default Base;
+export default BaseList;

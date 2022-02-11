@@ -52,6 +52,7 @@ const SemenRoutineQuota = (props) => {
       <Divider>{cnName}</Divider>
       <Table
         bordered
+        rowKey="fieldNo"
         columns={columns}
         pagination={false}
         dataSource={fieldList}

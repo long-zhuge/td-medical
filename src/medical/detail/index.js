@@ -7,23 +7,23 @@ import Back from '../../_components/Back';
 import { filterEleMapToComponent } from '../../_util';
 
 // 组件开发测试
-import Base from './Base';
+import BaseList from './BaseList';
+import BaseTable from './BaseTable';
 import Inspect from './Inspect';
 import SemenRoutineQuota from './SemenRoutineQuota';
-import CombinedMedication from './CombinedMedication';
 
 // 组件顶层对象
 export const EleDetailContext = React.createContext({});
 
 const ele = {
   // 基本信息、生命体征、门诊病历主体部分
-  'base|vitalSigns|outpatientContent': Base,
+  'base|vitalSigns|outpatientContent': BaseList,
+  // 合并用药
+  'combinedMedication': BaseTable,
   // 血常规、尿常规、肝肾功能检查
   'routineBloodTest|urinalysis|liverKidneyTest': Inspect,
   // 精液常规检查指标（semenRoutineQuota）、精液增加检查指标
   'semenRoutineQuotaAdd': SemenRoutineQuota,
-  // 合并用药
-  'combinedMedication': CombinedMedication,
 };
 
 const MedicalDetail = (props) => {

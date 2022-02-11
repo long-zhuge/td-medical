@@ -24,6 +24,7 @@ export default (props) => {
       <SelectList
         localData={toMap(map)}
         style={{ width: '100%' }}
+        placeholder={rest.placeholder}
       />
     </FormItem>
   );

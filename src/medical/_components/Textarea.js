@@ -19,7 +19,7 @@ export default (props) => {
       name={name}
       {...rest}
     >
-      <Input.TextArea rows={2} />
+      <Input.TextArea rows={2} placeholder={rest.placeholder} />
     </FormItem>
   );
 }

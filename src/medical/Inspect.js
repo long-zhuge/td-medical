@@ -56,6 +56,7 @@ const Inspect = (props) => {
       </div>
       <Table
         bordered
+        rowKey="fieldNo"
         columns={columns}
         pagination={false}
         dataSource={fieldList.filter(i => i.enName !== 'sampleDate')}
