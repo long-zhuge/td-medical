@@ -3,7 +3,8 @@
 * */
 
 import React, { useContext } from 'react';
-import { Form, TreeSelect } from 'antd';
+import { TreeSelect } from 'antd';
+import FormItem from 'td-antd/es/form-item';
 
 import { EleContext } from '../index';
 
@@ -11,22 +12,18 @@ export default (props) => {
   const {
     label = '',
     name = '',
+    ...rest
   } = props;
 
   const { dept } = useContext(EleContext);
 
   return (
-    <Form.Item
+    <FormItem
       label={label}
       name={name}
-      rules={[
-        {
-          required: true,
-          message: `${label}不为空`,
-        },
-      ]}
+      {...rest}
     >
       <TreeSelect treeData={dept} />
-    </Form.Item>
+    </FormItem>
   );
 }

@@ -18,6 +18,14 @@ nav:
 |backurl|返回按钮的地址|String|-|
 |footerHidden|隐藏操作按钮|Boolean|false|
 
+## MedicalEditor
+
+用于获取病历表单组件的模板数据
+
+|参数|说明|类型|默认值|
+|:--|:--|:--|:--|
+|onFinish|点击保存后的回调函数|Function(data)|-|
+
 ## Question
 
 问卷表单组件，可以将 json 模板数据渲染成问卷表单

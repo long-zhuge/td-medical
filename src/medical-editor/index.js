@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import baseJson from './base.json';
-import speciallyJson from './specially.json';
+import specialJson from './special.json';
 import './index.less';
 
 import Left from './Left';
@@ -13,7 +13,7 @@ const Editor = ({ onFinish = () => {} }) => {
   // 总数据
   const [dataSource] = useState({
     baseJson,
-    speciallyJson,
+    specialJson,
   });
   // 当前左侧组件栏中渲染的数据
   const [elementList, setElementList] = useState(baseJson);

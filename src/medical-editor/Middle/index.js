@@ -32,7 +32,7 @@ const Middle = () => {
   const filterData = () => {
     return selectedElementList.reduce((p, { index, ...c }) => {
       const fieldList = c.fieldList.reduce((p2, { index, index2, ...c2 }) => {
-        if (c2.disabled === undefined || c2.disabled) {
+        if (c2.disabled === undefined || !c2.disabled) {
           return [...p2, c2];
         }
 

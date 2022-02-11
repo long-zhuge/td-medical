@@ -4,7 +4,7 @@
 * */
 
 import React from 'react';
-import { Form } from 'antd';
+import FormItem from 'td-antd/es/form-item';
 import DateEasily from 'td-antd/es/date-easily';
 import tools from 'td-antd/es/tools';
 
@@ -12,22 +12,17 @@ export default (props) => {
   const {
     label = '',
     name = '',
-    placeholder = '',
+    ...rest
   } = props;
 
   return (
-    <Form.Item
+    <FormItem
       label={label}
       name={name}
       normalize={date => date && tools.momentToString(date)}
-      rules={[
-        {
-          required: true,
-          message: `${label}不为空`,
-        },
-      ]}
+      {...rest}
     >
-      <DateEasily style={{ width: '100%' }} placeholder={placeholder} />
-    </Form.Item>
+      <DateEasily style={{ width: '100%' }} />
+    </FormItem>
   );
 }

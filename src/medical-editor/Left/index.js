@@ -16,7 +16,7 @@ const Left = () => {
         onChange={(activeKey) => setElementList(dataSource[activeKey])}
       >
         <Tabs.TabPane tab="基础组件" key="baseJson" />
-        <Tabs.TabPane tab="特殊组件" key="speciallyJson" />
+        <Tabs.TabPane tab="特殊组件" key="specialJson" />
       </Tabs>
       {elementList.map(item => <Item key={item.elementNo} data={item} />)}
     </div>

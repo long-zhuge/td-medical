@@ -4,36 +4,28 @@
 
 import React from 'react';
 import { Form, Input, Row, Col } from 'antd';
-import { regExp } from '../../_util';
+import FormItem from 'td-antd/es/form-item';
 
 export default (props) => {
   const {
     label = '',
     name = '',
     name2 = '',
-    rule,
-    ruleMessage = '必填项',
     unit,
+    ...rest
   } = props;
 
   return (
     <Form.Item label={label} required>
       <Row>
-        <Col span={11}>
-          <Form.Item
+        <Col span={9}>
+          <FormItem
+            isNegative
             name={name}
-            rules={[
-              {
-                required: true,
-                message: `${label}不为空`,
-              }, {
-                pattern: regExp(rule),
-                message: ruleMessage,
-              },
-            ]}
-          >
-            <Input style={{ width: '100%-15px', textAlign: 'center' }} />
-          </Form.Item>
+            itemType="number"
+            inputProps={{ style: { width: '100%-15px', textAlign: 'center' } }}
+            {...rest}
+          />
         </Col>
         <Col span={2}>
           <Input
@@ -48,21 +40,14 @@ export default (props) => {
             }}
           />
         </Col>
-        <Col span={11}>
-          <Form.Item
+        <Col span={13}>
+          <FormItem
+            isNegative
             name={name2}
-            rules={[
-              {
-                required: true,
-                message: `${label}不为空`,
-              }, {
-                pattern: regExp(rule),
-                message: ruleMessage,
-              },
-            ]}
-          >
-            <Input style={{ width: '100%-15px', textAlign: 'center' }} addonAfter={unit} />
-          </Form.Item>
+            itemType="number"
+            inputProps={{ addonAfter: unit, style: { width: '100%-15px', textAlign: 'center' } }}
+            {...rest}
+          />
         </Col>
       </Row>
     </Form.Item>

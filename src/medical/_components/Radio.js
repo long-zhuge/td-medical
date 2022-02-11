@@ -3,31 +3,26 @@
 * */
 
 import React from 'react';
-import { Form, Radio } from 'antd';
+import { Radio } from 'antd';
+import FormItem from 'td-antd/es/form-item';
 
 export default (props) => {
   const {
     label = '',
     name = '',
     map = [],
-    required = true,
-    message = `${label}不为空`,
+    ...rest
   } = props;
 
   return (
-    <Form.Item
+    <FormItem
       label={label}
       name={name}
-      rules={[
-        {
-          required,
-          message,
-        },
-      ]}
+      {...rest}
     >
       <Radio.Group>
         {map.map(i => <Radio key={i} value={i}>{i}</Radio>)}
       </Radio.Group>
-    </Form.Item>
+    </FormItem>
   );
 }

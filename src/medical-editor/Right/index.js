@@ -1,7 +1,7 @@
 import React, { useContext, useEffect } from 'react';
-import { Form, Button, Input } from 'antd';
+import { Form, Button, Input, Checkbox } from 'antd';
 import FormItem from 'td-antd/es/form-item';
-import SelectList from 'td-antd/es/select-list';
+import toast from 'td-antd/es/toast';
 import { clone } from '../../_util';
 import './index.less';
 
@@ -14,7 +14,6 @@ const Right = () => {
 
   useEffect(() => {
     if (formData.cnName) {
-      console.log(formData);
       form.setFieldsValue(formData);
     }
   }, [formData]);
@@ -30,6 +29,7 @@ const Right = () => {
         };
       }
       setSelectedElementList(clone(selectedElementList));
+      toast({ text: '组件数据保存成功' });
     }).catch((err) => {
       console.log(err);
     })
@@ -68,6 +68,13 @@ const Right = () => {
                 name="enName"
                 label="字段英文名"
               />
+              <FormItem
+                name="required"
+                label="是否必填"
+                valuePropName="checked"
+              >
+                <Checkbox>必填</Checkbox>
+              </FormItem>
               <FormItem noStyle shouldUpdate>
                 {({ getFieldValue }) => {
                   if (['select'].includes(getFieldValue('inputType'))) {
@@ -80,25 +87,12 @@ const Right = () => {
                     );
                   } else if (['number', 'number_double'].includes(getFieldValue('inputType'))) {
                     return (
-                      <React.Fragment>
-                        <FormItem
-                          name="unit"
-                          label="单位"
-                          required={false}
-                          inputProps={{ placeholder: '如：mmHg' }}
-                        />
-                        <FormItem
-                          name="rule"
-                          label="规则或正则"
-                          required={false}
-                        >
-                          <SelectList
-                            localData={{
-                              '^//d+(//.//d+)?$': '值大于零',
-                            }}
-                          />
-                        </FormItem>
-                      </React.Fragment>
+                      <FormItem
+                        name="unit"
+                        label="单位"
+                        required={false}
+                        inputProps={{ placeholder: '如：mmHg' }}
+                      />
                     );
                   }
                 }}
@@ -119,7 +113,7 @@ const Right = () => {
             <Input.TextArea />
           </FormItem>
         </Form>
-        <Button onClick={onSubmit}>保存组件数据</Button>
+        <Button type="primary" ghost onClick={onSubmit}>保存组件数据</Button>
       </div>
     );
   }

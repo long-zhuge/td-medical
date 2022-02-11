@@ -3,28 +3,21 @@
 * */
 
 import React from 'react';
-import { Form, Input } from 'antd';
+import FormItem from 'td-antd/es/form-item';
 
 export default (props) => {
   const {
     label = '',
     name = '',
-    required = true,
-    message = `${label}不为空`,
+    ...rest
   } = props;
 
   return (
-    <Form.Item
+    <FormItem
       label={label}
       name={name}
-      rules={[
-        {
-          required,
-          message,
-        },
-      ]}
-    >
-      <Input style={{ width: '100%' }} />
-    </Form.Item>
+      inputProps={{ style: { width: '100%' } }}
+      {...rest}
+    />
   );
 }

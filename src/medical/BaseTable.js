@@ -1,5 +1,6 @@
 /*
-* 合并用药，包含：药物名称、用法、用量、开始日期、结束日期、末次就诊时仍使用
+* table 样式，且可增加条数的表单
+*   PS：合并用药
 * */
 
 import React, { useContext, useState } from 'react';
@@ -21,7 +22,13 @@ const { genNonDuplicateID } = tools;
 
 import { EleContext } from './index';
 
-const CombinedMedication = (props) => {
+const ele = {
+  text: Text,
+  date: Date,
+  checkbox: CheckBox,
+};
+
+const TableList = (props) => {
   const {
     index = 0,
     fieldList = [],
@@ -30,44 +37,26 @@ const CombinedMedication = (props) => {
   const { form, data } = useContext(EleContext);
   const [dataSource, setDataSource] = useState([]);
 
-  const columns = [
-    {
-      align: 'center',
-      title: '药物名称',
-      render: ({ order }) => <Text name={`drugName_${index}_${order}`} />,
+  const columns = fieldList.map(item => ({
+    align: 'center',
+    title: item.cnName,
+    render: ({ order }) => {
+      const Component = ele[item.inputType];
+
+      return (
+        <Component
+          {...item}
+          key={item.fieldNo}
+          name={`${item.enName}_${index}_${order}`}
+        />
+      )
     },
-    {
-      align: 'center',
-      title: '用法',
-      render: ({ order }) => <Text name={`usage_${index}_${order}`} />,
-    },
-    {
-      align: 'center',
-      title: '用量',
-      render: ({ order }) => <Text name={`dosage_${index}_${order}`} />,
-    },
-    {
-      align: 'center',
-      title: '开始日期',
-      render: ({ order }) => <Date name={`startDate_${index}_${order}`} />,
-    },
-    {
-      align: 'center',
-      title: '结束日期',
-      render: ({ order }) => <Date name={`endDate_${index}_${order}`} />,
-    },
-    {
-      align: 'center',
-      title: '末次就诊时仍使用',
-      render: ({ order }) => <CheckBox name={`lastUse_${index}_${order}`} />,
-    },
-    {
-      width: 100,
-      align: 'center',
-      title: '操作',
-      render: ({ order }) => <LinkBtn onClick={() => onRemove(order)}><DeleteOutlined /></LinkBtn>,
-    },
-  ];
+  })).concat({
+    width: 100,
+    align: 'center',
+    title: '操作',
+    render: ({ order }) => <LinkBtn danger onClick={() => onRemove(order)}><DeleteOutlined /></LinkBtn>,
+  });
 
   // 移除某一行
   const onRemove = (order) => {
@@ -114,4 +103,4 @@ const CombinedMedication = (props) => {
   );
 };
 
-export default CombinedMedication;
+export default TableList;

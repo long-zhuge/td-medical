@@ -3,35 +3,24 @@
 * */
 
 import React from 'react';
-import { Form, Input } from 'antd';
-import { regExp } from '../../_util';
+import FormItem from 'td-antd/es/form-item';
 
 export default (props) => {
   const {
     label = '',
     name = '',
-    rule,
-    ruleMessage = '必填项',
     unit,
-    required = true,
-    message = `${label}不为空`,
+    ...rest
   } = props;
 
   return (
-    <Form.Item
+    <FormItem
       label={label}
       name={name}
-      rules={[
-        {
-          required,
-          message,
-        }, {
-          pattern: regExp(rule),
-          message: ruleMessage,
-        },
-      ]}
-    >
-      <Input type="number" style={{ width: '100%' }} addonAfter={unit} />
-    </Form.Item>
+      isNegative
+      itemType="number"
+      inputProps={{ addonAfter: unit, style: { width: '100%' } }}
+      {...rest}
+    />
   );
 }

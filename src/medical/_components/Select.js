@@ -3,7 +3,7 @@
 * */
 
 import React from 'react';
-import { Form } from 'antd';
+import FormItem from 'td-antd/es/form-item';
 import SelectList from 'td-antd/es/select-list';
 import { toMap } from '../../_util';
 
@@ -12,23 +12,19 @@ export default (props) => {
     map,
     label = '',
     name = '',
+    ...rest
   } = props;
 
   return (
-    <Form.Item
+    <FormItem
       label={label}
       name={name}
-      rules={[
-        {
-          required: true,
-          message: `${label}不为空`,
-        },
-      ]}
+      {...rest}
     >
       <SelectList
         localData={toMap(map)}
         style={{ width: '100%' }}
       />
-    </Form.Item>
+    </FormItem>
   );
 }
