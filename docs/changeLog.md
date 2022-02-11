@@ -7,6 +7,13 @@ nav:
 
 ## 更新日志
 
+
+### 🚀 0.0.9-alpha.2
+
+`2022-01-28`
+
+- 调整组件名称：原先 MedicalForm 改为 Medical；原先 QuestionForm 改为 Question；
+
 ### 🚀 0.0.9-alpha.1
 
 `2022-01-26`
@@ -19,14 +26,14 @@ nav:
 
 `2021-12-06`
 
-- `QuestionForm`
+- QuestionForm
   - 问卷未完成时展示空状态
 
 ### 🚀 0.0.7
 
 `2021-11-25`
 
-- `QuestionForm`
+- QuestionForm
   - 🐞 编辑问卷时可中途提交
   - 🐞 修改上一题破坏原链路时手动清空数据
 
@@ -34,13 +41,13 @@ nav:
 
 `2021-11-23`
 
-- 更新 `QuestionForm` 问卷组件
+- 更新 QuestionForm 问卷组件
 
 ### 🚀 0.0.5
 
 `2021-11-20`
 
-- 新增 `QuestionForm` 问卷组件
+- 新增 QuestionForm 问卷组件
 
 ### 🚀 0.0.4
 
