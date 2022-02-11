@@ -1,6 +1,6 @@
 /*
-* 类型：date
-* 格式：YYYY-MM-DD
+* 类型：date、datetime
+* 格式：YYYY-MM-DD、YYYY-MM-DD hh:mm:ss
 * */
 
 import React from 'react';
@@ -12,17 +12,20 @@ export default (props) => {
   const {
     label = '',
     name = '',
+    inputType,
     ...rest
   } = props;
+
+  const normalize = date => date && tools.momentToString(date, inputType === 'date' ? 'YYYY-MM-DD' : 'YYYY-MM-DD hh:mm:ss');
 
   return (
     <FormItem
       label={label}
       name={name}
-      normalize={date => date && tools.momentToString(date)}
+      normalize={normalize}
       {...rest}
     >
-      <DateEasily style={{ width: '100%' }} />
+      <DateEasily style={{ width: '100%' }} placeholder={rest.placeholder} showTime={inputType === 'datetime'} />
     </FormItem>
   );
 }

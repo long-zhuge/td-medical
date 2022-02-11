@@ -13,7 +13,6 @@ import Text from './_components/Text';
 import Date from './_components/Date';
 import Number from './_components/Number';
 import Select from './_components/Select';
-import DateTime from './_components/DateTime';
 import Textarea from './_components/Textarea';
 import NumberDouble from './_components/NumberDouble';
 import HospitalDepartments from './_components/HospitalDepartments';
@@ -21,9 +20,9 @@ import HospitalDepartments from './_components/HospitalDepartments';
 const ele = {
   text: Text,
   date: Date,
+  datetime: Date,
   number: Number,
   number_double: NumberDouble,
-  datetime: DateTime,
   select: Select,
   textarea: Textarea,
   hospital_departments: HospitalDepartments,

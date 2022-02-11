@@ -19,8 +19,6 @@ const SemenRoutineQuota = (props) => {
     fieldList = [],
   } = props;
 
-  console.log(fieldList);
-
   const message = isMobile ? <ExclamationCircleOutlined /> : undefined;
 
   const columns = [
