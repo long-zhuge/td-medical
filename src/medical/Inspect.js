@@ -40,10 +40,10 @@ const Inspect = (props) => {
     {
       title: '正常/异常判断',
       dataIndex: 'valueToName',
-      render: (t) => <Radio name={getFormName(t, index)[1]} message={message} map={['正常', '异常']} />,
+      render: (t) => <Radio name={getFormName(t, index)[1]} message={message} map={['正常', '异常且无临床意义', '异常且有临床意义']} />,
     },
     {
-      title: '异常注释',
+      title: '备注',
       dataIndex: 'valueToName',
       render: (t) => <Text name={getFormName(t, index)[2]} message={message} required={false} />,
     },

@@ -20,7 +20,7 @@
         "required": true
       },
       {
-        "cnName": "RBC",
+        "cnName": "红细胞(RBC)",
         "enName": "rbc",
         "fieldNo": "F00043",
         "inputType": "number",
@@ -34,7 +34,7 @@
         "required": true
       },
       {
-        "cnName": "Hb",
+        "cnName": "血红蛋白(Hb)",
         "enName": "hb",
         "fieldNo": "F00044",
         "inputType": "number",
@@ -48,7 +48,7 @@
         "required": true
       },
       {
-        "cnName": "WBC",
+        "cnName": "白细胞(WBC)",
         "enName": "wbc",
         "fieldNo": "F00045",
         "inputType": "number",
@@ -62,7 +62,7 @@
         "required": true
       },
       {
-        "cnName": "PLT",
+        "cnName": "血小板(PLT)",
         "enName": "plt",
         "fieldNo": "F00046",
         "inputType": "number",
@@ -99,42 +99,42 @@
         "valueType": "object"
       },
       {
-        "cnName": "尿蛋白",
-        "enName": "urineProtein",
+        "cnName": "尿蛋白质(PRO)",
+        "enName": "pro",
         "fieldNo": "F00047",
         "inputType": "number",
         "map": "",
         "meddra": "",
         "remarks": "尿常规",
         "rule": "",
-        "unit": "",
-        "valueToName": "value1=urineProtein_result,value2=urineProtein_judge,value3=urineProtein_remark",
+        "unit": "mg/dl",
+        "valueToName": "value1=pro_result,value2=pro_judge,value3=pro_remark",
         "valueType": "object"
       },
       {
-        "cnName": "红细胞",
-        "enName": "redBloodCell",
-        "fieldNo": "F00048",
+        "cnName": "尿红细胞(RBC)",
+        "enName": "rbc",
+        "fieldNo": "F00043",
         "inputType": "number",
         "map": "",
         "meddra": "",
         "remarks": "尿常规",
         "rule": "",
-        "unit": "",
-        "valueToName": "value1=redBloodCell_result,value2=redBloodCell_judge,value3=redBloodCell_remark",
+        "unit": "个/HP",
+        "valueToName": "value1=rbc_result,value2=rbc_judge,value3=rbc_remark",
         "valueType": "object"
       },
       {
-        "cnName": "白细胞",
-        "enName": "whiteBloodCell",
-        "fieldNo": "F00049",
+        "cnName": "尿白细胞(WBC)",
+        "enName": "wbc",
+        "fieldNo": "F00045",
         "inputType": "number",
         "map": "",
         "meddra": "",
         "remarks": "尿常规",
         "rule": "",
-        "unit": "",
-        "valueToName": "value1=whiteBloodCell_result,value2=whiteBloodCell_judge,value3=whiteBloodCell_remark",
+        "unit": "个/HP",
+        "valueToName": "value1=wbc_result,value2=wbc_judge,value3=wbc_remark",
         "valueType": "object"
       },
       {
