@@ -25,6 +25,8 @@ nav:
 |参数|说明|类型|默认值|
 |:--|:--|:--|:--|
 |onFinish|点击保存后的回调函数|Function(data)|-|
+|confirmLoading|保存按钮的 loading 属性|Boolean|false|
+|defaultData|默认选中的数据项，不支持异步更新|Array|-|
 
 ## Question
 

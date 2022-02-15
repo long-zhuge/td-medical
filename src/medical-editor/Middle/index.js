@@ -11,7 +11,7 @@ import './index.less';
 import { EditorContext } from '../index';
 
 const Middle = () => {
-  const { selectedElementList, setSelectedElementList, setFormData, onFinish } = useContext(EditorContext);
+  const { selectedElementList, setSelectedElementList, setFormData, onFinish, confirmLoading } = useContext(EditorContext);
 
   const ref = useRef();
   const [templateJson, setTemplateJson] = useState([]);
@@ -58,6 +58,16 @@ const Middle = () => {
     setTemplateJson(filterData());
   };
 
+  // 重置
+  const onReset = () => {
+    const is = confirm('是否重置病历模板数据');
+
+    if (is) {
+      setFormData({});
+      setSelectedElementList([]);
+    }
+  };
+
   return (
     <div className="td-medical-editor-middle">
       {selectedElementList.map((ele, index) => (
@@ -90,8 +100,9 @@ const Middle = () => {
       {selectedElementList[0] && (
         <div className="middle-item-footer">
           <Space>
+            <Button onClick={onReset}>重置</Button>
             <Button onClick={onPreview}>预览</Button>
-            <Button type="primary" onClick={onSubmit}>保存</Button>
+            <Button loading={confirmLoading} type="primary" onClick={onSubmit}>保存</Button>
           </Space>
         </div>
       )}

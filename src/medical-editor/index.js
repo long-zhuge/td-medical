@@ -9,7 +9,13 @@ import Right from './Right';
 
 export const EditorContext = React.createContext({});
 
-const Editor = ({ onFinish = () => {} }) => {
+const Editor = (props) => {
+  const {
+    defaultData = [],
+    confirmLoading,
+    onFinish = () => {},
+  } = props;
+
   // 总数据
   const [dataSource] = useState({
     baseJson,
@@ -18,7 +24,7 @@ const Editor = ({ onFinish = () => {} }) => {
   // 当前左侧组件栏中渲染的数据
   const [elementList, setElementList] = useState(baseJson);
   // 当前选中的一级组件数据
-  const [selectedElementList, setSelectedElementList] = useState([]);
+  const [selectedElementList, setSelectedElementList] = useState(defaultData);
   // 需要编辑的字段
   const [formData, setFormData] = useState({});
 
@@ -33,6 +39,7 @@ const Editor = ({ onFinish = () => {} }) => {
         formData,
         setFormData,
         onFinish,
+        confirmLoading,
       }}
     >
       <div className="td-medical-editor-container">
