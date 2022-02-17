@@ -49,11 +49,22 @@ const Inspect = (props) => {
     },
   ];
 
+  // 渲染"取样日期"
+  const renderDate = () => {
+    const obj = fieldList.filter(item => item.inputType === 'date')[0];
+
+    if (obj) {
+      return (
+        <div style={{ width: isMobile ? '100%' : 240 }}>
+          <Date label={obj.cnName} name={`${obj.enName}_${index}`} />
+        </div>
+      );
+    }
+  };
+
   return (
     <FormBox {...props}>
-      <div style={{ width: isMobile ? '100%' : 240 }}>
-        <Date label="取样日期" name={`sampleDate_${index}`} />
-      </div>
+      {renderDate()}
       <Table
         bordered
         rowKey="fieldNo"
