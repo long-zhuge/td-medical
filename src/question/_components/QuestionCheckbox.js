@@ -13,35 +13,35 @@ export default function QuestionCheckbox(props) {
     readOnly = false,
     value = {},
     onChange,
-    ...rest
   } = props;
 
   const handleChange = (optionNos) => {
-    const inputOptionNo = options.find(o => o.optionType === 'input')?.optionNo;
-    const inputOptionChecked = optionNos.includes(inputOptionNo);
-    onChange({
-      optionNos,
-      skipQuestionNo: optionNos.length ? options.find(o => o.optionNo === optionNos[0]).skipQuestionNo : null,
-      otherText: inputOptionChecked ? value.otherText : null,
-      error: optionNos.length
-        ? inputOptionChecked
-          ? value.otherText?.[inputOptionNo] ? '' : NO_INPUT_ERROR_MSG
-          : ''
-        : '请先完成本题',
-    });
+    const inputOptionNos = options.filter(o => o.optionType === 'input').map(o => o.optionNo);
+    let error;
+    const questionValue = optionNos.reduce((obj, no) => {
+      if (inputOptionNos.includes(no) && !value[no]) {
+        error = NO_INPUT_ERROR_MSG;
+      }
+      return { ...obj, [no]: value[no] || '' };
+    }, {});
+    onChange(
+      questionValue,
+      optionNos.length ? options.find(o => o.optionNo === optionNos[0]).skipQuestionNo : null,
+      optionNos.length ? error : '请先完成本题',
+    );
   };
 
   const handleInput = (optionNo, e) => {
     const inputValue = e.target.value;
-    onChange({
-      ...value,
-      otherText: { [optionNo]: inputValue },
-      error: inputValue ? '' : NO_INPUT_ERROR_MSG,
-    });
+    onChange(
+      { ...value, [optionNo]: inputValue },
+      options.find(o => o.optionNo === optionNo).skipQuestionNo,
+      inputValue ? '' : NO_INPUT_ERROR_MSG,
+    );
   }
 
   const renderOtherText = (o) => {
-    const text = value.otherText?.[o.optionNo];
+    const text = value[o.optionNo];
     if (readOnly) {
       return <span className="td-medical-question-checkbox-option-text">{text}</span>;
     }
@@ -49,7 +49,7 @@ export default function QuestionCheckbox(props) {
       <Input
         style={{ minWidth: 240 }}
         value={text}
-        disabled={!value.optionNos?.includes(o.optionNo)}
+        disabled={!Object.keys(value).includes(o.optionNo)}
         onChange={handleInput.bind(null, o.optionNo)}
       />
     ) : null;
@@ -58,9 +58,8 @@ export default function QuestionCheckbox(props) {
   return (
     <Checkbox.Group
       disabled={readOnly}
-      value={value.optionNos}
+      value={Object.keys(value)}
       onChange={handleChange}
-      {...rest}
     >
       {options.map(o => (
         <div key={o.optionNo}>

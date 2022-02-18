@@ -11,15 +11,14 @@ function QuestionScore(props, ref) {
     readOnly = false,
     value = {},
     onChange,
-    ...rest
   } = props;
 
   const handleChange = (e) => {
     const optionNo = e.target.value;
-    onChange({
-      optionNos: [optionNo],
-      skipQuestionNo: options.find(o => o.optionNo === optionNo).skipQuestionNo,
-    });
+    onChange(
+      { [optionNo]: '' },
+      options.find(o => o.optionNo === optionNo).skipQuestionNo,
+    );
   };
 
   return (
@@ -28,9 +27,8 @@ function QuestionScore(props, ref) {
         ref={ref}
         disabled={readOnly}
         buttonStyle="solid"
-        value={value.optionNos?.[0]}
+        value={Object.keys(value)[0]}
         onChange={handleChange}
-        {...rest}
       >
         {options.map(o => (
           <Radio.Button key={o.optionNo} value={o.optionNo}>{o.optionName}</Radio.Button>

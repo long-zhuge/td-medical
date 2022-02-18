@@ -19,6 +19,7 @@ import Back from '../_components/Back';
 import QuestionScore from './_components/QuestionScore';
 import QuestionRadio from './_components/QuestionRadio';
 import QuestionCheckbox from './_components/QuestionCheckbox';
+import QuestionForm from './_components/QuestionForm';
 
 // 组件样式
 import './index.less';
@@ -29,13 +30,21 @@ const QUESTION_TYPE = {
   score: QuestionScore,
   radio: QuestionRadio,
   checkbox: QuestionCheckbox,
+  form: QuestionForm,
 }
 
-export default function QuestionForm(props) {
+const baseCls = 'td-medical-question';
+
+export const Context = React.createContext({});
+
+export default function Question(props) {
   const {
     readOnly = false,
     questionBankName,
     questions = [],
+    productUrl, // 获取产品选项
+    uploadUrl, // 文件上传
+    pcas, // 省市区数据
     data,
     onFinish,
     backurl,
@@ -45,6 +54,8 @@ export default function QuestionForm(props) {
   const [form] = Form.useForm();
   // eslint-disable-next-line
   const [ignored, forceUpdate] = useReducer(x => x + 1, 0);
+  const [initialValues, setInitialValues] = useState({});
+  const [questionError, setQuestionError] = useState();
   const [currentQuestions, setCurrentQuestions] = useState([]);
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
 
@@ -53,34 +64,34 @@ export default function QuestionForm(props) {
   // 获取到回显数据后，进行表单赋值
   useEffect(() => {
     if (questions.length) {
-      const initialValues = data ? questions.reduce((obj, q) => {
+      const initialData = data ? questions.reduce((formValue, q) => {
         const answer = data.filter(d => d.questionNo === q.questionNo);
         if (answer.length) {
           return {
-            ...obj,
-            [q.questionNo]: {
-              optionNos: answer.map(a => a.optionNo),
-              otherText: answer.reduce((texts, a) => ({ ...texts, [a.optionNo]: a.otherText }), {}),
-            },
+            ...formValue,
+            [q.questionNo]: answer.reduce((questionValue, a) => (
+              { ...questionValue, [a.optionNo]: a.otherText ? JSON.parse(a.otherText) : '' }
+            ), {}),
           }
         }
-        return obj;
+        return formValue;
       }, {}) : {};
-      const initialQuestions = Object.keys(initialValues).length
-        ? questions.filter(q => q.questionNo in initialValues)
+      const initialQuestions = Object.keys(initialData).length
+        ? questions.filter(q => q.questionNo in initialData)
         : questions.slice(0, 1);
+      setInitialValues(initialData);
       setCurrentQuestions(initialQuestions);
-      form.setFieldsValue(initialValues);
+      form.setFieldsValue(initialData);
     }
   }, [data, questions]);
 
   // 控制提交按钮禁用
   const canSubmit = () => {
     const currentlastQuestion = currentQuestions[currentQuestions.length - 1];
-    const currentlastQuestionValue = form.getFieldsValue(true)[currentlastQuestion?.questionNo];
+    const currentlastQuestionValue = form.getFieldsValue(true)[currentlastQuestion?.questionNo] || {};
     return currentQuestions.length
       && !currentlastQuestion.optionList[0].skipQuestionNo // 没有更多题目
-      && currentlastQuestionValue?.optionNos?.length; // 已经完成最后一题
+      && Object.keys(currentlastQuestionValue).length; // 已经完成最后一题
   }
 
   // 上一题
@@ -90,18 +101,16 @@ export default function QuestionForm(props) {
 
   // 下一题
   const goNext = () => {
-    const formValue = form.getFieldsValue();
-    const currentQuestionNo = currentQuestions[currentQuestionIndex].questionNo;
-    const currentQuestionValue = formValue[currentQuestionNo];
-    if (currentQuestionValue.error) {
-      message.warning(currentQuestionValue.error);
+    if (questionError) {
+      message.warning(questionError);
       return;
     }
     setCurrentQuestionIndex(prev => prev + 1);
   }
 
-  const handleFillQuestion = (currentQuestionValue) => {
-    const nextQuestionNo = currentQuestionValue.skipQuestionNo;
+  const handleFillQuestion = (questionValue, skipQuestionNo, error) => {
+    setQuestionError(error);
+    const nextQuestionNo = skipQuestionNo;
     if (nextQuestionNo) {
       const nextQuestion = questions.find(q => q.questionNo === nextQuestionNo);
       if (currentQuestionIndex === currentQuestions.length - 1) {
@@ -112,7 +121,7 @@ export default function QuestionForm(props) {
           const droppedQuestions = prev.slice(currentQuestionIndex + 1);
           const formValue = form.getFieldsValue();
           const preservedValues = preservedQuestions.reduce((value, q, index) => (
-            { ...value, [q.questionNo]: index === currentQuestionIndex ? currentQuestionValue : formValue[q.questionNo] }
+            { ...value, [q.questionNo]: index === currentQuestionIndex ? questionValue : formValue[q.questionNo] }
           ), {});
           const droppedValues = droppedQuestions.reduce((value, q) => (
             { ...value, [q.questionNo]: undefined }
@@ -132,12 +141,12 @@ export default function QuestionForm(props) {
     let error = null;
     currentQuestions.every((q, index) => {
       const questionValue = formValue[q.questionNo];
-      if (!questionValue?.optionNos?.length) {
+      if (!Object.keys(questionValue).length) {
         error = currentQuestionIndex === index ? '请先完成本题' : `请先完成第${index + 1}题`;
         return false;
       }
-      if (questionValue?.error) {
-        error = questionValue.error;
+      if (questionError) {
+        error = questionError;
         return false;
       }
       return true;
@@ -148,10 +157,10 @@ export default function QuestionForm(props) {
     }
     const submitValue = currentQuestions.reduce((values, q) => {
       const questionValue = formValue[q.questionNo];
-      const answers = questionValue.optionNos.map(o => ({
+      const answers = Object.keys(questionValue).map(optionNo => ({
         questionNo: q.questionNo,
-        optionNo: o,
-        otherText: questionValue.otherText?.[o],
+        optionNo,
+        otherText: questionValue[optionNo] ? JSON.stringify(questionValue[optionNo]) : null,
       }));
       return values.concat(answers);
     }, []);
@@ -169,36 +178,44 @@ export default function QuestionForm(props) {
           description="问卷未完成"
         />
       ) : (
-        <Form form={form} layout="vertical">
-          {React.createElement(
-            readOnly ? React.Fragment : Tabs,
-            readOnly ? null : {
-              className: "td-medical-question-form-tabs",
-              activeKey: String(currentQuestionIndex),
-              animated: true,
-              renderTabBar,
-            },
-            currentQuestions.map((q, index) => {
-              const Component = QUESTION_TYPE[q.questionType];
-              return React.createElement(
-                readOnly ? React.Fragment : TabPane,
-                readOnly ? null : {
-                  key: index,
-                },
-                <Form.Item
-                  key={q.questionNo}
-                  label={`${index + 1}. ${q.questionName}`}
-                  name={q.questionNo}
-                >
-                  <Component readOnly={readOnly} options={q.optionList} onChange={handleFillQuestion} />
-                </Form.Item>
-              );
-            })
-          )}
-        </Form>
+        <Context.Provider
+          value={{
+            productUrl,
+            uploadUrl,
+            pcas,
+          }}
+        >
+          <Form form={form} layout="vertical">
+            {React.createElement(
+              readOnly ? React.Fragment : Tabs,
+              readOnly ? null : {
+                className: `${baseCls}-tabs`,
+                activeKey: String(currentQuestionIndex),
+                animated: true,
+                renderTabBar,
+              },
+              currentQuestions.map((q, index) => {
+                const Component = QUESTION_TYPE[q.questionType];
+                return React.createElement(
+                  readOnly ? React.Fragment : TabPane,
+                  readOnly ? null : {
+                    key: index,
+                  },
+                  <Form.Item
+                    key={q.questionNo}
+                    label={`${index + 1}. ${q.questionName}`}
+                    name={q.questionNo}
+                  >
+                    <Component readOnly={readOnly} options={q.optionList} initialValue={initialValues[q.questionNo]} onChange={handleFillQuestion} />
+                  </Form.Item>
+                );
+              })
+            )}
+          </Form>
+        </Context.Provider>
       )}
       {footerHidden ? null : (
-        <div className="td-medical-question-form-navigation">
+        <div className={`${baseCls}-navigation`}>
           <Back url={backurl} />
           {readOnly ? null : (
             <>
