@@ -15,9 +15,10 @@ export default [
       {
         "optionName": "女",
         "optionNo": "100002",
-        "optionType": "1",
+        "optionType": "input",
         "questionNo": "101",
         "skipQuestionNo": "103",
+        "remark": '{"placeholder":"请输入"}',
       },
     ],
   },

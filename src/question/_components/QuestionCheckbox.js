@@ -6,6 +6,7 @@ import React from 'react';
 import { Checkbox, Input } from 'antd';
 
 const NO_INPUT_ERROR_MSG = '请填写其它说明内容';
+const baseCls = 'td-medical-question-checkbox';
 
 export default function QuestionCheckbox(props) {
   const {
@@ -31,11 +32,12 @@ export default function QuestionCheckbox(props) {
     );
   };
 
-  const handleInput = (optionNo, e) => {
+  const handleInput = (option, e) => {
+    const { optionNo, skipQuestionNo } = option;
     const inputValue = e.target.value;
     onChange(
       { ...value, [optionNo]: inputValue },
-      options.find(o => o.optionNo === optionNo).skipQuestionNo,
+      skipQuestionNo,
       inputValue ? '' : NO_INPUT_ERROR_MSG,
     );
   }
@@ -43,14 +45,14 @@ export default function QuestionCheckbox(props) {
   const renderOtherText = (o) => {
     const text = value[o.optionNo];
     if (readOnly) {
-      return <span className="td-medical-question-checkbox-option-text">{text}</span>;
+      return <span className={`${baseCls}-option-text`}>{text}</span>;
     }
     return o.optionType === 'input' ? (
       <Input
         style={{ minWidth: 240 }}
         value={text}
         disabled={!Object.keys(value).includes(o.optionNo)}
-        onChange={handleInput.bind(null, o.optionNo)}
+        onChange={handleInput.bind(null, o)}
       />
     ) : null;
   }
@@ -64,7 +66,7 @@ export default function QuestionCheckbox(props) {
       {options.map(o => (
         <div key={o.optionNo}>
           <Checkbox value={o.optionNo}>
-            <div className="td-medical-question-checkbox-option">
+            <div className={`${baseCls}-option`}>
               <span>{o.optionName}</span>
               {renderOtherText(o)}
             </div>
