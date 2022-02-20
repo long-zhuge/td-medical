@@ -97,8 +97,23 @@ export default [
       {
         "optionName": "产品名称",
         "optionNo": "100010",
-        "optionType": "image",
+        "optionType": "input",
         "questionNo": "104",
+        "skipQuestionNo": "105",
+      },
+    ],
+  },
+  {
+    "questionBankNo": "Q00001",
+    "questionName": "主要竞品",
+    "questionNo": "105",
+    "questionType": "form",
+    "optionList": [
+      {
+        "optionName": "竞品列表",
+        "optionNo": "100011",
+        "optionType": "compete",
+        "questionNo": "105",
       },
     ],
   },

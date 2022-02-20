@@ -16,10 +16,11 @@ export default function QuestionForm(props) {
     onChange,
   } = props;
 
-  const handleChange = (option, optionValue) => {
+  const handleChange = (option, optionValue, error) => {
     onChange(
       { ...value, [option.optionNo]: optionValue },
-      option.skipQuestionNo
+      option.skipQuestionNo,
+      error
     );
   };
 
