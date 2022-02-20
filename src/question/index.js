@@ -42,8 +42,7 @@ export default function Question(props) {
     readOnly = false,
     questionBankName,
     questions = [],
-    productUrl, // 获取产品选项
-    uploadUrl, // 文件上传
+    productParam, // 获取产品选项
     pcas, // 省市区数据
     data,
     onFinish,
@@ -180,8 +179,7 @@ export default function Question(props) {
       ) : (
         <Context.Provider
           value={{
-            productUrl,
-            uploadUrl,
+            productParam,
             pcas,
           }}
         >

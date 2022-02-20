@@ -2,7 +2,7 @@
 * 类型：form 表单类型
 * */
 
-import React, { useContext, useRef } from 'react';
+import React, { useContext } from 'react';
 import { Input, InputNumber, Cascader } from 'antd';
 import SelectList from 'td-antd/es/select-list';
 import DateEasily from 'td-antd/es/date-easily';
@@ -54,12 +54,15 @@ function RegionSelect(props) {
 }
 
 function ProductSelect(props) {
-  const { productUrl } = useContext(Context);
+  const { productParam } = useContext(Context);
   const { readOnly, initialValue, ...rest } = props;
 
   return (
     <SelectList
-      url={productUrl}
+      labelInValue
+      url="/product/getPageList.json"
+      defaultParams={productParam}
+      fields={['productNo', 'productName']}
       {...rest}
     />
   );
@@ -68,7 +71,9 @@ function ProductSelect(props) {
 function RangeDate(props) {
   const { readOnly, initialValue, value, onChange, ...rest } = props;
 
-  const handleChange = (date) => date && [momentToString(date[0]), momentToString(date[1])]
+  const handleChange = (date) => {
+    onChange(date && [momentToString(date[0]), momentToString(date[1])]);
+  }
 
   return (
     <DateEasily
@@ -82,31 +87,26 @@ function RangeDate(props) {
 
 function ImageUpload(props) {
   const { readOnly, initialValue, value, onChange, ...rest } = props;
-  const uploadRef = useRef();
-  const { uploadUrl } = useContext(Context);
 
   return (
     <TdUpload
       hidden={readOnly}
       hideRemoveBtn={readOnly}
-      url={uploadUrl}
-      ref={uploadRef}
       fileTypes={['image']}
       isPreview
       listType="picture-card"
       isImageUrl={() => true}
-      initial={initialValue?.split(',').map(item => item)}
-      onChange={onChange}
-      filterOptions={(item) => {
-        return {
-          uid: item,
-          name: item,
-          url: item,
-        };
-      }}
-      callback={(status, file, files, onUpload) => {
+      initial={initialValue}
+      callback={(status, file, _, onUpload) => {
         if (status === 'after') {
-          onUpload();
+          onUpload().then(([files]) => onChange(files.map(item => ({
+            fileName: item.fileName,
+            fileNumber: item.fileNumber,
+            path: item.path,
+          }))));
+        }
+        if (status === 'remove') {
+          onChange(value.filter(item => item.fileNumber !== file.uid));
         }
       }}
       {...rest}

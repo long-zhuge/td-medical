@@ -3,7 +3,7 @@
 * */
 
 import React from 'react';
-import { Radio } from 'antd';
+import { Radio, Space } from 'antd';
 
 export default function QuestionRadio(props) {
   const {
@@ -27,9 +27,11 @@ export default function QuestionRadio(props) {
       value={Object.keys(value)[0]}
       onChange={handleChange}
     >
-      {options.map(o => (
-        <Radio key={o.optionNo} value={o.optionNo}>{o.optionName}</Radio>
-      ))}
+      <Space direction="vertical">
+        {options.map(o => (
+          <Radio key={o.optionNo} value={o.optionNo}>{o.optionName}</Radio>
+        ))}
+      </Space>
     </Radio.Group>
   );
 }
