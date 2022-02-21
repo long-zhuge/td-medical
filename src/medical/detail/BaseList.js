@@ -5,7 +5,7 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { Divider } from 'antd';
 import DescList from 'td-antd/es/desc-list';
-import { getFormValues, getFormName, renderValue } from '../../_util';
+import { getFormValues, getFormName, renderValue, isTileComponent } from '../../_util';
 
 import { EleDetailContext } from './index';
 
@@ -41,7 +41,7 @@ const BaseList = (props) => {
     <React.Fragment>
       <Divider>{cnName}</Divider>
       <DescList
-        column={enName === 'outpatientContent' ? 1 : 2}
+        column={isTileComponent(enName) ? 1 : 2}
         columns={columns}
         dataSource={dataObject}
       />

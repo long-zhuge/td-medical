@@ -1,6 +1,9 @@
+// TodoList: 组件新增字段
+
 import React, { useContext, useRef } from 'react';
 import FormOutlined from '@ant-design/icons/FormOutlined';
 import DeleteOutlined from '@ant-design/icons/DeleteOutlined';
+// import PlusSquareOutlined from '@ant-design/icons/PlusSquareOutlined';
 import { useDrag, useDrop } from 'react-dnd';
 import update from 'immutability-helper';
 import { Space, Popconfirm } from 'antd';
@@ -17,9 +20,9 @@ const DragableItem = ({ data, index }) => {
   const ref = useRef();
 
   // 设置字段进行编辑
-  const onForm = (ele) => {
-    ele.index = index;
-    setFormData(ele);
+  const onForm = () => {
+    data.index = index;
+    setFormData(data);
   };
 
   // 删除组件
@@ -65,10 +68,11 @@ const DragableItem = ({ data, index }) => {
       <div ref={ref} className="middle-item-header">
         <Space>
           {data.cnName}
-          <LinkBtn onClick={() => onForm(data, index)}><FormOutlined /></LinkBtn>
+          <LinkBtn onClick={onForm}><FormOutlined /></LinkBtn>
+          {/* <LinkBtn onClick={onCreate}><PlusSquareOutlined /></LinkBtn> */}
           <Popconfirm
             title="确实删除该组件？"
-            onConfirm={() => onDelete(index)}
+            onConfirm={onDelete}
           >
             <LinkBtn danger><DeleteOutlined /></LinkBtn>
           </Popconfirm>

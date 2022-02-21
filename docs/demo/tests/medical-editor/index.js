@@ -10,7 +10,7 @@ const Demo = () => {
       defaultData={defaultData}
       elementList={elementList}
       onFinish={(data) => {
-        console.log(JSON.stringify(data));
+        console.log(data);
       }}
     />
   );

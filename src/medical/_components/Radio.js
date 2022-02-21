@@ -5,12 +5,13 @@
 import React from 'react';
 import { Radio } from 'antd';
 import FormItem from 'td-antd/es/form-item';
+import { toMap } from '../../_util';
 
 export default (props) => {
   const {
     label = '',
     name = '',
-    map = [],
+    map = '',
     ...rest
   } = props;
 
@@ -21,7 +22,7 @@ export default (props) => {
       {...rest}
     >
       <Radio.Group>
-        {map.map(i => <Radio key={i} value={i}>{i}</Radio>)}
+        {toMap(map).map(i => <Radio key={i} value={i}>{i}</Radio>)}
       </Radio.Group>
     </FormItem>
   );
