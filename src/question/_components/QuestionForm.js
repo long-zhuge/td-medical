@@ -31,7 +31,7 @@ export default function QuestionForm(props) {
         const formConfig = o.remark ? JSON.parse(o.remark) : null;
         return (
           <div key={o.optionNo} className={`${baseCls}-item`}>
-            <span className={`${baseCls}-item-label`}>{`${o.optionName}：`}</span>
+            {o.optionName ? <span className={`${baseCls}-item-label`}>{`${o.optionName}：`}</span> : null}
             <div className={`${baseCls}-item-content`}>
               {React.createElement(
                 FORM_TYPE[o.optionType],
