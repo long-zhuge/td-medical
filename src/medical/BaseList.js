@@ -4,13 +4,15 @@
 
 import React from 'react';
 import { Row, Col } from 'antd';
-import { getFormName, isMobile } from '../_util';
+import { getFormName, isMobile, isTileComponent } from '../_util';
 
 import FormBox from './FormBox';
 
 // 表单组件
 import Text from './_components/Text';
 import Date from './_components/Date';
+import Radio from './_components/Radio';
+import RadioDesc from './_components/RadioDesc';
 import Number from './_components/Number';
 import Select from './_components/Select';
 import Textarea from './_components/Textarea';
@@ -20,6 +22,8 @@ import HospitalDepartments from './_components/HospitalDepartments';
 const ele = {
   text: Text,
   date: Date,
+  radio: Radio,
+  radio_desc: RadioDesc,
   datetime: Date,
   number: Number,
   number_double: NumberDouble,
@@ -36,7 +40,7 @@ const Base = (props) => {
   } = props;
 
   // 如果是 "门诊主体" 则平铺显示
-  if (enName === 'outpatientContent') {
+  if (isTileComponent(enName)) {
     return (
       <FormBox {...props}>
         {fieldList.map(item => {

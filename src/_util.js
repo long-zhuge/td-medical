@@ -203,3 +203,6 @@ export function filterEleMapToComponent(ele, modeEn) {
 
 // 如果是移动端，则 table 样式的组件请添加如下属性
 export const mobileTableProps = isMobile && { size: 'small', scroll: { x: 1000 }, title: () => '右滑还有内容哦' };
+
+// 哪些组件需要平铺展示，如：门诊主体、项目说明等等
+export const isTileComponent = (enName) => ['outpatientContent', 'projectDesc'].includes(enName);

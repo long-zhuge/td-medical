@@ -170,6 +170,62 @@
         "valueToName": "value1=weight",
         "valueType": "object",
         "required": true
+      },
+      {
+        "cnName": "婚姻状况",
+        "enName": "maritalState",
+        "fieldNo": "F00038",
+        "inputType": "radio",
+        "map": "已婚#未婚",
+        "meddra": "",
+        "remarks": "",
+        "rule": "",
+        "unit": "",
+        "valueToName": "value1=maritalState",
+        "valueType": "object",
+        "required": true
+      },
+      {
+        "cnName": "病程",
+        "enName": "courseOfDisease",
+        "fieldNo": "F00039",
+        "inputType": "number",
+        "map": "",
+        "meddra": "",
+        "remarks": "",
+        "rule": "",
+        "unit": "月",
+        "valueToName": "value1=courseOfDisease",
+        "valueType": "object",
+        "required": true
+      },
+      {
+        "cnName": "重要既往史",
+        "enName": "medicationHistory",
+        "fieldNo": "F00040",
+        "inputType": "radio_desc",
+        "map": "无#有",
+        "meddra": "",
+        "remarks": "",
+        "rule": "",
+        "unit": "月",
+        "valueToName": "value1=medicationHistory,value2=medicationHistory_desc",
+        "valueType": "object",
+        "required": true
+      },
+      {
+        "cnName": "诊断",
+        "enName": "diagnosis",
+        "fieldNo": "F00014",
+        "inputType": "textarea",
+        "map": "",
+        "meddra": "",
+        "remarks": "门诊主体",
+        "rule": "",
+        "unit": "",
+        "valueToName": "value1=diagnosis",
+        "valueType": "object",
+        "required": true
       }
     ],
     "meddra": "",
@@ -618,7 +674,7 @@
         "valueType": "object"
       },
       {
-        "cnName": "ALT",
+        "cnName": "谷丙转氨酶(ALT)",
         "enName": "alt",
         "fieldNo": "F00051",
         "inputType": "number",
@@ -631,7 +687,7 @@
         "valueType": "object"
       },
       {
-        "cnName": "AST",
+        "cnName": "冬氨酸转移酶(AST)",
         "enName": "ast",
         "fieldNo": "F00052",
         "inputType": "number",
@@ -657,7 +713,7 @@
         "valueType": "object"
       },
       {
-        "cnName": "BUN",
+        "cnName": "血尿素氮(BUN)",
         "enName": "bun",
         "fieldNo": "F00054",
         "inputType": "number",
@@ -670,7 +726,7 @@
         "valueType": "object"
       },
       {
-        "cnName": "Cr",
+        "cnName": "血清肌酐(Cr)",
         "enName": "cr",
         "fieldNo": "F00055",
         "inputType": "number",
@@ -680,6 +736,19 @@
         "rule": "",
         "unit": "mmol/L",
         "valueToName": "value1=cr_result,value2=cr_judge,value3=cr_remark",
+        "valueType": "object"
+      },
+      {
+        "cnName": "总胆红素（TBIL）",
+        "enName": "tbil",
+        "fieldNo": "F00056",
+        "inputType": "number",
+        "map": "",
+        "meddra": "",
+        "remarks": "肝肾功能检查",
+        "rule": "",
+        "unit": "mmol/L",
+        "valueToName": "value1=tbil_result,value2=tbil_judge,value3=tbil_remark",
         "valueType": "object"
       }
     ],
@@ -792,6 +861,137 @@
         "unit": "%",
         "valueToName": "value1=semenHDS_result,value2=semenHDS_clinicalJudgment",
         "valueType": "object"
+      }
+    ],
+    "meddra": "",
+    "remarks": ""
+  },
+  {
+    "cnName": "项目要求说明",
+    "elementNo": "E00011",
+    "method": "default",
+    "enName": "projectDesc",
+    "fieldList": [
+      {
+        "cnName": "",
+        "enName": "projectDesc",
+        "fieldNo": "F00037",
+        "inputType": "textarea",
+        "map": "",
+        "meddra": "",
+        "remarks": "",
+        "rule": "",
+        "unit": "",
+        "valueToName": "value1=projectDesc",
+        "valueType": "object"
+      }
+    ],
+    "meddra": "",
+    "remarks": ""
+  },
+  {
+    "cnName": "不良事件",
+    "elementNo": "E00012",
+    "method": "default",
+    "enName": "SFDA",
+    "fieldList": [
+      {
+        "cnName": "不良事件名称",
+        "enName": "SFDAName",
+        "fieldNo": "F00057",
+        "inputType": "text",
+        "map": "",
+        "meddra": "",
+        "remarks": "",
+        "rule": "",
+        "unit": "",
+        "valueToName": "value1=SFDAName",
+        "valueType": "list",
+        "required": true
+      },
+      {
+        "cnName": "发生日期",
+        "enName": "happenDate",
+        "fieldNo": "F00058",
+        "inputType": "date",
+        "map": "",
+        "meddra": "",
+        "remarks": "",
+        "rule": "",
+        "unit": "",
+        "valueToName": "value1=happenDate",
+        "valueType": "list",
+        "required": true
+      },
+      {
+        "cnName": "严重程度",
+        "enName": "severity",
+        "fieldNo": "F00059",
+        "inputType": "radio",
+        "map": "轻度#中度#重度",
+        "meddra": "",
+        "remarks": "",
+        "rule": "",
+        "unit": "",
+        "valueToName": "value1=severity",
+        "valueType": "list",
+        "required": true
+      },
+      {
+        "cnName": "采取的措施",
+        "enName": "measures",
+        "fieldNo": "F00060",
+        "inputType": "radio",
+        "map": "未改变剂量#增加剂量#减少剂量#暂停用药#永久停用",
+        "meddra": "",
+        "remarks": "",
+        "rule": "",
+        "unit": "",
+        "valueToName": "value1=measures",
+        "valueType": "list",
+        "required": true
+      },
+      {
+        "cnName": "根据研究者的判断是否符合严重不良事件定义？",
+        "enName": "SFDAdefinition",
+        "fieldNo": "F00060",
+        "inputType": "radio",
+        "map": "否#是",
+        "meddra": "",
+        "remarks": "",
+        "rule": "",
+        "unit": "",
+        "valueToName": "value1=SFDAdefinition",
+        "valueType": "list",
+        "required": true
+      },
+      {
+        "cnName": "到现在为止，不良事件的结果如何，仍然存在吗？",
+        "enName": "result",
+        "fieldNo": "F00061",
+        "inputType": "radio",
+        "map": "是#不知道#已缓解",
+        "meddra": "",
+        "remarks": "",
+        "rule": "",
+        "unit": "",
+        "valueToName": "value1=result",
+        "valueType": "list",
+        "required": true
+      },
+      {
+        "cnName": "经研究者判断：研究药物与不良事件的可能关系？",
+        "enName": "judge",
+        "fieldNo": "F00062",
+        "inputType": "radio",
+        "map": "肯定有关#很可能有关#可能有关#可能无关#肯定无关",
+        "meddra": "",
+        "remarks": "",
+        "rule": "",
+        "unit": "",
+        "valueToName": "value1=judge",
+        "valueType": "list",
+        "required": true
       }
     ],
     "meddra": "",

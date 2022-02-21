@@ -16,6 +16,7 @@ import FormBox from './FormBox';
 // 表单组件
 import Text from './_components/Text';
 import Date from './_components/Date';
+import Radio from './_components/Radio';
 import CheckBox from './_components/CheckBox';
 
 const { genNonDuplicateID } = tools;
@@ -25,6 +26,7 @@ import { EleContext } from './index';
 const ele = {
   text: Text,
   date: Date,
+  radio: Radio,
   checkbox: CheckBox,
 };
 
