@@ -9,17 +9,32 @@ import FormBox from '../FormBox';
 
 // 表单组件
 import Text from '../_components/Text';
+import Number from '../_components/Number';
 
+const ele = {
+  text: Text,
+  number: Number,
+};
+
+const reg = /^([0-9]|10)$/;
 const dataSource = [
-  { name: '背景痛 NRS 评分', enName: 'backgroundNRS' },
-  { name: '爆发痛 NRS 评分', enName: 'burstNRS' },
-  { name: '爆发痛 次数/天', enName: 'burstCount' },
+  { name: '背景痛 NRS 评分', enName: 'backgroundNRS', extraRules: {
+    pattern: reg,
+    message: '请输入正确的分值',
+  }},
+  { name: '爆发痛 NRS 评分', enName: 'burstNRS', extraRules: {
+    pattern: reg,
+    message: '请输入正确的分值',
+  }},
+  { name: '爆发痛 次数/天', enName: 'burstCount', isInteger: true },
   { name: '爆发痛 持续时间', enName: 'burstDuration' },
 ];
+
 
 const Nrs = (props) => {
   const {
     index = 0,
+    fieldList = [],
   } = props;
 
   const columns = [
@@ -30,7 +45,18 @@ const Nrs = (props) => {
     {
       title: '分值',
       dataIndex: 'enName',
-      render: (t) => <Text name={`${t}_${index}`} />,
+      render: (t, r, idx) => {
+        const params = {...fieldList[idx], ...r};
+        const Component = ele[params.inputType];
+
+        return (
+          <Component
+            {...params}
+            key={params.fieldNo}
+            name={`${t}_${index}`}
+          />
+        )
+      },
     },
   ];
 
