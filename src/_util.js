@@ -78,15 +78,15 @@ export function outPutFormValues(currentValues = {}, fieldList = [], mainParams 
     * */
     const keys = item.split('_');
 
-    // 当 fieldList 中的对象的 en 等于 keys[0] 字段时，获取到数据对象
-    const obj = fieldList.filter(i => i.en === keys[0])[0];
+    // 当 fieldList 中的对象的 enName 等于 keys[0] 字段时，获取到数据对象
+    const obj = fieldList.filter(i => i.enName === keys[0])[0];
 
     // valueType 是否等于 list
     const valueTypeIsList = obj.valueType === 'list';
 
     if (valueTypeIsList) {
-      // 用于真实输出到 form.values 中的 key，由 en + keys下标倒数第二位置的值
-      const key = `${obj.en}_${keys.slice(-2)[0]}`;
+      // 用于真实输出到 form.values 中的 key，由 enName + keys下标倒数第二位置的值
+      const key = `${obj.enName}_${keys.slice(-2)[0]}`;
       const previousObj = values[key];
       const valuesKey = keys.length > 3 ? keys.slice(0, 2).join('_') : keys.slice(0, 1)[0];
 
@@ -110,7 +110,7 @@ export function outPutFormValues(currentValues = {}, fieldList = [], mainParams 
     } else {
       // 如果 valueType=object
       // 用于真实输出到 form.values 中的 key
-      const key = `${obj.en}_${keys.pop()}`;
+      const key = `${obj.enName}_${keys.pop()}`;
 
       // 如果当前值已经存在，表明已经组装过一次，那么就无需再组装了，直接赋值即可。注意，赋值的时候不带下标
       const previousObj = values[key];
@@ -155,7 +155,7 @@ export function getFormValues(data = {}, fieldList = [], index = 0) {
   // 遍历元件列表
   fieldList.forEach(item => {
     // 从 data 数据中获取对应组件的 values 值
-    const { values } = data[`${item.en}_${index}`] || {};
+    const { values } = data[`${item.enName}_${index}`] || {};
 
     if (typeOf(values, 'Object')) {
       Object.keys(values).forEach(key => {
@@ -187,11 +187,11 @@ export function getFormValues(data = {}, fieldList = [], index = 0) {
 }
 
 // 从组件map对象中筛选出当前要渲染的组件
-export function filterEleMapToComponent(ele, modeEn) {
+export function filterEleMapToComponent(ele, enName) {
   let Component;
 
   Object.keys(ele).some(key => {
-    if (key.includes(modeEn)) {
+    if (key.includes(enName)) {
       Component = ele[key];
       return true;
     }
@@ -203,3 +203,6 @@ export function filterEleMapToComponent(ele, modeEn) {
 
 // 如果是移动端，则 table 样式的组件请添加如下属性
 export const mobileTableProps = isMobile && { size: 'small', scroll: { x: 1000 }, title: () => '右滑还有内容哦' };
+
+// 哪些组件需要平铺展示，如：门诊主体、项目说明等等
+export const isTileComponent = (enName) => ['outpatientContent', 'projectDesc'].includes(enName);

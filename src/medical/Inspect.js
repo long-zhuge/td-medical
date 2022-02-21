@@ -40,20 +40,31 @@ const Inspect = (props) => {
     {
       title: '正常/异常判断',
       dataIndex: 'valueToName',
-      render: (t) => <Radio name={getFormName(t, index)[1]} message={message} map={['正常', '异常']} />,
+      render: (t) => <Radio name={getFormName(t, index)[1]} message={message} map="正常#异常且无临床意义#异常且有临床意义" />,
     },
     {
-      title: '异常注释',
+      title: '备注',
       dataIndex: 'valueToName',
       render: (t) => <Text name={getFormName(t, index)[2]} message={message} required={false} />,
     },
   ];
 
+  // 渲染"取样日期"
+  const renderDate = () => {
+    const obj = fieldList.filter(item => item.inputType === 'date')[0];
+
+    if (obj) {
+      return (
+        <div style={{ width: isMobile ? '100%' : 240 }}>
+          <Date label={obj.cnName} name={`${obj.enName}_${index}`} />
+        </div>
+      );
+    }
+  };
+
   return (
     <FormBox {...props}>
-      <div style={{ width: isMobile ? '100%' : 240 }}>
-        <Date label="取样日期" name={`sampleDate_${index}`} />
-      </div>
+      {renderDate()}
       <Table
         bordered
         rowKey="fieldNo"

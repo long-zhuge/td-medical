@@ -23,19 +23,25 @@ import BaseList from './BaseList';
 import Inspect from './Inspect';
 import SemenRoutineQuota from './SemenRoutineQuota';
 import BaseTable from './BaseTable';
+import Nrs from './score/Nrs';
+import Qls from './score/Qls';
 
 // 组件顶层对象
 export const EleContext = React.createContext({});
 
 const ele = {
   // 基本信息、生命体征、门诊病历主体部分：《可以自定义》
-  'base|vitalSigns|outpatientContent': BaseList,
-  // 合并用药：《可以自定义》
-  'combinedMedication': BaseTable,
+  'base|vitalSigns|outpatientContent|projectDesc': BaseList,
+  // 合并用药、不良事件、不良事件终止
+  'combinedMedication|SFDA|SFDADone': BaseTable,
   // 血常规、尿常规、肝肾功能检查
   'routineBloodTest|urinalysis|liverKidneyTest': Inspect,
   // 精液常规检查指标（semenRoutineQuota）、精液增加检查指标
   'semenRoutineQuotaAdd': SemenRoutineQuota,
+  // NRS 评分
+  'NRS': Nrs,
+  // 生活质量评分
+  'QLS': Qls,
 };
 
 const MedicalElement = (props) => {

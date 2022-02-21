@@ -1,11 +1,9 @@
 import React, { useContext, useRef, useState } from 'react';
-import FormOutlined from '@ant-design/icons/FormOutlined';
-import DeleteOutlined from '@ant-design/icons/DeleteOutlined';
-import { Button, Space, Popconfirm } from 'antd';
-import LinkBtn from 'td-antd/es/link-btn';
+import { Button, Space } from 'antd';
+import DndProviderBox from '../../_components/DndProviderBox';
 import ModalBox from 'td-antd/es/modal-box';
 import Medical from '../../medical';
-import Field from './Field';
+import DragableItem from './DragableItem';
 import './index.less';
 
 import { EditorContext } from '../index';
@@ -15,18 +13,6 @@ const Middle = () => {
 
   const ref = useRef();
   const [templateJson, setTemplateJson] = useState([]);
-
-  // 删除组件
-  const onDelete = (index) => {
-    setFormData({});
-    setSelectedElementList(selectedElementList.reduce((p, c, cIndex) => index === cIndex ? p : [...p, c], []));
-  };
-
-  // 设置字段进行编辑
-  const onForm = (ele, index) => {
-    ele.index = index;
-    setFormData(ele);
-  };
 
   // 清洗数据
   const filterData = () => {
@@ -69,52 +55,29 @@ const Middle = () => {
   };
 
   return (
-    <div className="td-medical-editor-middle">
-      {selectedElementList.map((ele, index) => (
-        <div className="td-medical-editor-middle-item" key={`${ele.elementNo}_${index}`}>
-          <div className="middle-item-header">
+    <DndProviderBox>
+      <div className="td-medical-editor-middle">
+        {selectedElementList.map((ele, index) => <DragableItem data={ele} index={index} key={`${ele.elementNo}_${index}`} />)}
+        {selectedElementList[0] && (
+          <div className="middle-item-footer">
             <Space>
-              {ele.cnName}
-              <LinkBtn onClick={() => onForm(ele, index)}><FormOutlined /></LinkBtn>
-              <Popconfirm
-                title="确实删除该组件？"
-                onConfirm={() => onDelete(index)}
-              >
-                <LinkBtn danger><DeleteOutlined /></LinkBtn>
-              </Popconfirm>
+              <Button onClick={onReset}>重置</Button>
+              <Button onClick={onPreview}>预览</Button>
+              <Button loading={confirmLoading} type="primary" onClick={onSubmit}>保存</Button>
             </Space>
           </div>
-          <div className="middle-item-content">
-            {ele.fieldList.map((item, index2) => (
-              <Field
-                data={item}
-                index={index}
-                index2={index2}
-                method={ele.method}
-                key={`${item.fieldNo}_${index}`}
-              />
-            ))}
-          </div>
-        </div>
-      ))}
-      {selectedElementList[0] && (
-        <div className="middle-item-footer">
-          <Space>
-            <Button onClick={onReset}>重置</Button>
-            <Button onClick={onPreview}>预览</Button>
-            <Button loading={confirmLoading} type="primary" onClick={onSubmit}>保存</Button>
-          </Space>
-        </div>
-      )}
-      <ModalBox
-        ref={ref}
-        title="预览"
-        width={960}
-        footer={false}
-      >
-        <Medical template={templateJson} />
-      </ModalBox>
-    </div>
+        )}
+        <ModalBox
+          ref={ref}
+          title="预览"
+          width={960}
+          footer={false}
+        >
+          <Medical template={templateJson} onFinish={(res) => console.log(res)} />
+        </ModalBox>
+      </div>
+    </DndProviderBox>
+
   );
 };
 

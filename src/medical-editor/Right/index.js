@@ -21,11 +21,16 @@ const Right = () => {
   const onSubmit = () => {
     form.validateFields().then((values) => {
       if (formData.elementNo) {
+        // 组件数据修改
         selectedElementList[formData.index] = {...selectedElementList[formData.index], ...values};
       } else {
+        // 字段数据修改
+        const original = selectedElementList[formData.index].fieldList[formData.index2]; // 原来的数据对象
         selectedElementList[formData.index].fieldList[formData.index2] = {
           ...selectedElementList[formData.index].fieldList[formData.index2],
           ...values,
+          // 如果 enName 发生了改变，则需要对 valueToName 进行重写
+          valueToName: original.enName !== values.enName ? original.valueToName.replaceAll(original.enName, values.enName) : original.valueToName,
         };
       }
       setSelectedElementList(clone(selectedElementList));
