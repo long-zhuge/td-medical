@@ -3,7 +3,10 @@
 * */
 
 import React from 'react';
-import { Radio } from 'antd';
+import { Radio, Input } from 'antd';
+
+const NO_INPUT_ERROR_MSG = '请填写内容';
+const baseCls = 'td-medical-question-radio';
 
 export default function QuestionRadio(props) {
   const {
@@ -11,26 +14,56 @@ export default function QuestionRadio(props) {
     readOnly = false,
     value = {},
     onChange,
-    ...rest
   } = props;
 
   const handleChange = (e) => {
+    const inputOptionNos = options.filter(o => o.optionType === 'input').map(o => o.optionNo);
     const optionNo = e.target.value;
-    onChange({
-      optionNos: [optionNo],
-      skipQuestionNo: options.find(o => o.optionNo === optionNo).skipQuestionNo,
-    });
+    onChange(
+      { [optionNo]: value[optionNo] || '' },
+      options.find(o => o.optionNo === optionNo).skipQuestionNo,
+      inputOptionNos.includes(optionNo) && !value[optionNo] ? NO_INPUT_ERROR_MSG : ''
+    );
   };
+
+  const handleInput = (option, e) => {
+    const { optionNo, skipQuestionNo } = option;
+    const inputValue = e.target.value;
+    onChange(
+      { [optionNo]: inputValue },
+      skipQuestionNo,
+      inputValue ? '' : NO_INPUT_ERROR_MSG,
+    );
+  }
+
+  const renderOtherText = (o) => {
+    const text = value[o.optionNo];
+    const inputConfig = o.remark ? JSON.parse(o.remark) : null;
+    if (readOnly) {
+      return <span className={`${baseCls}-option-text`}>{text}</span>;
+    }
+    return o.optionType === 'input' ? (
+      <Input
+        style={{ minWidth: 240 }}
+        value={text}
+        disabled={!Object.keys(value).includes(o.optionNo)}
+        onChange={handleInput.bind(null, o)}
+        {...inputConfig}
+      />
+    ) : null;
+  }
 
   return (
     <Radio.Group
       disabled={readOnly}
-      value={value.optionNos?.[0]}
+      value={Object.keys(value)[0]}
       onChange={handleChange}
-      {...rest}
     >
       {options.map(o => (
-        <Radio key={o.optionNo} value={o.optionNo}>{o.optionName}</Radio>
+        <div key={o.optionNo} className={`${baseCls}-option`}>
+          <Radio key={o.optionNo} value={o.optionNo}>{o.optionName}</Radio>
+          {renderOtherText(o)}
+        </div>
       ))}
     </Radio.Group>
   );

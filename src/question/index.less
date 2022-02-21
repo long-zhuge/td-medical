@@ -1,16 +1,14 @@
 .td-medical-question {
-  &-form {
-    &-tabs {
-      min-height: 160px;
-    }
+  &-tabs {
+    min-height: 160px;
+  }
+
+  &-navigation {
+    display: flex;
+    justify-content: center;
   
-    &-navigation {
-      display: flex;
-      justify-content: center;
-    
-      button {
-        margin: 20px 2%;
-      }
+    button {
+      margin: 20px 2%;
     }
   }
 
@@ -28,6 +26,7 @@
     &-option {
       display: flex;
       align-items: center;
+      margin-bottom: 4px;
 
       & > span {
         white-space: nowrap;
@@ -35,6 +34,64 @@
 
       &-text {
         text-decoration: underline;
+      }
+    }
+  }
+
+  &-radio {
+    &-option {
+      display: flex;
+      align-items: center;
+      margin-bottom: 4px;
+
+      & > label {
+        white-space: nowrap;
+      }
+
+      &-text {
+        font-size: 14px;
+        text-decoration: underline;
+      }
+    }
+  }
+
+  &-form {
+    &-item {
+      display: flex;
+      margin-bottom: 24px;
+
+      &-label {
+        line-height: 32px;
+        white-space: nowrap;
+      }
+
+      &-content {
+        flex: auto;
+      }
+    }
+
+    &-type {
+      &-compete {
+        &-table {
+          .ant-table-tbody > tr > td {
+            padding: 0;
+          }
+
+          .ant-upload-list-picture-card-container,
+          .ant-upload.ant-upload-select-picture-card {
+            width: 50px;
+            height: 50px;
+            margin: 4px;
+          }
+
+          .ant-upload-list-picture-card .ant-upload-list-item {
+            padding: 4px;
+          }
+        }
+
+        &-footer {
+          margin: 16px 0 24px;
+        }
       }
     }
   }
