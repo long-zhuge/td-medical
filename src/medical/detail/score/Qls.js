@@ -2,11 +2,12 @@
 * NRS评分组件
 * */
 
-import React from 'react';
-import { Table, Radio } from 'antd';
-import FormItem from 'td-antd/es/form-item';
+import React, { useContext, useEffect, useState } from 'react';
+import CheckOutlined from '@ant-design/icons/CheckOutlined';
+import { Table, Divider } from 'antd';
+import { getFormValues, getFormName } from '../../../_util';
 
-import FormBox from '../FormBox';
+import { EleDetailContext } from '../index';
 
 const dataSource = [
   { kps: '正常，无症状和体征', score: 100 },
@@ -24,8 +25,13 @@ const dataSource = [
 
 const Qls = (props) => {
   const {
+    cnName,
     index = 0,
+    fieldList = [],
   } = props;
+
+  const { data } = useContext(EleDetailContext);
+  const [dataObject, setDataObject] = useState({});
 
   const columns = [
     {
@@ -43,25 +49,35 @@ const Qls = (props) => {
     {
       title: '评分',
       dataIndex: 'score',
-      render: (t) => <Radio value={t} />,
+      render: (t) => {
+        if (+t === +dataObject) {
+          return <CheckOutlined />;
+        }
+      },
     },
   ];
 
+  useEffect(() => {
+    if (data) {
+      const { values } = getFormValues(data, fieldList, index);
+
+      const field = getFormName('value1=scoreLife', index)[0];
+
+      setDataObject(values[field]);
+    }
+  }, [data]);
+
   return (
-    <FormBox {...props}>
-      <FormItem name={`scoreLife_${index}`}>
-        <Radio.Group style={{ width: '100%' }}>
-          <Table
-            bordered
-            rowKey="enName"
-            columns={columns}
-            pagination={false}
-            dataSource={dataSource}
-            rowClassName="td-editable-row"
-          />
-        </Radio.Group>
-      </FormItem>
-    </FormBox>
+    <React.Fragment>
+      <Divider>{cnName}</Divider>
+      <Table
+        bordered
+        rowKey="enName"
+        columns={columns}
+        pagination={false}
+        dataSource={dataSource}
+      />
+    </React.Fragment>
   );
 };
 
