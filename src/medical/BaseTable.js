@@ -98,6 +98,7 @@ const TableList = (props) => {
         pagination={false}
         dataSource={dataSource}
         rowClassName="td-editable-row"
+        title={() => '如果“有”，请在下面记录：'}
         {...mobileTableProps}
       />
       <div className="medical_element_add" onClick={onAdd}>+</div>

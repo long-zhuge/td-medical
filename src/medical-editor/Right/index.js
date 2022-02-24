@@ -51,6 +51,10 @@ const Right = () => {
                 label="组件名"
               />
               <FormItem
+                name="enName"
+                label="组件英文名"
+              />
+              <FormItem
                 name="meddra"
                 label="MedDRA"
                 required={false}
