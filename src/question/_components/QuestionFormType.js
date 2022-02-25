@@ -174,6 +174,7 @@ function CompeteProduct(props) {
       render: (t, r, i) => (
         <ImageUpload
           readOnly={readOnly}
+          initialValue={initialValue?.[i]?.photo}
           value={t}
           onChange={handleChange.bind(null, i, 'photo')}
         />
@@ -194,8 +195,9 @@ function CompeteProduct(props) {
     {
       title: '操作',
       width: 80,
-      dataIndex: 'operation',
       align: 'center',
+      dataIndex: 'operation',
+      visible: !readOnly,
       render: (t, r, i) => {
         return (
           <span
@@ -207,7 +209,7 @@ function CompeteProduct(props) {
         );
       },
     },
-  ];
+  ].filter(c => c.visible !== false);
 
   return (
     <div className={`${baseCls}-compete`}>
@@ -219,16 +221,18 @@ function CompeteProduct(props) {
         pagination={false}
         {...rest}
       />
-      <div className={`${baseCls}-compete-footer`}>
-        <Button
-          type="dashed"
-          block
-          onClick={() => add()}
-          icon={<PlusOutlined />}
-        >
-          添加竞品
-        </Button>
-      </div>
+      {!readOnly && (
+        <div className={`${baseCls}-compete-footer`}>
+          <Button
+            type="dashed"
+            block
+            onClick={() => add()}
+            icon={<PlusOutlined />}
+          >
+            添加竞品
+          </Button>
+        </div>
+      )}
     </div>
   );
 }

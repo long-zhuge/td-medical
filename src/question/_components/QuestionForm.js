@@ -11,7 +11,7 @@ export default function QuestionForm(props) {
   const {
     options = [],
     readOnly = false,
-    initialValue,
+    initialValue = {},
     value = {},
     onChange,
   } = props;
@@ -27,6 +27,7 @@ export default function QuestionForm(props) {
   return (
     <div className={baseCls}>
       {options.map(o => {
+        const formInitialValue = initialValue[o.optionNo];
         const formValue = value[o.optionNo];
         const formConfig = o.remark ? JSON.parse(o.remark) : null;
         return (
@@ -36,7 +37,7 @@ export default function QuestionForm(props) {
               {React.createElement(
                 FORM_TYPE[o.optionType],
                 {
-                  initialValue,
+                  initialValue: formInitialValue,
                   value: formValue,
                   onChange: handleChange.bind(null, o),
                   readOnly,
