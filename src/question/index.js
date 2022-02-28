@@ -40,6 +40,7 @@ export const Context = React.createContext({});
 export default function Question(props) {
   const {
     readOnly = false,
+    preview = false,
     questionBankName,
     questions = [],
     productParam, // 获取产品选项
@@ -47,12 +48,14 @@ export default function Question(props) {
     data,
     onFinish,
     backurl,
+    backHidden = true, // 隐藏返回
     footerHidden = false, // 隐藏按钮
   } = props;
 
   const [form] = Form.useForm();
   // eslint-disable-next-line
   const [ignored, forceUpdate] = useReducer(x => x + 1, 0);
+  const [loading, setLoading] = useState(false);
   const [initialValues, setInitialValues] = useState({});
   const [questionError, setQuestionError] = useState();
   const [currentQuestions, setCurrentQuestions] = useState([]);
@@ -79,7 +82,7 @@ export default function Question(props) {
         ? questions.filter(q => q.questionNo in initialData)
         : questions.slice(0, 1);
       setInitialValues(initialData);
-      setCurrentQuestions(initialQuestions);
+      setCurrentQuestions(preview ? questions : initialQuestions);
       form.setFieldsValue(initialData);
     }
   }, [data, questions]);
@@ -134,7 +137,7 @@ export default function Question(props) {
     }
   }
 
-  const onSubmit = () => {
+  const onSubmit = async () => {
     // 校验答题
     const formValue = form.getFieldsValue(true);
     let error = null;
@@ -164,14 +167,20 @@ export default function Question(props) {
       return values.concat(answers);
     }, []);
     if (typeof onFinish === 'function') {
-      onFinish(submitValue);
+      setLoading(true);
+      try {
+        await onFinish(submitValue);
+      } catch(e) {
+        message.error(e.message);
+      }
+      setLoading(false);
     }
   };
 
   return (
     <div>
       <Divider>{questionBankName}</Divider>
-      {readOnly && !data?.length ? (
+      {readOnly && !preview && !data?.length ? (
         <Empty
           image={Empty.PRESENTED_IMAGE_SIMPLE}
           description="问卷未完成"
@@ -214,7 +223,7 @@ export default function Question(props) {
       )}
       {footerHidden ? null : (
         <div className={`${baseCls}-navigation`}>
-          <Back url={backurl} />
+          {backHidden ? null : <Back url={backurl} />}
           {readOnly ? null : (
             <>
               <Button
@@ -231,7 +240,7 @@ export default function Question(props) {
               >
                 下一题
               </Button>
-              <Button type="primary" onClick={onSubmit} disabled={!canSubmit()}>
+              <Button type="primary" onClick={onSubmit} loading={loading} disabled={!canSubmit()}>
                 完成
               </Button>
             </>
