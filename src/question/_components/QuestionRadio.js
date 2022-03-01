@@ -44,7 +44,7 @@ export default function QuestionRadio(props) {
     }
     return o.optionType === 'input' ? (
       <Input
-        style={{ minWidth: 240 }}
+        style={{ minWidth: 220 }}
         value={text}
         disabled={!Object.keys(value).includes(o.optionNo)}
         onChange={handleInput.bind(null, o)}
