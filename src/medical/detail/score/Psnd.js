@@ -1,5 +1,5 @@
 /*
-* NRS评分组件
+* 外周感觉神经障碍（Peripheral sensory nerve disorder）
 * */
 
 import React, { useContext, useEffect, useState } from 'react';
@@ -10,20 +10,14 @@ import { getFormValues, getFormName } from '../../../_util';
 import { EleDetailContext } from '../index';
 
 const dataSource = [
-  { kps: '正常，无症状和体征', score: 100 },
-  { kps: '能进行正常活动，有轻微症状和体征', score: 90 },
-  { kps: '勉强可进行正常活动，有一些症状或体征', score: 80 },
-  { kps: '生活可自理，但不能维持正常生活工作', score: 70 },
-  { kps: '生活能大部分自理，但偶尔需要别人帮助', score: 60 },
-  { kps: '常需人照料', score: 50 },
-  { kps: '生活不能自理，需要特别照顾和帮助', score: 40 },
-  { kps: '生活严重不能自理', score: 30 },
-  { kps: '病重，需要住院和积极的支持治疗', score: 20 },
-  { kps: '重危，临近死亡', score: 10 },
-  { kps: '死亡', score: 0 },
+  { kps: '无症状，没有深腱反射丧失或感觉异常', score: 1 },
+  { kps: '中度症状，影响工具性日常生活活动', score: 2 },
+  { kps: '重度症状，影响个人日常生活活动', score: 3 },
+  { kps: '危及生命，需紧急处理', score: 4 },
+  { kps: '死亡', score: 5 },
 ];
 
-const Qls = (props) => {
+const Psnd = (props) => {
   const {
     cnName,
     index = 0,
@@ -39,15 +33,16 @@ const Qls = (props) => {
       render: (_, __, idx) => idx + 1,
     },
     {
-      title: 'Karnofsky（卡氏，kps，百分法）',
+      title: '临床表现',
       dataIndex: 'kps',
     },
     {
-      title: '分值',
+      title: '分级',
       dataIndex: 'score',
+      render: t => `${t}级`,
     },
     {
-      title: '评分',
+      title: '评估',
       dataIndex: 'score',
       render: (t) => {
         if (+t === +dataObject) {
@@ -82,4 +77,4 @@ const Qls = (props) => {
   );
 };
 
-export default Qls;
+export default Psnd;

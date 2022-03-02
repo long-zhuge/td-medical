@@ -25,6 +25,9 @@ import SemenRoutineQuota from './SemenRoutineQuota';
 import BaseTable from './BaseTable';
 import Nrs from './score/Nrs';
 import Qls from './score/Qls';
+import Psnd from './score/Psnd';
+import Pmnd from './score/Pmnd';
+import Neuralgia from './score/Neuralgia';
 
 // 组件顶层对象
 export const EleContext = React.createContext({});
@@ -42,6 +45,10 @@ const ele = {
   'NRS': Nrs,
   // 生活质量评分
   'QLS': Qls,
+  // 外周感觉神经障碍
+  'PSND': Psnd,
+  'PMND': Pmnd,
+  'neuralgia': Neuralgia,
 };
 
 const MedicalElement = (props) => {
