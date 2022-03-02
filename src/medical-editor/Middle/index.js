@@ -73,7 +73,12 @@ const Middle = () => {
           width={960}
           footer={false}
         >
-          <Medical template={templateJson} onFinish={(res) => console.log(res)} />
+          <Medical
+            template={templateJson}
+            onFinish={(res) => {
+              console.log(JSON.stringify(res))
+            }}
+          />
         </ModalBox>
       </div>
     </DndProviderBox>
