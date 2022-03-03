@@ -45,7 +45,7 @@ const Psnd = (props) => {
 
   return (
     <FormBox {...props}>
-      <FormItem name={`${fieldList[0].enName}_${index}`}>
+      <FormItem name={`${fieldList[0].enName}_${index}`} required={false}>
         <Radio.Group style={{ width: '100%' }}>
           <Table
             bordered
