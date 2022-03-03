@@ -31,7 +31,7 @@ const Inspect = (props) => {
     {
       title: '结果',
       dataIndex: 'valueToName',
-      render: (t) => <Number name={getFormName(t, index)[0]} message={message} />,
+      render: (t, r) => <Number name={getFormName(t, index)[0]} message={message} required={r.required} />,
     },
     {
       title: '单位',
@@ -40,12 +40,12 @@ const Inspect = (props) => {
     {
       title: '正常/异常判断',
       dataIndex: 'valueToName',
-      render: (t) => <Radio name={getFormName(t, index)[1]} message={message} map="正常#异常且无临床意义#异常且有临床意义" />,
+      render: (t, r) => <Radio name={getFormName(t, index)[1]} message={message} map="正常#异常且无临床意义#异常且有临床意义" required={r.required} />,
     },
     {
       title: '备注',
       dataIndex: 'valueToName',
-      render: (t) => <Text name={getFormName(t, index)[2]} message={message} required={false} />,
+      render: (t, r) => <Text name={getFormName(t, index)[2]} message={message} required={r.required} />,
     },
   ];
 
@@ -56,7 +56,7 @@ const Inspect = (props) => {
     if (obj) {
       return (
         <div style={{ width: isMobile ? '100%' : 240 }}>
-          <Date label={obj.cnName} name={`${obj.enName}_${index}`} />
+          <Date label={obj.cnName} name={`${obj.enName}_${index}`} required={obj.required} />
         </div>
       );
     }

@@ -206,3 +206,23 @@ export const mobileTableProps = isMobile && { size: 'small', scroll: { x: 1000 }
 
 // 哪些组件需要平铺展示，如：门诊主体、项目说明等等
 export const isTileComponent = (enName) => ['outpatientContent', 'projectDesc'].includes(enName);
+
+/*
+* 将 map 字符串转为 score 对象
+* PS：轻度疼痛/1\n中度症状，影响工具性日常生活活动/2 ==> [{ kps: '轻度疼痛', score: 1 }, { kps: '中度症状，影响工具性日常生活活动', score: 2 }]
+* */
+export const mapToScore = (map = '') => {
+  let mapList = [];
+
+  try {
+    mapList = map.split('\n').reduce((p, c) => {
+      const arr = c.split('/');
+
+      return [...p, { kps: arr[0], score: arr[1] }];
+    }, [])
+  } catch (error) {
+    console.log(error)
+  }
+
+  return mapList;
+};

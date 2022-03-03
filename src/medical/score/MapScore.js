@@ -1,26 +1,21 @@
 /*
-* 外周运动神经障碍（Peripheral motor nerve disorder）
+* map 中含有分值信息的公共组件
 * */
 
-import React from 'react';
+import React, { useState } from 'react';
 import { Table, Radio } from 'antd';
 import FormItem from 'td-antd/es/form-item';
+import { mapToScore } from '../../_util';
 
 import FormBox from '../FormBox';
 
-const dataSource = [
-  { kps: '无症状，仅临床检查或诊断所见，无需治疗', score: 1 },
-  { kps: '中度症状，影响工具性日常生活活动', score: 2 },
-  { kps: '重度症状，日常生活自理受限，需要辅助装置', score: 3 },
-  { kps: '危及生命，需紧急处理', score: 4 },
-  { kps: '死亡', score: 5 },
-];
-
-const Pmnd = (props) => {
+const MapScore = (props) => {
   const {
     index = 0,
     fieldList = [],
   } = props;
+
+  const [dataSource] = useState(mapToScore(fieldList[0].map));
 
   const columns = [
     {
@@ -50,7 +45,7 @@ const Pmnd = (props) => {
           <Table
             bordered
             size="small"
-            rowKey="enName"
+            rowKey="score"
             columns={columns}
             pagination={false}
             dataSource={dataSource}
@@ -62,4 +57,4 @@ const Pmnd = (props) => {
   );
 };
 
-export default Pmnd;
+export default MapScore;
