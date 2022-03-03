@@ -1,26 +1,21 @@
 /*
-* 外周感觉神经障碍（Peripheral sensory nerve disorder）
+* map 中含有分值信息的公共组件
 * */
 
-import React from 'react';
+import React, { useState } from 'react';
 import { Table, Radio } from 'antd';
 import FormItem from 'td-antd/es/form-item';
+import { mapToScore } from '../../_util';
 
 import FormBox from '../FormBox';
 
-const dataSource = [
-  { kps: '无症状，没有深腱反射丧失或感觉异常', score: 1 },
-  { kps: '中度症状，影响工具性日常生活活动', score: 2 },
-  { kps: '重度症状，影响个人日常生活活动', score: 3 },
-  { kps: '危及生命，需紧急处理', score: 4 },
-  { kps: '死亡', score: 5 },
-];
-
-const Psnd = (props) => {
+const MapScore = (props) => {
   const {
     index = 0,
     fieldList = [],
   } = props;
+
+  const [dataSource] = useState(mapToScore(fieldList[0].map));
 
   const columns = [
     {
@@ -45,12 +40,12 @@ const Psnd = (props) => {
 
   return (
     <FormBox {...props}>
-      <FormItem name={`${fieldList[0].enName}_${index}`}>
+      <FormItem name={`${fieldList[0].enName}_${index}`} required={false}>
         <Radio.Group style={{ width: '100%' }}>
           <Table
             bordered
             size="small"
-            rowKey="enName"
+            rowKey="score"
             columns={columns}
             pagination={false}
             dataSource={dataSource}
@@ -62,4 +57,4 @@ const Psnd = (props) => {
   );
 };
 
-export default Psnd;
+export default MapScore;

@@ -54,6 +54,7 @@ const Nrs = (props) => {
             {...params}
             key={params.fieldNo}
             name={`${t}_${index}`}
+            required={false}
           />
         )
       },

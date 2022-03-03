@@ -610,7 +610,8 @@
         "rule": "YYYY-MM-DD",
         "unit": "",
         "valueToName": "value1=sampleDate",
-        "valueType": "object"
+        "valueType": "object",
+        "required": true
       },
       {
         "cnName": "尿蛋白质(PRO)",
@@ -623,7 +624,8 @@
         "rule": "",
         "unit": "mg/dl",
         "valueToName": "value1=pro_result,value2=pro_judge,value3=pro_remark",
-        "valueType": "object"
+        "valueType": "object",
+        "required": true
       },
       {
         "cnName": "尿红细胞(RBC)",
@@ -636,7 +638,8 @@
         "rule": "",
         "unit": "个/HP",
         "valueToName": "value1=rbc_result,value2=rbc_judge,value3=rbc_remark",
-        "valueType": "object"
+        "valueType": "object",
+        "required": true
       },
       {
         "cnName": "尿白细胞(WBC)",
@@ -649,7 +652,8 @@
         "rule": "",
         "unit": "个/HP",
         "valueToName": "value1=wbc_result,value2=wbc_judge,value3=wbc_remark",
-        "valueType": "object"
+        "valueType": "object",
+        "required": true
       },
       {
         "cnName": "尿糖",
@@ -662,7 +666,8 @@
         "rule": "",
         "unit": "",
         "valueToName": "value1=urineSugar_result,value2=urineSugar_judge,value3=urineSugar_remark",
-        "valueType": "object"
+        "valueType": "object",
+        "required": true
       }
     ],
     "meddra": "",
@@ -685,7 +690,8 @@
         "rule": "YYYY-MM-DD",
         "unit": "",
         "valueToName": "value1=sampleDate",
-        "valueType": "object"
+        "valueType": "object",
+        "required": true
       },
       {
         "cnName": "谷丙转氨酶(ALT)",
@@ -698,7 +704,8 @@
         "rule": "",
         "unit": "IU/L",
         "valueToName": "value1=alt_result,value2=alt_judge,value3=alt_remark",
-        "valueType": "object"
+        "valueType": "object",
+        "required": true
       },
       {
         "cnName": "冬氨酸转移酶(AST)",
@@ -711,7 +718,8 @@
         "rule": "",
         "unit": "IU/L",
         "valueToName": "value1=ast_result,value2=ast_judge,value3=ast_remark",
-        "valueType": "object"
+        "valueType": "object",
+        "required": true
       },
       {
         "cnName": "血糖(空腹)",
@@ -724,7 +732,8 @@
         "rule": "",
         "unit": "mmol/L",
         "valueToName": "value1=bloodSugar_result,value2=bloodSugar_judge,value3=bloodSugar_remark",
-        "valueType": "object"
+        "valueType": "object",
+        "required": true
       },
       {
         "cnName": "血尿素氮(BUN)",
@@ -737,7 +746,8 @@
         "rule": "",
         "unit": "mmol/L",
         "valueToName": "value1=bun_result,value2=bun_judge,value3=bun_remark",
-        "valueType": "object"
+        "valueType": "object",
+        "required": true
       },
       {
         "cnName": "血清肌酐(Cr)",
@@ -750,7 +760,8 @@
         "rule": "",
         "unit": "mmol/L",
         "valueToName": "value1=cr_result,value2=cr_judge,value3=cr_remark",
-        "valueType": "object"
+        "valueType": "object",
+        "required": true
       },
       {
         "cnName": "总胆红素（TBIL）",
@@ -763,7 +774,8 @@
         "rule": "",
         "unit": "mmol/L",
         "valueToName": "value1=tbil_result,value2=tbil_judge,value3=tbil_remark",
-        "valueType": "object"
+        "valueType": "object",
+        "required": true
       }
     ],
     "meddra": "",
@@ -786,7 +798,8 @@
         "rule": "",
         "unit": "ml",
         "valueToName": "value1=semenAmount_result,value2=semenAmount_clinicalJudgment",
-        "valueType": "object"
+        "valueType": "object",
+        "required": true
       },
       {
         "cnName": "精子浓度",
@@ -799,7 +812,8 @@
         "rule": "",
         "unit": "/ml",
         "valueToName": "value1=spermConcentration_result,value2=spermConcentration_clinicalJudgment",
-        "valueType": "object"
+        "valueType": "object",
+        "required": true
       },
       {
         "cnName": "前向运动精子",
@@ -812,7 +826,8 @@
         "rule": "",
         "unit": "%",
         "valueToName": "value1=forwardMotion_result,value2=forwardMotion_clinicalJudgment",
-        "valueType": "object"
+        "valueType": "object",
+        "required": true
       },
       {
         "cnName": "正常形态精子",
@@ -825,7 +840,8 @@
         "rule": "",
         "unit": "%",
         "valueToName": "value1=spermNormal_result,value2=spermNormal_clinicalJudgment",
-        "valueType": "object"
+        "valueType": "object",
+        "required": true
       }
     ],
     "meddra": "",
@@ -848,7 +864,8 @@
         "rule": "",
         "unit": "",
         "valueToName": "value1=semenPH_result,value2=semenPH_clinicalJudgment",
-        "valueType": "object"
+        "valueType": "object",
+        "required": true
       },
       {
         "cnName": "DFI",
@@ -861,7 +878,8 @@
         "rule": "",
         "unit": "%",
         "valueToName": "value1=semenDFI_result,value2=semenDFI_clinicalJudgment",
-        "valueType": "object"
+        "valueType": "object",
+        "required": true
       },
       {
         "cnName": "HDS",
@@ -874,7 +892,8 @@
         "rule": "",
         "unit": "%",
         "valueToName": "value1=semenHDS_result,value2=semenHDS_clinicalJudgment",
-        "valueType": "object"
+        "valueType": "object",
+        "required": true
       }
     ],
     "meddra": "",
@@ -887,7 +906,7 @@
     "enName": "projectDesc",
     "fieldList": [
       {
-        "cnName": "",
+        "cnName": "项目要求说明",
         "enName": "projectDesc",
         "fieldNo": "F00037",
         "inputType": "textarea",
@@ -897,7 +916,8 @@
         "rule": "",
         "unit": "",
         "valueToName": "value1=projectDesc",
-        "valueType": "object"
+        "valueType": "object",
+        "required": true
       }
     ],
     "meddra": "",
@@ -1084,16 +1104,16 @@
     "enName": "QLS",
     "fieldList": [
       {
-        "cnName": "评分",
-        "enName": "scoreLife",
+        "cnName": "生活质量评分",
+        "enName": "QLS",
         "fieldNo": "F00067",
         "inputType": "radio",
-        "map": "",
+        "map": "正常，无症状和体征/100\n能进行正常活动，有轻微症状和体征/90\n勉强可进行正常活动，有一些症状或体征/80\n生活可自理，但不能维持正常生活工作/70\n生活能大部分自理，但偶尔需要别人帮助/60\n常需人照料/50\n生活不能自理，需要特别照顾和帮助/40\n生活严重不能自理/30\n病重，需要住院和积极的支持治疗/20\n重危，临近死亡/10\n死亡/0",
         "meddra": "",
         "remarks": "",
         "rule": "",
         "unit": "",
-        "valueToName": "value1=scoreLife",
+        "valueToName": "value1=QLS",
         "valueType": "object",
         "required": true
       }
@@ -1108,16 +1128,16 @@
     "enName": "PSND",
     "fieldList": [
       {
-        "cnName": "分级",
-        "enName": "grade",
+        "cnName": "外周感觉神经障碍",
+        "enName": "PSND",
         "fieldNo": "F00068",
         "inputType": "radio",
-        "map": "",
+        "map": "无症状，没有深腱反射丧失或感觉异常/1\n中度症状，影响工具性日常生活活动/2\n重度症状，影响个人日常生活活动/3\n危及生命，需紧急处理/4\n死亡/5",
         "meddra": "",
         "remarks": "",
         "rule": "",
         "unit": "",
-        "valueToName": "value1=grade",
+        "valueToName": "value1=PSND",
         "valueType": "object",
         "required": true
       }
@@ -1132,16 +1152,16 @@
     "enName": "PMND",
     "fieldList": [
       {
-        "cnName": "分级",
-        "enName": "grade",
-        "fieldNo": "F00068",
+        "cnName": "外周运动神经障碍",
+        "enName": "PMND",
+        "fieldNo": "F00069",
         "inputType": "radio",
-        "map": "",
+        "map": "无症状，仅临床检查或诊断所见，无需治疗/1\n中度症状，影响工具性日常生活活动/2\n重度症状，日常生活自理受限，需要辅助装置/3\n危及生命，需紧急处理/4\n死亡/5",
         "meddra": "",
         "remarks": "",
         "rule": "",
         "unit": "",
-        "valueToName": "value1=grade",
+        "valueToName": "value1=PMND",
         "valueType": "object",
         "required": true
       }
@@ -1156,16 +1176,16 @@
     "enName": "neuralgia",
     "fieldList": [
       {
-        "cnName": "分级",
-        "enName": "grade",
-        "fieldNo": "F00068",
+        "cnName": "神经痛",
+        "enName": "neuralgia",
+        "fieldNo": "F00070",
         "inputType": "radio",
-        "map": "",
+        "map": "轻度疼痛/1\n中度症状，影响工具性日常生活活动/2\n重度症状，影响个人日常生活活动/3",
         "meddra": "",
         "remarks": "",
         "rule": "",
         "unit": "",
-        "valueToName": "value1=grade",
+        "valueToName": "value1=neuralgia",
         "valueType": "object",
         "required": true
       }

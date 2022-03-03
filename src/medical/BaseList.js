@@ -32,12 +32,17 @@ const ele = {
   hospital_departments: HospitalDepartments,
 };
 
-const Base = (props) => {
+// 该组件不用渲染 label
+const NO_LABEL = ['projectDesc'];
+
+const BaseList = (props) => {
   const {
     enName,
     index = 0,
     fieldList = [],
   } = props;
+
+  const isNoLabel = NO_LABEL.includes(enName);
 
   // 如果是 "门诊主体" 则平铺显示
   if (isTileComponent(enName)) {
@@ -51,7 +56,7 @@ const Base = (props) => {
             <Component
               {...item}
               key={item.fieldNo}
-              label={item.cnName}
+              label={isNoLabel ? '' : item.cnName}
               name={names[0]}
               name2={names[1]}
             />
@@ -72,7 +77,7 @@ const Base = (props) => {
             <Col span={isMobile ? 24 : 12} key={item.fieldNo}>
               <Component
                 {...item}
-                label={item.cnName}
+                label={isNoLabel ? '' : item.cnName}
                 name={names[0]}
                 name2={names[1]}
               />
@@ -84,4 +89,4 @@ const Base = (props) => {
   );
 };
 
-export default Base;
+export default BaseList;

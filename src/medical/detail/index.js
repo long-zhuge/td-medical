@@ -12,10 +12,7 @@ import BaseTable from './BaseTable';
 import Inspect from './Inspect';
 import SemenRoutineQuota from './SemenRoutineQuota';
 import Nrs from './score/Nrs';
-import Qls from './score/Qls';
-import Psnd from './score/Psnd';
-import Pmnd from './score/Pmnd';
-import Neuralgia from './score/Neuralgia';
+import MapScore from './score/MapScore';
 
 // 组件顶层对象
 export const EleDetailContext = React.createContext({});
@@ -31,11 +28,8 @@ const ele = {
   'semenRoutineQuotaAdd': SemenRoutineQuota,
   // NRS 评分
   'NRS': Nrs,
-  // 生活质量评分
-  'QLS': Qls,
-  'PSND': Psnd,
-  'PMND': Pmnd,
-  'neuralgia': Neuralgia,
+  // 神经痛、外周运动神经障碍、外周感觉神经障碍、生活质量评分
+  'neuralgia|PMND|PSND|QLS': MapScore,
 };
 
 const MedicalDetail = (props) => {
