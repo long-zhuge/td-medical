@@ -62,10 +62,10 @@ export default [
         "required": true
       },
       {
-        "cnName": "出生日期",
+        "cnName": "出生年月",
         "enName": "birthDate",
         "fieldNo": "F00005",
-        "inputType": "date",
+        "inputType": "month",
         "map": "",
         "meddra": "",
         "remarks": "基本信息",

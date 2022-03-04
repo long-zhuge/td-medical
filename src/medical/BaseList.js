@@ -21,10 +21,11 @@ import HospitalDepartments from './_components/HospitalDepartments';
 
 const ele = {
   text: Text,
+  month: Date,
   date: Date,
+  datetime: Date,
   radio: Radio,
   radio_desc: RadioDesc,
-  datetime: Date,
   number: Number,
   number_double: NumberDouble,
   select: Select,
