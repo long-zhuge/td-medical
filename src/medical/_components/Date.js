@@ -8,6 +8,12 @@ import FormItem from 'td-antd/es/form-item';
 import DateEasily from 'td-antd/es/date-easily';
 import tools from 'td-antd/es/tools';
 
+const DATE_CONFIG = {
+  month: { picker: 'month', format: 'YYYY-MM' },
+  date: { picker: 'date', format: 'YYYY-MM-DD' },
+  datetime: { picker: 'date', format: 'YYYY-MM-DD HH:mm:ss', showTime: true },
+};
+
 export default (props) => {
   const {
     label = '',
@@ -16,7 +22,7 @@ export default (props) => {
     ...rest
   } = props;
 
-  const normalize = date => date && tools.momentToString(date, inputType === 'date' ? 'YYYY-MM-DD' : 'YYYY-MM-DD hh:mm:ss');
+  const normalize = date => date && tools.momentToString(date, DATE_CONFIG[inputType].format);
 
   return (
     <FormItem
@@ -25,7 +31,7 @@ export default (props) => {
       normalize={normalize}
       {...rest}
     >
-      <DateEasily style={{ width: '100%' }} placeholder={rest.placeholder} showTime={inputType === 'datetime'} />
+      <DateEasily style={{ width: '100%' }} placeholder={rest.placeholder} {...DATE_CONFIG[inputType]} />
     </FormItem>
   );
 }
