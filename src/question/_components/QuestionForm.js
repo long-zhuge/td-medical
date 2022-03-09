@@ -41,7 +41,6 @@ export default function QuestionForm(props) {
                   value: formValue,
                   onChange: handleChange.bind(null, o),
                   readOnly,
-                  disabled: readOnly,
                   ...formConfig,
                 },
               )}

@@ -25,10 +25,9 @@ function QuestionScore(props, ref) {
     <div className="td-medical-question-score">
       <Radio.Group
         ref={ref}
-        disabled={readOnly}
         buttonStyle="solid"
         value={Object.keys(value)[0]}
-        onChange={handleChange}
+        onChange={readOnly ? null : handleChange}
       >
         {options.map(o => (
           <Radio.Button key={o.optionNo} value={o.optionNo}>{o.optionName}</Radio.Button>

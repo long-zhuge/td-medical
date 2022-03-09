@@ -55,9 +55,8 @@ export default function QuestionRadio(props) {
 
   return (
     <Radio.Group
-      disabled={readOnly}
       value={Object.keys(value)[0]}
-      onChange={handleChange}
+      onChange={readOnly ? null : handleChange}
     >
       {options.map(o => (
         <div key={o.optionNo} className={`${baseCls}-option`}>

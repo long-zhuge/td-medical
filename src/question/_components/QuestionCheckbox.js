@@ -59,9 +59,8 @@ export default function QuestionCheckbox(props) {
 
   return (
     <Checkbox.Group
-      disabled={readOnly}
       value={Object.keys(value)}
-      onChange={handleChange}
+      onChange={readOnly ? null : handleChange}
     >
       {options.map(o => (
         <div key={o.optionNo}>
