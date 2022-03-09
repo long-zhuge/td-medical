@@ -84,6 +84,8 @@ export function outPutFormValues(currentValues = {}, fieldList = [], mainParams 
     // valueType 是否等于 list
     const valueTypeIsList = obj.valueType === 'list';
 
+    const currentValue = `${currentValues[item] || ''}`; // 当前的值，必须是字符串
+
     if (valueTypeIsList) {
       // 用于真实输出到 form.values 中的 key，由 enName + keys下标倒数第二位置的值
       const key = `${obj.enName}_${keys.slice(-2)[0]}`;
@@ -93,7 +95,7 @@ export function outPutFormValues(currentValues = {}, fieldList = [], mainParams 
       if (previousObj) {
         previousObj.values.push({
           order: previousObj.values.length,
-          [valuesKey]: `${currentValues[item]}`, // 值必须是字符串
+          [valuesKey]: currentValue, // 值必须是字符串
         });
       } else {
         values[key] = {
@@ -102,7 +104,7 @@ export function outPutFormValues(currentValues = {}, fieldList = [], mainParams 
           values: [
             {
               order: 0,
-              [valuesKey]: `${currentValues[item]}`, // 值必须是字符串
+              [valuesKey]: currentValue, // 值必须是字符串
             },
           ],
         };
@@ -117,14 +119,14 @@ export function outPutFormValues(currentValues = {}, fieldList = [], mainParams 
       const valuesKey = keys.length >= 2 ? keys.join('_') : keys[0];
 
       if (previousObj) {
-        previousObj.values[valuesKey] = `${currentValues[item]}`;
+        previousObj.values[valuesKey] = currentValue;
       } else {
         values[key] = {
           ...obj,
           ...mainParams,
           values: {
             order: 0,
-            [valuesKey]: `${currentValues[item]}`,
+            [valuesKey]: currentValue,
           },
         };
       }
