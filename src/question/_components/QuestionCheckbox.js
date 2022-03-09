@@ -48,12 +48,14 @@ export default function QuestionCheckbox(props) {
       return <span className={`${baseCls}-option-text`}>{text}</span>;
     }
     return o.optionType === 'input' ? (
-      <Input
-        style={{ minWidth: 220 }}
-        value={text}
-        disabled={!Object.keys(value).includes(o.optionNo)}
-        onChange={handleInput.bind(null, o)}
-      />
+      <span>
+        <Input
+          style={{ minWidth: 220 }}
+          value={text}
+          disabled={!Object.keys(value).includes(o.optionNo)}
+          onChange={handleInput.bind(null, o)}
+        />
+      </span>
     ) : null;
   }
 

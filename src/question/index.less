@@ -13,12 +13,42 @@
   }
 
   &-score {
+    width: 100%;
     display: inline-flex;
     flex-direction: column;
-  
+
+    &-list {
+      padding: 0;
+      margin: 0;
+      list-style: none;
+      display: flex;
+      border-radius: 2px;
+      border: 1px solid #d9d9d9;
+      background: #2779fb linear-gradient(to right, #fff, #2779fb);
+
+      &-item {
+        flex: 1 1 auto;
+        height: 40px;
+        line-height: 40px;
+        text-align: center;
+        background: #fff;
+        cursor: pointer;
+        transition: all 0.25s;
+
+        &_active {
+          background: transparent;
+        }
+      }
+    }
+
     &-remark {
       display: flex;
       justify-content: space-between;
+      white-space: nowrap;
+
+      span + span {
+        margin-left: 1em;
+      }
     }
   }
 
@@ -27,10 +57,6 @@
       display: flex;
       align-items: center;
       margin-bottom: 4px;
-
-      & > span {
-        white-space: nowrap;
-      }
 
       &-text {
         text-decoration: underline;
@@ -43,10 +69,6 @@
       display: flex;
       align-items: center;
       margin-bottom: 4px;
-
-      & > label {
-        white-space: nowrap;
-      }
 
       &-text {
         font-size: 14px;
@@ -73,7 +95,9 @@
     &-type {
       &-text {
         display: inline-block;
-        padding: 5px 0;
+        padding: 4px 10px;
+        border-radius: 2px;
+        border: 1px solid #d9d9d9;
       }
 
       &-compete {
