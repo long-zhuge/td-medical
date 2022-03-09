@@ -48,7 +48,6 @@ export default function Question(props) {
     data,
     onFinish,
     backurl,
-    backHidden = true, // 隐藏返回
     footerHidden = false, // 隐藏按钮
   } = props;
 
@@ -223,7 +222,7 @@ export default function Question(props) {
       )}
       {footerHidden ? null : (
         <div className={`${baseCls}-navigation`}>
-          {backHidden ? null : <Back url={backurl} />}
+          <Back url={backurl} />
           {readOnly ? null : (
             <>
               <Button

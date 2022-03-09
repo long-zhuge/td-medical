@@ -7,6 +7,8 @@ const Back = ({ url = '' }) => {
     url ? window.location = url : window.history.back();
   };
 
+  if (url === false) return null;
+
   if (!isMobile) {
     return <Button onClick={onBack}>返回</Button>
   }
