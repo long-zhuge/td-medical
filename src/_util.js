@@ -70,6 +70,9 @@ export function outPutFormValues(currentValues = {}, fieldList = [], mainParams 
 
   // 将 { bloodPressure_min_0: 60, bloodPressure_max_0: 90 } 转为 ['bloodPressure_min_0', 'bloodPressure_max_0'] 进行遍历
   Object.keys(currentValues).forEach(item => {
+    const currentValue = `${currentValues[item] || ''}`; // 当前的值，必须是字符串
+    if (!currentValue) return;
+
     /*
     * 将类似 bloodPressure_max_0 的字段进行拆分
     *   1、下标为 0 的是字段名
@@ -83,8 +86,6 @@ export function outPutFormValues(currentValues = {}, fieldList = [], mainParams 
 
     // valueType 是否等于 list
     const valueTypeIsList = obj.valueType === 'list';
-
-    const currentValue = `${currentValues[item] || ''}`; // 当前的值，必须是字符串
 
     if (valueTypeIsList) {
       // 用于真实输出到 form.values 中的 key，由 enName + keys下标倒数第二位置的值

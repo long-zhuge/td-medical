@@ -22,6 +22,7 @@ const Demo = () => {
         />
       </ModalBox>
       <Question
+        backurl={false}
         questionBankName="问卷调查"
         questions={questionsData}
         onFinish={(values) => {

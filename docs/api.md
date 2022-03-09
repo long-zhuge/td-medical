@@ -15,7 +15,7 @@ nav:
 |data|回显所需的数据|Object|-|
 |onFinish|点击保存后的回调函数|Function(values)|-|
 |dept|科室数据|Array|-|
-|backurl|返回按钮的地址|String|-|
+|backurl|返回按钮的地址，值为 false 时不显示按钮|String|-|
 |footerHidden|隐藏操作按钮|Boolean|false|
 
 ## MedicalEditor
@@ -39,5 +39,5 @@ nav:
 |questions|渲染所需的题目，必传|Array|-|
 |data|回显所需的数据|Array|-|
 |onFinish|点击保存后的回调函数|Function(values)|-|
-|backurl|返回按钮的地址|String|-|
+|backurl|返回按钮的地址，值为 false 时不显示按钮|String|-|
 |footerHidden|隐藏操作按钮|Boolean|false|

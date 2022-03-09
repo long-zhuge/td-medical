@@ -67,7 +67,7 @@ const MapScore = (props) => {
       <Table
         bordered
         size="small"
-        rowKey="enName"
+        rowKey="score"
         columns={columns}
         pagination={false}
         dataSource={dataSource}

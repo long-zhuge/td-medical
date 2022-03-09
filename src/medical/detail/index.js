@@ -50,7 +50,7 @@ const MedicalDetail = (props) => {
       {template.map((item, index) => {
         const Component = filterEleMapToComponent(ele, item.enName);
 
-        return <Component {...item} index={index} />;
+        return <Component {...item} index={index} key={`${item.enName}_${index}`} />;
       })}
       {footerHidden ? null : (
         <div className="submit_div" hidden={!template[0]}>

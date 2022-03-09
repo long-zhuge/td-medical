@@ -1,6 +1,6 @@
 ```jsx
 import React, { useState } from 'react';
-import MedicalDemo from './tests/medical';
+import Demo from './tests/medical';
 
-export default () => <MedicalDemo />;
+export default () => <Demo />;
 ```

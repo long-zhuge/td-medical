@@ -56,7 +56,7 @@ const Inspect = (props) => {
     if (obj) {
       return (
         <div style={{ width: isMobile ? '100%' : 240 }}>
-          <Date label={obj.cnName} name={`${obj.enName}_${index}`} required={obj.required} />
+          <Date {...obj} label={obj.cnName} name={`${obj.enName}_${index}`} required={obj.required} />
         </div>
       );
     }
