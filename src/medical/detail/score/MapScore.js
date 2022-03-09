@@ -9,9 +9,14 @@ import { getFormValues, getFormName, mapToScore } from '../../../_util';
 
 import { EleDetailContext } from '../index';
 
+const TEXT = {
+  QLS: '分值',
+};
+
 const MapScore = (props) => {
   const {
     cnName,
+    enName,
     index = 0,
     fieldList = [],
   } = props;
@@ -19,6 +24,7 @@ const MapScore = (props) => {
   const [dataSource] = useState(mapToScore(fieldList[0].map));
   const { data } = useContext(EleDetailContext);
   const [dataObject, setDataObject] = useState({});
+  const scoreTitle = TEXT[enName];
 
   const columns = [
     {
@@ -30,9 +36,9 @@ const MapScore = (props) => {
       dataIndex: 'kps',
     },
     {
-      title: '分级',
+      title: scoreTitle || '分级',
       dataIndex: 'score',
-      render: t => `${t}级`,
+      render: t => `${t}${scoreTitle ? '' : '级'}`,
     },
     {
       title: '评估',
