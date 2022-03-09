@@ -43,21 +43,22 @@ export default function QuestionRadio(props) {
       return <span className={`${baseCls}-option-text`}>{text}</span>;
     }
     return o.optionType === 'input' ? (
-      <Input
-        style={{ minWidth: 220 }}
-        value={text}
-        disabled={!Object.keys(value).includes(o.optionNo)}
-        onChange={handleInput.bind(null, o)}
-        {...inputConfig}
-      />
+      <span>
+        <Input
+          style={{ minWidth: 220 }}
+          value={text}
+          disabled={!Object.keys(value).includes(o.optionNo)}
+          onChange={handleInput.bind(null, o)}
+          {...inputConfig}
+        />
+      </span>
     ) : null;
   }
 
   return (
     <Radio.Group
-      disabled={readOnly}
       value={Object.keys(value)[0]}
-      onChange={handleChange}
+      onChange={readOnly ? null : handleChange}
     >
       {options.map(o => (
         <div key={o.optionNo} className={`${baseCls}-option`}>

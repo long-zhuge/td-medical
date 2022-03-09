@@ -2,10 +2,12 @@
 * 类型：score 问卷分数选择
 * */
 
-import React, { forwardRef } from 'react';
-import { Radio } from 'antd';
+import React from 'react';
+import cx from 'classnames';
 
-function QuestionScore(props, ref) {
+const baseCls = 'td-medical-question-score';
+
+export default function QuestionScore(props) {
   const {
     options = [],
     readOnly = false,
@@ -13,8 +15,9 @@ function QuestionScore(props, ref) {
     onChange,
   } = props;
 
-  const handleChange = (e) => {
-    const optionNo = e.target.value;
+  const valueIdx = options.findIndex(o => o.optionNo === Object.keys(value)[0]);
+
+  const handleChange = (optionNo) => {
     onChange(
       { [optionNo]: '' },
       options.find(o => o.optionNo === optionNo).skipQuestionNo,
@@ -22,23 +25,26 @@ function QuestionScore(props, ref) {
   };
 
   return (
-    <div className="td-medical-question-score">
-      <Radio.Group
-        ref={ref}
-        disabled={readOnly}
-        buttonStyle="solid"
-        value={Object.keys(value)[0]}
-        onChange={handleChange}
-      >
-        {options.map(o => (
-          <Radio.Button key={o.optionNo} value={o.optionNo}>{o.optionName}</Radio.Button>
+    <div
+      className={baseCls}
+      style={{
+        maxWidth: 40 * options.length,
+      }}
+    >
+      <ul className={`${baseCls}-list`}>
+        {options.map((o, idx) => (
+          <li
+            key={o.optionNo}
+            className={cx(`${baseCls}-list-item`, valueIdx >= idx && `${baseCls}-list-item_active`)}
+            onClick={readOnly ? null : handleChange.bind(null, o.optionNo)}
+          >
+            {o.optionName?.match(/^\d+/)?.[0] || idx}
+          </li>
         ))}
-      </Radio.Group>
-      <div className="td-medical-question-score-remark">
+      </ul>
+      <div className={`${baseCls}-remark`}>
         {options.map(o => (o.remark ? <span key={o.optionNo}>{o.remark}</span> : null))}
       </div>
     </div>
   );
 }
-
-export default forwardRef(QuestionScore);

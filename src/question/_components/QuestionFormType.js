@@ -15,30 +15,36 @@ const { momentToString } = tools;
 const baseCls = 'td-medical-question-form-type';
 
 function ValueInput(props) {
-  const { readOnly, initialValue, onChange, ...rest } = props;
+  const { readOnly, initialValue, value, onChange, ...rest } = props;
 
   const handleChange = (e) => {
     onChange(e.target.value);
   }
 
-  return (
+  return readOnly ? <span className={`${baseCls}-text`}>{value}</span> : (
     <Input
       {...rest}
+      value={value}
       onChange={handleChange}
     />
   );
 }
 
 function PriceInput(props) {
-  const { readOnly, initialValue, currency = '¥', ...rest } = props;
+  const { readOnly, initialValue, value, currency = '¥', ...rest } = props;
 
-  return (
+  const formatter = (v) => (
+    v && `${currency} ${v}`.replace(/\B(?=(\d{3})+(?!\d))/g, ',')
+  )
+
+  return readOnly ? <span className={`${baseCls}-text`}>{formatter(value)}</span> : (
     <InputNumber
       {...rest}
       min={1}
       style={{ width: '100%' }}
-      formatter={value => value && `${currency} ${value}`.replace(/\B(?=(\d{3})+(?!\d))/g, ',')}
-      parser={value => value && value.replace(new RegExp(`${currency}\\s?|(,*)`, 'g'), '')}
+      value={value}
+      formatter={formatter}
+      parser={v => v && v.replace(new RegExp(`${currency}\\s?|(,*)`, 'g'), '')}
     />
   );
 }
@@ -51,7 +57,9 @@ function RegionSelect(props) {
     onChange(selectedOptions.map(o => ({ label: o.label, value: o.value })));
   }
 
-  return (
+  return readOnly ? (
+    <span className={`${baseCls}-text`}>{value?.map(v => v.label).filter(v => v).join('-')}</span>
+  ) : (
     <Cascader
       options={pcas}
       value={value && value.map(v => v.value)}
@@ -63,19 +71,20 @@ function RegionSelect(props) {
 
 function ProductSelect(props) {
   const { productParam } = useContext(Context);
-  const { readOnly, initialValue, onChange, ...rest } = props;
+  const { readOnly, initialValue, value, onChange, ...rest } = props;
 
   // ensure the second param pass to onChange is error message
   const handleChange = (s) => {
     onChange({ value: s.value, label: s.label });
   }
 
-  return (
+  return readOnly ? <span className={`${baseCls}-text`}>{value?.label}</span> : (
     <SelectList
       labelInValue
       url="/product/getPageList.json"
       defaultParams={productParam}
       fields={['productNo', 'productName']}
+      value={value}
       onChange={handleChange}
       {...rest}
     />
@@ -89,7 +98,7 @@ function RangeDate(props) {
     onChange(date && [momentToString(date[0]), momentToString(date[1])]);
   }
 
-  return (
+  return readOnly ? <span className={`${baseCls}-text`}>{value?.join(' 至 ')}</span> : (
     <DateEasily
       type="RangePicker"
       value={value}
@@ -161,7 +170,7 @@ function CompeteProduct(props) {
       width: '25%',
       render: (t, r, i) => (
         <ValueInput
-          disabled={readOnly}
+          readOnly={readOnly}
           value={t}
           onChange={handleChange.bind(null, i, 'name')}
         />
@@ -186,7 +195,7 @@ function CompeteProduct(props) {
       width: '25%',
       render: (t, r, i) => (
         <PriceInput
-          disabled={readOnly}
+          readOnly={readOnly}
           value={t}
           onChange={handleChange.bind(null, i, 'price')}
         />

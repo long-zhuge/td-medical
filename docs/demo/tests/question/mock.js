@@ -96,7 +96,7 @@ export default [
     "questionType": "form",
     "optionList": [
       {
-        "optionName": "产品名称",
+        "optionName": "",
         "optionNo": "100010",
         "optionType": "input",
         "questionNo": "104",
@@ -111,10 +111,25 @@ export default [
     "questionType": "form",
     "optionList": [
       {
-        "optionName": "竞品列表",
+        "optionName": "",
         "optionNo": "100011",
         "optionType": "compete",
         "questionNo": "105",
+        "skipQuestionNo": "106",
+      },
+    ],
+  },
+  {
+    "questionBankNo": "Q00001",
+    "questionName": "工作时间",
+    "questionNo": "106",
+    "questionType": "form",
+    "optionList": [
+      {
+        "optionName": "",
+        "optionNo": "100012",
+        "optionType": "rangeDate",
+        "questionNo": "106",
       },
     ],
   },
