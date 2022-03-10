@@ -5,9 +5,12 @@
 import React, { useContext, useEffect, useState } from 'react';
 import CheckOutlined from '@ant-design/icons/CheckOutlined';
 import { Table, Divider } from 'antd';
+import tools from 'td-antd/es/tools';
 import { getFormValues, getFormName, mapToScore } from '../../../_util';
 
 import { EleDetailContext } from '../index';
+
+const { typeOf } = tools;
 
 const TEXT = {
   QLS: '分值',
@@ -23,7 +26,7 @@ const MapScore = (props) => {
 
   const [dataSource] = useState(mapToScore(fieldList[0].map));
   const { data } = useContext(EleDetailContext);
-  const [dataObject, setDataObject] = useState({});
+  const [currentScore, setCurrentScore] = useState(); // 当前分值
   const scoreTitle = TEXT[enName];
 
   const columns = [
@@ -44,7 +47,7 @@ const MapScore = (props) => {
       title: '评估',
       dataIndex: 'score',
       render: (t) => {
-        if (+t === +dataObject) {
+        if(typeOf(currentScore, 'Number') && t === currentScore) {
           return <CheckOutlined />;
         }
       },
@@ -57,7 +60,7 @@ const MapScore = (props) => {
 
       const field = getFormName(fieldList[0].valueToName, index)[0];
 
-      setDataObject(values[field]);
+      setCurrentScore(values[field]);
     }
   }, [data]);
 
