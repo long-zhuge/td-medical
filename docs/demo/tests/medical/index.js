@@ -10,16 +10,18 @@ const Demo = () => {
     <React.Fragment>
       <Divider orientation="left">MedicalEditor</Divider>
       <MedicalEditor
-        onFinish={(data) => {
-          setTemplate(data);
+        onFinish={(temp) => {
+          setTemplate(temp);
         }}
       />
       <Divider orientation="left">Medical</Divider>
       <Medical
+        // data={} // 表单回显数据
         backurl={false}
         template={template}
         onFinish={(values) => {
           setData(values);
+          console.log(JSON.stringify(values));
         }}
       />
       <Divider orientation="left">Medical（readOnly）</Divider>

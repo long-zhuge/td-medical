@@ -221,7 +221,7 @@ export const mapToScore = (map = '') => {
     mapList = map.split('\n').reduce((p, c) => {
       const arr = c.split('/');
 
-      return [...p, { kps: arr[0], score: arr[1] }];
+      return [...p, { kps: arr[0], score: +arr[1] }];
     }, [])
   } catch (error) {
     console.log(error)
