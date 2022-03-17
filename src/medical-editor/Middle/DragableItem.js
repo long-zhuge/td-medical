@@ -4,7 +4,8 @@ import DeleteOutlined from '@ant-design/icons/DeleteOutlined';
 import { useDrag, useDrop } from 'react-dnd';
 import update from 'immutability-helper';
 import { Space, Popconfirm } from 'antd';
-import { LinkBtn } from 'td-antd';
+import LinkBtn from 'td-antd/es/link-btn';
+import { clone } from '../../_util';
 import Field from './Field';
 import './index.less';
 
@@ -50,13 +51,23 @@ const DragableItem = ({ data, index }) => {
     },
     drop: item => {
       setFormData({}); // 拖拽时，取消右侧编辑组件，否则会导致编辑错乱的问题
-      const dragRow = selectedElementList[item.index];
-      setSelectedElementList(update(selectedElementList, {
+      const templateList = selectedElementList.filter(i => i.id === activeTabKey)[0].template;
+      const dragRow = templateList[item.index];
+
+      const updateData = update(templateList, {
         $splice: [
           [item.index, 1],
           [index, 0, dragRow],
         ],
-      }));
+      })
+
+      selectedElementList.forEach(i => {
+        if (i.id === activeTabKey) {
+          i.template = updateData;
+        }
+      })
+
+      setSelectedElementList(clone(selectedElementList));
     },
   });
 
