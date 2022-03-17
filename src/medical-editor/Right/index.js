@@ -8,7 +8,7 @@ import './index.less';
 import { EditorContext } from '../index';
 
 const Right = () => {
-  const { formData, selectedElementList, setSelectedElementList } = useContext(EditorContext);
+  const { formData, selectedElementList, setSelectedElementList, activeTabKey } = useContext(EditorContext);
 
   const [form] = Form.useForm();
 
@@ -22,16 +22,24 @@ const Right = () => {
     form.validateFields().then((values) => {
       if (formData.elementNo) {
         // 组件数据修改
-        selectedElementList[formData.index] = {...selectedElementList[formData.index], ...values};
+        selectedElementList.forEach(i => {
+          if (i.id === activeTabKey) {
+            i.template[formData.index] = {...i.template[formData.index], ...values};
+          }
+        });
       } else {
         // 字段数据修改
-        const original = selectedElementList[formData.index].fieldList[formData.index2]; // 原来的数据对象
-        selectedElementList[formData.index].fieldList[formData.index2] = {
-          ...selectedElementList[formData.index].fieldList[formData.index2],
-          ...values,
-          // 如果 enName 发生了改变，则需要对 valueToName 进行重写
-          valueToName: original.enName !== values.enName ? original.valueToName.replaceAll(original.enName, values.enName) : original.valueToName,
-        };
+        selectedElementList.forEach(i => {
+          if (i.id === activeTabKey) {
+            const original = i.template[formData.index].fieldList[formData.index2];
+            i.template[formData.index].fieldList[formData.index2] = {
+              ...original,
+              ...values,
+              // 表单中 enName 开放后，该属性也需要开放
+              // valueToName: original.enName !== values.enName ? original.valueToName.replaceAll(original.enName, values.enName) : original.valueToName,
+            };
+          }
+        });
       }
       setSelectedElementList(clone(selectedElementList));
       toast({ text: '组件数据保存成功' });
@@ -50,10 +58,10 @@ const Right = () => {
                 name="cnName"
                 label="组件名"
               />
-              <FormItem
+              {/* <FormItem
                 name="enName"
                 label="组件英文名"
-              />
+              /> */}
               <FormItem
                 name="meddra"
                 label="MedDRA"
@@ -69,10 +77,10 @@ const Right = () => {
                 name="cnName"
                 label="字段名"
               />
-              <FormItem
+              {/* <FormItem
                 name="enName"
                 label="字段英文名"
-              />
+              /> */}
               <FormItem
                 name="required"
                 label="是否必填"

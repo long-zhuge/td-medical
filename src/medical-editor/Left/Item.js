@@ -3,7 +3,7 @@ import DownOutlined from '@ant-design/icons/DownOutlined';
 import UpOutlined from '@ant-design/icons/UpOutlined';
 import PlusOutlined from '@ant-design/icons/PlusOutlined';
 import { Space } from 'antd';
-import { genId, confirm } from '../../_util';
+import { genId, confirm, clone } from '../../_util';
 import './index.less';
 
 import { EditorContext } from '../index';
@@ -37,7 +37,7 @@ const Item = ({ data = {} }) => {
       const id = genId();
       setSelectedElementList([{
         id,
-        template: [data],
+        template: [clone(data)],
       }]);
       setActiveTabKey(id);
     }
@@ -52,7 +52,7 @@ const Item = ({ data = {} }) => {
       return [...p, c];
     }, []);
 
-    setSelectedElementList(d);
+    setSelectedElementList(clone(d));
   };
 
   return (
