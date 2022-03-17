@@ -12,6 +12,7 @@ const Demo = () => {
       <MedicalEditor
         onFinish={(temp) => {
           setTemplate(temp);
+          console.log(JSON.stringify(temp));
         }}
       />
       <Divider orientation="left">Medical</Divider>

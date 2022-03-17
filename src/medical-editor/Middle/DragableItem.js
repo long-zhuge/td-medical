@@ -1,9 +1,6 @@
-// TodoList: 组件新增字段
-
 import React, { useContext, useRef } from 'react';
 import FormOutlined from '@ant-design/icons/FormOutlined';
 import DeleteOutlined from '@ant-design/icons/DeleteOutlined';
-// import PlusSquareOutlined from '@ant-design/icons/PlusSquareOutlined';
 import { useDrag, useDrop } from 'react-dnd';
 import update from 'immutability-helper';
 import { Space, Popconfirm } from 'antd';
@@ -16,7 +13,7 @@ import { EditorContext } from '../index';
 const type = 'DragableMedicalItem';
 
 const DragableItem = ({ data, index }) => {
-  const { selectedElementList, setSelectedElementList, setFormData } = useContext(EditorContext);
+  const { selectedElementList, setSelectedElementList, setFormData, activeTabKey } = useContext(EditorContext);
   const ref = useRef();
 
   // 设置字段进行编辑
@@ -28,7 +25,16 @@ const DragableItem = ({ data, index }) => {
   // 删除组件
   const onDelete = () => {
     setFormData({});
-    setSelectedElementList(selectedElementList.reduce((p, c, cIndex) => index === cIndex ? p : [...p, c], []));
+
+    const d = selectedElementList.reduce((p, c) => {
+      if (c.id === activeTabKey) {
+        return [...p, {...c, template: c.template.filter((i, cIndex) => cIndex !== index)}];
+      }
+
+      return [...p, c];
+    }, []);
+
+    setSelectedElementList(d);
   };
 
   const [, drop] = useDrop({
@@ -69,7 +75,6 @@ const DragableItem = ({ data, index }) => {
         <Space>
           {data.cnName}
           <LinkBtn onClick={onForm}><FormOutlined /></LinkBtn>
-          {/* <LinkBtn onClick={onCreate}><PlusSquareOutlined /></LinkBtn> */}
           <Popconfirm
             title="确实删除该组件？"
             onConfirm={onDelete}
