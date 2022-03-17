@@ -18,7 +18,7 @@ const BaseTable = (props) => {
     fieldList = [],
   } = props;
 
-  const { data } = useContext(EleDetailContext);
+  const { formData } = useContext(EleDetailContext);
   const [dataSource, setDataSource] = useState([]);
   const [dataObject, setDataObject] = useState({});
 
@@ -37,13 +37,13 @@ const BaseTable = (props) => {
   }));
 
   useEffect(() => {
-    if (data) {
-      const { values, newDataSource } = getFormValues(data, fieldList, index);
+    if (formData) {
+      const { values, newDataSource } = getFormValues(formData, fieldList, index);
 
       setDataSource(newDataSource);
       setDataObject(values);
     }
-  }, [data]);
+  }, [formData]);
 
   return (
     <React.Fragment>

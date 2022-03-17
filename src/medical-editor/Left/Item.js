@@ -2,14 +2,17 @@ import React, { useState, useContext } from 'react';
 import DownOutlined from '@ant-design/icons/DownOutlined';
 import UpOutlined from '@ant-design/icons/UpOutlined';
 import PlusOutlined from '@ant-design/icons/PlusOutlined';
-import { Space, Modal } from 'antd';
-import { clone } from '../../_util';
+import { Space } from 'antd';
+import { genId, confirm, clone } from '../../_util';
 import './index.less';
 
 import { EditorContext } from '../index';
 
-const Left = ({ data = {} }) => {
-  const { selectedElementList, setSelectedElementList } = useContext(EditorContext);
+const Item = ({ data = {} }) => {
+  const {
+    selectedElementList, setSelectedElementList,
+    activeTabKey, setActiveTabKey,
+  } = useContext(EditorContext);
 
   const [collapsed, setCollapsed] = useState(false);
 
@@ -17,25 +20,39 @@ const Left = ({ data = {} }) => {
     setCollapsed(!collapsed);
   };
 
-  // 添加病历组件
+  /*
+  * 根据 activeTabKey 标示进行添加数据
+  * PS：当 activeTabKey 不存在时，标示初始化添加数据
+  * */
   const onAddElement = () => {
-    if (selectedElementList.some(item => item.elementNo === data.elementNo)) {
-      Modal.confirm({
-        title: '提示',
-        content: `检测到当前已经添加了“${data.cnName}”组件，是否继续添加？`,
-        okText: '取消',
-        cancelText: '继续添加',
-        onCancel() {
+    if (activeTabKey) {
+      if (selectedElementList.filter(i => i.id === activeTabKey)[0]?.template.some(item => item.elementNo === data.elementNo)) {
+        confirm(`检测到当前选项卡已经添加了“${data.cnName}”组件，是否确认添加？`).then(() => {
           setData();
-        },
-      });
+        });
+      } else {
+        setData();
+      }
     } else {
-      setData();
+      const id = genId();
+      setSelectedElementList([{
+        id,
+        template: [clone(data)],
+      }]);
+      setActiveTabKey(id);
     }
   };
 
   const setData = () => {
-    setSelectedElementList(clone([...selectedElementList, data]));
+    const d = selectedElementList.reduce((p, c) => {
+      if (c.id === activeTabKey) {
+        return [...p, {...c, template: [...c.template, data]}];
+      }
+
+      return [...p, c];
+    }, []);
+
+    setSelectedElementList(clone(d));
   };
 
   return (
@@ -62,4 +79,4 @@ const Left = ({ data = {} }) => {
   );
 };
 
-export default Left;
+export default Item;

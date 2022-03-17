@@ -15,7 +15,7 @@ const Nrs = (props) => {
     fieldList = [],
   } = props;
 
-  const { data } = useContext(EleDetailContext);
+  const { formData } = useContext(EleDetailContext);
   const [dataObject, setDataObject] = useState({});
 
   const columns = [
@@ -31,12 +31,12 @@ const Nrs = (props) => {
   ];
 
   useEffect(() => {
-    if (data) {
-      const { values } = getFormValues(data, fieldList, index);
+    if (formData) {
+      const { values } = getFormValues(formData, fieldList, index);
 
       setDataObject(values);
     }
-  }, [data]);
+  }, [formData]);
 
   return (
     <React.Fragment>

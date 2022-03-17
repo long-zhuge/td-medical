@@ -5,7 +5,7 @@
 import React, { useContext, useEffect } from 'react';
 import SaveOutlined from '@ant-design/icons/SaveOutlined';
 import { Divider } from 'antd';
-import { outPutFormValues, getFormValues, getFormName } from '../_util';
+import { outPutFormValues, getFormValues, getFormName, isEmptyObject, clone } from '../_util';
 
 import { EleContext } from './index';
 
@@ -21,42 +21,39 @@ const FormBox = (props) => {
   } = props;
 
   const mainParams = { elementNo, enName, cnName }; // 主对象属性。在提交给后端的数据中，必须携带
-  const { form, data, onFinish } = useContext(EleContext);
+  const { form, onFinish, activeTabKey, formData } = useContext(EleContext);
 
   // 获取到回显数据后，进行表单赋值
   useEffect(() => {
-    if (data) {
+    if (formData) {
       if (customSetFieldsValue) {
         customSetFieldsValue();
       } else {
-        const { values } = getFormValues(data, fieldList, index);
+        const { values } = getFormValues(formData, fieldList, index);
 
         form.setFieldsValue(values);
       }
     }
-  }, [data]);
+  }, [formData]);
 
-  const onSave = () => {
+  // 组件的保存草稿
+  const onSubmitDraft = () => {
     const fields = onBeforeSave ? onBeforeSave() : fieldList.reduce((p, c) => {
       const fieldsArray = getFormName(c.valueToName, index);
 
       return [...p, ...fieldsArray];
     }, []);
 
-    form.validateFields(fields).then(values => {
-      if (JSON.stringify(values) === '{}') {
-        return;
-      }
+    const values = clone(form.getFieldsValue(fields));
 
-      onFinish(outPutFormValues(values, fieldList, mainParams));
-    }).catch((err) => {
-      console.log(err);
-    })
+    if (isEmptyObject(values)) {
+      onFinish('draft', outPutFormValues(values, fieldList, mainParams), activeTabKey)
+    }
   };
 
   return (
     <React.Fragment>
-      <Divider>{cnName}<SaveOutlined style={{ marginLeft: 6, color: '#5468ff' }} onClick={onSave} /></Divider>
+      <Divider>{cnName}<SaveOutlined style={{ marginLeft: 6, color: '#5468ff' }} onClick={onSubmitDraft} /></Divider>
       {props.children}
     </React.Fragment>
   );

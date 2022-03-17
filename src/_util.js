@@ -2,13 +2,28 @@
 import InnerHtml from 'td-antd/es/inner-html';
 import tools from 'td-antd/es/tools';
 
-const { typeOf } = tools;
+const { typeOf, genNonDuplicateID } = tools;
 
 // 是否为移动端
 export const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
 
 // 简易版克隆数据
 export const clone = (data) => JSON.parse(JSON.stringify(data));
+
+// 统一的浮层
+export const confirm = (text = '') => {
+  return new Promise((resolve) => {
+    if (window.confirm(text)) {
+      resolve();
+    }
+  });
+};
+
+// 判断 Object 对象是否为空
+export const isEmptyObject = (obj = {}) => Object.getOwnPropertyNames(obj).length > 0;
+
+// 获取随机 id
+export const genId = () => genNonDuplicateID(6);
 
 // 将 "#111#222#333#" 转为 [111, 222, 333]
 export const toMap = (string = '') => {

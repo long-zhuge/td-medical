@@ -36,7 +36,7 @@ const TableList = (props) => {
     fieldList = [],
   } = props;
 
-  const { form, data } = useContext(EleContext);
+  const { form, formData } = useContext(EleContext);
   const [dataSource, setDataSource] = useState([]);
 
   const columns = fieldList.map(item => ({
@@ -78,7 +78,7 @@ const TableList = (props) => {
     <FormBox
       {...props}
       customSetFieldsValue={() => {
-        const { values, newDataSource = [] } = getFormValues(data, fieldList, index);
+        const { values, newDataSource = [] } = getFormValues(formData, fieldList, index);
 
         setDataSource(newDataSource);
         form.setFieldsValue(values);

@@ -988,7 +988,7 @@
       {
         "cnName": "根据研究者的判断是否符合严重不良事件定义？",
         "enName": "SFDAdefinition",
-        "fieldNo": "F00060",
+        "fieldNo": "F00071",
         "inputType": "radio",
         "map": "否#是",
         "meddra": "",
