@@ -22,7 +22,7 @@ const Editor = (props) => {
   // 当前所有 tabs 中的组件数据：[{ id, templateName, templateDesc, template }]
   const [selectedElementList, setSelectedElementList] = useState(defaultData);
   // 当前 Middle 组件选中的选项卡
-  const [activeTabKey, setActiveTabKey] = useState('');
+  const [activeTabKey, setActiveTabKey] = useState(defaultData[0]?.id);
 
   // 需要编辑的字段
   const [formData, setFormData] = useState({});
@@ -47,9 +47,6 @@ const Editor = (props) => {
       setActiveTabKey('');
     }
   }, [selectedElementList]);
-
-  console.log('activeTabKey：', activeTabKey);
-  console.log('selectedElementList：', selectedElementList);
 
   return (
     <EditorContext.Provider

@@ -19,6 +19,9 @@ export const confirm = (text = '') => {
   });
 };
 
+// 判断 Object 对象是否为空
+export const isEmptyObject = (obj = {}) => Object.getOwnPropertyNames(obj).length > 0;
+
 // 获取随机 id
 export const genId = () => genNonDuplicateID(6);
 

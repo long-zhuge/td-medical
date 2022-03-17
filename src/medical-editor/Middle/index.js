@@ -46,6 +46,7 @@ const Middle = () => {
       });
 
       setSelectedElementList(clone(selectedElementList));
+      toast({ text: 'success' });
     })
   };
 
@@ -177,6 +178,7 @@ const Middle = () => {
         <div className="td-medical-editor-middle">
           <Tabs
             type="editable-card"
+            destroyInactiveTabPane
             activeKey={activeTabKey}
             onEdit={onTabsEdit}
             onChange={onTabsChange}

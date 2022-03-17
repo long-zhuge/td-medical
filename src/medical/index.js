@@ -10,12 +10,10 @@
 * }
 * */
 
-// todo list: 疾病史、导联心电图检查 未开发
-
-import React from 'react';
-import { Form, Button } from 'antd';
+import React, { useState, useEffect } from 'react';
+import { Form, Button, Tabs } from 'antd';
 import Back from '../_components/Back';
-import { outPutFormValues, isMobile, filterEleMapToComponent } from '../_util';
+import { outPutFormValues, isMobile, filterEleMapToComponent, isEmptyObject } from '../_util';
 
 // 病历组件
 import Detail from './detail';
@@ -46,28 +44,55 @@ const ele = {
 
 const MedicalElement = (props) => {
   const {
-    data,
+    data = [],
     readOnly = false,
     template = [], // 用于渲染模板
     onFinish = () => {},
     dept, // 医院科室数据
     backurl,
     footerHidden = false, // 隐藏按钮
+    onTabsChange = () => {},
   } = props;
 
   const [form] = Form.useForm();
+  const [formData, setFormData] = useState(); // 用于回显当前选项卡表单的数据
+  const [activeTabKey, setActiveTabKey] = useState('0');
 
-  // 保存
+  useEffect(() => {
+    if (data[0]) {
+      form.resetFields();
+      const d = data.filter(({ templateOrder }) => templateOrder == activeTabKey)[0];
+
+      if (isEmptyObject(d)) {
+        setFormData(d);
+      }
+    }
+  }, [activeTabKey]);
+
+  // 提交数据
   const onSubmit = () => {
-    const fieldList = template.reduce((p, c) => {
+    const fieldList = template.filter((i, index) => index === +activeTabKey)[0].template.reduce((p, c) => {
       return [...p, ...c.fieldList];
     }, []);
 
     form.validateFields().then((values) => {
-      onFinish(outPutFormValues(values, fieldList));
+      onFinish('submit', outPutFormValues(values, fieldList), activeTabKey);
     }).catch((err) => {
       console.log(err);
     })
+  };
+
+  // 保存草稿
+  const onSubmitDraft = () => {
+    const fieldList = template.filter((i, index) => index === +activeTabKey)[0].template.reduce((p, c) => {
+      return [...p, ...c.fieldList];
+    }, []);
+
+    const values = form.getFieldsValue(true);
+
+    if (isEmptyObject(values)) {
+      onFinish('draft', outPutFormValues(values, fieldList), activeTabKey);
+    }
   };
 
   if (readOnly) {
@@ -82,20 +107,44 @@ const MedicalElement = (props) => {
         data,
         dept,
         onFinish,
+        activeTabKey,
+        formData,
       }}
     >
-      <Form form={form} layout={isMobile ? 'vertical' : 'horizontal'} className="td-medical-form" scrollToFirstError>
-        {template.map((item, index) => {
-          const Component = filterEleMapToComponent(ele, item.enName);
+      <Form
+        form={form}
+        scrollToFirstError
+        className="td-medical-form"
+        layout={isMobile ? 'vertical' : 'horizontal'}
+      >
+        <Tabs
+          type="card"
+          destroyInactiveTabPane
+          activeKey={activeTabKey}
+          onChange={activeKey => {
+            setActiveTabKey(activeKey);
+            onTabsChange(activeKey);
+          }}
+        >
+          {template.map((temp, templateOrder) => (
+            <Tabs.TabPane tab={temp.templateName} key={templateOrder}>
+              {temp.template.map((item, index) => {
+                const Component = filterEleMapToComponent(ele, item.enName);
 
-          return <Component {...item} index={index} key={item.enName} />;
-        })}
+                return <Component {...item} index={index} key={item.enName} />;
+              })}
+            </Tabs.TabPane>
+          ))}
+        </Tabs>
       </Form>
       {footerHidden ? null : (
         <div className="submit_div" hidden={!template[0]}>
           <Back url={backurl} />
+          <Button type="primary" onClick={onSubmitDraft}>
+            保存草稿
+          </Button>
           <Button type="primary" onClick={onSubmit}>
-            保存
+            提交
           </Button>
         </div>
       )}

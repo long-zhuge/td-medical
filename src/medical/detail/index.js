@@ -2,9 +2,11 @@
 * 病历详情主组件
 * */
 
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import { Tabs } from 'antd';
+
 import Back from '../../_components/Back';
-import { filterEleMapToComponent } from '../../_util';
+import { filterEleMapToComponent, isEmptyObject } from '../../_util';
 
 // 组件开发测试
 import BaseList from './BaseList';
@@ -38,20 +40,48 @@ const MedicalDetail = (props) => {
     template = [], // 用于渲染模板
     backurl,
     footerHidden = false, // 隐藏按钮
+    onTabsChange = () => {},
   } = props;
+
+  const [activeTabKey, setActiveTabKey] = useState('0');
+  const [formData, setFormData] = useState(); // 用于回显当前选项卡表单的数据
+
+  useEffect(() => {
+    if (data[0]) {
+      const d = data.filter(({ templateOrder }) => templateOrder == activeTabKey)[0];
+
+      if (isEmptyObject(d)) {
+        setFormData(d);
+      }
+    }
+  }, [activeTabKey, data]);
 
   return (
     <EleDetailContext.Provider
       // 如果是子组件外部的数据，请通过 context 来进行传递
       value={{
-        data,
+        formData,
       }}
     >
-      {template.map((item, index) => {
-        const Component = filterEleMapToComponent(ele, item.enName);
+      <Tabs
+        type="card"
+        destroyInactiveTabPane
+        activeKey={activeTabKey}
+        onChange={activeKey => {
+          setActiveTabKey(activeKey);
+          onTabsChange(activeKey);
+        }}
+      >
+        {template.map((temp, templateOrder) => (
+          <Tabs.TabPane tab={temp.templateName} key={templateOrder}>
+            {temp.template.map((item, index) => {
+              const Component = filterEleMapToComponent(ele, item.enName);
 
-        return <Component {...item} index={index} key={`${item.enName}_${index}`} />;
-      })}
+              return <Component {...item} index={index} key={`${item.enName}_${index}`} />;
+            })}
+          </Tabs.TabPane>
+        ))}
+      </Tabs>
       {footerHidden ? null : (
         <div className="submit_div" hidden={!template[0]}>
           <Back url={backurl} />

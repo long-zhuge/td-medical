@@ -25,7 +25,7 @@ const MapScore = (props) => {
   } = props;
 
   const [dataSource] = useState(mapToScore(fieldList[0].map));
-  const { data } = useContext(EleDetailContext);
+  const { formData } = useContext(EleDetailContext);
   const [currentScore, setCurrentScore] = useState(); // 当前分值
   const scoreTitle = TEXT[enName];
 
@@ -55,14 +55,14 @@ const MapScore = (props) => {
   ];
 
   useEffect(() => {
-    if (data) {
-      const { values } = getFormValues(data, fieldList, index);
+    if (formData) {
+      const { values } = getFormValues(formData, fieldList, index);
 
       const field = getFormName(fieldList[0].valueToName, index)[0];
 
       setCurrentScore(values[field]);
     }
-  }, [data]);
+  }, [formData]);
 
   return (
     <React.Fragment>
