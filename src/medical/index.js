@@ -67,7 +67,7 @@ const MedicalElement = (props) => {
         setFormData(d);
       }
     }
-  }, [activeTabKey]);
+  }, [activeTabKey, data]);
 
   // 提交数据
   const onSubmit = () => {

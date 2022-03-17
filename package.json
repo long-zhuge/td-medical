@@ -1,6 +1,6 @@
 {
   "name": "td-medical",
-  "version": "0.0.9-alpha.17",
+  "version": "0.0.9-alpha.19",
   "description": "病历模板组件，快速生成病历模板和模板表单",
   "main": "lib/index.js",
   "module": "es/index.js",

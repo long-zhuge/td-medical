@@ -36,7 +36,7 @@ const ele = {
 
 const MedicalDetail = (props) => {
   const {
-    data,
+    data = [],
     template = [], // 用于渲染模板
     backurl,
     footerHidden = false, // 隐藏按钮
