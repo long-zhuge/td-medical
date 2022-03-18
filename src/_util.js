@@ -99,6 +99,9 @@ export function outPutFormValues(currentValues = {}, fieldList = [], mainParams 
     // 当 fieldList 中的对象的 enName 等于 keys[0] 字段时，获取到数据对象
     const obj = fieldList.filter(i => i.enName === keys[0])[0];
 
+    // 当 obj 对象无法获取到时，返回
+    if (!obj) return;
+
     // valueType 是否等于 list
     const valueTypeIsList = obj.valueType === 'list';
 

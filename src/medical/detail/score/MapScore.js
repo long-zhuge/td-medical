@@ -2,13 +2,11 @@
 * 外周运动神经障碍（Peripheral motor nerve disorder）
 * */
 
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import CheckOutlined from '@ant-design/icons/CheckOutlined';
 import { Table, Divider } from 'antd';
 import tools from 'td-antd/es/tools';
-import { getFormValues, getFormName, mapToScore } from '../../../_util';
-
-import { EleDetailContext } from '../index';
+import { mapToScore } from '../../../_util';
 
 const { typeOf } = tools;
 
@@ -20,13 +18,11 @@ const MapScore = (props) => {
   const {
     cnName,
     enName,
-    index = 0,
+    score,
     fieldList = [],
   } = props;
 
   const [dataSource] = useState(mapToScore(fieldList[0].map));
-  const { formData } = useContext(EleDetailContext);
-  const [currentScore, setCurrentScore] = useState(); // 当前分值
   const scoreTitle = TEXT[enName];
 
   const columns = [
@@ -47,22 +43,12 @@ const MapScore = (props) => {
       title: '评估',
       dataIndex: 'score',
       render: (t) => {
-        if(typeOf(currentScore, 'Number') && t === currentScore) {
+        if(typeOf(score, 'Number') && t === score) {
           return <CheckOutlined />;
         }
       },
     },
   ];
-
-  useEffect(() => {
-    if (formData) {
-      const { values } = getFormValues(formData, fieldList, index);
-
-      const field = getFormName(fieldList[0].valueToName, index)[0];
-
-      setCurrentScore(values[field]);
-    }
-  }, [formData]);
 
   return (
     <React.Fragment>

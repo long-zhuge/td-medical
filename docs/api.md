@@ -13,11 +13,11 @@ nav:
 |readOnly|只读，等于true时，会渲染成详情页模式|Boolean|false|
 |template|渲染所需的数据，必传|Array|-|
 |data|所有回显数据，[查看格式](/api#data-数据格式)|Array|-|
-|onFinish|点击提交的回调函数<br />`type = submit(提交) / draft(草稿)`|Function(type, values, templateOrder)|-|
+|onFinish|点击提交的回调函数<br />`type = submit(提交) / draft(草稿)`|Function(type`<String>`, values`<Object>`, templateOrder`<Number>`)|-|
 |dept|科室数据|Array|-|
 |backurl|返回按钮的地址，值为 false 时不显示按钮|String|-|
 |footerHidden|隐藏操作按钮|Boolean|false|
-|onTabsChange|切换选项卡的回调函数|Function(templateOrder)|-|
+|onTabsChange|切换选项卡的回调函数|Function(templateOrder`<String>`)|-|
 
 ### data 数据格式
 

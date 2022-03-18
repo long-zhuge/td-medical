@@ -208,7 +208,7 @@
         "meddra": "",
         "remarks": "",
         "rule": "",
-        "unit": "月",
+        "unit": "",
         "valueToName": "value1=medicationHistory,value2=medicationHistory_desc",
         "valueType": "object",
         "required": true

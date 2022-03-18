@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import {Divider} from 'antd';
 import {MedicalEditor, Medical} from 'td-medical';
-import { clone } from 'td-medical/_util';
+import {clone} from 'td-medical/_util';
 
 const Demo = () => {
   const [template, setTemplate] = useState([]);

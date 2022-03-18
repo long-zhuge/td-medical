@@ -6,7 +6,8 @@ import React, { useState, useEffect } from 'react';
 import { Tabs } from 'antd';
 
 import Back from '../../_components/Back';
-import { filterEleMapToComponent, isEmptyObject } from '../../_util';
+import FormBox from './FormBox';
+import { filterEleMapToComponent, isEmptyObject, clone } from '../../_util';
 
 // 组件开发测试
 import BaseList from './BaseList';
@@ -20,7 +21,7 @@ import MapScore from './score/MapScore';
 export const EleDetailContext = React.createContext({});
 
 const ele = {
-  // 基本信息、生命体征、门诊病历主体部分
+  // 基本信息、生命体征、门诊主体
   'base|vitalSigns|outpatientContent|projectDesc': BaseList,
   // 合并用药
   'combinedMedication|SFDA|SFDADone': BaseTable,
@@ -44,14 +45,16 @@ const MedicalDetail = (props) => {
   } = props;
 
   const [activeTabKey, setActiveTabKey] = useState('0');
-  const [formData, setFormData] = useState(); // 用于回显当前选项卡表单的数据
+  const [formData, setFormData] = useState({}); // 用于回显当前选项卡表单的数据
 
   useEffect(() => {
     if (data[0]) {
-      const d = data.filter(({ templateOrder }) => templateOrder == activeTabKey)[0];
+      const d = data.filter(({ templateOrder }) => templateOrder === +activeTabKey)[0];
 
       if (isEmptyObject(d)) {
-        setFormData(d);
+        setFormData(clone(d));
+      } else {
+        setFormData({});
       }
     }
   }, [activeTabKey, data]);
@@ -78,10 +81,15 @@ const MedicalDetail = (props) => {
               const Component = filterEleMapToComponent(ele, item.enName);
 
               return (
-                <React.Fragment>
-                  <Component {...item} index={index} key={`${item.enName}_${index}`} />
-                  <br /><br />
-                </React.Fragment>
+                <FormBox key={`${item.enName}_${index}`} index={index} fieldList={item.fieldList} formData={formData}>
+                  {(res) => (
+                    <Component
+                      {...item}
+                      {...res}
+                      index={index}
+                    />
+                  )}
+                </FormBox>
               );
             })}
           </Tabs.TabPane>
