@@ -7,7 +7,7 @@ nav:
 
 ## 更新日志
 
-### 🚀 0.0.9-alpha.21
+### 🚀 0.0.9-alpha.22
 
 `2022-03-18`
 
@@ -17,6 +17,7 @@ nav:
   - 优化 Detail.Inspect 组件的 title，在无时间时，不展示冒号
   - 优化基础字段类型 radio_desc，使其输入框联动第一个枚举值
   - 优化 values 为空时不执行 onFinish
+  - 优化详情组件，增加 FormBox 中间插件来统一处理数据
 - MedicalEditor
   - 优化 Middle 中组件的 title 样式，视觉上更好区分组件
 

@@ -44,6 +44,7 @@ const FormBox = (props) => {
       return [...p, ...fieldsArray];
     }, []);
 
+    // 使用 clone 可以将 values 中 undefined 值过滤掉
     const values = clone(form.getFieldsValue(fields));
 
     if (isEmptyObject(values)) {

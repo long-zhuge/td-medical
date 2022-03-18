@@ -2,21 +2,17 @@
 * 指标检查，如：血常规、尿常规、肝肾功能
 * */
 
-import React, { useContext, useEffect, useState } from 'react';
+import React from 'react';
 import { Divider, Table } from 'antd';
-import { getFormName, getFormValues } from '../../_util';
-
-import { EleDetailContext } from './index';
+import { getFormName } from '../../_util';
 
 const SemenRoutineQuota = (props) => {
   const {
     cnName,
     index = 0,
     fieldList = [],
+    dataObject = {},
   } = props;
-
-  const { formData } = useContext(EleDetailContext);
-  const [dataObject, setDataObject] = useState({});
 
   const columns = [
     {
@@ -43,14 +39,6 @@ const SemenRoutineQuota = (props) => {
       render: (t) => dataObject[getFormName(t, index)[2]],
     },
   ];
-
-  useEffect(() => {
-    if (formData) {
-      const { values } = getFormValues(formData, fieldList, index);
-
-      setDataObject(values);
-    }
-  }, [formData]);
 
   const renderTitle = () => {
     const date = dataObject[`sampleDate_${index}`];

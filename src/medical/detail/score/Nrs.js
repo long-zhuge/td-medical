@@ -2,21 +2,17 @@
 * NRS评分组件
 * */
 
-import React, { useContext, useEffect, useState } from 'react';
+import React from 'react';
 import { Table, Divider } from 'antd';
-import { getFormValues, getFormName } from '../../../_util';
-
-import { EleDetailContext } from '../index';
+import { getFormName } from '../../../_util';
 
 const Nrs = (props) => {
   const {
     cnName,
     index = 0,
     fieldList = [],
+    dataObject = {},
   } = props;
-
-  const { formData } = useContext(EleDetailContext);
-  const [dataObject, setDataObject] = useState({});
 
   const columns = [
     {
@@ -29,14 +25,6 @@ const Nrs = (props) => {
       render: (t) => dataObject[getFormName(t, index)[0]],
     },
   ];
-
-  useEffect(() => {
-    if (formData) {
-      const { values } = getFormValues(formData, fieldList, index);
-
-      setDataObject(values);
-    }
-  }, [formData]);
 
   return (
     <React.Fragment>

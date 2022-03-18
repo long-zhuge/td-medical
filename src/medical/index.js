@@ -13,7 +13,7 @@
 import React, { useState, useEffect } from 'react';
 import { Form, Button, Tabs } from 'antd';
 import Back from '../_components/Back';
-import { outPutFormValues, isMobile, filterEleMapToComponent, isEmptyObject } from '../_util';
+import { outPutFormValues, isMobile, filterEleMapToComponent, isEmptyObject, clone } from '../_util';
 
 // 病历组件
 import Detail from './detail';
@@ -57,16 +57,18 @@ const MedicalElement = (props) => {
   } = props;
 
   const [form] = Form.useForm();
-  const [formData, setFormData] = useState(); // 用于回显当前选项卡表单的数据
+  const [formData, setFormData] = useState({}); // 用于回显当前选项卡表单的数据
   const [activeTabKey, setActiveTabKey] = useState('0');
 
   useEffect(() => {
     if (data[0]) {
       form.resetFields();
-      const d = data.filter(({ templateOrder }) => templateOrder == activeTabKey)[0];
+      const d = data.filter(({ templateOrder }) => templateOrder === +activeTabKey)[0];
 
       if (isEmptyObject(d)) {
-        setFormData(d);
+        setFormData(clone(d));
+      } else {
+        setFormData({});
       }
     }
   }, [activeTabKey, data]);
@@ -136,8 +138,8 @@ const MedicalElement = (props) => {
                 const Component = filterEleMapToComponent(ele, item.enName);
 
                 return (
-                  <React.Fragment>
-                    <Component {...item} index={index} key={item.enName} />
+                  <React.Fragment key={`${item.enName}_${index}`}>
+                    <Component {...item} index={index} />
                     <br /><br />
                   </React.Fragment>
                 );

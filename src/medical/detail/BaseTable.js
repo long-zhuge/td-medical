@@ -3,24 +3,19 @@
 *  PS：合并用药
 * */
 
-import React, { useContext, useState, useEffect } from 'react';
+import React from 'react';
 import CheckOutlined from '@ant-design/icons/CheckOutlined';
 import { Divider, Table } from 'antd';
 import typeOf from 'td-antd/es/tools/typeOf';
-import { getFormValues } from '../../_util';
-
-import { EleDetailContext } from './index';
 
 const BaseTable = (props) => {
   const {
     cnName,
     index = 0,
     fieldList = [],
+    dataObject = {},
+    dataSource = [],
   } = props;
-
-  const { formData } = useContext(EleDetailContext);
-  const [dataSource, setDataSource] = useState([]);
-  const [dataObject, setDataObject] = useState({});
 
   const columns = fieldList.map(item => ({
     align: 'center',
@@ -35,15 +30,6 @@ const BaseTable = (props) => {
       return text;
     },
   }));
-
-  useEffect(() => {
-    if (formData) {
-      const { values, newDataSource } = getFormValues(formData, fieldList, index);
-
-      setDataSource(newDataSource);
-      setDataObject(values);
-    }
-  }, [formData]);
 
   return (
     <React.Fragment>
