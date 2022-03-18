@@ -77,16 +77,19 @@ const MedicalDetail = (props) => {
             {temp.template.map((item, index) => {
               const Component = filterEleMapToComponent(ele, item.enName);
 
-              return <Component {...item} index={index} key={`${item.enName}_${index}`} />;
+              return (
+                <React.Fragment>
+                  <Component {...item} index={index} key={`${item.enName}_${index}`} />
+                  <br /><br />
+                </React.Fragment>
+              );
             })}
           </Tabs.TabPane>
         ))}
       </Tabs>
-      {footerHidden ? null : (
-        <div className="submit_div" hidden={!template[0]}>
-          <Back url={backurl} />
-        </div>
-      )}
+      <div className="submit_div" hidden={!template[0] || footerHidden}>
+        <Back url={backurl} />
+      </div>
     </EleDetailContext.Provider>
   );
 };

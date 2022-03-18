@@ -204,7 +204,7 @@
         "enName": "medicationHistory",
         "fieldNo": "F00040",
         "inputType": "radio_desc",
-        "map": "无#有",
+        "map": "有#无",
         "meddra": "",
         "remarks": "",
         "rule": "",

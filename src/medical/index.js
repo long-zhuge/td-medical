@@ -78,7 +78,9 @@ const MedicalElement = (props) => {
     }, []);
 
     form.validateFields().then((values) => {
-      onFinish('submit', outPutFormValues(values, fieldList), activeTabKey);
+      if (isEmptyObject(values)) {
+        onFinish('submit', outPutFormValues(values, fieldList), activeTabKey);
+      }
     }).catch((err) => {
       console.log(err);
     })
@@ -133,23 +135,26 @@ const MedicalElement = (props) => {
               {temp.template.map((item, index) => {
                 const Component = filterEleMapToComponent(ele, item.enName);
 
-                return <Component {...item} index={index} key={item.enName} />;
+                return (
+                  <React.Fragment>
+                    <Component {...item} index={index} key={item.enName} />
+                    <br /><br />
+                  </React.Fragment>
+                );
               })}
             </Tabs.TabPane>
           ))}
         </Tabs>
       </Form>
-      {footerHidden ? null : (
-        <div className="submit_div" hidden={!template[0]}>
-          <Back url={backurl} />
-          <Button type="primary" {...draftButtonProps} onClick={onSubmitDraft}>
-            保存草稿
-          </Button>
-          <Button type="primary" {...submitButtonProps} onClick={onSubmit}>
-            提交
-          </Button>
-        </div>
-      )}
+      <div className="submit_div" hidden={!template[0] || footerHidden}>
+        <Back url={backurl} />
+        <Button type="primary" {...draftButtonProps} onClick={onSubmitDraft}>
+          保存草稿
+        </Button>
+        <Button type="primary" {...submitButtonProps} onClick={onSubmit}>
+          提交
+        </Button>
+      </div>
     </EleContext.Provider>
   );
 };
