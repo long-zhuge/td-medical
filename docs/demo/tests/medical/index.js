@@ -29,7 +29,7 @@ const Demo = () => {
           let is;
 
           const d = data.reduce((p, c) => {
-            if (c.templateOrder == templateOrder) {
+            if (+c.templateOrder === +templateOrder) {
               is = true;
               return [...p, {...c, ...values}]
             }

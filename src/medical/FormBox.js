@@ -25,7 +25,7 @@ const FormBox = (props) => {
 
   // 获取到回显数据后，进行表单赋值
   useEffect(() => {
-    if (formData) {
+    if (isEmptyObject(formData)) {
       if (customSetFieldsValue) {
         customSetFieldsValue();
       } else {

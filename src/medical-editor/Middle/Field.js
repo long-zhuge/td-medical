@@ -41,7 +41,11 @@ const Field = ({ data = {}, index, index2, method }) => {
   };
 
   return (
-    <div className="middle-item-content-field">
+    <div
+      className={cx('middle-item-content-field', {
+        'middle-item-content-field-required': data.required,
+      })}
+    >
       <span
         className={cx({
           'middle-item-content-field-disabled': disabled,
