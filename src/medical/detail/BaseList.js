@@ -6,6 +6,7 @@ import React from 'react';
 import { Divider } from 'antd';
 import DescList from 'td-antd/es/desc-list';
 import { getFormName, renderValue, isTileComponent } from '../../_util';
+import '../index.less';
 
 const BaseList = (props) => {
   const {
@@ -18,6 +19,7 @@ const BaseList = (props) => {
 
   const columns = fieldList.map(item => ({
     title: item.cnName,
+    className: 'pre-wrap',
     render: () => renderValue({
       dataObject,
       keys: getFormName(item.valueToName, index),

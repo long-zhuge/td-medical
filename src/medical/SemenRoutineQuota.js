@@ -33,12 +33,12 @@ const SemenRoutineQuota = (props) => {
     {
       title: '结果',
       dataIndex: 'valueToName',
-      render: (t) => <Number name={getFormName(t, index)[0]} message={message} required={false} />,
+      render: (t, r) => <Number name={getFormName(t, index)[0]} message={message} required={r.required} />,
     },
     {
       title: '临床判断',
       dataIndex: 'valueToName',
-      render: (t) => <Text name={getFormName(t, index)[1]} message={message} required={false} />,
+      render: (t, r) => <Text name={getFormName(t, index)[1]} message={message} required={r.required} />,
     },
   ];
 

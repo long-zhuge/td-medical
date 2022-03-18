@@ -799,7 +799,7 @@
         "unit": "ml",
         "valueToName": "value1=semenAmount_result,value2=semenAmount_clinicalJudgment",
         "valueType": "object",
-        "required": true
+        "required": false
       },
       {
         "cnName": "精子浓度",
@@ -813,7 +813,7 @@
         "unit": "/ml",
         "valueToName": "value1=spermConcentration_result,value2=spermConcentration_clinicalJudgment",
         "valueType": "object",
-        "required": true
+        "required": false
       },
       {
         "cnName": "前向运动精子",
@@ -827,7 +827,7 @@
         "unit": "%",
         "valueToName": "value1=forwardMotion_result,value2=forwardMotion_clinicalJudgment",
         "valueType": "object",
-        "required": true
+        "required": false
       },
       {
         "cnName": "正常形态精子",
@@ -841,7 +841,7 @@
         "unit": "%",
         "valueToName": "value1=spermNormal_result,value2=spermNormal_clinicalJudgment",
         "valueType": "object",
-        "required": true
+        "required": false
       }
     ],
     "meddra": "",
@@ -865,7 +865,7 @@
         "unit": "",
         "valueToName": "value1=semenPH_result,value2=semenPH_clinicalJudgment",
         "valueType": "object",
-        "required": true
+        "required": false
       },
       {
         "cnName": "DFI",
@@ -879,7 +879,7 @@
         "unit": "%",
         "valueToName": "value1=semenDFI_result,value2=semenDFI_clinicalJudgment",
         "valueType": "object",
-        "required": true
+        "required": false
       },
       {
         "cnName": "HDS",
@@ -893,7 +893,7 @@
         "unit": "%",
         "valueToName": "value1=semenHDS_result,value2=semenHDS_clinicalJudgment",
         "valueType": "object",
-        "required": true
+        "required": false
       }
     ],
     "meddra": "",
@@ -1049,7 +1049,7 @@
         "unit": "",
         "valueToName": "value1=backgroundNRS",
         "valueType": "object",
-        "required": true
+        "required": false
       },
       {
         "cnName": "爆发痛 NRS 评分",
@@ -1063,7 +1063,7 @@
         "unit": "",
         "valueToName": "value1=burstNRS",
         "valueType": "object",
-        "required": true
+        "required": false
       },
       {
         "cnName": "爆发痛 次数/天",
@@ -1077,7 +1077,7 @@
         "unit": "",
         "valueToName": "value1=burstCount",
         "valueType": "object",
-        "required": true
+        "required": false
       },
       {
         "cnName": "爆发痛 持续时间",
@@ -1091,7 +1091,7 @@
         "unit": "",
         "valueToName": "value1=burstDuration",
         "valueType": "object",
-        "required": true
+        "required": false
       }
     ],
     "meddra": "",
@@ -1115,7 +1115,7 @@
         "unit": "",
         "valueToName": "value1=QLS",
         "valueType": "object",
-        "required": true
+        "required": false
       }
     ],
     "meddra": "",
@@ -1139,7 +1139,7 @@
         "unit": "",
         "valueToName": "value1=PSND",
         "valueType": "object",
-        "required": true
+        "required": false
       }
     ],
     "meddra": "",
@@ -1163,7 +1163,7 @@
         "unit": "",
         "valueToName": "value1=PMND",
         "valueType": "object",
-        "required": true
+        "required": false
       }
     ],
     "meddra": "",
@@ -1187,7 +1187,7 @@
         "unit": "",
         "valueToName": "value1=neuralgia",
         "valueType": "object",
-        "required": true
+        "required": false
       }
     ],
     "meddra": "",

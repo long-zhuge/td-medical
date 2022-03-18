@@ -46,7 +46,7 @@ const MapScore = (props) => {
 
   return (
     <FormBox {...props}>
-      <FormItem name={`${fieldList[0].enName}_${index}`} required={false}>
+      <FormItem name={`${fieldList[0].enName}_${index}`} required={fieldList[0].required}>
         <Radio.Group style={{ width: '100%' }}>
           <Table
             bordered

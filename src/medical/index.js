@@ -63,7 +63,7 @@ const MedicalElement = (props) => {
   useEffect(() => {
     if (data[0]) {
       form.resetFields();
-      const d = data.filter(({ templateOrder }) => templateOrder === +activeTabKey)[0];
+      const d = data.filter(({ templateOrder }) => +templateOrder === +activeTabKey)[0];
 
       if (isEmptyObject(d)) {
         setFormData(clone(d));
