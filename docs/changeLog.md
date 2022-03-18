@@ -7,6 +7,13 @@ nav:
 
 ## 更新日志
 
+### 🚀 0.0.9-alpha.20
+
+`2022-03-18`
+
+- Medical
+  - 新增属性：submitButtonProps、draftButtonProps
+
 ### 🚀 0.0.9-alpha.19
 
 `2022-03-17`

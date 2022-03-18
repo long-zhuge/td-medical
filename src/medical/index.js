@@ -52,6 +52,8 @@ const MedicalElement = (props) => {
     backurl,
     footerHidden = false, // 隐藏按钮
     onTabsChange = () => {},
+    submitButtonProps = {}, // 提交按钮的 API 属性
+    draftButtonProps = {}, // 草稿按钮的 API 属性
   } = props;
 
   const [form] = Form.useForm();
@@ -140,10 +142,10 @@ const MedicalElement = (props) => {
       {footerHidden ? null : (
         <div className="submit_div" hidden={!template[0]}>
           <Back url={backurl} />
-          <Button type="primary" onClick={onSubmitDraft}>
+          <Button type="primary" {...draftButtonProps} onClick={onSubmitDraft}>
             保存草稿
           </Button>
-          <Button type="primary" onClick={onSubmit}>
+          <Button type="primary" {...submitButtonProps} onClick={onSubmit}>
             提交
           </Button>
         </div>
