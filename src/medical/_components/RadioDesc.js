@@ -16,9 +16,11 @@ export default (props) => {
     ...rest
   } = props;
 
+  const mapList = toMap(map);
+
   return (
     <Row gutter={12}>
-      <Col span={12}>
+      <Col span={10}>
         <FormItem
           label={label}
           name={name}
@@ -29,12 +31,20 @@ export default (props) => {
           </Radio.Group>
         </FormItem>
       </Col>
-      <Col span={12}>
-        <FormItem
-          name={name2}
-          {...rest}
-        />
-      </Col>
+      <FormItem noStyle shouldUpdate>
+        {({ getFieldValue }) => {
+          if (getFieldValue(name) === mapList[0]) {
+            return (
+              <Col span={14}>
+                <FormItem
+                  name={name2}
+                  inputProps={{ placeholder: `请填写${label}` }}
+                />
+              </Col>
+            );
+          }
+        }}
+      </FormItem>
     </Row>
   );
 }

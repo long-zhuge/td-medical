@@ -52,9 +52,15 @@ const SemenRoutineQuota = (props) => {
     }
   }, [formData]);
 
+  const renderTitle = () => {
+    const date = dataObject[`sampleDate_${index}`];
+
+    return date ? `${cnName}：${date}` : cnName;
+  };
+
   return (
     <React.Fragment>
-      <Divider>{cnName}：{dataObject[`sampleDate_${index}`]}</Divider>
+      <Divider>{renderTitle()}</Divider>
       <Table
         bordered
         rowKey="fieldNo"

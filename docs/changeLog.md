@@ -7,6 +7,19 @@ nav:
 
 ## 更新日志
 
+### 🚀 0.0.9-alpha.21
+
+`2022-03-18`
+
+- Medical
+  - 新增属性：submitButtonProps、draftButtonProps
+  - 优化组件上下间隔，视觉上更好区分
+  - 优化 Detail.Inspect 组件的 title，在无时间时，不展示冒号
+  - 优化基础字段类型 radio_desc，使其输入框联动第一个枚举值
+  - 优化 values 为空时不执行 onFinish
+- MedicalEditor
+  - 优化 Middle 中组件的 title 样式，视觉上更好区分组件
+
 ### 🚀 0.0.9-alpha.19
 
 `2022-03-17`
