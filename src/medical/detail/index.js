@@ -3,7 +3,8 @@
 * */
 
 import React, { useState, useEffect } from 'react';
-import { Tabs } from 'antd';
+import ExclamationCircleOutlined from '@ant-design/icons/ExclamationCircleOutlined';
+import { Tabs, Tooltip } from 'antd';
 
 import Back from '../../_components/Back';
 import FormBox from './FormBox';
@@ -76,7 +77,17 @@ const MedicalDetail = (props) => {
         }}
       >
         {template.map((temp, templateOrder) => (
-          <Tabs.TabPane tab={temp.templateName} key={templateOrder}>
+          <Tabs.TabPane
+            key={templateOrder}
+            tab={(
+              <React.Fragment>
+                {temp.templateName}
+                <Tooltip title={temp.templateDesc}>
+                  <ExclamationCircleOutlined style={{ marginLeft: 4 }} hidden={!temp.templateDesc} />
+                </Tooltip>
+              </React.Fragment>
+            )}
+          >
             {temp.template.map((item, index) => {
               const Component = filterEleMapToComponent(ele, item.enName);
 

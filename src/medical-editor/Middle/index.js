@@ -1,12 +1,12 @@
 import React, { useContext, useRef, useState, useEffect } from 'react';
-import { Button, Space, Form, Row, Col, Tabs } from 'antd';
-import FormItem from 'td-antd/es/form-item';
+import { Button, Space, Form, Row, Col, Tabs, Input } from 'antd';
 import toast from 'td-antd/es/toast';
+import useDebounce from 'td-antd/es/tools/useDebounce';
 import DndProviderBox from '../../_components/DndProviderBox';
 import ModalBox from 'td-antd/es/modal-box';
 import Medical from '../../medical';
 import DragableItem from './DragableItem';
-import { genId, confirm, clone } from '../../_util';
+import { genId, confirm } from '../../_util';
 import './index.less';
 
 import { EditorContext } from '../index';
@@ -33,22 +33,16 @@ const Middle = () => {
   }, [activeTabKey]);
 
   // 保存模板名称、模板说明
-  const onSubmitTemplateName = () => {
-    form.validateFields().then(({ templateName, templateDesc }) => {
-      selectedElementList.some(i => {
-        if (i.id === activeTabKey) {
-          i.templateName = templateName;
-          i.templateDesc = templateDesc;
-          return true;
-        }
+  const onSetTemplateName = useDebounce((target, field) => {
+    selectedElementList.some(i => {
+      if (i.id === activeTabKey) {
+        i[field] = target.value.trim();
+        return true;
+      }
 
-        return false;
-      });
-
-      setSelectedElementList(clone(selectedElementList));
-      toast({ text: 'success' });
+      return false;
     })
-  };
+  }, 600);
 
   // 选项卡切换
   const onTabsChange = (activeKey) => {
@@ -185,13 +179,23 @@ const Middle = () => {
           >
             {selectedElementList.map((i, index) => (
               <Tabs.TabPane tab={`第${index+1}次记录`} key={i.id}>
-                <Form form={form}>
-                  <Row gutter={12}>
-                    <Col span={10}><FormItem label="模板名称" name="templateName" /></Col>
-                    <Col span={10}><FormItem label="说明" name="templateDesc" required={false} /></Col>
-                    <Col span={4}><Button type="primary" ghost onClick={onSubmitTemplateName}>保存</Button></Col>
-                  </Row>
-                </Form>
+                <Row gutter={12}>
+                  <Col span={12}>
+                    <Input
+                      addonBefore="模板名称"
+                      defaultValue={i.templateName}
+                      onChange={({ target }) => onSetTemplateName(target, 'templateName')}
+                    />
+                  </Col>
+                  <Col span={12}>
+                    <Input
+                      addonBefore="模板说明"
+                      defaultValue={i.templateDesc}
+                      onChange={({ target }) => onSetTemplateName(target, 'templateDesc')}
+                    />
+                  </Col>
+                </Row>
+                <br />
                 {i.template.map((ele, index2) => <DragableItem data={ele} index={index2} key={`${ele.elementNo}_${index2}`} />)}
               </Tabs.TabPane>
             ))}
