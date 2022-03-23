@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import elementListJson from './elementList.json'; // 原始组件数据，包含：基础组件、特殊组件
+// import { testElement } from '../_util';
 import './index.less';
 
 import Left from './Left';
@@ -14,6 +15,10 @@ const Editor = (props) => {
     confirmLoading,
     onFinish = () => {},
   } = props;
+
+  // useEffect(() => {
+  //   testElement(elementListJson);
+  // }, []);
 
   // 总数据
   const [dataSource, setDataSource] = useState({});

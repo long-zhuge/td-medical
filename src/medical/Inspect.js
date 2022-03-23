@@ -56,7 +56,7 @@ const Inspect = (props) => {
     if (obj) {
       return (
         <div style={{ width: isMobile ? '100%' : 240 }}>
-          <Date {...obj} label={obj.cnName} name={`${obj.enName}_${index}`} required={obj.required} />
+          <Date inputType={obj.inputType} label={obj.cnName} name={`${obj.enName}_${index}`} required={obj.required} />
         </div>
       );
     }
@@ -70,7 +70,7 @@ const Inspect = (props) => {
         rowKey="fieldNo"
         columns={columns}
         pagination={false}
-        dataSource={fieldList.filter(i => i.enName !== 'sampleDate')}
+        dataSource={fieldList.filter(i => !i.enName.includes('ampleDate'))}
         rowClassName="td-editable-row"
         {...mobileTableProps}
       />

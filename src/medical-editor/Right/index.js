@@ -89,6 +89,14 @@ const Right = () => {
                 <Checkbox>必填</Checkbox>
               </FormItem>
               <FormItem
+                name="analysis"
+                label="是否分析"
+                valuePropName="checked"
+                required={false}
+              >
+                <Checkbox>是</Checkbox>
+              </FormItem>
+              <FormItem
                 name="placeholder"
                 label="输入框提示语"
                 required={false}
