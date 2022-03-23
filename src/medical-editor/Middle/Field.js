@@ -10,7 +10,7 @@ import './index.less';
 import { EditorContext } from '../index';
 
 const Field = ({ data = {}, index, index2, method }) => {
-  const { setFormData } = useContext(EditorContext);
+  const { setFormData, rightForm } = useContext(EditorContext);
 
   const [disabled, setDisabled] = useState(!!data.disabled);
 
@@ -34,6 +34,7 @@ const Field = ({ data = {}, index, index2, method }) => {
   // 设置字段进行编辑
   const onForm = () => {
     permission().then(() => {
+      rightForm.resetFields();
       data.index = index;
       data.index2 = index2;
       setFormData({
