@@ -247,3 +247,28 @@ export const mapToScore = (map = '') => {
 
   return mapList;
 };
+
+// 检测组件字段是否正确，是否有重复：enName、fieldNo
+export const testElement = (elementListJson) => {
+  const fieldNos = [];
+  const enNames = [];
+
+  elementListJson.forEach(({ fieldList = [] }) => {
+    fieldList.forEach(({ fieldNo, enName }) => {
+      if (fieldNos.includes(fieldNo)) {
+        alert(fieldNo);
+      } else {
+        fieldNos.push(fieldNo)
+      }
+
+      if (enNames.includes(enName)) {
+        alert(enName);
+      } else {
+        enNames.push(enName)
+      }
+    })
+  })
+
+  console.log('fieldNos: ', fieldNos);
+  console.log('enNames: ', enNames);
+};

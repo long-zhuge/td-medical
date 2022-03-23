@@ -7,13 +7,12 @@ nav:
 
 ## 更新日志
 
-### 🚀 0.0.9-alpha.26
+### 🚀 0.0.9-alpha.27
 
 `2022-03-23`
 
 - MedicalEditor
-  - 优化 elementList.json 的数据，增加 analysis 字段
-  - 修改部分组件的字段：血常规、尿常规、肝肾功能
+  - elementList.json：重新编码字段的 enName、fieldNo，使其更具有组件归属性和拓展性；增加 analysis 字段，使其字段可以被后端进行分析
 
 ### 🚀 0.0.9-alpha.24
 
