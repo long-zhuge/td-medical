@@ -36,7 +36,11 @@ const Field = ({ data = {}, index, index2, method }) => {
     permission().then(() => {
       data.index = index;
       data.index2 = index2;
-      setFormData(data);
+      setFormData({
+        ...data,
+        required: !!data.required,
+        analysis: !!data.analysis,
+      });
     });
   };
 
