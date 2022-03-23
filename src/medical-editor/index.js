@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Form } from 'antd';
 import elementListJson from './elementList.json'; // 原始组件数据，包含：基础组件、特殊组件
 // import { testElement } from '../_util';
 import './index.less';
@@ -30,6 +31,7 @@ const Editor = (props) => {
   const [activeTabKey, setActiveTabKey] = useState(defaultData[0]?.id);
 
   // 需要编辑的字段
+  const [rightForm] = Form.useForm();
   const [formData, setFormData] = useState({});
 
   /*
@@ -62,6 +64,7 @@ const Editor = (props) => {
         selectedElementList,
         setSelectedElementList,
         formData,
+        rightForm,
         setFormData,
         onFinish,
         confirmLoading,

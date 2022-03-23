@@ -7,12 +7,15 @@ nav:
 
 ## 更新日志
 
-### 🚀 0.0.9-alpha.27
+### 🚀 0.0.9-alpha.29
 
 `2022-03-23`
 
 - MedicalEditor
-  - elementList.json：重新编码字段的 enName、fieldNo，使其更具有组件归属性和拓展性；增加 analysis 字段，使其字段可以被后端进行分析
+  - elementList.json
+    - 重新编码字段的 enName、fieldNo，使其更具有组件归属性和拓展性；增加 analysis 字段，使其字段可以被后端进行分析
+    - 删除无用字段
+  - 🐞 修复右侧表单在切换时回显错误的问题
 
 ### 🚀 0.0.9-alpha.24
 

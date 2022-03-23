@@ -8,18 +8,16 @@ import './index.less';
 import { EditorContext } from '../index';
 
 const Right = () => {
-  const { formData, selectedElementList, setSelectedElementList, activeTabKey } = useContext(EditorContext);
-
-  const [form] = Form.useForm();
+  const { formData, selectedElementList, setSelectedElementList, activeTabKey, rightForm } = useContext(EditorContext);
 
   useEffect(() => {
     if (formData.cnName) {
-      form.setFieldsValue(formData);
+      rightForm.setFieldsValue(formData);
     }
   }, [formData]);
 
   const onSubmit = () => {
-    form.validateFields().then((values) => {
+    rightForm.validateFields().then((values) => {
       if (formData.elementNo) {
         // 组件数据修改
         selectedElementList.forEach(i => {
@@ -51,7 +49,7 @@ const Right = () => {
   if (formData.cnName) {
     return (
       <div className="td-medical-editor-right">
-        <Form form={form} layout="vertical" size="small">
+        <Form form={rightForm} layout="vertical" size="small">
           {formData.elementNo ? (
             <React.Fragment>
               <FormItem

@@ -1,5 +1,5 @@
-import React, { useContext, useRef, useState, useEffect } from 'react';
-import { Button, Space, Form, Row, Col, Tabs, Input } from 'antd';
+import React, { useContext, useRef, useState } from 'react';
+import { Button, Space, Row, Col, Tabs, Input } from 'antd';
 import toast from 'td-antd/es/toast';
 import useDebounce from 'td-antd/es/tools/useDebounce';
 import DndProviderBox from '../../_components/DndProviderBox';
@@ -21,16 +21,7 @@ const Middle = () => {
   } = useContext(EditorContext);
 
   const ref = useRef();
-  const [form] = Form.useForm();
   const [templateJson, setTemplateJson] = useState([]);
-
-  // 当前选项卡被激活时，设置模板名称和说明
-  useEffect(() => {
-    if (activeTabKey) {
-      form.resetFields();
-      form.setFieldsValue(selectedElementList.filter(i => i.id === activeTabKey)[0]);
-    }
-  }, [activeTabKey]);
 
   // 保存模板名称、模板说明
   const onSetTemplateName = useDebounce((target, field) => {

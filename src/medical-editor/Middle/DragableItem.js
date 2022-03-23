@@ -14,11 +14,12 @@ import { EditorContext } from '../index';
 const type = 'DragableMedicalItem';
 
 const DragableItem = ({ data, index }) => {
-  const { selectedElementList, setSelectedElementList, setFormData, activeTabKey } = useContext(EditorContext);
+  const { selectedElementList, setSelectedElementList, setFormData, activeTabKey, rightForm } = useContext(EditorContext);
   const ref = useRef();
 
   // 设置字段进行编辑
   const onForm = () => {
+    rightForm.resetFields();
     data.index = index;
     setFormData(data);
   };
