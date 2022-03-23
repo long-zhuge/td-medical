@@ -45,7 +45,8 @@
         "unit": "",
         "valueToName": "value1=sex",
         "valueType": "object",
-        "required": true
+        "required": true,
+        "analysis": true
       },
       {
         "cnName": "民族",
@@ -59,7 +60,8 @@
         "unit": "",
         "valueToName": "value1=nation",
         "valueType": "object",
-        "required": true
+        "required": true,
+        "analysis": true
       },
       {
         "cnName": "出生年月",
@@ -73,7 +75,8 @@
         "unit": "",
         "valueToName": "value1=birthDate",
         "valueType": "object",
-        "required": true
+        "required": true,
+        "analysis": true
       },
       {
         "cnName": "费别",
@@ -87,7 +90,8 @@
         "unit": "",
         "valueToName": "value1=costType",
         "valueType": "object",
-        "required": true
+        "required": true,
+        "analysis": true
       },
       {
         "cnName": "地址",
@@ -155,7 +159,8 @@
         "unit": "cm",
         "valueToName": "value1=height",
         "valueType": "object",
-        "required": true
+        "required": true,
+        "analysis": true
       },
       {
         "cnName": "体重",
@@ -183,7 +188,8 @@
         "unit": "",
         "valueToName": "value1=maritalState",
         "valueType": "object",
-        "required": true
+        "required": true,
+        "analysis": true
       },
       {
         "cnName": "病程",
@@ -197,7 +203,8 @@
         "unit": "月",
         "valueToName": "value1=courseOfDisease",
         "valueType": "object",
-        "required": true
+        "required": true,
+        "analysis": true
       },
       {
         "cnName": "重要既往史",
@@ -357,7 +364,8 @@
         "unit": "°C",
         "valueToName": "value1=temperature",
         "valueType": "object",
-        "required": true
+        "required": true,
+        "analysis": true
       },
       {
         "cnName": "血压",
@@ -371,7 +379,8 @@
         "unit": "mmHg",
         "valueToName": "value1=bloodPressure_min,value2=bloodPressure_max",
         "valueType": "object",
-        "required": true
+        "required": true,
+        "analysis": true
       },
       {
         "cnName": "脉搏",
@@ -385,7 +394,8 @@
         "unit": "次/分",
         "valueToName": "value1=pulse",
         "valueType": "object",
-        "required": true
+        "required": true,
+        "analysis": true
       },
       {
         "cnName": "呼吸",
@@ -399,7 +409,8 @@
         "unit": "次/分",
         "valueToName": "value1=breathing",
         "valueType": "object",
-        "required": true
+        "required": true,
+        "analysis": true
       }
     ],
     "meddra": "",
@@ -521,7 +532,7 @@
     "fieldList": [
       {
         "cnName": "取样日期",
-        "enName": "sampleDate",
+        "enName": "rbSampleDate",
         "fieldNo": "F00042",
         "inputType": "date",
         "map": "",
@@ -529,13 +540,13 @@
         "remarks": "",
         "rule": "YYYY-MM-DD",
         "unit": "",
-        "valueToName": "value1=sampleDate",
+        "valueToName": "value1=rbSampleDate",
         "valueType": "object",
         "required": true
       },
       {
         "cnName": "红细胞(RBC)",
-        "enName": "rbc",
+        "enName": "rbRBC",
         "fieldNo": "F00043",
         "inputType": "number",
         "map": "",
@@ -543,13 +554,13 @@
         "remarks": "",
         "rule": "",
         "unit": "10^12/L",
-        "valueToName": "value1=rbc_result,value2=rbc_judge,value3=rbc_remark",
+        "valueToName": "value1=rbRBC_result,value2=rbRBC_judge,value3=rbRBC_remark",
         "valueType": "object",
         "required": true
       },
       {
         "cnName": "血红蛋白(Hb)",
-        "enName": "hb",
+        "enName": "rbHb",
         "fieldNo": "F00044",
         "inputType": "number",
         "map": "",
@@ -557,13 +568,13 @@
         "remarks": "",
         "rule": "",
         "unit": "g/L",
-        "valueToName": "value1=hb_result,value2=hb_judge,value3=hb_remark",
+        "valueToName": "value1=rbHb_result,value2=rbHb_judge,value3=rbHb_remark",
         "valueType": "object",
         "required": true
       },
       {
         "cnName": "白细胞(WBC)",
-        "enName": "wbc",
+        "enName": "rbWBC",
         "fieldNo": "F00045",
         "inputType": "number",
         "map": "",
@@ -571,13 +582,13 @@
         "remarks": "",
         "rule": "",
         "unit": "10^9/L",
-        "valueToName": "value1=wbc_result,value2=wbc_judge,value3=wbc_remark",
+        "valueToName": "value1=rbWBC_result,value2=rbWBC_judge,value3=rbWBC_remark",
         "valueType": "object",
         "required": true
       },
       {
         "cnName": "血小板(PLT)",
-        "enName": "plt",
+        "enName": "rbPLT",
         "fieldNo": "F00046",
         "inputType": "number",
         "map": "",
@@ -585,7 +596,7 @@
         "remarks": "",
         "rule": "",
         "unit": "10^10/L",
-        "valueToName": "value1=plt_result,value2=plt_judge,value3=plt_remark",
+        "valueToName": "value1=rbPLT_result,value2=rbPLT_judge,value3=rbPLT_remark",
         "valueType": "object",
         "required": true
       }
@@ -601,7 +612,7 @@
     "fieldList": [
       {
         "cnName": "取样日期",
-        "enName": "sampleDate",
+        "enName": "ulSampleDate",
         "fieldNo": "F00042",
         "inputType": "date",
         "map": "",
@@ -609,13 +620,13 @@
         "remarks": "",
         "rule": "YYYY-MM-DD",
         "unit": "",
-        "valueToName": "value1=sampleDate",
+        "valueToName": "value1=ulSampleDate",
         "valueType": "object",
         "required": true
       },
       {
         "cnName": "尿蛋白质(PRO)",
-        "enName": "pro",
+        "enName": "ulPRO",
         "fieldNo": "F00047",
         "inputType": "number",
         "map": "",
@@ -623,13 +634,13 @@
         "remarks": "",
         "rule": "",
         "unit": "mg/dl",
-        "valueToName": "value1=pro_result,value2=pro_judge,value3=pro_remark",
+        "valueToName": "value1=ulPRO_result,value2=ulPRO_judge,value3=ulPRO_remark",
         "valueType": "object",
         "required": true
       },
       {
         "cnName": "尿红细胞(RBC)",
-        "enName": "rbc",
+        "enName": "ulRBC",
         "fieldNo": "F00043",
         "inputType": "number",
         "map": "",
@@ -637,13 +648,13 @@
         "remarks": "",
         "rule": "",
         "unit": "个/HP",
-        "valueToName": "value1=rbc_result,value2=rbc_judge,value3=rbc_remark",
+        "valueToName": "value1=ulRBC_result,value2=ulRBC_judge,value3=ulRBC_remark",
         "valueType": "object",
         "required": true
       },
       {
         "cnName": "尿白细胞(WBC)",
-        "enName": "wbc",
+        "enName": "ulWBC",
         "fieldNo": "F00045",
         "inputType": "number",
         "map": "",
@@ -651,13 +662,13 @@
         "remarks": "",
         "rule": "",
         "unit": "个/HP",
-        "valueToName": "value1=wbc_result,value2=wbc_judge,value3=wbc_remark",
+        "valueToName": "value1=ulWBC_result,value2=ulWBC_judge,value3=ulWBC_remark",
         "valueType": "object",
         "required": true
       },
       {
         "cnName": "尿糖",
-        "enName": "urineSugar",
+        "enName": "ulUS",
         "fieldNo": "F00050",
         "inputType": "number",
         "map": "",
@@ -665,7 +676,7 @@
         "remarks": "",
         "rule": "",
         "unit": "",
-        "valueToName": "value1=urineSugar_result,value2=urineSugar_judge,value3=urineSugar_remark",
+        "valueToName": "value1=ulUS_result,value2=ulUS_judge,value3=ulUS_remark",
         "valueType": "object",
         "required": true
       }
@@ -681,7 +692,7 @@
     "fieldList": [
       {
         "cnName": "取样日期",
-        "enName": "sampleDate",
+        "enName": "lkSampleDate",
         "fieldNo": "F00042",
         "inputType": "date",
         "map": "",
@@ -689,13 +700,13 @@
         "remarks": "",
         "rule": "YYYY-MM-DD",
         "unit": "",
-        "valueToName": "value1=sampleDate",
+        "valueToName": "value1=lkSampleDate",
         "valueType": "object",
         "required": true
       },
       {
         "cnName": "谷丙转氨酶(ALT)",
-        "enName": "alt",
+        "enName": "lkALT",
         "fieldNo": "F00051",
         "inputType": "number",
         "map": "",
@@ -703,13 +714,13 @@
         "remarks": "",
         "rule": "",
         "unit": "IU/L",
-        "valueToName": "value1=alt_result,value2=alt_judge,value3=alt_remark",
+        "valueToName": "value1=lkALT_result,value2=lkALT_judge,value3=lkALT_remark",
         "valueType": "object",
         "required": true
       },
       {
         "cnName": "冬氨酸转移酶(AST)",
-        "enName": "ast",
+        "enName": "lkAST",
         "fieldNo": "F00052",
         "inputType": "number",
         "map": "",
@@ -717,13 +728,13 @@
         "remarks": "",
         "rule": "",
         "unit": "IU/L",
-        "valueToName": "value1=ast_result,value2=ast_judge,value3=ast_remark",
+        "valueToName": "value1=lkAST_result,value2=lkAST_judge,value3=lkAST_remark",
         "valueType": "object",
         "required": true
       },
       {
         "cnName": "血糖(空腹)",
-        "enName": "bloodSugar",
+        "enName": "lkBS",
         "fieldNo": "F00053",
         "inputType": "number",
         "map": "",
@@ -731,13 +742,13 @@
         "remarks": "",
         "rule": "",
         "unit": "mmol/L",
-        "valueToName": "value1=bloodSugar_result,value2=bloodSugar_judge,value3=bloodSugar_remark",
+        "valueToName": "value1=lkBS_result,value2=lkBS_judge,value3=lkBS_remark",
         "valueType": "object",
         "required": true
       },
       {
         "cnName": "血尿素氮(BUN)",
-        "enName": "bun",
+        "enName": "lkBUN",
         "fieldNo": "F00054",
         "inputType": "number",
         "map": "",
@@ -745,13 +756,13 @@
         "remarks": "",
         "rule": "",
         "unit": "mmol/L",
-        "valueToName": "value1=bun_result,value2=bun_judge,value3=bun_remark",
+        "valueToName": "value1=lkBUN_result,value2=lkBUN_judge,value3=lkBUN_remark",
         "valueType": "object",
         "required": true
       },
       {
         "cnName": "血清肌酐(Cr)",
-        "enName": "cr",
+        "enName": "lkCR",
         "fieldNo": "F00055",
         "inputType": "number",
         "map": "",
@@ -759,13 +770,13 @@
         "remarks": "",
         "rule": "",
         "unit": "mmol/L",
-        "valueToName": "value1=cr_result,value2=cr_judge,value3=cr_remark",
+        "valueToName": "value1=lkCR_result,value2=lkCR_judge,value3=lkCR_remark",
         "valueType": "object",
         "required": true
       },
       {
         "cnName": "总胆红素(TBIL)",
-        "enName": "tbil",
+        "enName": "lkTBIL",
         "fieldNo": "F00056",
         "inputType": "number",
         "map": "",
@@ -773,7 +784,7 @@
         "remarks": "",
         "rule": "",
         "unit": "mmol/L",
-        "valueToName": "value1=tbil_result,value2=tbil_judge,value3=tbil_remark",
+        "valueToName": "value1=lkTBIL_result,value2=lkTBIL_judge,value3=lkTBIL_remark",
         "valueType": "object",
         "required": true
       }
@@ -1049,7 +1060,8 @@
         "unit": "",
         "valueToName": "value1=backgroundNRS",
         "valueType": "object",
-        "required": false
+        "required": false,
+        "analysis": true
       },
       {
         "cnName": "爆发痛 NRS 评分",
@@ -1063,7 +1075,8 @@
         "unit": "",
         "valueToName": "value1=burstNRS",
         "valueType": "object",
-        "required": false
+        "required": false,
+        "analysis": true
       },
       {
         "cnName": "爆发痛 次数/天",
@@ -1115,7 +1128,8 @@
         "unit": "",
         "valueToName": "value1=QLS",
         "valueType": "object",
-        "required": false
+        "required": false,
+        "analysis": true
       }
     ],
     "meddra": "",
@@ -1139,7 +1153,8 @@
         "unit": "",
         "valueToName": "value1=PSND",
         "valueType": "object",
-        "required": false
+        "required": false,
+        "analysis": true
       }
     ],
     "meddra": "",
@@ -1163,7 +1178,8 @@
         "unit": "",
         "valueToName": "value1=PMND",
         "valueType": "object",
-        "required": false
+        "required": false,
+        "analysis": true
       }
     ],
     "meddra": "",
@@ -1187,7 +1203,8 @@
         "unit": "",
         "valueToName": "value1=neuralgia",
         "valueType": "object",
-        "required": false
+        "required": false,
+        "analysis": true
       }
     ],
     "meddra": "",
