@@ -6,15 +6,11 @@ import React  from 'react';
 import ExclamationCircleOutlined from '@ant-design/icons/ExclamationCircleOutlined';
 import { Table } from 'antd';
 import { getFormName, isMobile, mobileTableProps } from '../_util';
+
 import './index.less';
 
+import { Text, Date, Radio, Number } from './_components';
 import FormBox from './FormBox';
-
-// 表单组件
-import Text from './_components/Text';
-import Date from './_components/Date';
-import Radio from './_components/Radio';
-import Number from './_components/Number';
 
 const Inspect = (props) => {
   const {

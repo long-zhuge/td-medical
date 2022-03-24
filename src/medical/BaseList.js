@@ -5,33 +5,8 @@
 import React from 'react';
 import { Row, Col } from 'antd';
 import { getFormName, isMobile, isTileComponent } from '../_util';
-
+import { ele } from './_components';
 import FormBox from './FormBox';
-
-// 表单组件
-import Text from './_components/Text';
-import Date from './_components/Date';
-import Radio from './_components/Radio';
-import RadioDesc from './_components/RadioDesc';
-import Number from './_components/Number';
-import Select from './_components/Select';
-import Textarea from './_components/Textarea';
-import NumberDouble from './_components/NumberDouble';
-import HospitalDepartments from './_components/HospitalDepartments';
-
-const ele = {
-  text: Text,
-  month: Date,
-  date: Date,
-  datetime: Date,
-  radio: Radio,
-  radio_desc: RadioDesc,
-  number: Number,
-  number_double: NumberDouble,
-  select: Select,
-  textarea: Textarea,
-  hospital_departments: HospitalDepartments,
-};
 
 // 该组件不用渲染 label
 const NO_LABEL = ['projectDesc'];

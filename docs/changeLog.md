@@ -7,6 +7,18 @@ nav:
 
 ## 更新日志
 
+### 🚀 0.0.9-alpha.30
+
+`2022-03-24`
+
+- Medical
+  - 增加对 "地区" 字段的支持
+- MedicalEditor
+  - 优化组件的删除功能，将 Popconfirm 替换为 window.confirm
+  - 删除部分无用代码
+  - 增加字段：地区
+  - 优化了 _components 下的组件引用
+
 ### 🚀 0.0.9-alpha.29
 
 `2022-03-23`
