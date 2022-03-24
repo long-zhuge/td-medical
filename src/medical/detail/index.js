@@ -41,12 +41,29 @@ const MedicalDetail = (props) => {
     data = [],
     template = [], // 用于渲染模板
     backurl,
+    region = [], // 地区数据
     footerHidden = false, // 隐藏按钮
     onTabsChange = () => {},
   } = props;
 
   const [activeTabKey, setActiveTabKey] = useState('0');
   const [formData, setFormData] = useState({}); // 用于回显当前选项卡表单的数据
+  const [regionFlat, setRegionFlat] = useState({}); // 地区一维数据
+
+  useEffect(() => {
+    if(region[0] && !isEmptyObject(regionFlat)) {
+      const flat = {};
+      (function filterCountry(regionList = region) {
+        regionList.forEach(({ label, value, children }) => {
+          flat[value] = label;
+          if (children) {
+            filterCountry(children);
+          }
+        });
+      })();
+      setRegionFlat(flat);
+    }
+  }, [region]);
 
   useEffect(() => {
     if (data[0]) {
@@ -65,6 +82,7 @@ const MedicalDetail = (props) => {
       // 如果是子组件外部的数据，请通过 context 来进行传递
       value={{
         formData,
+        regionFlat,
       }}
     >
       <Tabs

@@ -58,7 +58,7 @@ export function renderValue(params = {}) {
   const { dataObject = {}, keys = [], unit = '' } = params;
 
   if (dataObject[keys[0]]) {
-    return keys.length >= 2 ? `${dataObject[keys[0]]} / ${dataObject[keys[1]]} ${unit}` : `${dataObject[keys]} ${unit}`;
+    return (keys.length >= 2 ? `${dataObject[keys[0]]} / ${dataObject[keys[1]]} ${unit}` : `${dataObject[keys]} ${unit}`).trim();
   }
 
   return '--';
@@ -246,4 +246,11 @@ export const mapToScore = (map = '') => {
   }
 
   return mapList;
+};
+
+/*
+* 将地区的 id 转换为 中文
+* */
+export const regionIdToString = (id = '', regionFlat = {}) => {
+  return id.split(',').map(i => regionFlat[i]).join('-');
 };

@@ -5,16 +5,8 @@
 import React from 'react';
 import { Table } from 'antd';
 
+import { ele } from '../_components';
 import FormBox from '../FormBox';
-
-// 表单组件
-import Text from '../_components/Text';
-import Number from '../_components/Number';
-
-const ele = {
-  text: Text,
-  number: Number,
-};
 
 const reg = /^([0-9]|10)$/;
 const dataSource = [
@@ -29,7 +21,6 @@ const dataSource = [
   { name: '爆发痛 次数/天', enName: 'burstCount', isInteger: true },
   { name: '爆发痛 持续时间', enName: 'burstDuration' },
 ];
-
 
 const Nrs = (props) => {
   const {

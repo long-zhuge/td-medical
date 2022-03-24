@@ -7,11 +7,8 @@ import ExclamationCircleOutlined from '@ant-design/icons/ExclamationCircleOutlin
 import { Table } from 'antd';
 import { getFormName, isMobile, mobileTableProps } from '../_util';
 
+import { Text, Number } from './_components';
 import FormBox from './FormBox';
-
-// 表单组件
-import Number from './_components/Number';
-import Text from './_components/Text';
 
 const SemenRoutineQuota = (props) => {
   const {

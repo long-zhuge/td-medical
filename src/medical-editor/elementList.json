@@ -67,6 +67,15 @@
         "analysis": true
       },
       {
+        "cnName": "地区",
+        "enName": "region",
+        "fieldNo": "F00017",
+        "inputType": "region",
+        "valueToName": "value1=region",
+        "valueType": "object",
+        "required": true
+      },
+      {
         "cnName": "地址",
         "enName": "adress",
         "fieldNo": "F00007",

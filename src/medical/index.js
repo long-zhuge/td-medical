@@ -50,6 +50,7 @@ const MedicalElement = (props) => {
     template = [], // 用于渲染模板
     onFinish = () => {},
     dept, // 医院科室数据
+    region, // 地区数据
     backurl,
     footerHidden = false, // 隐藏按钮
     onTabsChange = () => {},
@@ -113,6 +114,7 @@ const MedicalElement = (props) => {
         form,
         data,
         dept,
+        region,
         onFinish,
         activeTabKey,
         formData,
