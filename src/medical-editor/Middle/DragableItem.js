@@ -3,9 +3,9 @@ import FormOutlined from '@ant-design/icons/FormOutlined';
 import DeleteOutlined from '@ant-design/icons/DeleteOutlined';
 import { useDrag, useDrop } from 'react-dnd';
 import update from 'immutability-helper';
-import { Space, Popconfirm } from 'antd';
+import { Space } from 'antd';
 import LinkBtn from 'td-antd/es/link-btn';
-import { clone } from '../../_util';
+import { clone, confirm } from '../../_util';
 import Field from './Field';
 import './index.less';
 
@@ -26,17 +26,19 @@ const DragableItem = ({ data, index }) => {
 
   // 删除组件
   const onDelete = () => {
-    setFormData({});
+    confirm(`确定删除组件：${data.cnName}`).then(() => {
+      setFormData({});
 
-    const d = selectedElementList.reduce((p, c) => {
-      if (c.id === activeTabKey) {
-        return [...p, {...c, template: c.template.filter((i, cIndex) => cIndex !== index)}];
-      }
+      const d = selectedElementList.reduce((p, c) => {
+        if (c.id === activeTabKey) {
+          return [...p, {...c, template: c.template.filter((i, cIndex) => cIndex !== index)}];
+        }
 
-      return [...p, c];
-    }, []);
+        return [...p, c];
+      }, []);
 
-    setSelectedElementList(d);
+      setSelectedElementList(d);
+    });
   };
 
   const [, drop] = useDrop({
@@ -87,12 +89,7 @@ const DragableItem = ({ data, index }) => {
         <Space>
           {data.cnName}
           <LinkBtn onClick={onForm}><FormOutlined /></LinkBtn>
-          <Popconfirm
-            title="确实删除该组件？"
-            onConfirm={onDelete}
-          >
-            <LinkBtn danger><DeleteOutlined /></LinkBtn>
-          </Popconfirm>
+          <LinkBtn danger onClick={onDelete}><DeleteOutlined /></LinkBtn>
         </Space>
       </div>
       <div className="middle-item-content">

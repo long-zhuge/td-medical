@@ -7,6 +7,14 @@ nav:
 
 ## 更新日志
 
+### 🚀 0.0.9-alpha.30
+
+`2022-03-24`
+
+- MedicalEditor
+  - 优化组件的删除功能，将 Popconfirm 替换为 window.confirm
+  - 删除部分无用代码
+
 ### 🚀 0.0.9-alpha.29
 
 `2022-03-23`
