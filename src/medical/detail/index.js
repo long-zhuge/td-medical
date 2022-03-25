@@ -8,7 +8,7 @@ import { Tabs, Tooltip } from 'antd';
 
 import Back from '../../_components/Back';
 import FormBox from './FormBox';
-import { filterEleMapToComponent, isEmptyObject, clone } from '../../_util';
+import { filterEleMapToComponent, isEmptyObject, clone, arrayTransformObject } from '../../_util';
 
 // 组件开发测试
 import BaseList from './BaseList';
@@ -41,29 +41,26 @@ const MedicalDetail = (props) => {
     data = [],
     template = [], // 用于渲染模板
     backurl,
+    dept = [], // 科室
     region = [], // 地区数据
     footerHidden = false, // 隐藏按钮
     onTabsChange = () => {},
   } = props;
 
   const [activeTabKey, setActiveTabKey] = useState('0');
-  const [formData, setFormData] = useState({}); // 用于回显当前选项卡表单的数据
-  const [regionFlat, setRegionFlat] = useState({}); // 地区一维数据
+  const [formData, setFormData] = useState({});       // 用于回显当前选项卡表单的数据
+  const [regionFlat, setRegionFlat] = useState({});   // 地区一维数据
+  const [deptFlat, setDeptFlat] = useState({});       // 地区一维数据
 
   useEffect(() => {
     if(region[0] && !isEmptyObject(regionFlat)) {
-      const flat = {};
-      (function filterCountry(regionList = region) {
-        regionList.forEach(({ label, value, children }) => {
-          flat[value] = label;
-          if (children) {
-            filterCountry(children);
-          }
-        });
-      })();
-      setRegionFlat(flat);
+      setRegionFlat(arrayTransformObject(region));
     }
-  }, [region]);
+
+    if(dept[0] && !isEmptyObject(deptFlat)) {
+      setDeptFlat(arrayTransformObject(dept, { value: 'key', label: 'title' }));
+    }
+  }, [region, dept]);
 
   useEffect(() => {
     if (data[0]) {
@@ -82,6 +79,7 @@ const MedicalDetail = (props) => {
       // 如果是子组件外部的数据，请通过 context 来进行传递
       value={{
         formData,
+        deptFlat,
         regionFlat,
       }}
     >

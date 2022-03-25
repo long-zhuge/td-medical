@@ -5,7 +5,7 @@
 import React, { useContext } from 'react';
 import { Divider } from 'antd';
 import DescList from 'td-antd/es/desc-list';
-import { getFormName, renderValue, isTileComponent, regionIdToString } from '../../_util';
+import { getFormName, renderValue, isTileComponent, idTransformString } from '../../_util';
 import '../index.less';
 
 import { EleDetailContext } from './index';
@@ -19,7 +19,7 @@ const BaseList = (props) => {
     dataObject = {},
   } = props;
 
-  const { regionFlat } = useContext(EleDetailContext);
+  const { regionFlat, deptFlat } = useContext(EleDetailContext);
 
   const columns = fieldList.map(item => ({
     title: item.cnName,
@@ -33,7 +33,11 @@ const BaseList = (props) => {
 
       // 如果是地区，则将地区 id 转为中文
       if (item.inputType === 'region' && value) {
-        return regionIdToString(value, regionFlat);
+        return idTransformString(value, regionFlat);
+      }
+
+      if (item.inputType === 'hospital_departments' && value) {
+        return idTransformString(value, deptFlat);
       }
 
       return value;

@@ -15,6 +15,7 @@ nav:
 |data|所有回显数据，[查看格式](/api#data-数据格式)|Array|-|
 |onFinish|点击提交的回调函数<br />`type = submit(提交) / draft(草稿)`|Function(type`<String>`, values`<Object>`, templateOrder`<Number>`)|-|
 |dept|科室数据|Array|-|
+|region|省市县数据|Array|-|
 |backurl|返回按钮的地址，值为 false 时不显示按钮|String|-|
 |footerHidden|隐藏操作按钮|Boolean|false|
 |onTabsChange|切换选项卡的回调函数|Function(templateOrder`<String>`)|-|
@@ -30,11 +31,6 @@ nav:
       "enName": "medicalNumber",
       "fieldNo": "F00001",
       "inputType": "text",
-      "map": "",
-      "meddra": "",
-      "remarks": "",
-      "rule": "",
-      "unit": "",
       "valueToName": "value1=medicalNumber",
       "valueType": "object",
       "required": true,
@@ -46,10 +42,6 @@ nav:
       "fieldNo": "F00003",
       "inputType": "select",
       "map": "男#女",
-      "meddra": "",
-      "remarks": "",
-      "rule": "",
-      "unit": "",
       "valueToName": "value1=sex",
       "valueType": "object",
       "required": true,
@@ -60,13 +52,9 @@ nav:
     "templateOrder": 1,
     "pro_0": {
       "cnName": "尿蛋白质(PRO)",
-      "enName": "pro",
-      "fieldNo": "F00047",
+      "enName": "ul-PRO",
+      "fieldNo": "F00501",
       "inputType": "number",
-      "map": "",
-      "meddra": "",
-      "remarks": "",
-      "rule": "",
       "unit": "mg/dl",
       "valueToName": "value1=pro_result,value2=pro_judge,value3=pro_remark",
       "valueType": "object",

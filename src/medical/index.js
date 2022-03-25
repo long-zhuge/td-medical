@@ -49,8 +49,8 @@ const MedicalElement = (props) => {
     readOnly = false,
     template = [], // 用于渲染模板
     onFinish = () => {},
-    dept, // 医院科室数据
-    region, // 地区数据
+    dept = [], // 医院科室数据
+    region = [], // 地区数据
     backurl,
     footerHidden = false, // 隐藏按钮
     onTabsChange = () => {},

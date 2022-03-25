@@ -1,6 +1,7 @@
 import React, { useContext, useRef } from 'react';
 import FormOutlined from '@ant-design/icons/FormOutlined';
 import DeleteOutlined from '@ant-design/icons/DeleteOutlined';
+import InteractionOutlined from '@ant-design/icons/InteractionOutlined';
 import { useDrag, useDrop } from 'react-dnd';
 import update from 'immutability-helper';
 import { Space } from 'antd';
@@ -16,12 +17,24 @@ const type = 'DragableMedicalItem';
 const DragableItem = ({ data, index }) => {
   const { selectedElementList, setSelectedElementList, setFormData, activeTabKey, rightForm } = useContext(EditorContext);
   const ref = useRef();
+  const requiredRef = useRef(true);
 
   // 设置字段进行编辑
   const onForm = () => {
     rightForm.resetFields();
     data.index = index;
     setFormData(data);
+  };
+
+  // 设置组件的必填项
+  const setUpRequiredAll = () => {
+    confirm(`是否将组件中的字段都改为${requiredRef.current ? '非': ''}必填？`).then(() => {
+      data.fieldList.forEach(item => {
+        item.required = !requiredRef.current;
+      });
+      requiredRef.current = !requiredRef.current;
+      setSelectedElementList(clone(selectedElementList));
+    })
   };
 
   // 删除组件
@@ -89,6 +102,7 @@ const DragableItem = ({ data, index }) => {
         <Space>
           {data.cnName}
           <LinkBtn onClick={onForm}><FormOutlined /></LinkBtn>
+          <LinkBtn onClick={setUpRequiredAll}><InteractionOutlined /></LinkBtn>
           <LinkBtn danger onClick={onDelete}><DeleteOutlined /></LinkBtn>
         </Space>
       </div>

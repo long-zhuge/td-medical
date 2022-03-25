@@ -3,7 +3,7 @@
 * */
 
 import React, { useContext } from 'react';
-import { TreeSelect } from 'antd';
+import { Cascader } from 'antd';
 import FormItem from 'td-antd/es/form-item';
 
 import { EleContext } from '../index';
@@ -23,7 +23,13 @@ export default (props) => {
       name={name}
       {...rest}
     >
-      <TreeSelect treeData={dept} />
+      <Cascader
+        options={dept}
+        fieldNames={{
+          label: 'title',
+          value: 'key',
+        }}
+      />
     </FormItem>
   );
 }

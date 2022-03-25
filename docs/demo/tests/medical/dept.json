@@ -1,0 +1,841 @@
+[
+  {
+    "children": [
+      {
+        "children": [],
+        "key": "01.01",
+        "title": "全科"
+      }
+    ],
+    "key": "01",
+    "title": "全科医学科"
+  },
+  {
+    "children": [
+      {
+        "children": [],
+        "key": "02.01",
+        "title": "内科"
+      },
+      {
+        "children": [],
+        "key": "02.02",
+        "title": "呼吸内科"
+      },
+      {
+        "children": [],
+        "key": "02.03",
+        "title": "消化内科"
+      },
+      {
+        "children": [],
+        "key": "02.04",
+        "title": "神经内科"
+      },
+      {
+        "children": [],
+        "key": "02.05",
+        "title": "心血管内科"
+      },
+      {
+        "children": [],
+        "key": "02.06",
+        "title": "血液内科"
+      },
+      {
+        "children": [],
+        "key": "02.07",
+        "title": "肾脏内科"
+      },
+      {
+        "children": [],
+        "key": "02.08",
+        "title": "内分泌科"
+      },
+      {
+        "children": [],
+        "key": "02.09",
+        "title": "风湿免疫科"
+      },
+      {
+        "children": [],
+        "key": "02.10",
+        "title": "过敏科（变态反应科）"
+      },
+      {
+        "children": [],
+        "key": "02.11",
+        "title": "老年内科"
+      },
+      {
+        "children": [],
+        "key": "02.12",
+        "title": "其他"
+      }
+    ],
+    "key": "02",
+    "title": "内科"
+  },
+  {
+    "children": [
+      {
+        "children": [],
+        "key": "03.01",
+        "title": "外科"
+      },
+      {
+        "children": [],
+        "key": "03.02",
+        "title": "普通外科"
+      },
+      {
+        "children": [],
+        "key": "03.03",
+        "title": "神经外科"
+      },
+      {
+        "children": [],
+        "key": "03.04",
+        "title": "泌尿外科"
+      },
+      {
+        "children": [],
+        "key": "03.05",
+        "title": "心胸外科"
+      },
+      {
+        "children": [],
+        "key": "03.06",
+        "title": "血管外科"
+      },
+      {
+        "children": [],
+        "key": "03.07",
+        "title": "心脏大血管外科"
+      },
+      {
+        "children": [],
+        "key": "03.08",
+        "title": "烧伤外科"
+      },
+      {
+        "children": [],
+        "key": "03.09",
+        "title": "整形外科"
+      },
+      {
+        "children": [],
+        "key": "03.10",
+        "title": "胃肠外科"
+      },
+      {
+        "children": [],
+        "key": "03.11",
+        "title": "肝胆胰外科"
+      },
+      {
+        "children": [],
+        "key": "03.12",
+        "title": "结直肠（肛肠）外科"
+      },
+      {
+        "children": [],
+        "key": "03.13",
+        "title": "甲状腺外科"
+      },
+      {
+        "children": [],
+        "key": "03.14",
+        "title": "乳腺外科"
+      },
+      {
+        "children": [],
+        "key": "03.15",
+        "title": "器官移植"
+      },
+      {
+        "children": [],
+        "key": "03.16",
+        "title": "其他"
+      }
+    ],
+    "key": "03",
+    "title": "外科"
+  },
+  {
+    "children": [
+      {
+        "children": [],
+        "key": "04.01",
+        "title": "妇产科"
+      },
+      {
+        "children": [],
+        "key": "04.02",
+        "title": "妇科"
+      },
+      {
+        "children": [],
+        "key": "04.03",
+        "title": "产科"
+      },
+      {
+        "children": [],
+        "key": "04.04",
+        "title": "计划生育"
+      },
+      {
+        "children": [],
+        "key": "04.05",
+        "title": "妇幼保健"
+      },
+      {
+        "children": [],
+        "key": "04.06",
+        "title": "其他"
+      }
+    ],
+    "key": "04",
+    "title": "妇产科"
+  },
+  {
+    "children": [
+      {
+        "children": [],
+        "key": "05.01",
+        "title": "儿科"
+      },
+      {
+        "children": [],
+        "key": "05.02",
+        "title": "小儿内科"
+      },
+      {
+        "children": [],
+        "key": "05.03",
+        "title": "小儿外科"
+      },
+      {
+        "children": [],
+        "key": "05.04",
+        "title": "新生儿科"
+      },
+      {
+        "children": [],
+        "key": "05.05",
+        "title": "儿童保健科"
+      },
+      {
+        "children": [],
+        "key": "05.06",
+        "title": "其他"
+      }
+    ],
+    "key": "05",
+    "title": "儿科"
+  },
+  {
+    "children": [
+      {
+        "children": [],
+        "key": "06.01",
+        "title": "眼科综合"
+      },
+      {
+        "children": [],
+        "key": "06.02",
+        "title": "青光眼科"
+      },
+      {
+        "children": [],
+        "key": "06.03",
+        "title": "白内障科"
+      },
+      {
+        "children": [],
+        "key": "06.04",
+        "title": "角膜病科"
+      },
+      {
+        "children": [],
+        "key": "06.05",
+        "title": "屈光科"
+      },
+      {
+        "children": [],
+        "key": "06.06",
+        "title": "眼底科"
+      },
+      {
+        "children": [],
+        "key": "06.07",
+        "title": "眼外伤科"
+      },
+      {
+        "children": [],
+        "key": "06.08",
+        "title": "眼整形科"
+      },
+      {
+        "children": [],
+        "key": "06.09",
+        "title": "其他"
+      }
+    ],
+    "key": "06",
+    "title": "眼科"
+  },
+  {
+    "children": [
+      {
+        "children": [],
+        "key": "07.01",
+        "title": "口腔科"
+      },
+      {
+        "children": [],
+        "key": "07.02",
+        "title": "口腔颌面科"
+      },
+      {
+        "children": [],
+        "key": "07.03",
+        "title": "口腔正畸科"
+      },
+      {
+        "children": [],
+        "key": "07.04",
+        "title": "其他"
+      }
+    ],
+    "key": "07",
+    "title": "口腔科"
+  },
+  {
+    "children": [
+      {
+        "children": [],
+        "key": "08.01",
+        "title": "耳鼻咽喉头颈外科"
+      },
+      {
+        "children": [],
+        "key": "08.02",
+        "title": "耳鼻咽喉科"
+      },
+      {
+        "children": [],
+        "key": "08.03",
+        "title": "头颈外科"
+      },
+      {
+        "children": [],
+        "key": "08.04",
+        "title": "其他"
+      }
+    ],
+    "key": "08",
+    "title": "耳鼻咽喉头颈外科"
+  },
+  {
+    "children": [
+      {
+        "children": [],
+        "key": "09.01",
+        "title": "皮肤科"
+      },
+      {
+        "children": [],
+        "key": "09.02",
+        "title": "性传播疾病科"
+      },
+      {
+        "children": [],
+        "key": "09.03",
+        "title": "其他"
+      }
+    ],
+    "key": "09",
+    "title": "皮肤性病科"
+  },
+  {
+    "children": [
+      {
+        "children": [],
+        "key": "10.01",
+        "title": "骨科"
+      },
+      {
+        "children": [],
+        "key": "10.02",
+        "title": "关节外科"
+      },
+      {
+        "children": [],
+        "key": "10.03",
+        "title": "创伤骨科"
+      },
+      {
+        "children": [],
+        "key": "10.04",
+        "title": "脊柱外科"
+      },
+      {
+        "children": [],
+        "key": "10.05",
+        "title": "运动医学科"
+      },
+      {
+        "children": [],
+        "key": "10.06",
+        "title": "其他"
+      }
+    ],
+    "key": "10",
+    "title": "骨科"
+  },
+  {
+    "children": [
+      {
+        "children": [],
+        "key": "11.11",
+        "title": "营养科"
+      }
+    ],
+    "key": "11",
+    "title": "营养科"
+  },
+  {
+    "children": [
+      {
+        "children": [],
+        "key": "12.01",
+        "title": "生殖健康与不孕不育"
+      },
+      {
+        "children": [],
+        "key": "12.02",
+        "title": "其他"
+      }
+    ],
+    "key": "12",
+    "title": "生殖医学科"
+  },
+  {
+    "children": [
+      {
+        "children": [],
+        "key": "13.01",
+        "title": "男科"
+      }
+    ],
+    "key": "13",
+    "title": "男科"
+  },
+  {
+    "children": [
+      {
+        "children": [],
+        "key": "14.01",
+        "title": "整形美容科"
+      },
+      {
+        "children": [],
+        "key": "14.02",
+        "title": "医疗美容科"
+      },
+      {
+        "children": [],
+        "key": "14.03",
+        "title": "其他"
+      }
+    ],
+    "key": "14",
+    "title": "整形美容科"
+  },
+  {
+    "children": [
+      {
+        "children": [],
+        "key": "15.01",
+        "title": "精神卫生科"
+      },
+      {
+        "children": [],
+        "key": "15.02",
+        "title": "心理咨询科"
+      },
+      {
+        "children": [],
+        "key": "15.03",
+        "title": "其他"
+      }
+    ],
+    "key": "15",
+    "title": "精神心理科"
+  },
+  {
+    "children": [
+      {
+        "children": [],
+        "key": "16.01",
+        "title": "传染科"
+      },
+      {
+        "children": [],
+        "key": "16.02",
+        "title": "结核科"
+      },
+      {
+        "children": [],
+        "key": "16.03",
+        "title": "其他"
+      }
+    ],
+    "key": "16",
+    "title": "传染科"
+  },
+  {
+    "children": [
+      {
+        "children": [],
+        "key": "17.01",
+        "title": "肿瘤科"
+      },
+      {
+        "children": [],
+        "key": "17.02",
+        "title": "肿瘤内科"
+      },
+      {
+        "children": [],
+        "key": "17.03",
+        "title": "肿瘤外科"
+      },
+      {
+        "children": [],
+        "key": "17.04",
+        "title": "放疗科"
+      },
+      {
+        "children": [],
+        "key": "17.05",
+        "title": "肿瘤康复科"
+      },
+      {
+        "children": [],
+        "key": "17.06",
+        "title": "其他"
+      }
+    ],
+    "key": "17",
+    "title": "肿瘤科"
+  },
+  {
+    "children": [
+      {
+        "children": [],
+        "key": "18.01",
+        "title": "康复医学科"
+      },
+      {
+        "children": [],
+        "key": "18.02",
+        "title": "儿童康复科"
+      },
+      {
+        "children": [],
+        "key": "18.03",
+        "title": "其他"
+      }
+    ],
+    "key": "18",
+    "title": "康复医学科"
+  },
+  {
+    "children": [
+      {
+        "children": [],
+        "key": "19.01",
+        "title": "麻醉科"
+      },
+      {
+        "children": [],
+        "key": "19.02",
+        "title": "疼痛科"
+      },
+      {
+        "children": [],
+        "key": "19.03",
+        "title": "其他"
+      }
+    ],
+    "key": "19",
+    "title": "麻醉医学科"
+  },
+  {
+    "children": [
+      {
+        "children": [],
+        "key": "20.01",
+        "title": "中医全科"
+      },
+      {
+        "children": [],
+        "key": "20.02",
+        "title": "中医内科"
+      },
+      {
+        "children": [],
+        "key": "20.03",
+        "title": "中医外科"
+      },
+      {
+        "children": [],
+        "key": "20.04",
+        "title": "中医妇科"
+      },
+      {
+        "children": [],
+        "key": "20.05",
+        "title": "中医儿科"
+      },
+      {
+        "children": [],
+        "key": "20.06",
+        "title": "中医康复保健科"
+      },
+      {
+        "children": [],
+        "key": "20.07",
+        "title": "针灸推拿科"
+      },
+      {
+        "children": [],
+        "key": "20.08",
+        "title": "中医骨伤科"
+      },
+      {
+        "children": [],
+        "key": "20.09",
+        "title": "中医肿瘤科"
+      },
+      {
+        "children": [],
+        "key": "20.10",
+        "title": "其他"
+      }
+    ],
+    "key": "20",
+    "title": "中医科"
+  },
+  {
+    "children": [
+      {
+        "children": [],
+        "key": "21.01",
+        "title": "核医学科"
+      },
+      {
+        "children": [],
+        "key": "21.02",
+        "title": "放射科"
+      },
+      {
+        "children": [],
+        "key": "21.03",
+        "title": "超声科"
+      },
+      {
+        "children": [],
+        "key": "21.04",
+        "title": "其他"
+      }
+    ],
+    "key": "21",
+    "title": "医学影像科"
+  },
+  {
+    "children": [
+      {
+        "children": [],
+        "key": "22.01",
+        "title": "职业病科"
+      },
+      {
+        "children": [],
+        "key": "22.02",
+        "title": "职业中毒"
+      },
+      {
+        "children": [],
+        "key": "22.03",
+        "title": "尘肺"
+      },
+      {
+        "children": [],
+        "key": "22.04",
+        "title": "放射病"
+      },
+      {
+        "children": [],
+        "key": "22.05",
+        "title": "职业健康监护"
+      },
+      {
+        "children": [],
+        "key": "22.06",
+        "title": "其他"
+      }
+    ],
+    "key": "22",
+    "title": "职业病科"
+  },
+  {
+    "children": [
+      {
+        "children": [],
+        "key": "23.01",
+        "title": "民族医学科"
+      },
+      {
+        "children": [],
+        "key": "23.02",
+        "title": "维吾尔医"
+      },
+      {
+        "children": [],
+        "key": "23.03",
+        "title": "藏医"
+      },
+      {
+        "children": [],
+        "key": "23.04",
+        "title": "蒙医"
+      },
+      {
+        "children": [],
+        "key": "23.05",
+        "title": "彝医"
+      },
+      {
+        "children": [],
+        "key": "23.06",
+        "title": "傣医"
+      },
+      {
+        "children": [],
+        "key": "23.07",
+        "title": "其他"
+      }
+    ],
+    "key": "23",
+    "title": "民族医学科"
+  },
+  {
+    "children": [
+      {
+        "children": [],
+        "key": "24.01",
+        "title": "药剂科"
+      },
+      {
+        "children": [],
+        "key": "24.02",
+        "title": "护理科"
+      },
+      {
+        "children": [],
+        "key": "24.03",
+        "title": "体检科"
+      },
+      {
+        "children": [],
+        "key": "24.04",
+        "title": "医学检验科"
+      },
+      {
+        "children": [],
+        "key": "24.05",
+        "title": "急诊科"
+      },
+      {
+        "children": [],
+        "key": "24.06",
+        "title": "注射室"
+      },
+      {
+        "children": [],
+        "key": "24.07",
+        "title": "输血科"
+      },
+      {
+        "children": [],
+        "key": "24.08",
+        "title": "公共卫生与预防科"
+      },
+      {
+        "children": [],
+        "key": "24.09",
+        "title": "病理科"
+      },
+      {
+        "children": [],
+        "key": "24.10",
+        "title": "设备科"
+      },
+      {
+        "children": [],
+        "key": "24.11",
+        "title": "PET"
+      },
+      {
+        "children": [],
+        "key": "24.12",
+        "title": "病历及统计科"
+      },
+      {
+        "children": [],
+        "key": "24.13",
+        "title": "儿童保健科"
+      },
+      {
+        "children": [],
+        "key": "24.14",
+        "title": "妇女保健科"
+      },
+      {
+        "children": [],
+        "key": "24.15",
+        "title": "重症医学科"
+      },
+      {
+        "children": [],
+        "key": "24.16",
+        "title": "药学咨询专科"
+      },
+      {
+        "children": [],
+        "key": "24.17",
+        "title": "中西医结合科"
+      },
+      {
+        "children": [],
+        "key": "24.18",
+        "title": "临终关怀科"
+      },
+      {
+        "children": [],
+        "key": "24.19",
+        "title": "特种医学与军事医学科"
+      },
+      {
+        "children": [],
+        "key": "24.20",
+        "title": "其他"
+      }
+    ],
+    "key": "24",
+    "title": "其他科室"
+  }
+]
