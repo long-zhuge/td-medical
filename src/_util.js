@@ -249,8 +249,30 @@ export const mapToScore = (map = '') => {
 };
 
 /*
-* 将地区的 id 转换为 中文
+* 将 id 转换为 中文
 * */
-export const regionIdToString = (id = '', regionFlat = {}) => {
-  return id.split(',').map(i => regionFlat[i]).join('-');
+export const idTransformString = (id = '', flatData = {}) => {
+  return id.split(',').map(i => flatData[i]).join('-');
+};
+
+/*
+* 将数组数据转换为一维对象数据
+* 如：科室、省市县
+* */
+export const arrayTransformObject = (data = [], fieldNames = {}) => {
+  const label = fieldNames.label || 'label';
+  const value = fieldNames.value || 'value';
+  const children = fieldNames.children || 'children';
+
+  const flat = {};
+  (function filterData(list = data) {
+    list.forEach((item) => {
+      flat[item[value]] = item[label];
+      if (item[children]) {
+        filterData(item[children]);
+      }
+    });
+  })();
+
+  return flat;
 };

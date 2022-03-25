@@ -9,10 +9,10 @@ nav:
 
 ### 🚀 0.0.9-alpha.30
 
-`2022-03-24`
+`2022-03-25`
 
 - Medical
-  - 增加对 "地区" 字段的支持
+  - 增加对 "地区、就诊科室" 字段的支持
 - MedicalEditor
   - 优化组件的删除功能，将 Popconfirm 替换为 window.confirm
   - 删除部分无用代码

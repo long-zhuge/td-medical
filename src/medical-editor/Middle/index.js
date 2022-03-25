@@ -33,7 +33,7 @@ const Middle = () => {
 
       return false;
     })
-  }, 600);
+  }, 400);
 
   // 选项卡切换
   const onTabsChange = (activeKey) => {
@@ -204,12 +204,7 @@ const Middle = () => {
             width={960}
             footer={false}
           >
-            <Medical
-              template={templateJson}
-              onFinish={(res) => {
-                console.log(JSON.stringify(res))
-              }}
-            />
+            <Medical template={templateJson} />
           </ModalBox>
         </div>
       </DndProviderBox>

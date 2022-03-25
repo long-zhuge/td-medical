@@ -2,6 +2,7 @@ import React, {useState} from 'react';
 import {Divider} from 'antd';
 import {MedicalEditor, Medical} from 'td-medical';
 import {clone} from 'td-medical/_util';
+import dept from './dept.json';
 import region from './region.json';
 
 const Demo = () => {
@@ -20,6 +21,7 @@ const Demo = () => {
       <Divider orientation="left">Medical</Divider>
       <Medical
         // data={data} // 表单回显数据
+        dept={dept}
         region={region}
         backurl={false}
         template={template}
@@ -53,6 +55,7 @@ const Demo = () => {
       <Medical
         readOnly
         data={data}
+        dept={dept}
         region={region}
         backurl={false}
         template={template}
