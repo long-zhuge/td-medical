@@ -8,7 +8,7 @@ import './index.less';
 import { EditorContext } from '../index';
 
 const Right = () => {
-  const { formData, selectedElementList, setSelectedElementList, activeTabKey, rightForm } = useContext(EditorContext);
+  const { formData, selectedElementList, activeTabKey, rightForm, dispatch } = useContext(EditorContext);
 
   useEffect(() => {
     if (formData.cnName) {
@@ -39,7 +39,7 @@ const Right = () => {
           }
         });
       }
-      setSelectedElementList(clone(selectedElementList));
+      dispatch('SELECTED_ELEMENT_LIST', clone(selectedElementList));
       toast({ text: '组件数据保存成功' });
     }).catch((err) => {
       console.log(err);

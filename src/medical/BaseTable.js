@@ -7,14 +7,11 @@ import React, { useContext, useState } from 'react';
 import DeleteOutlined from '@ant-design/icons/DeleteOutlined';
 import { Table } from 'antd';
 import LinkBtn from 'td-antd/es/link-btn';
-import tools from 'td-antd/es/tools';
-import { getFormName, clone, getFormValues, mobileTableProps } from '../_util';
+import { getFormName, clone, getFormValues, mobileTableProps, genId } from '../_util';
 import './index.less';
 
 import { ele } from './_components';
 import FormBox from './FormBox';
-
-const { genNonDuplicateID } = tools;
 
 import { EleContext } from './index';
 
@@ -57,7 +54,7 @@ const TableList = (props) => {
 
   // 新增一行数据
   const onAdd = () => {
-    const list = [...dataSource, { order: genNonDuplicateID(4) }];
+    const list = [...dataSource, { order: genId(4) }];
 
     setDataSource(list);
   };

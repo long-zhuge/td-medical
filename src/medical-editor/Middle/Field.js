@@ -10,7 +10,7 @@ import './index.less';
 import { EditorContext } from '../index';
 
 const Field = ({ data = {}, index, index2, method }) => {
-  const { setFormData, rightForm } = useContext(EditorContext);
+  const { rightForm, dispatch } = useContext(EditorContext);
 
   const [disabled, setDisabled] = useState(!!data.disabled);
 
@@ -37,7 +37,7 @@ const Field = ({ data = {}, index, index2, method }) => {
       rightForm.resetFields();
       data.index = index;
       data.index2 = index2;
-      setFormData({
+      dispatch('FORM_DATA', {
         ...data,
         required: !!data.required,
         analysis: !!data.analysis,

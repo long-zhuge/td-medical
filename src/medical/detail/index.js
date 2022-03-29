@@ -8,7 +8,7 @@ import { Tabs, Tooltip } from 'antd';
 
 import Back from '../../_components/Back';
 import FormBox from './FormBox';
-import { filterEleMapToComponent, isEmptyObject, clone, arrayTransformObject } from '../../_util';
+import { filterEleMapToComponent, isNonEmptyObject, clone, arrayTransformObject } from '../../_util';
 
 // 组件开发测试
 import BaseList from './BaseList';
@@ -53,11 +53,11 @@ const MedicalDetail = (props) => {
   const [deptFlat, setDeptFlat] = useState({});       // 地区一维数据
 
   useEffect(() => {
-    if(region[0] && !isEmptyObject(regionFlat)) {
+    if(region[0] && !isNonEmptyObject(regionFlat)) {
       setRegionFlat(arrayTransformObject(region));
     }
 
-    if(dept[0] && !isEmptyObject(deptFlat)) {
+    if(dept[0] && !isNonEmptyObject(deptFlat)) {
       setDeptFlat(arrayTransformObject(dept, { value: 'key', label: 'title' }));
     }
   }, [region, dept]);
@@ -66,7 +66,7 @@ const MedicalDetail = (props) => {
     if (data[0]) {
       const d = data.filter(({ templateOrder }) => +templateOrder === +activeTabKey)[0];
 
-      if (isEmptyObject(d)) {
+      if (isNonEmptyObject(d)) {
         setFormData(clone(d));
       } else {
         setFormData({});

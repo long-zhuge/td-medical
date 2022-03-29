@@ -14,7 +14,7 @@ import React, { useState, useEffect } from 'react';
 import ExclamationCircleOutlined from '@ant-design/icons/ExclamationCircleOutlined';
 import { Form, Button, Tabs, Tooltip } from 'antd';
 import Back from '../_components/Back';
-import { outPutFormValues, isMobile, filterEleMapToComponent, isEmptyObject, clone } from '../_util';
+import { outPutFormValues, isMobile, filterEleMapToComponent, isNonEmptyObject, clone } from '../_util';
 
 // 病历组件
 import Detail from './detail';
@@ -67,7 +67,7 @@ const MedicalElement = (props) => {
       form.resetFields();
       const d = data.filter(({ templateOrder }) => +templateOrder === +activeTabKey)[0];
 
-      if (isEmptyObject(d)) {
+      if (isNonEmptyObject(d)) {
         setFormData(clone(d));
       } else {
         setFormData({});
@@ -82,7 +82,7 @@ const MedicalElement = (props) => {
     }, []);
 
     form.validateFields().then((values) => {
-      if (isEmptyObject(values)) {
+      if (isNonEmptyObject(values)) {
         onFinish('submit', outPutFormValues(values, fieldList), activeTabKey);
       }
     }).catch((err) => {
@@ -98,7 +98,7 @@ const MedicalElement = (props) => {
 
     const values = form.getFieldsValue(true);
 
-    if (isEmptyObject(values)) {
+    if (isNonEmptyObject(values)) {
       onFinish('draft', outPutFormValues(values, fieldList), activeTabKey);
     }
   };

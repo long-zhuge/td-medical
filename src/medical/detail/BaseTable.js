@@ -36,6 +36,7 @@ const BaseTable = (props) => {
       <Divider>{cnName}</Divider>
       <Table
         bordered
+        size="small"
         rowKey="order"
         columns={columns}
         pagination={false}

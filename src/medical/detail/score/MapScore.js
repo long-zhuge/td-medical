@@ -5,10 +5,8 @@
 import React, { useState } from 'react';
 import CheckOutlined from '@ant-design/icons/CheckOutlined';
 import { Table, Divider } from 'antd';
-import tools from 'td-antd/es/tools';
+import typeOf from 'td-antd/es/tools/typeOf';
 import { mapToScore } from '../../../_util';
-
-const { typeOf } = tools;
 
 const TEXT = {
   QLS: '分值',

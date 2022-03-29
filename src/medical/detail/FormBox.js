@@ -2,7 +2,7 @@
 * 该组件会进行表单数据处理，并将处理后的数据返回给 children
 * */
 import React, { useState, useEffect } from 'react';
-import { getFormValues, getFormName, isEmptyObject } from '../../_util';
+import { getFormValues, getFormName, isNonEmptyObject } from '../../_util';
 
 const FormBox = (props) => {
   const {
@@ -16,7 +16,7 @@ const FormBox = (props) => {
   const [score, setScore] = useState(null); // 当前分值
 
   useEffect(() => {
-    if (isEmptyObject(formData)) {
+    if (isNonEmptyObject(formData)) {
       const { values, newDataSource } = getFormValues(formData, fieldList, index);
 
       const field = getFormName(fieldList[0].valueToName, index)[0];

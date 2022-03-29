@@ -6,7 +6,7 @@
 import React from 'react';
 import FormItem from 'td-antd/es/form-item';
 import DateEasily from 'td-antd/es/date-easily';
-import tools from 'td-antd/es/tools';
+import momentToString from 'td-antd/es/tools/momentToString';
 
 const DATE_CONFIG = {
   month: { picker: 'month', format: 'YYYY-MM' },
@@ -22,7 +22,7 @@ export default (props) => {
     ...rest
   } = props;
 
-  const normalize = date => date && tools.momentToString(date, DATE_CONFIG[inputType].format);
+  const normalize = date => date && momentToString(date, DATE_CONFIG[inputType].format);
 
   return (
     <FormItem

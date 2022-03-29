@@ -8,10 +8,9 @@ import { PlusOutlined } from '@ant-design/icons';
 import SelectList from 'td-antd/es/select-list';
 import DateEasily from 'td-antd/es/date-easily';
 import TdUpload from 'td-antd/es/td-upload'
-import tools from 'td-antd/es/tools';
+import momentToString from 'td-antd/es/tools/momentToString';
 import { Context } from '../index';
 
-const { momentToString } = tools;
 const baseCls = 'td-medical-question-form-type';
 
 function ValueInput(props) {

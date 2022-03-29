@@ -1,8 +1,7 @@
 // 判断数据类型
 import InnerHtml from 'td-antd/es/inner-html';
-import tools from 'td-antd/es/tools';
-
-const { typeOf, genNonDuplicateID } = tools;
+import typeOf from 'td-antd/es/tools/typeOf';
+import genNonDuplicateID from 'td-antd/es/tools/genNonDuplicateID';
 
 // 是否为移动端
 export const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
@@ -19,8 +18,8 @@ export const confirm = (text = '') => {
   });
 };
 
-// 判断 Object 对象是否为空
-export const isEmptyObject = (obj = {}) => Object.getOwnPropertyNames(obj).length > 0;
+// 判断 Object 对象是否非空
+export const isNonEmptyObject = (obj = {}) => Object.getOwnPropertyNames(obj).length > 0;
 
 // 获取随机 id
 export const genId = () => genNonDuplicateID(6);
@@ -57,11 +56,17 @@ export function getFormName(text = '', index = 0, isIndex = true) {
 export function renderValue(params = {}) {
   const { dataObject = {}, keys = [], unit = '' } = params;
 
-  if (dataObject[keys[0]]) {
-    return (keys.length >= 2 ? `${dataObject[keys[0]]} / ${dataObject[keys[1]]} ${unit}` : `${dataObject[keys]} ${unit}`).trim();
-  }
+  const values = keys.reduce((p, c) => {
+    const value = dataObject[c] || '';
 
-  return '--';
+    if (p) {
+      return value ? `${p} / ${value}` : p;
+    }
+
+    return value;
+  }, '');
+
+  return values ? `${values} ${unit}`.trim() : '';
 }
 
 // 单位的特殊处理，如将 10^12/L 转为 10的12次方

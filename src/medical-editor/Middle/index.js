@@ -13,11 +13,11 @@ import { EditorContext } from '../index';
 
 const Middle = () => {
   const {
-    selectedElementList, setSelectedElementList,
-    setFormData, onFinish,
+    dispatch,
+    selectedElementList,
+    onFinish,
     confirmLoading,
     activeTabKey,
-    setActiveTabKey,
   } = useContext(EditorContext);
 
   const ref = useRef();
@@ -37,8 +37,8 @@ const Middle = () => {
 
   // 选项卡切换
   const onTabsChange = (activeKey) => {
-    setFormData({});
-    setActiveTabKey(activeKey);
+    dispatch('FORM_DATA', {});
+    dispatch('ACTIVE_TAB_KEY', activeKey);
   };
 
   // Tabs 选项卡的操作
@@ -46,9 +46,9 @@ const Middle = () => {
     // 新增 tab
     if (action === 'add') {
       const id = genId();
-      setFormData({});
-      setActiveTabKey(id);
-      setSelectedElementList([...selectedElementList, {
+      dispatch('FORM_DATA', {});
+      dispatch('ACTIVE_TAB_KEY', id);
+      dispatch('SELECTED_ELEMENT_LIST', [...selectedElementList, {
         id, template: [],
       }]);
     }
@@ -57,7 +57,7 @@ const Middle = () => {
     if (action === 'remove') {
       const setData = () => {
         // 删除当前选项卡后，自动跳转至前一个选项卡
-        setFormData({});
+        dispatch('FORM_DATA', {});
         return selectedElementList.filter((i, index) => {
           if (targetKey === activeTabKey && i.id === targetKey) {
             /*
@@ -67,7 +67,7 @@ const Middle = () => {
             const obj = selectedElementList[index - 1] || selectedElementList[index + 1];
 
             if (obj) {
-              setActiveTabKey(obj.id);
+              dispatch('ACTIVE_TAB_KEY', obj.id);
             }
           }
 
@@ -77,10 +77,10 @@ const Middle = () => {
 
       if (selectedElementList.some(i => i.id === targetKey && i.template[0])) {
         confirm('要删除的选项卡中已有病例数据，确定要删除？').then(() => {
-          setSelectedElementList(setData());
+          dispatch('SELECTED_ELEMENT_LIST', setData());
         });
       } else {
-        setSelectedElementList(setData());
+        dispatch('SELECTED_ELEMENT_LIST', setData());
       }
     }
   };
@@ -152,8 +152,8 @@ const Middle = () => {
   // 重置
   const onReset = () => {
     confirm('是否重置病历模板数据').then(() => {
-      setFormData({});
-      setSelectedElementList([]);
+      dispatch('FORM_DATA', {});
+      dispatch('SELECTED_ELEMENT_LIST', []);
     });
   };
 
