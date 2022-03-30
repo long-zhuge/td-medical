@@ -32,12 +32,12 @@ const BaseList = (props) => {
       });
 
       // 如果是地区，则将地区 id 转为中文
-      if (item.inputType === 'region' && value) {
-        return idTransformString(value, regionFlat);
-      }
-
-      if (item.inputType === 'hospital_departments' && value) {
-        return idTransformString(value, deptFlat);
+      if (item.inputType === 'cascader' && value) {
+        const flatData = {
+          'region': regionFlat,
+          'hospitalDepartments': deptFlat,
+        }[item.enName];
+        return idTransformString(value, flatData);
       }
 
       return value;
