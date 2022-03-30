@@ -163,12 +163,8 @@ const MedicalElement = (props) => {
       </Form>
       <div className="submit_div" hidden={!template[0] || footerHidden}>
         <Back url={backurl} />
-        <Button type="primary" {...draftButtonProps} onClick={onSubmitDraft}>
-          保存草稿
-        </Button>
-        <Button type="primary" {...submitButtonProps} onClick={onSubmit}>
-          提交
-        </Button>
+        <Button type="primary" {...{ children: '保存草稿', ...draftButtonProps }} onClick={onSubmitDraft} />
+        <Button type="primary" {...{ children: '提交', ...submitButtonProps }} onClick={onSubmit} />
       </div>
     </EleContext.Provider>
   );

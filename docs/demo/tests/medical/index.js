@@ -25,6 +25,7 @@ const Demo = () => {
         region={region}
         backurl={false}
         template={template}
+        submitButtonProps={{ children: '提交本页' }}
         onFinish={(type, values, templateOrder) => {
           console.log('type：', type);
           console.log('values：', JSON.stringify(values));
