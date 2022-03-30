@@ -5,7 +5,7 @@
 import React from 'react';
 import { Table } from 'antd';
 
-import { ele } from '../_components';
+import { EleFormItem } from '../_components';
 import FormBox from '../FormBox';
 
 const reg = /^([0-9]|10)$/;
@@ -38,10 +38,9 @@ const Nrs = (props) => {
       dataIndex: 'enName',
       render: (t, r, idx) => {
         const params = {...fieldList[idx], ...r};
-        const Component = ele[params.inputType];
 
         return (
-          <Component
+          <EleFormItem
             {...params}
             key={params.fieldNo}
             name={`${t}_${index}`}
