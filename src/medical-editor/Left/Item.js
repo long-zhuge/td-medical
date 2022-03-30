@@ -10,8 +10,9 @@ import { EditorContext } from '../index';
 
 const Item = ({ data = {} }) => {
   const {
-    selectedElementList, setSelectedElementList,
-    activeTabKey, setActiveTabKey,
+    dispatch,
+    selectedElementList,
+    activeTabKey,
   } = useContext(EditorContext);
 
   const [collapsed, setCollapsed] = useState(false);
@@ -35,11 +36,11 @@ const Item = ({ data = {} }) => {
       }
     } else {
       const id = genId();
-      setSelectedElementList([{
+      dispatch('SELECTED_ELEMENT_LIST', [{
         id,
         template: [clone(data)],
       }]);
-      setActiveTabKey(id);
+      dispatch('ACTIVE_TAB_KEY', id);
     }
   };
 
@@ -52,7 +53,7 @@ const Item = ({ data = {} }) => {
       return [...p, c];
     }, []);
 
-    setSelectedElementList(clone(d));
+    dispatch('SELECTED_ELEMENT_LIST', clone(d));
   };
 
   return (

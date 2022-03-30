@@ -2,7 +2,7 @@
 * 该组件会进行表单数据处理，并将处理后的数据返回给 children
 * */
 import React, { useState, useEffect } from 'react';
-import { getFormValues, getFormName, isEmptyObject } from '../../_util';
+import { getFormValues, getFormName, isNonEmptyObject } from '../../_util';
 
 const FormBox = (props) => {
   const {
@@ -11,19 +11,25 @@ const FormBox = (props) => {
     formData = {},
   } = props;
 
-  const [dataObject, setDataObject] = useState({}); // 类似 DescList 所需的数据
-  const [dataSource, setDataSource] = useState([]); // 类型 Table 所属的数据
-  const [score, setScore] = useState(null); // 当前分值
+  const [dataObject, setDataObject] = useState({});   // 类似 DescList 所需的数据
+  const [dataSource, setDataSource] = useState([]);   // 类型 Table 所属的数据
+  const [score, setScore] = useState(null);           // 当前分值
+
+  const setValues = (a = null, b = {}, c = []) => {
+    setScore(a)         // 分值组件，如：生活质量评分
+    setDataObject(b)    // 类似 DescList 所需的数据
+    setDataSource(c)    // 类似 Table 所需的数据
+  };
 
   useEffect(() => {
-    if (isEmptyObject(formData)) {
+    if (isNonEmptyObject(formData)) {
       const { values, newDataSource } = getFormValues(formData, fieldList, index);
 
       const field = getFormName(fieldList[0].valueToName, index)[0];
 
-      setScore(values[field]); // 分值组件，如：生活质量评分
-      setDataObject(values); // 类似 DescList 所需的数据
-      setDataSource(newDataSource); // 类似 Table 所需的数据
+      setValues(values[field], values, newDataSource);
+    } else {
+      setValues();
     }
   }, [formData]);
 

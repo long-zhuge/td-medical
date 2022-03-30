@@ -6,8 +6,8 @@ import dept from './dept.json';
 import region from './region.json';
 
 const Demo = () => {
-  const [template, setTemplate] = useState([]);
-  const [data, setData] = useState([]);
+  const [template, setTemplate] = useState([])
+  const [data, setData] = useState([])
 
   return (
     <React.Fragment>
@@ -20,15 +20,16 @@ const Demo = () => {
       />
       <Divider orientation="left">Medical</Divider>
       <Medical
-        // data={data} // 表单回显数据
+        data={data} // 表单回显数据
         dept={dept}
         region={region}
         backurl={false}
         template={template}
+        submitButtonProps={{children: '提交本页'}}
         onFinish={(type, values, templateOrder) => {
           console.log('type：', type);
-          console.log('values：', JSON.stringify(values));
           console.log('templateOrder：', templateOrder);
+          console.log('values：', JSON.stringify(values));
 
           let is;
 
@@ -41,14 +42,8 @@ const Demo = () => {
             return [...p, c];
           }, []);
 
-          if (is) {
-            setData(clone(d))
-          } else {
-            setData([...d, {
-              templateOrder,
-              ...values,
-            }]);
-          }
+          const nowData = is ? clone(d) : [...d, { ...values, templateOrder }];
+          setData(nowData);
         }}
       />
       <Divider orientation="left">Medical（readOnly）</Divider>
@@ -62,6 +57,6 @@ const Demo = () => {
       />
     </React.Fragment>
   );
-};
+}
 
 export default Demo;

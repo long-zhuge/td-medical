@@ -8,11 +8,108 @@ import { PlusOutlined } from '@ant-design/icons';
 import SelectList from 'td-antd/es/select-list';
 import DateEasily from 'td-antd/es/date-easily';
 import TdUpload from 'td-antd/es/td-upload'
-import tools from 'td-antd/es/tools';
+import momentToString from 'td-antd/es/tools/momentToString';
 import { Context } from '../index';
 
-const { momentToString } = tools;
 const baseCls = 'td-medical-question-form-type';
+
+const DEFAULT_FIELD_NAMES = {
+  label: 'label',
+  value: 'value',
+  children: 'children',
+};
+const JOB_TITLE = [{
+  label: '医疗类',
+  value: '01',
+  children: [{
+    label: '医⼠',
+    value: '01.01',
+  }, {
+    label: '医师',
+    value: '01.02',
+  }, {
+    label: '主治（主管）医师',
+    value: '01.03',
+  }, {
+    label: '副主任医师',
+    value: '01.04',
+  }, {
+    label: '主任医师',
+    value: '01.05',
+  }, {
+    label: '药⼠',
+    value: '01.06',
+  }, {
+    label: '药师',
+    value: '01.07',
+  }, {
+    label: '主管药师',
+    value: '01.08',
+  }, {
+    label: '副主任药师',
+    value: '01.09',
+  }, {
+    label: '主任药师',
+    value: '01.10',
+  }],
+}, {
+  label: '药学类',
+  value: '02',
+  children: [{
+    label: '药⼠',
+    value: '02.01',
+  }, {
+    label: '药师',
+    value: '02.02',
+  }, {
+    label: '主管药师',
+    value: '02.03',
+  }, {
+    label: '副主任药师',
+    value: '02.04',
+  }, {
+    label: '主任药师',
+    value: '02.05',
+  }],
+}, {
+  label: '护理类',
+  value: '03',
+  children: [{
+    label: '护⼠',
+    value: '03.01',
+  }, {
+    label: '护师',
+    value: '03.02',
+  }, {
+    label: '主管护师',
+    value: '03.03',
+  }, {
+    label: '副主任护师',
+    value: '03.04',
+  }, {
+    label: '主任护师',
+    value: '03.05',
+  }],
+}, {
+  label: '技术类',
+  value: '04',
+  children: [{
+    label: '技⼠',
+    value: '04.01',
+  }, {
+    label: '技师',
+    value: '04.02',
+  }, {
+    label: '主管技师',
+    value: '04.03',
+  }, {
+    label: '副主任技师',
+    value: '04.04',
+  }, {
+    label: '主任技师',
+    value: '04.05',
+  }],
+}];
 
 function ValueInput(props) {
   const { readOnly, initialValue, value, onChange, ...rest } = props;
@@ -49,22 +146,55 @@ function PriceInput(props) {
   );
 }
 
-function RegionSelect(props) {
-  const { pcas } = useContext(Context);
-  const { readOnly, initialValue, value, onChange, ...rest } = props;
+function CascaderSelect(props) {
+  const { readOnly, initialValue, fieldNames = DEFAULT_FIELD_NAMES, value, onChange, ...rest } = props;
 
   const handleChange = (_, selectedOptions) => {
-    onChange(selectedOptions.map(o => ({ label: o.label, value: o.value })));
+    onChange(selectedOptions.map(o => ({ label: o[fieldNames.label], value: o[fieldNames.value] })));
   }
 
   return readOnly ? (
     <span className={`${baseCls}-text`}>{value?.map(v => v.label).filter(v => v).join('-')}</span>
   ) : (
     <Cascader
-      options={pcas}
+      allowClear={false}
+      fieldNames={fieldNames}
       value={value && value.map(v => v.value)}
       onChange={handleChange}
       {...rest}
+    />
+  );
+}
+
+function RegionSelect(props) {
+  const { region } = useContext(Context);
+  return (
+    <CascaderSelect
+      options={region}
+      {...props}
+    />
+  );
+}
+
+function DeptSelect(props) {
+  const { dept } = useContext(Context);
+  return (
+    <CascaderSelect
+      options={dept}
+      fieldNames={{
+        label: 'title',
+        value: 'key',
+      }}
+      {...props}
+    />
+  );
+}
+
+function JobSelect(props) {
+  return (
+    <CascaderSelect
+      options={JOB_TITLE}
+      {...props}
     />
   );
 }
@@ -251,6 +381,8 @@ export default {
   number: InputNumber,
   price: PriceInput,
   region: RegionSelect,
+  dept: DeptSelect,
+  job: JobSelect,
   product: ProductSelect,
   rangeDate: RangeDate,
   image: ImageUpload,

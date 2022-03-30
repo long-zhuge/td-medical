@@ -70,7 +70,7 @@
         "cnName": "地区",
         "enName": "region",
         "fieldNo": "F00017",
-        "inputType": "region",
+        "inputType": "cascader",
         "valueToName": "value1=region",
         "valueType": "object",
         "required": true
@@ -88,7 +88,7 @@
         "cnName": "就诊科室",
         "enName": "hospitalDepartments",
         "fieldNo": "F00008",
-        "inputType": "hospital_departments",
+        "inputType": "cascader",
         "valueToName": "value1=hospitalDepartments",
         "valueType": "object",
         "required": true

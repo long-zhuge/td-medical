@@ -6,14 +6,14 @@ import { EditorContext } from '../index';
 import Item from './Item';
 
 const Left = () => {
-  const { elementList, setElementList, dataSource } = useContext(EditorContext);
+  const { elementList, dataSource, dispatch } = useContext(EditorContext);
 
   return (
     <div className="td-medical-editor-left">
       <Tabs
         centered
         style={{ margin: 0 }}
-        onChange={(activeKey) => setElementList(dataSource[activeKey])}
+        onChange={(activeKey) => dispatch('ELEMENT_LIST', dataSource[activeKey])}
       >
         <Tabs.TabPane tab="基础组件" key="default" />
         <Tabs.TabPane tab="特殊组件" key="special" />

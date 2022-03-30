@@ -44,7 +44,8 @@ export default function Question(props) {
     questionBankName,
     questions = [],
     productParam, // 获取产品选项
-    pcas, // 省市区数据
+    region, // 省市区数据
+    dept, // 医院科室数据
     data,
     onFinish,
     backurl,
@@ -188,7 +189,8 @@ export default function Question(props) {
         <Context.Provider
           value={{
             productParam,
-            pcas,
+            region,
+            dept,
           }}
         >
           <Form form={form} layout="vertical">

@@ -1,5 +1,5 @@
 /*
-* 类型：hospitalDepartments
+* 类型：Cascader
 * */
 
 import React, { useContext } from 'react';
@@ -12,10 +12,23 @@ export default (props) => {
   const {
     label = '',
     name = '',
+    enName,
     ...rest
   } = props;
 
-  const { dept } = useContext(EleContext);
+  const { dept, region } = useContext(EleContext);
+  const params = {
+    'region': {
+      options: region,
+    },
+    'hospitalDepartments': {
+      options: dept,
+      fieldNames: {
+        label: 'title',
+        value: 'key',
+      },
+    },
+  }[enName] || {};
 
   return (
     <FormItem
@@ -23,13 +36,7 @@ export default (props) => {
       name={name}
       {...rest}
     >
-      <Cascader
-        options={dept}
-        fieldNames={{
-          label: 'title',
-          value: 'key',
-        }}
-      />
+      <Cascader {...params} />
     </FormItem>
   );
 }

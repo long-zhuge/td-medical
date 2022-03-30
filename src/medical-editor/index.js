@@ -50,21 +50,38 @@ const Editor = (props) => {
     }
   }, [selectedElementList]);
 
+  // 统一的事件处理
+  const dispatch = (type, payload) => {
+    switch (type) {
+      case 'ELEMENT_LIST':
+        setElementList(payload);
+        break;
+      case 'SELECTED_ELEMENT_LIST':
+        setSelectedElementList(payload);
+        break;
+      case 'FORM_DATA':
+        setFormData(payload);
+        break;
+      case 'ACTIVE_TAB_KEY':
+        setActiveTabKey(payload);
+        break;
+      default:
+        break;
+    }
+  };
+
   return (
     <EditorContext.Provider
       value={{
         dataSource,
         elementList,
-        setElementList,
         selectedElementList,
-        setSelectedElementList,
         formData,
         rightForm,
-        setFormData,
         onFinish,
         confirmLoading,
         activeTabKey,
-        setActiveTabKey,
+        dispatch,
       }}
     >
       <div className="td-medical-editor-container">

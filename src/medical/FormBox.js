@@ -5,7 +5,7 @@
 import React, { useContext, useEffect } from 'react';
 import SaveOutlined from '@ant-design/icons/SaveOutlined';
 import { Divider } from 'antd';
-import { outPutFormValues, getFormValues, getFormName, isEmptyObject, clone } from '../_util';
+import { outPutFormValues, getFormValues, getFormName, isNonEmptyObject, clone } from '../_util';
 
 import { EleContext } from './index';
 
@@ -25,7 +25,7 @@ const FormBox = (props) => {
 
   // 获取到回显数据后，进行表单赋值
   useEffect(() => {
-    if (isEmptyObject(formData)) {
+    if (isNonEmptyObject(formData)) {
       if (customSetFieldsValue) {
         customSetFieldsValue();
       } else {
@@ -47,7 +47,7 @@ const FormBox = (props) => {
     // 使用 clone 可以将 values 中 undefined 值过滤掉
     const values = clone(form.getFieldsValue(fields));
 
-    if (isEmptyObject(values)) {
+    if (isNonEmptyObject(values)) {
       onFinish('draft', outPutFormValues(values, fieldList, mainParams), activeTabKey)
     }
   };

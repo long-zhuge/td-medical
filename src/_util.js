@@ -1,8 +1,7 @@
 // 判断数据类型
 import InnerHtml from 'td-antd/es/inner-html';
-import tools from 'td-antd/es/tools';
-
-const { typeOf, genNonDuplicateID } = tools;
+import typeOf from 'td-antd/es/tools/typeOf';
+import genNonDuplicateID from 'td-antd/es/tools/genNonDuplicateID';
 
 // 是否为移动端
 export const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
@@ -19,8 +18,8 @@ export const confirm = (text = '') => {
   });
 };
 
-// 判断 Object 对象是否为空
-export const isEmptyObject = (obj = {}) => Object.getOwnPropertyNames(obj).length > 0;
+// 判断 Object 对象是否非空
+export const isNonEmptyObject = (obj = {}) => Object.getOwnPropertyNames(obj).length > 0;
 
 // 获取随机 id
 export const genId = () => genNonDuplicateID(6);
@@ -57,11 +56,17 @@ export function getFormName(text = '', index = 0, isIndex = true) {
 export function renderValue(params = {}) {
   const { dataObject = {}, keys = [], unit = '' } = params;
 
-  if (dataObject[keys[0]]) {
-    return (keys.length >= 2 ? `${dataObject[keys[0]]} / ${dataObject[keys[1]]} ${unit}` : `${dataObject[keys]} ${unit}`).trim();
-  }
+  const values = keys.reduce((p, c) => {
+    const value = dataObject[c] || '';
 
-  return '--';
+    if (p) {
+      return value ? `${p} / ${value}` : p;
+    }
+
+    return value;
+  }, '');
+
+  return values ? `${values} ${unit}`.trim() : '';
 }
 
 // 单位的特殊处理，如将 10^12/L 转为 10的12次方
@@ -85,7 +90,11 @@ export function outPutFormValues(currentValues = {}, fieldList = [], mainParams 
 
   // 将 { bloodPressure_min_0: 60, bloodPressure_max_0: 90 } 转为 ['bloodPressure_min_0', 'bloodPressure_max_0'] 进行遍历
   Object.keys(currentValues).forEach(item => {
-    const currentValue = `${currentValues[item] || ''}`; // 当前的值，必须是字符串
+    /*
+    * 当前的值，必须是字符串
+    * PS：如果原始值是 [01, 01.01]，则会被转化为字符串的 01,01.01
+    * */
+    const currentValue = `${currentValues[item] || ''}`;
     if (!currentValue) return;
 
     /*
@@ -156,10 +165,17 @@ export function outPutFormValues(currentValues = {}, fieldList = [], mainParams 
 }
 
 /*
-* 对最后获取的真实值做某些处理，如将 'true' 转为 true
+* 对最后获取的真实值做某些处理
+*  1、将 'true' 转为 true
+*  2、将 '01,01.01' 转为 [01, 01.01]
 * */
-const toValue = (value) => {
+const toValue = (value, inputType) => {
+  const specialInputType = ['cascader'];
+
   try {
+    if (specialInputType.includes(inputType)) {
+      return value.split(',');
+    }
     return JSON.parse(value);
   } catch (error) {
     return value;
@@ -182,7 +198,7 @@ export function getFormValues(data = {}, fieldList = [], index = 0) {
       Object.keys(values).forEach(key => {
         if (key !== 'order') {
           // 真实值获取后，需要判断是否为字符串的布尔值，如果是，则需要转为布尔值
-          fieldsValue[`${key}_${index}`] = toValue(values[key]);
+          fieldsValue[`${key}_${index}`] = toValue(values[key], item.inputType);
         }
       });
     } else if (typeOf(values, 'Array')) {
@@ -194,7 +210,7 @@ export function getFormValues(data = {}, fieldList = [], index = 0) {
       values.forEach(value => {
         Object.keys(value).forEach(key => {
           if (key !== 'order') {
-            fieldsValue[`${key}_${index}_${value.order}`] = toValue(value[key]);
+            fieldsValue[`${key}_${index}_${value.order}`] = toValue(value[key], item.inputType);
           }
         });
       });

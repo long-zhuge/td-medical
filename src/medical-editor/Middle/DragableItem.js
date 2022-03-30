@@ -15,7 +15,7 @@ import { EditorContext } from '../index';
 const type = 'DragableMedicalItem';
 
 const DragableItem = ({ data, index }) => {
-  const { selectedElementList, setSelectedElementList, setFormData, activeTabKey, rightForm } = useContext(EditorContext);
+  const { selectedElementList, activeTabKey, rightForm, dispatch } = useContext(EditorContext);
   const ref = useRef();
   const requiredRef = useRef(true);
 
@@ -23,7 +23,7 @@ const DragableItem = ({ data, index }) => {
   const onForm = () => {
     rightForm.resetFields();
     data.index = index;
-    setFormData(data);
+    dispatch('FORM_DATA', data);
   };
 
   // 设置组件的必填项
@@ -33,14 +33,14 @@ const DragableItem = ({ data, index }) => {
         item.required = !requiredRef.current;
       });
       requiredRef.current = !requiredRef.current;
-      setSelectedElementList(clone(selectedElementList));
+      dispatch('SELECTED_ELEMENT_LIST', clone(selectedElementList));
     })
   };
 
   // 删除组件
   const onDelete = () => {
     confirm(`确定删除组件：${data.cnName}`).then(() => {
-      setFormData({});
+      dispatch('FORM_DATA', {});
 
       const d = selectedElementList.reduce((p, c) => {
         if (c.id === activeTabKey) {
@@ -50,7 +50,7 @@ const DragableItem = ({ data, index }) => {
         return [...p, c];
       }, []);
 
-      setSelectedElementList(d);
+      dispatch('SELECTED_ELEMENT_LIST', d);
     });
   };
 
@@ -66,7 +66,7 @@ const DragableItem = ({ data, index }) => {
       };
     },
     drop: item => {
-      setFormData({}); // 拖拽时，取消右侧编辑组件，否则会导致编辑错乱的问题
+      dispatch('FORM_DATA', data); // 拖拽时，取消右侧编辑组件，否则会导致编辑错乱的问题
       const templateList = selectedElementList.filter(i => i.id === activeTabKey)[0].template;
       const dragRow = templateList[item.index];
 
@@ -83,7 +83,7 @@ const DragableItem = ({ data, index }) => {
         }
       })
 
-      setSelectedElementList(clone(selectedElementList));
+      dispatch('SELECTED_ELEMENT_LIST', clone(selectedElementList));
     },
   });
 

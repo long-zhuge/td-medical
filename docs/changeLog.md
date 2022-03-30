@@ -7,6 +7,22 @@ nav:
 
 ## 更新日志
 
+### 🚀 0.0.9-alpha.32
+
+`2022-03-30`
+
+- Medical
+  - 优化默认空字段值的展示，由原先的 "--" 改为 ""
+  - 统一 Table 的 size=small
+  - 优化 cascader 类型组件的输出和回显
+  - 🐞 修复值出现 undefined 的问题
+  - 🐞 修复 readonly 模式下，切换选项卡时，如果值的集合不存在时，渲染错误的问题
+- MedicalEditor
+  - 优化主程序代码，将 set 函数用 dispatch 代替
+  - 将 region、hospital_departments 类型的组件替换为 cascader
+- Question
+  - 新增表单组件 (科室、岗位职称)
+
 ### 🚀 0.0.9-alpha.31
 
 `2022-03-25`
