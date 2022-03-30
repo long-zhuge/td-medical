@@ -10,7 +10,7 @@ import LinkBtn from 'td-antd/es/link-btn';
 import { getFormName, clone, getFormValues, mobileTableProps, genId } from '../_util';
 import './index.less';
 
-import { ele } from './_components';
+import { EleFormItem } from './_components';
 import FormBox from './FormBox';
 
 import { EleContext } from './index';
@@ -28,10 +28,8 @@ const TableList = (props) => {
     align: 'center',
     title: item.cnName,
     render: ({ order }) => {
-      const Component = ele[item.inputType];
-
       return (
-        <Component
+        <EleFormItem
           {...item}
           key={item.fieldNo}
           name={`${item.enName}_${index}_${order}`}

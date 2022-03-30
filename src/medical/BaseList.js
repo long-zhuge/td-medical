@@ -5,7 +5,7 @@
 import React from 'react';
 import { Row, Col } from 'antd';
 import { getFormName, isMobile, isTileComponent } from '../_util';
-import { ele } from './_components';
+import { EleFormItem } from './_components';
 import FormBox from './FormBox';
 
 // 该组件不用渲染 label
@@ -25,18 +25,17 @@ const BaseList = (props) => {
     return (
       <FormBox {...props}>
         {fieldList.map(item => {
-          const Component = ele[item.inputType];
           const names = getFormName(item.valueToName, index);
 
           return (
-            <Component
+            <EleFormItem
               {...item}
               key={item.fieldNo}
-              label={isNoLabel ? '' : item.cnName}
               name={names[0]}
               name2={names[1]}
+              label={isNoLabel ? '' : item.cnName}
             />
-          )
+          );
         })}
       </FormBox>
     );
@@ -46,12 +45,11 @@ const BaseList = (props) => {
     <FormBox {...props}>
       <Row gutter={!isMobile && [16, 0]}>
         {fieldList.map(item => {
-          const Component = ele[item.inputType];
           const names = getFormName(item.valueToName, index);
 
           return (
             <Col span={isMobile ? 24 : 12} key={item.fieldNo}>
-              <Component
+              <EleFormItem
                 {...item}
                 label={isNoLabel ? '' : item.cnName}
                 name={names[0]}

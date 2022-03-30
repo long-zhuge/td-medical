@@ -1,3 +1,5 @@
+import React from 'react';
+
 import Cascader from './Cascader';
 import CheckBox from './CheckBox';
 import Date from './Date';
@@ -24,6 +26,16 @@ export const ele = {
   textarea: Textarea,
 };
 
+const EleFormItem = (props) => {
+  const Component = ele[props.inputType];
+
+  if (Component) {
+    return <Component {...props} />;
+  }
+
+  return null;
+};
+
 export {
   Cascader,
   CheckBox,
@@ -35,4 +47,5 @@ export {
   Select,
   Text,
   Textarea,
+  EleFormItem,
 }
