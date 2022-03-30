@@ -19,6 +19,8 @@ nav:
 |backurl|返回按钮的地址，值为 false 时不显示按钮|String|-|
 |footerHidden|隐藏操作按钮|Boolean|false|
 |onTabsChange|切换选项卡的回调函数|Function(templateOrder`<String>`)|-|
+|submitButtonProps|提交按钮的属性|Object|-|
+|draftButtonProps|草稿按钮的属性|Object|-|
 
 ### data 数据格式
 
