@@ -6,88 +6,57 @@ import dept from './dept.json';
 import region from './region.json';
 
 const Demo = () => {
-    const [template, setTemplate] = useState([]);
-    const [data, setData] = useState([
-        {
-          "region_0": {
-            "cnName": "地区",
-            "enName": "region",
-            "fieldNo": "F00017",
-            "inputType": "cascader",
-            "valueToName": "value1=region",
-            "valueType": "object",
-            "required": true,
-            "values": {"order": 0, "region": "12,1201,120101"}
-          },
-          "hospitalDepartments_0": {
-            "cnName": "就诊科室",
-            "enName": "hospitalDepartments",
-            "fieldNo": "F00008",
-            "inputType": "cascader",
-            "valueToName": "value1=hospitalDepartments",
-            "valueType": "object",
-            "required": true,
-            "values": {"order": 0, "hospitalDepartments": "02,02.01"}
-          },
-          "templateOrder": 0,
-        }
-      ])
-    ;
+  const [template, setTemplate] = useState([])
+  const [data, setData] = useState([])
 
-    return (
-      <React.Fragment>
-        <Divider orientation="left">MedicalEditor</Divider>
-        <MedicalEditor
-          onFinish={(temp) => {
-            setTemplate(temp);
-            console.log(JSON.stringify(temp));
-          }}
-        />
-        <Divider orientation="left">Medical</Divider>
-        <Medical
-          data={data} // 表单回显数据
-          dept={dept}
-          region={region}
-          backurl={false}
-          template={template}
-          submitButtonProps={{children: '提交本页'}}
-          onFinish={(type, values, templateOrder) => {
-            console.log('type：', type);
-            console.log('values：', JSON.stringify(values));
-            console.log('templateOrder：', templateOrder);
+  return (
+    <React.Fragment>
+      <Divider orientation="left">MedicalEditor</Divider>
+      <MedicalEditor
+        onFinish={(temp) => {
+          setTemplate(temp);
+          console.log(JSON.stringify(temp));
+        }}
+      />
+      <Divider orientation="left">Medical</Divider>
+      <Medical
+        data={data} // 表单回显数据
+        dept={dept}
+        region={region}
+        backurl={false}
+        template={template}
+        submitButtonProps={{children: '提交本页'}}
+        onFinish={(type, values, templateOrder) => {
+          console.log('type：', type);
+          console.log('templateOrder：', templateOrder);
+          console.log('values：', JSON.stringify(values));
 
-            let is;
+          let is;
 
-            const d = data.reduce((p, c) => {
-              if (+c.templateOrder === +templateOrder) {
-                is = true;
-                return [...p, {...c, ...values}]
-              }
-
-              return [...p, c];
-            }, []);
-
-            if (is) {
-              setData(clone(d))
-            } else {
-              setData([...d, {
-                templateOrder,
-                ...values,
-              }]);
+          const d = data.reduce((p, c) => {
+            if (+c.templateOrder === +templateOrder) {
+              is = true;
+              return [...p, {...c, ...values}]
             }
-          }}
-        />
-        <Divider orientation="left">Medical（readOnly）</Divider>
-        <Medical
-          readOnly
-          data={data}
-          dept={dept}
-          region={region}
-          backurl={false}
-          template={template}
-        />
-      </React.Fragment>
-    );
-  }
+
+            return [...p, c];
+          }, []);
+
+          const nowData = is ? clone(d) : [...d, { ...values, templateOrder }];
+          setData(nowData);
+        }}
+      />
+      <Divider orientation="left">Medical（readOnly）</Divider>
+      <Medical
+        readOnly
+        data={data}
+        dept={dept}
+        region={region}
+        backurl={false}
+        template={template}
+      />
+    </React.Fragment>
+  );
+}
 
 export default Demo;

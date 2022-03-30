@@ -42,20 +42,22 @@ const ele = {
   // 神经痛、外周运动神经障碍、外周感觉神经障碍、生活质量评分
   'neuralgia|PMND|PSND|QLS': MapScore,
 };
+const OK_SUBMIT = 'submit';
+const OK_DRAFT = 'draft';
 
 const MedicalElement = (props) => {
   const {
-    data = [],
-    readOnly = false,
-    template = [], // 用于渲染模板
-    onFinish = () => {},
-    dept = [], // 医院科室数据
-    region = [], // 地区数据
-    backurl,
-    footerHidden = false, // 隐藏按钮
-    onTabsChange = () => {},
-    submitButtonProps = {}, // 提交按钮的 API 属性
-    draftButtonProps = {}, // 草稿按钮的 API 属性
+    data = [],                // 回显数据
+    readOnly = false,         //
+    template = [],            // 用于渲染模板
+    onFinish = () => {},      // 点击按钮的回调函数
+    dept = [],                // 医院科室数据
+    region = [],              // 地区数据
+    backurl,                  // 返回按钮
+    footerHidden = false,     // 隐藏按钮
+    onTabsChange = () => {},  // 选项卡切换的回调函数
+    submitButtonProps = {},   // 提交按钮的 API 属性
+    draftButtonProps = {},    // 草稿按钮的 API 属性
   } = props;
 
   const [form] = Form.useForm();
@@ -75,32 +77,34 @@ const MedicalElement = (props) => {
     }
   }, [activeTabKey, data]);
 
-  // 提交数据
-  const onSubmit = () => {
+  // 校验按钮，返回统一的数据
+  const validateValues = (type = '') => {
     const fieldList = template.filter((i, index) => index === +activeTabKey)[0].template.reduce((p, c) => {
       return [...p, ...c.fieldList];
     }, []);
 
-    form.validateFields().then((values) => {
-      if (isNonEmptyObject(values)) {
-        onFinish('submit', outPutFormValues(values, fieldList), activeTabKey);
+    return new Promise((resolve) => {
+      if (type === OK_SUBMIT) {
+        form.validateFields().then((values) => {
+          if (isNonEmptyObject(values)) {
+            resolve(outPutFormValues(values, fieldList));
+          }
+        });
+      } else if (type === OK_DRAFT) {
+        const values = form.getFieldsValue(true);
+
+        if (isNonEmptyObject(values)) {
+          resolve(outPutFormValues(values, fieldList));
+        }
       }
-    }).catch((err) => {
-      console.log(err);
     })
   };
 
-  // 保存草稿
-  const onSubmitDraft = () => {
-    const fieldList = template.filter((i, index) => index === +activeTabKey)[0].template.reduce((p, c) => {
-      return [...p, ...c.fieldList];
-    }, []);
-
-    const values = form.getFieldsValue(true);
-
-    if (isNonEmptyObject(values)) {
-      onFinish('draft', outPutFormValues(values, fieldList), activeTabKey);
-    }
+  // 提交数据
+  const onOk = (type = '') => {
+    validateValues(type).then(res => {
+      onFinish(type, res, activeTabKey);
+    })
   };
 
   if (readOnly) {
@@ -163,8 +167,8 @@ const MedicalElement = (props) => {
       </Form>
       <div className="submit_div" hidden={!template[0] || footerHidden}>
         <Back url={backurl} />
-        <Button type="primary" {...{ children: '保存草稿', ...draftButtonProps }} onClick={onSubmitDraft} />
-        <Button type="primary" {...{ children: '提交', ...submitButtonProps }} onClick={onSubmit} />
+        <Button type="primary" {...{ children: '保存草稿', ...draftButtonProps }} onClick={onOk.bind(this, OK_DRAFT)} />
+        <Button type="primary" {...{ children: '提交', ...submitButtonProps }} onClick={onOk.bind(this, OK_SUBMIT)} />
       </div>
     </EleContext.Provider>
   );
