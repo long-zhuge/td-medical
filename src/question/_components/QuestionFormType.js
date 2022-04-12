@@ -171,6 +171,7 @@ function RegionSelect(props) {
   return (
     <CascaderSelect
       options={region}
+      changeOnSelect
       {...props}
     />
   );
