@@ -4,7 +4,7 @@
 
 import React, { useContext } from 'react';
 import { Input, InputNumber, Cascader, Table, Button } from 'antd';
-import { PlusOutlined } from '@ant-design/icons';
+import PlusOutlined from '@ant-design/icons/PlusOutlined';
 import SelectList from 'td-antd/es/select-list';
 import DateEasily from 'td-antd/es/date-easily';
 import TdUpload from 'td-antd/es/td-upload'
