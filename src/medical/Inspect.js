@@ -47,7 +47,7 @@ const Inspect = (props) => {
 
   // 渲染"取样日期"
   const renderDate = () => {
-    const obj = fieldList.filter(item => item.inputType === 'date')[0];
+    const obj = fieldList.find(item => item.inputType === 'date');
 
     if (obj) {
       return (

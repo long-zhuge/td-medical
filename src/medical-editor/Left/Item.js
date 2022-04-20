@@ -27,7 +27,7 @@ const Item = ({ data = {} }) => {
   * */
   const onAddElement = () => {
     if (activeTabKey) {
-      if (selectedElementList.filter(i => i.id === activeTabKey)[0]?.template.some(item => item.elementNo === data.elementNo)) {
+      if (selectedElementList.find(i => i.id === activeTabKey)?.template.some(item => item.elementNo === data.elementNo)) {
         confirm(`检测到当前选项卡已经添加了“${data.cnName}”组件，是否确认添加？`).then(() => {
           setData();
         });

@@ -67,7 +67,7 @@ const DragableItem = ({ data, index }) => {
     },
     drop: item => {
       dispatch('FORM_DATA', data); // 拖拽时，取消右侧编辑组件，否则会导致编辑错乱的问题
-      const templateList = selectedElementList.filter(i => i.id === activeTabKey)[0].template;
+      const templateList = selectedElementList.find(i => i.id === activeTabKey).template;
       const dragRow = templateList[item.index];
 
       const updateData = update(templateList, {

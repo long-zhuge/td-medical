@@ -64,7 +64,7 @@ const MedicalDetail = (props) => {
 
   useEffect(() => {
     if (data[0]) {
-      const d = data.filter(({ templateOrder }) => +templateOrder === +activeTabKey)[0];
+      const d = data.find(({ templateOrder }) => +templateOrder === +activeTabKey);
 
       if (isNonEmptyObject(d)) {
         setFormData(clone(d));
