@@ -67,7 +67,7 @@ const MedicalElement = (props) => {
   useEffect(() => {
     if (data[0]) {
       form.resetFields();
-      const d = data.filter(({ templateOrder }) => +templateOrder === +activeTabKey)[0];
+      const d = data.find(({ templateOrder }) => +templateOrder === +activeTabKey);
 
       if (isNonEmptyObject(d)) {
         setFormData(clone(d));
@@ -79,7 +79,7 @@ const MedicalElement = (props) => {
 
   // 校验按钮，返回统一的数据
   const validateValues = (type = '') => {
-    const fieldList = template.filter((i, index) => index === +activeTabKey)[0].template.reduce((p, c) => {
+    const fieldList = template.find((i, index) => index === +activeTabKey).template.reduce((p, c) => {
       return [...p, ...c.fieldList];
     }, []);
 
