@@ -11,7 +11,7 @@ nav:
 
 `2022-04-27`
 
-- 代码优化，删除部分无用代码，部分 util 替换为 td-antd.tools
+- 代码优化，删除部分无用代码，部分 util 替换为 td-antd.tools。[commit](http://36.26.93.175:81/packages/td-medical/commit/ed5d3eda01b2e6d93e0bed5bb1c73704f6aaacdc)
 
 ### 🚀 1.0.3
 
