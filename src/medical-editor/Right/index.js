@@ -1,5 +1,5 @@
 import React, { useContext, useEffect } from 'react';
-import { Form, Button, Input, Checkbox } from 'antd';
+import { Form, Button, Checkbox } from 'antd';
 import FormItem from 'td-antd/es/form-item';
 import toast from 'td-antd/es/toast';
 import { clone } from '../../_util';
@@ -133,9 +133,8 @@ const Right = () => {
             name="remarks"
             label="备注"
             required={false}
-          >
-            <Input.TextArea />
-          </FormItem>
+            itemType="textarea"
+          />
         </Form>
         <Button type="primary" ghost onClick={onSubmit}>保存组件数据</Button>
       </div>

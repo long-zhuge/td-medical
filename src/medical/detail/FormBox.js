@@ -2,7 +2,8 @@
 * 该组件会进行表单数据处理，并将处理后的数据返回给 children
 * */
 import React, { useState, useEffect } from 'react';
-import { getFormValues, getFormName, isNonEmptyObject } from '../../_util';
+import isNonEmptyObject from 'td-antd/es/tools/isNonEmptyObject';
+import { getFormValues, getFormName } from '../../_util';
 
 const FormBox = (props) => {
   const {

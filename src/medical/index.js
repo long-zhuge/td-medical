@@ -13,8 +13,9 @@
 import React, { useState, useEffect } from 'react';
 import ExclamationCircleOutlined from '@ant-design/icons/ExclamationCircleOutlined';
 import { Form, Button, Tabs, Tooltip } from 'antd';
+import isNonEmptyObject from 'td-antd/es/tools/isNonEmptyObject';
 import Back from '../_components/Back';
-import { outPutFormValues, isMobile, filterEleMapToComponent, isNonEmptyObject, clone } from '../_util';
+import { outPutFormValues, isMobile, filterEleMapToComponent, clone } from '../_util';
 
 // 病历组件
 import Detail from './detail';
