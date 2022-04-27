@@ -3,7 +3,6 @@
 * */
 
 import React from 'react';
-import { Input } from 'antd';
 import FormItem from 'td-antd/es/form-item';
 
 export default (props) => {
@@ -17,9 +16,9 @@ export default (props) => {
     <FormItem
       label={label}
       name={name}
+      itemType="textarea"
+      inputProps={{ rows: 2, placeholder: rest.placeholder }}
       {...rest}
-    >
-      <Input.TextArea rows={2} placeholder={rest.placeholder} />
-    </FormItem>
+    />
   );
 }

@@ -5,10 +5,12 @@
 import React, { useState, useEffect } from 'react';
 import ExclamationCircleOutlined from '@ant-design/icons/ExclamationCircleOutlined';
 import { Tabs, Tooltip } from 'antd';
+import arrayToObject from 'td-antd/es/tools/arrayToObject';
+import isNonEmptyObject from 'td-antd/es/tools/isNonEmptyObject';
 
 import Back from '../../_components/Back';
 import FormBox from './FormBox';
-import { filterEleMapToComponent, isNonEmptyObject, clone, arrayTransformObject } from '../../_util';
+import { filterEleMapToComponent, clone } from '../../_util';
 
 // 组件开发测试
 import BaseList from './BaseList';
@@ -54,11 +56,11 @@ const MedicalDetail = (props) => {
 
   useEffect(() => {
     if(region[0] && !isNonEmptyObject(regionFlat)) {
-      setRegionFlat(arrayTransformObject(region));
+      setRegionFlat(arrayToObject(region));
     }
 
     if(dept[0] && !isNonEmptyObject(deptFlat)) {
-      setDeptFlat(arrayTransformObject(dept, { value: 'key', label: 'title' }));
+      setDeptFlat(arrayToObject(dept, { value: 'key', label: 'title' }));
     }
   }, [region, dept]);
 

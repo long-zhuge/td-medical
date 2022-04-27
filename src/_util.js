@@ -1,5 +1,4 @@
 // 判断数据类型
-import InnerHtml from 'td-antd/es/inner-html';
 import typeOf from 'td-antd/es/tools/typeOf';
 import genNonDuplicateID from 'td-antd/es/tools/genNonDuplicateID';
 
@@ -18,9 +17,6 @@ export const confirm = (text = '') => {
   });
 };
 
-// 判断 Object 对象是否非空
-export const isNonEmptyObject = (obj = {}) => Object.getOwnPropertyNames(obj).length > 0;
-
 // 获取随机 id
 export const genId = () => genNonDuplicateID(6);
 
@@ -33,14 +29,6 @@ export const toMap = (string = '') => {
     .split('#')
     .filter(i => i.trim() !== '');
 };
-
-/*
-* 将字符串正则转为正则函数
-* PS：由于 \\ 符号的特殊性，在数据存储中，会将其转为 // 进行存储，故在进行正则函数转化时，先进行替换
-* */
-export function regExp(str = '') {
-  return new RegExp(str.replace(/\/\//g, '\\'));
-}
 
 // 从 valueToName 中过滤出 name 值，并加上 index，如：bloodPressure_max_0
 export function getFormName(text = '', index = 0, isIndex = true) {
@@ -67,16 +55,6 @@ export function renderValue(params = {}) {
   }, '');
 
   return values ? `${values} ${unit}`.trim() : '';
-}
-
-// 单位的特殊处理，如将 10^12/L 转为 10的12次方
-export function toUnit(unit = '') {
-  if (unit.includes('^')) {
-    const newUnit = unit.replace('^', '<sup>').replace('/', '</sup>/');
-    return <InnerHtml html={newUnit} />;
-  }
-
-  return unit;
 }
 
 /*
@@ -269,26 +247,4 @@ export const mapToScore = (map = '') => {
 * */
 export const idTransformString = (id = '', flatData = {}) => {
   return id.split(',').map(i => flatData[i]).join('-');
-};
-
-/*
-* 将数组数据转换为一维对象数据
-* 如：科室、省市县
-* */
-export const arrayTransformObject = (data = [], fieldNames = {}) => {
-  const label = fieldNames.label || 'label';
-  const value = fieldNames.value || 'value';
-  const children = fieldNames.children || 'children';
-
-  const flat = {};
-  (function filterData(list = data) {
-    list.forEach((item) => {
-      flat[item[value]] = item[label];
-      if (item[children]) {
-        filterData(item[children]);
-      }
-    });
-  })();
-
-  return flat;
 };

@@ -5,7 +5,8 @@
 import React, { useContext, useEffect } from 'react';
 import SaveOutlined from '@ant-design/icons/SaveOutlined';
 import { Divider } from 'antd';
-import { outPutFormValues, getFormValues, getFormName, isNonEmptyObject, clone } from '../_util';
+import isNonEmptyObject from 'td-antd/es/tools/isNonEmptyObject';
+import { outPutFormValues, getFormValues, getFormName, clone } from '../_util';
 
 import { EleContext } from './index';
 
