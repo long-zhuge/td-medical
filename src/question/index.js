@@ -43,7 +43,8 @@ export default function Question(props) {
     preview = false,
     questionBankName,
     questions = [],
-    productParam, // 获取产品选项
+    productFetch = '/product/getPageList.json', // 产品请求地址
+    productParam,                               // 产品请求参数
     region, // 省市区数据
     dept, // 医院科室数据
     data,
@@ -188,6 +189,7 @@ export default function Question(props) {
       ) : (
         <Context.Provider
           value={{
+            productFetch,
             productParam,
             region,
             dept,
