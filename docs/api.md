@@ -90,3 +90,5 @@ nav:
 |onFinish|点击保存后的回调函数|Function(values)|-|
 |backurl|返回按钮的地址，值为 false 时不显示按钮|String|-|
 |footerHidden|隐藏操作按钮|Boolean|false|
+|productFetch|产品请求地址|String|`/product/getPageList.json`|
+|productParam|产品请求的默认参数|Object|-|

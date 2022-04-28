@@ -201,7 +201,7 @@ function JobSelect(props) {
 }
 
 function ProductSelect(props) {
-  const { productParam } = useContext(Context);
+  const { productParam, productFetch } = useContext(Context);
   const { readOnly, initialValue, value, onChange, ...rest } = props;
 
   // ensure the second param pass to onChange is error message
@@ -212,7 +212,7 @@ function ProductSelect(props) {
   return readOnly ? <span className={`${baseCls}-text`}>{value?.label}</span> : (
     <SelectList
       labelInValue
-      url="/product/getPageList.json"
+      url={productFetch}
       defaultParams={productParam}
       fields={['productNo', 'productName']}
       value={value}
