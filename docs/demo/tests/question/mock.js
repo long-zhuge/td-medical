@@ -106,30 +106,15 @@ export default [
   },
   {
     "questionBankNo": "Q00001",
-    "questionName": "主要竞品",
-    "questionNo": "105",
-    "questionType": "form",
-    "optionList": [
-      {
-        "optionName": "",
-        "optionNo": "100011",
-        "optionType": "compete",
-        "questionNo": "105",
-        "skipQuestionNo": "106",
-      },
-    ],
-  },
-  {
-    "questionBankNo": "Q00001",
     "questionName": "工作时间",
-    "questionNo": "106",
+    "questionNo": "105",
     "questionType": "form",
     "optionList": [
       {
         "optionName": "",
         "optionNo": "100012",
         "optionType": "rangeDate",
-        "questionNo": "106",
+        "questionNo": "105",
       },
     ],
   },
