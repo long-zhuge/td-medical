@@ -84,6 +84,8 @@ export default function Question(props) {
         : questions.slice(0, 1);
       setInitialValues(initialData);
       setCurrentQuestions(preview ? questions : initialQuestions);
+      setCurrentQuestionIndex(0);
+      form.resetFields();
       form.setFieldsValue(initialData);
     }
   }, [data, questions]);
