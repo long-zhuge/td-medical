@@ -41,7 +41,8 @@ const SemenRoutineQuota = (props) => {
   ];
 
   const renderTitle = () => {
-    const date = dataObject[`sampleDate_${index}`];
+    const obj = fieldList.find(item => item.inputType === 'date');
+    const date = dataObject[`${obj.enName}_${index}`];
 
     return date ? `${cnName}：${date}` : cnName;
   };
@@ -55,7 +56,7 @@ const SemenRoutineQuota = (props) => {
         rowKey="fieldNo"
         columns={columns}
         pagination={false}
-        dataSource={fieldList.filter(i => i.enName !== 'sampleDate')}
+        dataSource={fieldList.filter(i => !i.enName.includes('ampleDate'))}
       />
     </React.Fragment>
   );
