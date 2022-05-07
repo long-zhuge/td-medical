@@ -203,17 +203,9 @@ export function getFormValues(data = {}, fieldList = [], index = 0) {
 
 // 从组件map对象中筛选出当前要渲染的组件
 export function filterEleMapToComponent(ele, enName) {
-  let Component;
+  const key = Object.keys(ele).find(i => i.includes(enName));
 
-  Object.keys(ele).some(key => {
-    if (key.includes(enName)) {
-      Component = ele[key];
-      return true;
-    }
-    return false;
-  });
-
-  return Component;
+  return ele[key];
 }
 
 // 如果是移动端，则 table 样式的组件请添加如下属性
@@ -247,4 +239,24 @@ export const mapToScore = (map = '') => {
 * */
 export const idTransformString = (id = '', flatData = {}) => {
   return id.split(',').map(i => flatData[i]).join('-');
+};
+
+/*
+* 获取评分组件配置项
+* */
+export const getMapScoreConfig = (enName) => {
+  const CONFIG = {
+    'PSND|PMND|neuralgia': {
+      titleTemplate: '分级',
+      valueTemplate: '$1级',
+    },
+    DEFAULT: {
+      titleTemplate: '分值',
+      valueTemplate: '$1',
+    },
+  };
+
+  const key = Object.keys(CONFIG).find(i => i.includes(enName));
+
+  return CONFIG[key] || CONFIG.DEFAULT;
 };

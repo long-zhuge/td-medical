@@ -6,11 +6,7 @@ import React, { useState } from 'react';
 import CheckOutlined from '@ant-design/icons/CheckOutlined';
 import { Table, Divider } from 'antd';
 import typeOf from 'td-antd/es/tools/typeOf';
-import { mapToScore } from '../../../_util';
-
-const TEXT = {
-  QLS: '分值',
-};
+import { mapToScore, getMapScoreConfig } from '../../../_util';
 
 const MapScore = (props) => {
   const {
@@ -21,7 +17,7 @@ const MapScore = (props) => {
   } = props;
 
   const [dataSource] = useState(mapToScore(fieldList[0].map));
-  const scoreTitle = TEXT[enName];
+  const { titleTemplate, valueTemplate } = getMapScoreConfig(enName);
 
   const columns = [
     {
@@ -33,9 +29,9 @@ const MapScore = (props) => {
       dataIndex: 'kps',
     },
     {
-      title: scoreTitle || '分级',
+      title: titleTemplate,
       dataIndex: 'score',
-      render: t => `${t}${scoreTitle ? '' : '级'}`,
+      render: t => valueTemplate.replace('$1', t),
     },
     {
       title: '评估',

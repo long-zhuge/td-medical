@@ -5,13 +5,8 @@
 import React, { useState } from 'react';
 import { Table, Radio } from 'antd';
 import FormItem from 'td-antd/es/form-item';
-import { mapToScore } from '../../_util';
-
+import { mapToScore, getMapScoreConfig } from '../../_util';
 import FormBox from '../FormBox';
-
-const TEXT = {
-  QLS: '分值',
-};
 
 const MapScore = (props) => {
   const {
@@ -21,7 +16,7 @@ const MapScore = (props) => {
   } = props;
 
   const [dataSource] = useState(mapToScore(fieldList[0].map));
-  const scoreTitle = TEXT[enName];
+  const { titleTemplate, valueTemplate } = getMapScoreConfig(enName);
 
   const columns = [
     {
@@ -33,9 +28,9 @@ const MapScore = (props) => {
       dataIndex: 'kps',
     },
     {
-      title: scoreTitle || '分级',
+      title: titleTemplate,
       dataIndex: 'score',
-      render: t => `${t}${scoreTitle ? '' : '级'}`,
+      render: t => valueTemplate.replace('$1', t),
     },
     {
       title: '评估',

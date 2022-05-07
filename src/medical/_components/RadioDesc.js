@@ -7,6 +7,9 @@ import { Radio, Row, Col } from 'antd';
 import FormItem from 'td-antd/es/form-item';
 import { toMap } from '../../_util';
 
+// 以下枚举值会显示输入框
+const text = ['有', '其他'];
+
 export default (props) => {
   const {
     label = '',
@@ -15,8 +18,6 @@ export default (props) => {
     map = '',
     ...rest
   } = props;
-
-  const mapList = toMap(map);
 
   return (
     <Row gutter={12}>
@@ -33,7 +34,7 @@ export default (props) => {
       </Col>
       <FormItem noStyle shouldUpdate>
         {({ getFieldValue }) => {
-          if (getFieldValue(name) === mapList[0]) {
+          if (text.includes(getFieldValue(name))) {
             return (
               <Col span={14}>
                 <FormItem
