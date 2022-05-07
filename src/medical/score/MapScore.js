@@ -16,26 +16,29 @@ const MapScore = (props) => {
   } = props;
 
   const [dataSource] = useState(mapToScore(fieldList[0].map));
-  const { titleTemplate, valueTemplate } = getMapScoreConfig(enName);
+  const { titleTemplate, titleTemplate2, valueTemplate } = getMapScoreConfig(enName);
 
   const columns = [
     {
+      width: 50,
       title: '序号',
       render: (_, __, idx) => idx + 1,
     },
     {
-      title: '临床表现',
+      title: titleTemplate,
       dataIndex: 'kps',
     },
     {
-      title: titleTemplate,
+      width: 100,
+      title: titleTemplate2,
       dataIndex: 'score',
       render: t => valueTemplate.replace('$1', t),
     },
     {
+      width: 100,
       title: '评估',
       dataIndex: 'score',
-      render: (t) => <Radio value={t} />,
+      render: (t) => <Radio value={/^[0-9]*$/.test(t) ? +t : t} />,
     },
   ];
 

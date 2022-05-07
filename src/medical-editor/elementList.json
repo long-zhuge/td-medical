@@ -859,5 +859,43 @@
         "analysis": true
       }
     ]
+  },
+  {
+    "cnName": "儿童手足口病等级",
+    "elementNo": "E00017",
+    "method": "special",
+    "enName": "CHFMD",
+    "fieldList": [
+      {
+        "cnName": "儿童手足口病等级",
+        "enName": "CHFMD",
+        "fieldNo": "F01600",
+        "inputType": "radio",
+        "map": "出疹期，普通型：主要表现为发热，手、足、口、臀等部位出疹/1\n神经系统受累期，重型：主要表现为为精神差、嗜睡、吸吮无力、易惊、头痛、呕吐、烦躁、肢体抖动、肌无力、颈项强直等/2\n心肺功能衰竭前期，危重型：主要表现为心率和呼吸增快、出冷汗、四肢末梢发凉、皮肤发花、血压升高/3\n心肺功能衰竭期，危重型：主要临床表现为心动过速 （个别患儿心动过缓）、呼吸急促、口唇紫绀、咳粉红色泡沫痰或血性液体、血压降低或休克/4\n恢复期：体温逐渐恢复正常，对血管活性药物的依赖逐渐减少，神经系统受累症状和心肺功能逐渐恢复/5",
+        "valueToName": "value1=CHFMD",
+        "valueType": "object",
+        "required": false,
+        "analysis": true
+      }
+    ]
+  },
+  {
+    "cnName": "主要疗效指标",
+    "elementNo": "E00018",
+    "method": "special",
+    "enName": "HFMD-MEI",
+    "fieldList": [
+      {
+        "cnName": "主要疗效指标",
+        "enName": "HFMD-MEI",
+        "fieldNo": "F01700",
+        "inputType": "radio",
+        "map": "为患儿体温正常，疱疹消失，生活恢复正常/治愈\n显效：为患儿体温正常，疱疹减少/显效\n有效：为患儿体温基本正常，疱疹减少/有效\n无效：为患儿持续发热，疱疹未见改善/无效",
+        "valueToName": "value1=HFMD-MEI",
+        "valueType": "object",
+        "required": false,
+        "analysis": true
+      }
+    ]
   }
 ]

@@ -225,7 +225,7 @@ export const mapToScore = (map = '') => {
     mapList = map.split('\n').reduce((p, c) => {
       const arr = c.split('/');
 
-      return [...p, { kps: arr[0], score: +arr[1] }];
+      return [...p, { kps: arr[0], score: arr[1] }];
     }, [])
   } catch (error) {
     console.log(error)
@@ -245,18 +245,23 @@ export const idTransformString = (id = '', flatData = {}) => {
 * 获取评分组件配置项
 * */
 export const getMapScoreConfig = (enName) => {
+  const DEFAULT = {
+    titleTemplate: '临床表现',
+    titleTemplate2: '分值',
+    valueTemplate: '$1',
+  };
   const CONFIG = {
     'PSND|PMND|neuralgia': {
-      titleTemplate: '分级',
+      titleTemplate2: '分级',
       valueTemplate: '$1级',
     },
-    DEFAULT: {
-      titleTemplate: '分值',
-      valueTemplate: '$1',
+    'CHFMD': {
+      titleTemplate2: '等级',
+      valueTemplate: '第$1期',
     },
   };
 
   const key = Object.keys(CONFIG).find(i => i.includes(enName));
 
-  return CONFIG[key] || CONFIG.DEFAULT;
+  return {...DEFAULT, ...CONFIG[key]};
 };

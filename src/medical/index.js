@@ -41,7 +41,7 @@ const ele = {
   // NRS 评分
   'NRS': Nrs,
   // 神经痛、外周运动神经障碍、外周感觉神经障碍、生活质量评分
-  'neuralgia|PMND|PSND|QLS': MapScore,
+  'neuralgia|PMND|PSND|QLS|CHFMD|HFMD-MEI': MapScore,
 };
 const OK_SUBMIT = 'submit';
 const OK_DRAFT = 'draft';
