@@ -26,6 +26,7 @@ const BaseList = (props) => {
         dataObject,
         keys: getFormName(item.valueToName, index),
         unit: item.unit,
+        inputType: item.inputType,
       });
 
       // 如果是地区，则将地区 id 转为中文

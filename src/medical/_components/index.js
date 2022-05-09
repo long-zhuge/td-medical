@@ -4,6 +4,7 @@ import Cascader from './Cascader';
 import CheckBox from './CheckBox';
 import Date from './Date';
 import Number from './Number';
+import NumberUnit from './NumberUnit';
 import NumberDouble from './NumberDouble';
 import Radio from './Radio';
 import RadioDesc from './RadioDesc';
@@ -18,6 +19,7 @@ export const ele = {
   month: Date,
   datetime: Date,
   number: Number,
+  number_unit: NumberUnit,
   number_double: NumberDouble,
   radio: Radio,
   radio_desc: RadioDesc,
@@ -41,6 +43,7 @@ export {
   CheckBox,
   Date,
   Number,
+  NumberUnit,
   NumberDouble,
   Radio,
   RadioDesc,

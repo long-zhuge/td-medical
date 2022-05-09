@@ -172,6 +172,26 @@
         "valueToName": "value1=diagnosis",
         "valueType": "object",
         "required": true
+      },
+      {
+        "cnName": "经量增多",
+        "enName": "menorrhagia",
+        "fieldNo": "F00035",
+        "inputType": "radio",
+        "map": "有#无",
+        "valueToName": "value1=menorrhagia",
+        "valueType": "object",
+        "required": true
+      },
+      {
+        "cnName": "经量增多病史",
+        "enName": "menorrhagiaHistory",
+        "fieldNo": "F00036",
+        "inputType": "number_unit",
+        "map": "年#月#日",
+        "valueToName": "value1=menorrhagiaHistory,value2=menorrhagiaHistory_unit",
+        "valueType": "object",
+        "required": true
       }
     ]
   },

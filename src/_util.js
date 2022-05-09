@@ -42,13 +42,13 @@ export function getFormName(text = '', index = 0, isIndex = true) {
 
 // 从 dataObject 中获取对应字段的值，并进行容错处理
 export function renderValue(params = {}) {
-  const { dataObject = {}, keys = [], unit = '' } = params;
+  const { dataObject = {}, keys = [], unit = '', inputType } = params;
 
   const values = keys.reduce((p, c) => {
     const value = dataObject[c] || '';
 
     if (p) {
-      return value ? `${p} / ${value}` : p;
+      return value ? `${p} ${inputType !== 'number_unit' ? '/' : ''}${value}` : p;
     }
 
     return value;
