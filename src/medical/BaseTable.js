@@ -8,7 +8,6 @@ import DeleteOutlined from '@ant-design/icons/DeleteOutlined';
 import { Table } from 'antd';
 import LinkBtn from 'td-antd/es/link-btn';
 import { getFormName, clone, getFormValues, mobileTableProps, genId } from '../_util';
-import './index.less';
 
 import { EleFormItem } from './_components';
 import FormBox from './FormBox';
@@ -81,7 +80,6 @@ const TableList = (props) => {
         pagination={false}
         dataSource={dataSource}
         rowClassName="td-editable-row"
-        title={() => '如果“有”，请在下面记录：'}
         {...mobileTableProps}
       />
       <div className="medical_element_add" onClick={onAdd}>+</div>

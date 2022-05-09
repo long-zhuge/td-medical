@@ -16,6 +16,7 @@ import { Form, Button, Tabs, Tooltip } from 'antd';
 import isNonEmptyObject from 'td-antd/es/tools/isNonEmptyObject';
 import Back from '../_components/Back';
 import { outPutFormValues, isMobile, filterEleMapToComponent, clone } from '../_util';
+import './index.less';
 
 // 病历组件
 import Detail from './detail';
@@ -31,7 +32,7 @@ export const EleContext = React.createContext({});
 
 const ele = {
   // 基本信息、生命体征、门诊病历主体部分：《可以自定义》
-  'base|vitalSigns|outpatientContent|projectDesc': BaseList,
+  'base|vitalSigns|outpatientContent|projectDesc|treatFollowUp|BP-ADRs': BaseList,
   // 合并用药、不良事件、不良事件终止
   'combinedMedication|SFDA|SFDADone': BaseTable,
   // 血常规、尿常规、肝肾功能检查

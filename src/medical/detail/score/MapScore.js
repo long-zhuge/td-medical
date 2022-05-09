@@ -4,12 +4,11 @@
 
 import React, { useState } from 'react';
 import CheckOutlined from '@ant-design/icons/CheckOutlined';
-import { Table, Divider } from 'antd';
+import { Table } from 'antd';
 import { mapToScore, getMapScoreConfig } from '../../../_util';
 
 const MapScore = (props) => {
   const {
-    cnName,
     enName,
     score,
     fieldList = [],
@@ -47,17 +46,14 @@ const MapScore = (props) => {
   ];
 
   return (
-    <React.Fragment>
-      <Divider>{cnName}</Divider>
-      <Table
-        bordered
-        size="small"
-        rowKey="score"
-        columns={columns}
-        pagination={false}
-        dataSource={dataSource}
-      />
-    </React.Fragment>
+    <Table
+      bordered
+      size="small"
+      rowKey="score"
+      columns={columns}
+      pagination={false}
+      dataSource={dataSource}
+    />
   );
 };
 

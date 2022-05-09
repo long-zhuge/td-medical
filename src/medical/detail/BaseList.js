@@ -3,17 +3,14 @@
 * */
 
 import React, { useContext } from 'react';
-import { Divider } from 'antd';
 import DescList from 'td-antd/es/desc-list';
 import { getFormName, renderValue, isTileComponent, idTransformString } from '../../_util';
-import '../index.less';
 
 import { EleDetailContext } from './index';
 
 const BaseList = (props) => {
   const {
     enName,
-    cnName,
     index = 0,
     fieldList = [],
     dataObject = {},
@@ -45,14 +42,11 @@ const BaseList = (props) => {
   }));
 
   return (
-    <React.Fragment>
-      <Divider>{cnName}</Divider>
-      <DescList
-        column={isTileComponent(enName) ? 1 : 2}
-        columns={columns}
-        dataSource={dataObject}
-      />
-    </React.Fragment>
+    <DescList
+      column={isTileComponent(enName) ? 1 : 2}
+      columns={columns}
+      dataSource={dataObject}
+    />
   );
 };
 

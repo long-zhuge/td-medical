@@ -52,7 +52,6 @@ const Nrs = (props) => {
 
   return (
     <FormBox {...props}>
-      <div>注：0分 无疼痛，1-3分轻度疼痛，4-6分中度疼痛，7-10分重度疼痛</div>
       <Table
         bordered
         size="small"

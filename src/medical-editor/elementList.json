@@ -303,6 +303,7 @@
     "elementNo": "E00004",
     "method": "default",
     "enName": "combinedMedication",
+    "remarks": "如果“有”，请在下面记录：",
     "fieldList": [
       {
         "cnName": "药物名称",
@@ -742,6 +743,7 @@
     "elementNo": "E00012",
     "method": "special",
     "enName": "NRS",
+    "remarks": "注：0分 无疼痛，1-3分轻度疼痛，4-6分中度疼痛，7-10分重度疼痛",
     "fieldList": [
       {
         "cnName": "背景痛 NRS 评分",
@@ -894,6 +896,66 @@
         "valueToName": "value1=HFMD-MEI",
         "valueType": "object",
         "required": false,
+        "analysis": true
+      }
+    ]
+  },
+  {
+    "cnName": "治疗后随访",
+    "elementNo": "E00019",
+    "method": "default",
+    "enName": "treatFollowUp",
+    "fieldList": [
+      {
+        "cnName": "随访时间",
+        "enName": "TFU-date",
+        "fieldNo": "F00018",
+        "inputType": "number",
+        "unit": "天",
+        "map": "",
+        "valueToName": "value1=TFU-date",
+        "valueType": "object",
+        "required": true,
+        "analysis": true
+      },
+      {
+        "cnName": "复发情况",
+        "enName": "TFU-recurrence",
+        "fieldNo": "F00019",
+        "inputType": "radio",
+        "map": "有#无",
+        "valueToName": "value1=TFU-recurrence",
+        "valueType": "object",
+        "required": true,
+        "analysis": true
+      }
+    ]
+  },
+  {
+    "cnName": "受益或不良反应",
+    "elementNo": "E00020",
+    "method": "default",
+    "enName": "BP-ADRs",
+    "fieldList": [
+      {
+        "cnName": "受益点",
+        "enName": "benefitPoint",
+        "fieldNo": "F00020",
+        "inputType": "text",
+        "valueToName": "value1=benefitPoint",
+        "valueType": "object",
+        "required": true,
+        "analysis": true
+      },
+      {
+        "cnName": "不良反应",
+        "enName": "adverseReaction",
+        "fieldNo": "F00021",
+        "inputType": "radio_desc",
+        "map": "皮肤干燥#潮红#脱屑#刺痛#其他",
+        "valueToName": "value1=adverseReaction,value2=adverseReaction_desc",
+        "valueType": "object",
+        "required": true,
         "analysis": true
       }
     ]

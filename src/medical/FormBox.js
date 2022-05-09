@@ -16,6 +16,7 @@ const FormBox = (props) => {
     enName,
     elementNo,
     index = 0,
+    remarks = '',
     fieldList = [],
     customSetFieldsValue, // 自定义数据回显函数
     onBeforeSave, // 保存前的回调函数，必须返回 fields 相关内容
@@ -56,6 +57,7 @@ const FormBox = (props) => {
   return (
     <React.Fragment>
       <Divider>{cnName}<SaveOutlined style={{ marginLeft: 6, color: '#5468ff' }} onClick={onSubmitDraft} /></Divider>
+      {remarks && <div className="td-medical-tip">{remarks}</div>}
       {props.children}
     </React.Fragment>
   );

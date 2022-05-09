@@ -5,12 +5,11 @@
 
 import React from 'react';
 import CheckOutlined from '@ant-design/icons/CheckOutlined';
-import { Divider, Table } from 'antd';
+import { Table } from 'antd';
 import typeOf from 'td-antd/es/tools/typeOf';
 
 const BaseTable = (props) => {
   const {
-    cnName,
     index = 0,
     fieldList = [],
     dataObject = {},
@@ -32,17 +31,14 @@ const BaseTable = (props) => {
   }));
 
   return (
-    <React.Fragment>
-      <Divider>{cnName}</Divider>
-      <Table
-        bordered
-        size="small"
-        rowKey="order"
-        columns={columns}
-        pagination={false}
-        dataSource={dataSource}
-      />
-    </React.Fragment>
+    <Table
+      bordered
+      size="small"
+      rowKey="order"
+      columns={columns}
+      pagination={false}
+      dataSource={dataSource}
+    />
   );
 };
 

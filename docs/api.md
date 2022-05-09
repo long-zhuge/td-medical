@@ -92,3 +92,4 @@ nav:
 |footerHidden|隐藏操作按钮|Boolean|false|
 |productFetch|产品请求地址|String|`/product/getPageList.json`|
 |productParam|产品请求的默认参数|Object|-|
+|submitButtonProps|提交按钮的属性|Object|-|

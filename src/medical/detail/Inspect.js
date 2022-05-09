@@ -3,12 +3,11 @@
 * */
 
 import React from 'react';
-import { Divider, Table } from 'antd';
+import { Table } from 'antd';
 import { getFormName } from '../../_util';
 
 const SemenRoutineQuota = (props) => {
   const {
-    cnName,
     index = 0,
     fieldList = [],
     dataObject = {},
@@ -40,25 +39,19 @@ const SemenRoutineQuota = (props) => {
     },
   ];
 
-  const renderTitle = () => {
-    const obj = fieldList.find(item => item.inputType === 'date');
-    const date = dataObject[`${obj.enName}_${index}`];
-
-    return date ? `${cnName}：${date}` : cnName;
-  };
+  const obj = fieldList.find(item => item.inputType === 'date');
+  const date = dataObject[`${obj.enName}_${index}`];
 
   return (
-    <React.Fragment>
-      <Divider>{renderTitle()}</Divider>
-      <Table
-        bordered
-        size="small"
-        rowKey="fieldNo"
-        columns={columns}
-        pagination={false}
-        dataSource={fieldList.filter(i => !i.enName.includes('ampleDate'))}
-      />
-    </React.Fragment>
+    <Table
+      bordered
+      size="small"
+      rowKey="fieldNo"
+      columns={columns}
+      pagination={false}
+      title={date ? () => `取样日期：${date}` : null}
+      dataSource={fieldList.filter(i => !i.enName.includes('ampleDate'))}
+    />
   );
 };
 

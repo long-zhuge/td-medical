@@ -51,6 +51,7 @@ export default function Question(props) {
     onFinish,
     backurl,
     footerHidden = false, // 隐藏按钮
+    submitButtonProps = {},
   } = props;
 
   const [form] = Form.useForm();
@@ -245,9 +246,7 @@ export default function Question(props) {
               >
                 下一题
               </Button>
-              <Button type="primary" onClick={onSubmit} loading={loading} disabled={!canSubmit()}>
-                完成
-              </Button>
+              <Button {...{ children: '完成', ...submitButtonProps }} type="primary" onClick={onSubmit} loading={loading} disabled={!canSubmit()} />
             </>
           )}
         </div>

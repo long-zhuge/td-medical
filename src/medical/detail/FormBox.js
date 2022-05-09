@@ -2,11 +2,13 @@
 * 该组件会进行表单数据处理，并将处理后的数据返回给 children
 * */
 import React, { useState, useEffect } from 'react';
+import { Divider } from 'antd';
 import isNonEmptyObject from 'td-antd/es/tools/isNonEmptyObject';
 import { getFormValues, getFormName } from '../../_util';
 
 const FormBox = (props) => {
   const {
+    cnName,
     index = 0,
     fieldList = [],
     formData = {},
@@ -36,6 +38,7 @@ const FormBox = (props) => {
 
   return (
     <React.Fragment>
+      <Divider>{cnName}</Divider>
       {props.children({ dataObject, dataSource, score })}
       <br /><br />
     </React.Fragment>

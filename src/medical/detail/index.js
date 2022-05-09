@@ -25,7 +25,7 @@ export const EleDetailContext = React.createContext({});
 
 const ele = {
   // 基本信息、生命体征、门诊主体
-  'base|vitalSigns|outpatientContent|projectDesc': BaseList,
+  'base|vitalSigns|outpatientContent|projectDesc|treatFollowUp|BP-ADRs': BaseList,
   // 合并用药
   'combinedMedication|SFDA|SFDADone': BaseTable,
   // 血常规、尿常规、肝肾功能检查
@@ -110,7 +110,7 @@ const MedicalDetail = (props) => {
               const Component = filterEleMapToComponent(ele, item.enName);
 
               return (
-                <FormBox key={`${item.enName}_${index}`} index={index} fieldList={item.fieldList} formData={formData}>
+                <FormBox key={`${item.enName}_${index}`} index={index} fieldList={item.fieldList} formData={formData} {...item}>
                   {(res) => (
                     <Component
                       {...item}

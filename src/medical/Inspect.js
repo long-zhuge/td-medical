@@ -7,8 +7,6 @@ import ExclamationCircleOutlined from '@ant-design/icons/ExclamationCircleOutlin
 import { Table } from 'antd';
 import { getFormName, isMobile, mobileTableProps } from '../_util';
 
-import './index.less';
-
 import { Text, Date, Radio, Number } from './_components';
 import FormBox from './FormBox';
 
