@@ -259,6 +259,10 @@ export const getMapScoreConfig = (enName) => {
       titleTemplate2: '等级',
       valueTemplate: '第$1期',
     },
+    'AcneGrade': {
+      titleTemplate2: '等级',
+      valueTemplate: '$1级',
+    },
   };
 
   const key = Object.keys(CONFIG).find(i => i.includes(enName));

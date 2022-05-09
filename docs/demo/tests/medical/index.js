@@ -13,7 +13,7 @@ const Demo = () => {
       "elementNo": "E00001",
       "method": "default",
       "enName": "base",
-      "remarks": "基本信息基本信息基本信息基本信息基本信息",
+      "remarks": "备注信息显示",
       "fieldList": [{
         "cnName": "病历号",
         "enName": "medicalNumber",

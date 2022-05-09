@@ -876,27 +876,150 @@
         "map": "出疹期，普通型：主要表现为发热，手、足、口、臀等部位出疹/1\n神经系统受累期，重型：主要表现为为精神差、嗜睡、吸吮无力、易惊、头痛、呕吐、烦躁、肢体抖动、肌无力、颈项强直等/2\n心肺功能衰竭前期，危重型：主要表现为心率和呼吸增快、出冷汗、四肢末梢发凉、皮肤发花、血压升高/3\n心肺功能衰竭期，危重型：主要临床表现为心动过速 （个别患儿心动过缓）、呼吸急促、口唇紫绀、咳粉红色泡沫痰或血性液体、血压降低或休克/4\n恢复期：体温逐渐恢复正常，对血管活性药物的依赖逐渐减少，神经系统受累症状和心肺功能逐渐恢复/5",
         "valueToName": "value1=CHFMD",
         "valueType": "object",
-        "required": false,
-        "analysis": true
+        "required": false
       }
     ]
   },
   {
     "cnName": "主要疗效指标",
     "elementNo": "E00018",
-    "method": "special",
-    "enName": "HFMD-MEI",
+    "method": "default",
+    "enName": "MEI",
     "fieldList": [
       {
-        "cnName": "主要疗效指标",
-        "enName": "HFMD-MEI",
-        "fieldNo": "F01700",
+        "cnName": "临床疗效判定",
+        "enName": "clinicalEfficacyJudgment",
+        "fieldNo": "F00022",
         "inputType": "radio",
-        "map": "为患儿体温正常，疱疹消失，生活恢复正常/治愈\n显效：为患儿体温正常，疱疹减少/显效\n有效：为患儿体温基本正常，疱疹减少/有效\n无效：为患儿持续发热，疱疹未见改善/无效",
-        "valueToName": "value1=HFMD-MEI",
+        "map": "治愈-为患儿体温正常，疱疹消失，生活恢复正常#显效-为患儿体温正常，疱疹减少#有效-为患儿体温基本正常，疱疹减少#无效-为患儿持续发热，疱疹未见改善",
+        "valueToName": "value1=clinicalEfficacyJudgment",
         "valueType": "object",
-        "required": false,
-        "analysis": true
+        "required": true
+      },
+      {
+        "cnName": "痤疮炎性皮损数量",
+        "enName": "AcneInflammatoryLesions",
+        "fieldNo": "F00023",
+        "inputType": "number",
+        "unit": "个",
+        "valueToName": "value1=AcneInflammatoryLesions",
+        "valueType": "object",
+        "required": true
+      },
+      {
+        "cnName": "非炎性皮损数量",
+        "enName": "NoAcneInflammatoryLesions",
+        "fieldNo": "F00024",
+        "inputType": "number",
+        "unit": "个",
+        "valueToName": "value1=NoAcneInflammatoryLesions",
+        "valueType": "object",
+        "required": true
+      }
+    ]
+  },
+  {
+    "cnName": "次要疗效指标",
+    "elementNo": "E00022",
+    "method": "default",
+    "enName": "SEI",
+    "fieldList": [
+      {
+        "cnName": "皮疹消退时间",
+        "enName": "rashResolution",
+        "fieldNo": "F00025",
+        "inputType": "date",
+        "valueToName": "value1=rashResolution",
+        "valueType": "object",
+        "required": true
+      },
+      {
+        "cnName": "退热时间",
+        "enName": "antipyretic",
+        "fieldNo": "F00026",
+        "inputType": "date",
+        "valueToName": "value1=antipyretic",
+        "valueType": "object",
+        "required": true
+      },
+      {
+        "cnName": "住院时间",
+        "enName": "lengthOfStay",
+        "fieldNo": "F00027",
+        "inputType": "date",
+        "valueToName": "value1=lengthOfStay",
+        "valueType": "object",
+        "required": true
+      },
+      {
+        "cnName": "水量检测仪检测右面颊中心点含水量",
+        "enName": "Acne-WRC",
+        "fieldNo": "F00028",
+        "inputType": "number",
+        "unit": "%",
+        "valueToName": "value1=Acne-WRC",
+        "valueType": "object",
+        "required": true
+      },
+      {
+        "cnName": "油脂量检测仪检测右面颊中心点油脂量",
+        "enName": "Acne-GRC",
+        "fieldNo": "F00029",
+        "inputType": "number",
+        "unit": "%",
+        "valueToName": "value1=Acne-GRC",
+        "valueType": "object",
+        "required": true
+      },
+      {
+        "cnName": "TEWL检测仪检测右面颊中心点水分流失度",
+        "enName": "Acne-TEWL",
+        "fieldNo": "F00030",
+        "inputType": "number",
+        "unit": "%",
+        "valueToName": "value1=Acne-TEWL",
+        "valueType": "object",
+        "required": true
+      },
+      {
+        "cnName": "其他检测指标",
+        "enName": "SEI-other",
+        "fieldNo": "F00031",
+        "inputType": "number",
+        "unit": "%",
+        "valueToName": "value1=SEI-other",
+        "valueType": "object",
+        "required": true
+      },
+      {
+        "cnName": "皮肤油腻度",
+        "enName": "SEI-skinGreasiness",
+        "fieldNo": "F00032",
+        "inputType": "radio",
+        "map": "无改善#轻微改善#改善",
+        "valueToName": "value1=SEI-skinGreasiness",
+        "valueType": "object",
+        "required": true
+      },
+      {
+        "cnName": "皮肤细腻度",
+        "enName": "SEI-skinFineness",
+        "fieldNo": "F00033",
+        "inputType": "radio",
+        "map": "无改善#轻微改善#改善",
+        "valueToName": "value1=SEI-skinFineness",
+        "valueType": "object",
+        "required": true
+      },
+      {
+        "cnName": "皮肤光泽度",
+        "enName": "SEI-skinGloss",
+        "fieldNo": "F00034",
+        "inputType": "radio",
+        "map": "无改善#轻微改善#改善",
+        "valueToName": "value1=SEI-skinGloss",
+        "valueType": "object",
+        "required": true
       }
     ]
   },
@@ -912,11 +1035,9 @@
         "fieldNo": "F00018",
         "inputType": "number",
         "unit": "天",
-        "map": "",
         "valueToName": "value1=TFU-date",
         "valueType": "object",
-        "required": true,
-        "analysis": true
+        "required": true
       },
       {
         "cnName": "复发情况",
@@ -926,8 +1047,7 @@
         "map": "有#无",
         "valueToName": "value1=TFU-recurrence",
         "valueType": "object",
-        "required": true,
-        "analysis": true
+        "required": true
       }
     ]
   },
@@ -944,8 +1064,7 @@
         "inputType": "text",
         "valueToName": "value1=benefitPoint",
         "valueType": "object",
-        "required": true,
-        "analysis": true
+        "required": true
       },
       {
         "cnName": "不良反应",
@@ -955,8 +1074,26 @@
         "map": "皮肤干燥#潮红#脱屑#刺痛#其他",
         "valueToName": "value1=adverseReaction,value2=adverseReaction_desc",
         "valueType": "object",
-        "required": true,
-        "analysis": true
+        "required": true
+      }
+    ]
+  },
+  {
+    "cnName": "痤疮等级评估",
+    "elementNo": "E00021",
+    "method": "special",
+    "enName": "AcneGrade",
+    "remarks": "参照 Pillsbury 分级法及痤疮国际分类法（Pillsbury 四级改良分级法）",
+    "fieldList": [
+      {
+        "cnName": "痤疮等级评估",
+        "enName": "AcneGrade",
+        "fieldNo": "F01800",
+        "inputType": "radio",
+        "map": "轻度：主要皮损为黑头粉刺，散发至多发，炎性丘疹散发，总病灶数为10～30个/1\n较轻中度：主要皮损为粉刺，并有中等数量的丘疹和浅在性脓疱，总病灶数在 31～50 个之间，局限在面部/2\n较重中度：主要皮损为深在性炎性丘疹和脓疱，总病灶数在50～100个，结节＜3 个，发生在颜面、颈部、胸背部/3\n重度：主要皮损为深在性的炎性丘疹和脓疱，病灶数＞100 个，结节或囊肿＞3个，容易形成瘢痕，发生于上半身/4",
+        "valueToName": "value1=AcneGrade",
+        "valueType": "object",
+        "required": false
       }
     ]
   }

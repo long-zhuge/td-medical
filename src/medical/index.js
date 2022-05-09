@@ -32,7 +32,7 @@ export const EleContext = React.createContext({});
 
 const ele = {
   // 基本信息、生命体征、门诊病历主体部分：《可以自定义》
-  'base|vitalSigns|outpatientContent|projectDesc|treatFollowUp|BP-ADRs': BaseList,
+  'base|vitalSigns|outpatientContent|projectDesc|treatFollowUp|BP-ADRs|MEI|SEI': BaseList,
   // 合并用药、不良事件、不良事件终止
   'combinedMedication|SFDA|SFDADone': BaseTable,
   // 血常规、尿常规、肝肾功能检查
@@ -42,7 +42,7 @@ const ele = {
   // NRS 评分
   'NRS': Nrs,
   // 神经痛、外周运动神经障碍、外周感觉神经障碍、生活质量评分
-  'neuralgia|PMND|PSND|QLS|CHFMD|HFMD-MEI': MapScore,
+  'neuralgia|PMND|PSND|QLS|CHFMD|AcneGrade': MapScore,
 };
 const OK_SUBMIT = 'submit';
 const OK_DRAFT = 'draft';
