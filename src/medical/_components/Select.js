@@ -1,5 +1,6 @@
 /*
 * 类型：select
+*   map：使用 # 进行分隔
 * */
 
 import React from 'react';

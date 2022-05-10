@@ -2,6 +2,7 @@ import React, { useContext, useRef } from 'react';
 import FormOutlined from '@ant-design/icons/FormOutlined';
 import DeleteOutlined from '@ant-design/icons/DeleteOutlined';
 import InteractionOutlined from '@ant-design/icons/InteractionOutlined';
+import StrikethroughOutlined from '@ant-design/icons/StrikethroughOutlined';
 import { useDrag, useDrop } from 'react-dnd';
 import update from 'immutability-helper';
 import { Space } from 'antd';
@@ -18,6 +19,7 @@ const DragableItem = ({ data, index }) => {
   const { selectedElementList, activeTabKey, rightForm, dispatch } = useContext(EditorContext);
   const ref = useRef();
   const requiredRef = useRef(true);
+  const disabledRef = useRef(false);
 
   // 设置字段进行编辑
   const onForm = () => {
@@ -33,6 +35,17 @@ const DragableItem = ({ data, index }) => {
         item.required = !requiredRef.current;
       });
       requiredRef.current = !requiredRef.current;
+      dispatch('SELECTED_ELEMENT_LIST', clone(selectedElementList));
+    })
+  };
+
+  // 设置组件的禁用项
+  const setUpDisabledAll = () => {
+    confirm(`是否将组件中的字段都改为${disabledRef.current ? '非': ''}禁用？`).then(() => {
+      data.fieldList.forEach(item => {
+        item.disabled = !disabledRef.current;
+      });
+      disabledRef.current = !disabledRef.current;
       dispatch('SELECTED_ELEMENT_LIST', clone(selectedElementList));
     })
   };
@@ -103,6 +116,7 @@ const DragableItem = ({ data, index }) => {
           {data.cnName}
           <LinkBtn onClick={onForm}><FormOutlined /></LinkBtn>
           <LinkBtn onClick={setUpRequiredAll}><InteractionOutlined /></LinkBtn>
+          <LinkBtn onClick={setUpDisabledAll}><StrikethroughOutlined /></LinkBtn>
           <LinkBtn danger onClick={onDelete}><DeleteOutlined /></LinkBtn>
         </Space>
       </div>

@@ -56,10 +56,6 @@ const Right = () => {
                 name="cnName"
                 label="组件名"
               />
-              {/* <FormItem
-                name="enName"
-                label="组件英文名"
-              /> */}
               <FormItem
                 name="meddra"
                 label="MedDRA"
@@ -75,10 +71,6 @@ const Right = () => {
                 name="cnName"
                 label="字段名"
               />
-              {/* <FormItem
-                name="enName"
-                label="字段英文名"
-              /> */}
               <FormItem
                 name="required"
                 label="是否必填"
@@ -99,17 +91,29 @@ const Right = () => {
                 label="输入框提示语"
                 required={false}
               />
-              <FormItem noStyle shouldUpdate>
-                {({ getFieldValue }) => {
-                  if (['select'].includes(getFieldValue('inputType'))) {
+              <FormItem.Update names={['inputType']}>
+                {({ inputType }) => {
+                  if (['select', 'select_desc'].includes(inputType)) {
                     return (
-                      <FormItem
-                        name="map"
-                        label="枚举值"
-                        inputProps={{ placeholder: '请用#分割；如：男#女' }}
-                      />
+                      <React.Fragment>
+                        <FormItem
+                          name="map"
+                          label="枚举值"
+                          itemType="textarea"
+                          inputProps={{ placeholder: '请用#分割；如：男#女' }}
+                        />
+                        <FormItem
+                          name="linkage"
+                          label="枚举联动值"
+                          itemType="textarea"
+                          inputProps={{ placeholder: '请用#分割；如：男#女' }}
+                          show={inputType === 'select_desc'}
+                        />
+                      </React.Fragment>
                     );
-                  } else if (['number', 'number_double'].includes(getFieldValue('inputType'))) {
+                  }
+
+                  if (['number', 'number_double'].includes(inputType)) {
                     return (
                       <FormItem
                         name="unit"
@@ -120,7 +124,7 @@ const Right = () => {
                     );
                   }
                 }}
-              </FormItem>
+              </FormItem.Update>
               <FormItem
                 name="meddra"
                 label="MedDRA"
@@ -131,7 +135,7 @@ const Right = () => {
           )}
           <FormItem
             name="remarks"
-            label="备注"
+            label="提示信息"
             required={false}
             itemType="textarea"
           />

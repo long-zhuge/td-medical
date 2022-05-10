@@ -1,14 +1,14 @@
 /*
-* 类型：radio，附带说明输入框
+* 类型：select_desc
+*   map：使用 # 进行分隔
+*   linkage：与 map 进行联动的关键词。可使用 # 进行分隔设置多个词
 * */
 
 import React from 'react';
-import { Radio, Row, Col } from 'antd';
+import { Row, Col } from 'antd';
 import FormItem from 'td-antd/es/form-item';
+import SelectList from 'td-antd/es/select-list';
 import { toMap } from '../../_util';
-
-// 以下枚举值会显示输入框
-const text = ['有', '其他'];
 
 export default (props) => {
   const {
@@ -16,6 +16,7 @@ export default (props) => {
     name = '',
     name2 = '',
     map = '',
+    linkage = '',
     ...rest
   } = props;
 
@@ -27,14 +28,16 @@ export default (props) => {
           name={name}
           {...rest}
         >
-          <Radio.Group>
-            {toMap(map).map(i => <Radio key={i} value={i}>{i}</Radio>)}
-          </Radio.Group>
+          <SelectList
+            localData={toMap(map)}
+            style={{ width: '100%' }}
+            placeholder={rest.placeholder}
+          />
         </FormItem>
       </Col>
       <FormItem noStyle shouldUpdate>
         {({ getFieldValue }) => {
-          if (text.includes(getFieldValue(name))) {
+          if (toMap(linkage).includes(getFieldValue(name))) {
             return (
               <Col span={14}>
                 <FormItem

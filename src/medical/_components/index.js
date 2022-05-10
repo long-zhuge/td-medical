@@ -7,8 +7,8 @@ import Number from './Number';
 import NumberUnit from './NumberUnit';
 import NumberDouble from './NumberDouble';
 import Radio from './Radio';
-import RadioDesc from './RadioDesc';
 import Select from './Select';
+import SelectDesc from './SelectDesc';
 import Text from './Text';
 import Textarea from './Textarea';
 
@@ -22,8 +22,8 @@ export const ele = {
   number_unit: NumberUnit,
   number_double: NumberDouble,
   radio: Radio,
-  radio_desc: RadioDesc,
   select: Select,
+  select_desc: SelectDesc,
   text: Text,
   textarea: Textarea,
 };
@@ -46,8 +46,8 @@ export {
   NumberUnit,
   NumberDouble,
   Radio,
-  RadioDesc,
   Select,
+  SelectDesc,
   Text,
   Textarea,
   EleFormItem,

@@ -67,7 +67,7 @@ const Demo = () => {
   };
 
   const filterRecordData = () => {
-    prompt('请输入需要清洗的 dataObject 数据').then((response) => {
+    prompt('请输入需要清洗的 record 数据').then((response) => {
       try {
         const error = [];
         const filter = [];
@@ -108,7 +108,7 @@ const Demo = () => {
         const filter = JSON.parse(response).reduce((p, c) => {
           const filterTemplate = c.template.reduce((p2, c2) => {
             const filterFieldList = c2.fieldList.reduce((p3, c3) => {
-              const itemData = dataObject[c3.cnName];
+              const itemData = dataObject[c3.enName];
 
               if (itemData) {
                 return [...p3, {...c3, ...itemData, required: c3.required}]

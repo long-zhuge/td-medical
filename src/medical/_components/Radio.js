@@ -1,5 +1,7 @@
 /*
 * 类型：radio
+* PS：主要作用于评分组件
+*   map：使用 / 分隔描述和评分；使用 # 分隔枚举值
 * */
 
 import React from 'react';
