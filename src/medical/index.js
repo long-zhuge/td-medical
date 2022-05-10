@@ -15,35 +15,17 @@ import ExclamationCircleOutlined from '@ant-design/icons/ExclamationCircleOutlin
 import { Form, Button, Tabs, Tooltip } from 'antd';
 import isNonEmptyObject from 'td-antd/es/tools/isNonEmptyObject';
 import Back from '../_components/Back';
-import { outPutFormValues, isMobile, filterEleMapToComponent, clone } from '../_util';
+import { outPutFormValues, isMobile, clone } from '../_util';
 import './index.less';
+
+import Container from './container';
 
 // 病历组件
 import Detail from './detail';
-import BaseList from './BaseList';
-import Inspect from './Inspect';
-import SemenRoutineQuota from './SemenRoutineQuota';
-import BaseTable from './BaseTable';
-import Nrs from './score/Nrs';
-import MapScore from './score/MapScore';
 
 // 组件顶层对象
 export const EleContext = React.createContext({});
 
-const ele = {
-  // 基本信息、生命体征、门诊病历主体部分：《可以自定义》
-  'base|vitalSigns|outpatientContent|projectDesc|treatFollowUp|BP-ADRs|MEI|SEI': BaseList,
-  // 合并用药、不良事件、不良事件终止
-  'combinedMedication|SFDA|SFDADone': BaseTable,
-  // 血常规、尿常规、肝肾功能检查
-  'routineBloodTest|urinalysis|liverKidneyTest': Inspect,
-  // 精液常规检查指标（semenRoutineQuota）、精液增加检查指标
-  'semenRoutineQuotaAdd': SemenRoutineQuota,
-  // NRS 评分
-  'NRS': Nrs,
-  // 神经痛、外周运动神经障碍、外周感觉神经障碍、生活质量评分
-  'neuralgia|PMND|PSND|QLS|CHFMD|AcneGrade': MapScore,
-};
 const OK_SUBMIT = 'submit';
 const OK_DRAFT = 'draft';
 
@@ -153,16 +135,16 @@ const MedicalElement = (props) => {
               )}
               key={templateOrder}
             >
-              {temp.template.map((item, index) => {
-                const Component = filterEleMapToComponent(ele, item.enName);
-
-                return (
-                  <React.Fragment key={`${item.enName}_${index}`}>
-                    <Component {...item} index={index} />
-                    <br /><br />
-                  </React.Fragment>
-                );
-              })}
+              {temp.template.map((item, index) => (
+                <Container enName={item.enName}>
+                  {(Component) => (
+                    <React.Fragment key={`${item.enName}_${index}`}>
+                      <Component {...item} index={index} />
+                      <br /><br />
+                    </React.Fragment>
+                  )}
+                </Container>
+              ))}
             </Tabs.TabPane>
           ))}
         </Tabs>

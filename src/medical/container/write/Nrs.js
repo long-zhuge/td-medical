@@ -5,8 +5,8 @@
 import React from 'react';
 import { Table } from 'antd';
 
-import { EleFormItem } from '../_components';
-import FormBox from '../FormBox';
+import { EleFormItem } from '../../_components';
+import FormBox from '../../FormBox';
 
 const reg = /^([0-9]|10)$/;
 const dataSource = [

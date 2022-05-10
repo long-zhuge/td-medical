@@ -5,8 +5,8 @@
 import React, { useState } from 'react';
 import { Table, Radio } from 'antd';
 import FormItem from 'td-antd/es/form-item';
-import { mapToScore, getMapScoreConfig } from '../../_util';
-import FormBox from '../FormBox';
+import { mapToScore, getMapScoreConfig } from '../../../_util';
+import FormBox from '../../FormBox';
 
 const MapScore = (props) => {
   const {

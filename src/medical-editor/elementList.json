@@ -158,7 +158,7 @@
         "cnName": "重要既往史",
         "enName": "medicationHistory",
         "fieldNo": "F00015",
-        "inputType": "select_desc",
+        "inputType": "select",
         "map": "有#无",
         "linkage": "有",
         "valueToName": "value1=medicationHistory,value2=medicationHistory_desc",
@@ -207,7 +207,7 @@
         "cnName": "不良反应",
         "enName": "adverseReaction",
         "fieldNo": "F00021",
-        "inputType": "select_desc",
+        "inputType": "select",
         "map": "皮肤干燥#潮红#脱屑#刺痛#其他",
         "linkage": "其他",
         "valueToName": "value1=adverseReaction,value2=adverseReaction_desc",
@@ -392,6 +392,16 @@
         "required": true
       },
       {
+        "cnName": "子宫大小(厚)",
+        "enName": "uterusThick",
+        "fieldNo": "F00063",
+        "inputType": "number",
+        "unit": "cm",
+        "valueToName": "value1=uterusThick",
+        "valueType": "object",
+        "required": true
+      },
+      {
         "cnName": "子宫活动度",
         "enName": "uterusActivity",
         "fieldNo": "F00040",
@@ -471,6 +481,247 @@
         "fieldNo": "F00047",
         "inputType": "textarea",
         "valueToName": "value1=projectDesc",
+        "valueType": "object",
+        "required": true
+      },
+      {
+        "cnName": "初潮年龄",
+        "enName": "menarcheAge",
+        "fieldNo": "F00048",
+        "inputType": "number",
+        "unit": "岁",
+        "valueToName": "value1=menarcheAge",
+        "valueType": "object",
+        "required": true
+      },
+      {
+        "cnName": "经期",
+        "enName": "period",
+        "fieldNo": "F00049",
+        "inputType": "number",
+        "unit": "天",
+        "valueToName": "value1=period",
+        "valueType": "object",
+        "required": true
+      },
+      {
+        "cnName": "末次月经时间",
+        "enName": "LastMenstrualTime",
+        "fieldNo": "F00050",
+        "inputType": "date",
+        "placeholder": "不确定则不填写",
+        "valueToName": "value1=LastMenstrualTime",
+        "valueType": "object",
+        "required": false
+      },
+      {
+        "cnName": "痛经",
+        "enName": "dysmenorrhea",
+        "fieldNo": "F00051",
+        "inputType": "select",
+        "map": "有#无",
+        "valueToName": "value1=dysmenorrhea",
+        "valueType": "object",
+        "required": true
+      },
+      {
+        "cnName": "VRS评分",
+        "enName": "vrs",
+        "fieldNo": "F00052",
+        "inputType": "select",
+        "map": "0级-无疼痛#1级(轻度)-有疼痛但可忍受，生活正常，睡眠无干扰#2级(中度)-疼痛明显，不能忍受，要求服用镇痛药物，睡眠受干扰#3级(重度)-疼痛剧烈，不能忍受，需用镇痛药物，睡眠受严重干扰可伴自主神经紊乱或被动体位",
+        "valueToName": "value1=vrs",
+        "valueType": "object",
+        "required": false
+      },
+      {
+        "cnName": "NRS评分",
+        "enName": "nrs",
+        "fieldNo": "F00053",
+        "inputType": "select",
+        "map": "0-无痛#1~3-轻度疼痛#4~6-中度疼痛#7~10-重度疼痛",
+        "valueToName": "value1=nrs",
+        "valueType": "object",
+        "required": false
+      },
+      {
+        "cnName": "既往是否妊娠",
+        "enName": "previousPregnancy",
+        "fieldNo": "F00054",
+        "inputType": "select",
+        "map": "是#否#不知道",
+        "valueToName": "value1=previousPregnancy",
+        "valueType": "object",
+        "required": true
+      },
+      {
+        "cnName": "妊娠(是)",
+        "enName": "gestation",
+        "fieldNo": "F00055",
+        "inputType": "number_unit",
+        "unit": "周",
+        "map": "足月产#早产#自然流产#人工流产或清宫",
+        "valueToName": "value1=gestation,value2=gestation_desc",
+        "valueType": "object",
+        "required": false
+      },
+      {
+        "cnName": "妊娠(否)",
+        "enName": "noGestation",
+        "fieldNo": "F00056",
+        "inputType": "select",
+        "map": "无性生活#避孕#原发不孕",
+        "valueToName": "value1=noGestation",
+        "valueType": "object",
+        "required": false
+      },
+      {
+        "cnName": "是否有意愿术后妊娠",
+        "enName": "pregnantAfterOperation",
+        "fieldNo": "F00057",
+        "inputType": "select",
+        "map": "是#否#不知道",
+        "valueToName": "value1=pregnantAfterOperation",
+        "valueType": "object",
+        "required": true
+      },
+      {
+        "cnName": "检查日期",
+        "enName": "inspectionDate",
+        "fieldNo": "F00058",
+        "inputType": "date",
+        "valueToName": "value1=inspectionDate",
+        "valueType": "object",
+        "required": true
+      },
+      {
+        "cnName": "心率",
+        "enName": "heartRate",
+        "fieldNo": "F00059",
+        "inputType": "number",
+        "unit": "bpm",
+        "valueToName": "value1=heartRate",
+        "valueType": "object",
+        "required": true
+      },
+      {
+        "cnName": "心电图节律",
+        "enName": "ECG-rhythm",
+        "fieldNo": "F00060",
+        "inputType": "select",
+        "map": "窦性心律#心房扑动#阵发性室上性心动过速#心房纤颤#房性期前收缩#室性期前收缩#室性心动过速#房室传导阻滞#预激综合征#交界性心律#起搏器心律#其他",
+        "linkage": "其他",
+        "valueToName": "value1=ECG-rhythm,value2=ECG-rhythm_desc",
+        "valueType": "object",
+        "required": true
+      },
+      {
+        "cnName": "是否心影增大",
+        "enName": "heartShadowIncreases",
+        "fieldNo": "F00061",
+        "inputType": "select",
+        "map": "是#否#不知道",
+        "valueToName": "value1=heartShadowIncreases",
+        "valueType": "object",
+        "required": true
+      },
+      {
+        "cnName": "是否肺部感染",
+        "enName": "pulmonaryInfection",
+        "fieldNo": "F00062",
+        "inputType": "select",
+        "map": "是#否#不知道",
+        "valueToName": "value1=pulmonaryInfection",
+        "valueType": "object",
+        "required": true
+      },
+      {
+        "cnName": "三维彩超",
+        "enName": "3D-ultrasound",
+        "fieldNo": "F00069",
+        "inputType": "select",
+        "map": "完成检查#未完成检查",
+        "valueToName": "value1=3D-ultrasound",
+        "valueType": "object",
+        "required": true
+      },
+      {
+        "cnName": "图像质量",
+        "enName": "imageQuality",
+        "fieldNo": "F00064",
+        "inputType": "select",
+        "map": "极好#好#一般#差",
+        "valueToName": "value1=imageQuality",
+        "valueType": "object",
+        "required": true
+      },
+      {
+        "cnName": "病灶",
+        "enName": "nidus",
+        "fieldNo": "F00065",
+        "inputType": "number",
+        "unit": "个",
+        "valueToName": "value1=imageQuality",
+        "valueType": "object",
+        "required": true
+      },
+      {
+        "cnName": "最大病灶大小",
+        "enName": "nidusSize",
+        "fieldNo": "F00066",
+        "inputType": "text",
+        "valueToName": "value1=nidusSize",
+        "placeholder": "最大肌瘤尺寸，格式：__mmx__mmx__mm",
+        "valueType": "object",
+        "required": true
+      },
+      {
+        "cnName": "病灶位置",
+        "enName": "nidusPosition",
+        "fieldNo": "F00067",
+        "inputType": "select",
+        "map": "子宫前壁#子宫后壁#宫底#任意两项都有",
+        "valueToName": "value1=nidusPosition",
+        "valueType": "object",
+        "required": true
+      },
+      {
+        "cnName": "子宫内膜厚度",
+        "enName": "endometrialThickness",
+        "fieldNo": "F00068",
+        "inputType": "number",
+        "unit": "mm",
+        "valueToName": "value1=endometrialThickness",
+        "valueType": "object",
+        "required": true
+      },
+      {
+        "cnName": "术后不良反应",
+        "enName": "postoperativeAdverseReactions",
+        "fieldNo": "F00070",
+        "inputType": "select",
+        "map": "有#无",
+        "valueToName": "value1=postoperativeAdverseReactions",
+        "valueType": "object",
+        "required": true
+      },
+      {
+        "cnName": "具体不良反应",
+        "enName": "specificAdverseReactions",
+        "fieldNo": "F00071",
+        "inputType": "select_multiple",
+        "map": "潮热#盗汗#阴道干涩#头痛#阴道出血#易怒等情绪改变#其他",
+        "linkage": "其他",
+        "valueToName": "value1=specificAdverseReactions",
+        "valueType": "object",
+        "required": true
+      },
+      {
+        "cnName": "负责人审核申明",
+        "enName": "auditStatement",
+        "fieldNo": "F00072",
+        "inputType": "textarea",
+        "valueToName": "value1=auditStatement",
         "valueType": "object",
         "required": true
       }
@@ -612,7 +863,8 @@
         "cnName": "末次就诊时仍使用",
         "enName": "lastUse",
         "fieldNo": "F00306",
-        "inputType": "checkbox",
+        "inputType": "select",
+        "map": "是#否",
         "valueToName": "value1=lastUse",
         "valueType": "list",
         "required": false
@@ -804,6 +1056,53 @@
         "inputType": "number",
         "unit": "mmol/L",
         "valueToName": "value1=lk-TBIL_result,value2=lk-TBIL_judge,value3=lk-TBIL_remark",
+        "valueType": "object",
+        "required": true
+      }
+    ]
+  },
+  {
+    "cnName": "血清检查",
+    "elementNo": "E00019",
+    "method": "default",
+    "enName": "serumExamination",
+    "fieldList": [
+      {
+        "cnName": "取样日期",
+        "enName": "se-sampleDate",
+        "fieldNo": "F01800",
+        "inputType": "date",
+        "valueToName": "value1=se-sampleDate",
+        "valueType": "object",
+        "required": true
+      },
+      {
+        "cnName": "促卵泡激素(FSH)",
+        "enName": "se-FSH",
+        "fieldNo": "F01801",
+        "inputType": "number",
+        "unit": "mIU/mL",
+        "valueToName": "value1=se-FSH_result,value2=se-FSH_judge,value3=se-FSH_remark",
+        "valueType": "object",
+        "required": true
+      },
+      {
+        "cnName": "雌激素水平(E2)",
+        "enName": "se-E2",
+        "fieldNo": "F01802",
+        "inputType": "number",
+        "unit": "pmol/L",
+        "valueToName": "value1=se-E2_result,value2=se-E2_judge,value3=se-E2_remark",
+        "valueType": "object",
+        "required": true
+      },
+      {
+        "cnName": "抗缪勒氏管激素(AMH)",
+        "enName": "se-AMH",
+        "fieldNo": "F01803",
+        "inputType": "number",
+        "unit": "ng/ml",
+        "valueToName": "value1=se-AMH_result,value2=se-AMH_judge,value3=se-AMH_remark",
         "valueType": "object",
         "required": true
       }

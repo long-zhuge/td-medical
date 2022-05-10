@@ -4,9 +4,9 @@
 
 import React from 'react';
 import { Row, Col } from 'antd';
-import { getFormName, isMobile, isTileComponent } from '../_util';
-import { EleFormItem } from './_components';
-import FormBox from './FormBox';
+import { getFormName, isMobile, isTileComponent } from '../../../_util';
+import { EleFormItem } from '../../_components';
+import FormBox from '../../FormBox';
 
 // 该组件不用渲染 label
 const NO_LABEL = ['projectDesc'];

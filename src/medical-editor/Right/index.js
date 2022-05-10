@@ -93,7 +93,7 @@ const Right = () => {
               />
               <FormItem.Update names={['inputType']}>
                 {({ inputType }) => {
-                  if (['select', 'select_desc'].includes(inputType)) {
+                  if (['select', 'select_multiple'].includes(inputType)) {
                     return (
                       <React.Fragment>
                         <FormItem
@@ -107,7 +107,6 @@ const Right = () => {
                           label="枚举联动值"
                           itemType="textarea"
                           inputProps={{ placeholder: '请用#分割；如：男#女' }}
-                          show={inputType === 'select_desc'}
                         />
                       </React.Fragment>
                     );

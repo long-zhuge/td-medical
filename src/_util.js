@@ -42,19 +42,20 @@ export function getFormName(text = '', index = 0, isIndex = true) {
 
 // 从 dataObject 中获取对应字段的值，并进行容错处理
 export function renderValue(params = {}) {
-  const { dataObject = {}, keys = [], unit = '', inputType } = params;
+  const { dataObject = {}, keys = [], unit = '', inputType = '' } = params;
+  const isNumberUnit = inputType === 'number_unit';
 
   const values = keys.reduce((p, c) => {
     const value = dataObject[c] || '';
 
     if (p) {
-      return value ? `${p} ${inputType !== 'number_unit' ? '/' : ''}${value}` : p;
+      return value ? `${p}${unit}${isNumberUnit ? '' : '/'}${value}` : p;
     }
 
     return value;
   }, '');
 
-  return values ? `${values} ${unit}`.trim() : '';
+  return values ? `${values}${isNumberUnit ? '' : unit}` : '';
 }
 
 /*
@@ -148,7 +149,7 @@ export function outPutFormValues(currentValues = {}, fieldList = [], mainParams 
 *  2、将 '01,01.01' 转为 [01, 01.01]
 * */
 const toValue = (value, inputType) => {
-  const specialInputType = ['cascader'];
+  const specialInputType = ['cascader', 'select_multiple'];
 
   try {
     if (specialInputType.includes(inputType)) {
@@ -199,13 +200,6 @@ export function getFormValues(data = {}, fieldList = [], index = 0) {
     values: fieldsValue,
     newDataSource,
   };
-}
-
-// 从组件map对象中筛选出当前要渲染的组件
-export function filterEleMapToComponent(ele, enName) {
-  const key = Object.keys(ele).find(i => i.includes(enName));
-
-  return ele[key];
 }
 
 // 如果是移动端，则 table 样式的组件请添加如下属性

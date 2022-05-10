@@ -4,7 +4,7 @@
 
 import React from 'react';
 import { Table } from 'antd';
-import { getFormName } from '../../../_util';
+import { getFormName, renderValue } from '../../../_util';
 
 const Nrs = (props) => {
   const {
@@ -21,7 +21,12 @@ const Nrs = (props) => {
     {
       title: '分值',
       dataIndex: 'valueToName',
-      render: (t) => dataObject[getFormName(t, index)[0]],
+      render: (t, r) => renderValue({
+        dataObject,
+        keys: getFormName(r.valueToName, index),
+        unit: r.unit,
+        inputType: r.inputType,
+      }),
     },
   ];
 

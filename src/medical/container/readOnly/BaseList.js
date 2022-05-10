@@ -4,9 +4,9 @@
 
 import React, { useContext } from 'react';
 import DescList from 'td-antd/es/desc-list';
-import { getFormName, renderValue, isTileComponent, idTransformString } from '../../_util';
+import { getFormName, renderValue, isTileComponent, idTransformString } from '../../../_util';
 
-import { EleDetailContext } from './index';
+import { EleDetailContext } from '../../detail';
 
 const BaseList = (props) => {
   const {

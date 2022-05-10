@@ -10,33 +10,12 @@ import isNonEmptyObject from 'td-antd/es/tools/isNonEmptyObject';
 
 import Back from '../../_components/Back';
 import FormBox from './FormBox';
-import { filterEleMapToComponent, clone } from '../../_util';
+import { clone } from '../../_util';
 
-// 组件开发测试
-import BaseList from './BaseList';
-import BaseTable from './BaseTable';
-import Inspect from './Inspect';
-import SemenRoutineQuota from './SemenRoutineQuota';
-import Nrs from './score/Nrs';
-import MapScore from './score/MapScore';
+import Container from '../container';
 
 // 组件顶层对象
 export const EleDetailContext = React.createContext({});
-
-const ele = {
-  // 基本信息、生命体征、门诊主体
-  'base|vitalSigns|outpatientContent|projectDesc|treatFollowUp|BP-ADRs|MEI|SEI': BaseList,
-  // 合并用药
-  'combinedMedication|SFDA|SFDADone': BaseTable,
-  // 血常规、尿常规、肝肾功能检查
-  'routineBloodTest|urinalysis|liverKidneyTest': Inspect,
-  // 精液常规检查指标（semenRoutineQuota）、精液增加检查指标
-  'semenRoutineQuotaAdd': SemenRoutineQuota,
-  // NRS 评分
-  'NRS': Nrs,
-  // 神经痛、外周运动神经障碍、外周感觉神经障碍、生活质量评分
-  'neuralgia|PMND|PSND|QLS|CHFMD|AcneGrade': MapScore,
-};
 
 const MedicalDetail = (props) => {
   const {
@@ -106,21 +85,21 @@ const MedicalDetail = (props) => {
               </React.Fragment>
             )}
           >
-            {temp.template.map((item, index) => {
-              const Component = filterEleMapToComponent(ele, item.enName);
-
-              return (
-                <FormBox key={`${item.enName}_${index}`} index={index} fieldList={item.fieldList} formData={formData} {...item}>
-                  {(res) => (
-                    <Component
-                      {...item}
-                      {...res}
-                      index={index}
-                    />
-                  )}
-                </FormBox>
-              );
-            })}
+            {temp.template.map((item, index) => (
+              <Container mothod="readonly" enName={item.enName}>
+                {(Component) => (
+                  <FormBox key={`${item.enName}_${index}`} index={index} fieldList={item.fieldList} formData={formData} {...item}>
+                    {(res) => (
+                      <Component
+                        {...item}
+                        {...res}
+                        index={index}
+                      />
+                    )}
+                  </FormBox>
+                )}
+              </Container>
+            ))}
           </Tabs.TabPane>
         ))}
       </Tabs>

@@ -4,7 +4,7 @@
 
 import React from 'react';
 import { Table } from 'antd';
-import { getFormName } from '../../_util';
+import { getFormName } from '../../../_util';
 
 const SemenRoutineQuota = (props) => {
   const {
