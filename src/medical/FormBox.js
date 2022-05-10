@@ -57,7 +57,7 @@ const FormBox = (props) => {
   return (
     <React.Fragment>
       <Divider>{cnName}<SaveOutlined style={{ marginLeft: 6, color: '#5468ff' }} onClick={onSubmitDraft} /></Divider>
-      {remarks && <div className="td-medical-tip">{remarks}</div>}
+      {remarks && <div className="td-medical-tip pre-wrap">{remarks}</div>}
       {props.children}
     </React.Fragment>
   );

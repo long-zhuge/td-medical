@@ -6,6 +6,7 @@ import Number from './Number';
 import NumberDouble from './NumberDouble';
 import Select from './Select';
 import Text from './Text';
+import Radio from './Radio';
 
 export const ele = {
   cascader: Cascader,
@@ -39,4 +40,5 @@ export {
   Select,
   Text,
   EleFormItem,
+  Radio,
 }
