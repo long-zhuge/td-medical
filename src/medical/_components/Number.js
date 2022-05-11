@@ -16,6 +16,7 @@ export default (props) => {
     unit,
     inputType,
     required = false,
+    ...rest
   } = props;
 
   return (
@@ -27,6 +28,7 @@ export default (props) => {
           itemType="number"
           inputProps={{ addonAfter: unit, style: { width: '100%' } }}
           required={required}
+          {...rest}
         />
         <FormItem noStyle shouldUpdate show={inputType === 'number_unit'}>
           {({ getFieldValue }) => {

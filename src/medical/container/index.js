@@ -10,6 +10,7 @@ import BaseList from './write/BaseList';
 import MapScore from './write/MapScore';
 import BaseTable from './write/BaseTable';
 import SemenRoutineQuota from './write/SemenRoutineQuota';
+import MapScoreImprove from './write/MapScoreImprove';
 
 // 只读组件
 import Nrs2 from './readOnly/Nrs';
@@ -18,9 +19,10 @@ import BaseList2 from './readOnly/BaseList';
 import MapScore2 from './readOnly/MapScore';
 import BaseTable2 from './readOnly/BaseTable';
 import SemenRoutineQuota2 from './readOnly/SemenRoutineQuota';
+import MapScoreImprove2 from './readOnly/MapScoreImprove';
 
-const writeList = [BaseList, BaseTable, Inspect, SemenRoutineQuota, Nrs, MapScore];
-const readOnlyList = [BaseList2, BaseTable2, Inspect2, SemenRoutineQuota2, Nrs2, MapScore2];
+const writeList = [BaseList, BaseTable, Inspect, SemenRoutineQuota, Nrs, MapScore, MapScoreImprove];
+const readOnlyList = [BaseList2, BaseTable2, Inspect2, SemenRoutineQuota2, Nrs2, MapScore2, MapScoreImprove2];
 const containerElementConfig = (components = []) => {
   return {
     // 基本信息、生命体征、门诊主体
@@ -35,6 +37,8 @@ const containerElementConfig = (components = []) => {
     'NRS': components[4],
     // 神经痛、外周运动神经障碍、外周感觉神经障碍、生活质量评分、儿童手足口病等级、痤疮等级评估
     'neuralgia|PMND|PSND|QLS|CHFMD|AcneGrade': components[5],
+    // 评分改善组件
+    'IQLS': components[6],
   }
 };
 

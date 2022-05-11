@@ -1,5 +1,5 @@
 /*
-* map 中含有分值信息的公共组件
+* 评分类型组件：生活质量评分、儿童手足口病、痤疮等级评估...
 * */
 
 import React, { useState } from 'react';
