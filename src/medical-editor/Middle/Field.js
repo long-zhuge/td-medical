@@ -4,7 +4,7 @@ import FormOutlined from '@ant-design/icons/FormOutlined';
 import EyeOutlined from '@ant-design/icons/EyeOutlined';
 import EyeInvisibleOutlined from '@ant-design/icons/EyeInvisibleOutlined';
 import { Space } from 'antd';
-import toast from 'td-antd/es/toast';
+import { permission } from '../../_util';
 import './index.less';
 
 import { EditorContext } from '../index';
@@ -18,18 +18,8 @@ const Field = ({ data = {}, index, index2, method }) => {
     setDisabled(!!data.disabled);
   }, [data.disabled]);
 
-  const permission = () => {
-    return new Promise((resolve) => {
-      if (method === 'special') {
-        toast({ type: 'warning', text: '特殊组件，无法修改' });
-      } else {
-        resolve();
-      }
-    });
-  };
-
   const onDisabled = () => {
-    permission().then(() => {
+    permission({ method }).then(() => {
       setDisabled(!disabled);
       data.disabled = !disabled;
     });
@@ -37,7 +27,7 @@ const Field = ({ data = {}, index, index2, method }) => {
 
   // 设置字段进行编辑
   const onForm = () => {
-    permission().then(() => {
+    permission({ method }).then(() => {
       rightForm.resetFields();
       data.index = index;
       data.index2 = index2;

@@ -1,4 +1,5 @@
 // 判断数据类型
+import toast from 'td-antd/es/toast';
 import typeOf from 'td-antd/es/tools/typeOf';
 import genNonDuplicateID from 'td-antd/es/tools/genNonDuplicateID';
 
@@ -239,27 +240,27 @@ export const idTransformString = (id = '', flatData = {}) => {
 * 获取评分组件配置项
 * */
 export const getMapScoreConfig = (enName) => {
-  const DEFAULT = {
-    titleTemplate: '临床表现',
-    titleTemplate2: '分值',
-    valueTemplate: '$1',
-  };
+  const DEFAULT = ['临床表现', '分值', '$1'];
   const CONFIG = {
-    'PSND|PMND|neuralgia': {
-      titleTemplate2: '分级',
-      valueTemplate: '$1级',
-    },
-    'CHFMD': {
-      titleTemplate2: '等级',
-      valueTemplate: '第$1期',
-    },
-    'AcneGrade': {
-      titleTemplate2: '等级',
-      valueTemplate: '$1级',
-    },
+    'PSND|PMND|neuralgia': ['临床表现', '分级', '$1级'],
+    'CHFMD': ['临床表现', '等级', '第$1期'],
+    'AcneGrade': ['临床表现', '等级', '$1级'],
   };
 
   const key = Object.keys(CONFIG).find(i => i.includes(enName));
 
-  return {...DEFAULT, ...CONFIG[key]};
+  return key ? CONFIG[key] : DEFAULT;
+};
+
+/*
+* 特殊组件无法修改
+* */
+export const permission = ({ method = '' }) => {
+  return new Promise((resolve) => {
+    if (method === 'special') {
+      toast({ type: 'warning', text: '特殊组件，无法修改' });
+    } else {
+      resolve();
+    }
+  });
 };

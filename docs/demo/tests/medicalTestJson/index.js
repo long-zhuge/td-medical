@@ -22,29 +22,48 @@ const Demo = () => {
 
   // 检测组件字段是否正确，是否有重复：enName、fieldNo
   const testElement = () => {
-    const arr = [];
-    const errorArr = [];
+    const eleEnNames = [];      // 大组件 enName
+    const elementNos = [];      // 大组件编号
+    const enNames = [];         // 字段 enName
+    const fieldNos = [];        // 字段 fieldNo
 
-    elementListJson.forEach(({ fieldList = [] }) => {
+    const error = [];        // 错误信息
+
+    elementListJson.forEach(({ fieldList = [], ...ele }) => {
+      // 校验组件英文名
+      if (eleEnNames.includes(ele.enName)) {
+        error.push(ele.enName);
+      } else {
+        eleEnNames.push(ele.enName)
+      }
+
+      // 校验组件编号
+      if (elementNos.includes(ele.elementNo)) {
+        error.push(ele.elementNo);
+      } else {
+        elementNos.push(ele.elementNo)
+      }
+
+
       fieldList.forEach(({ fieldNo, enName }) => {
-        if (arr.includes(fieldNo)) {
-          errorArr.push(fieldNo);
+        if (enNames.includes(enName)) {
+          error.push(enName);
         } else {
-          arr.push(fieldNo)
+          enNames.push(enName);
         }
 
-        if (arr.includes(enName)) {
-          errorArr.push(enName);
+        if (fieldNos.includes(fieldNo)) {
+          error.push(fieldNo);
         } else {
-          arr.push(enName)
+          fieldNos.push(fieldNo);
         }
       })
     });
 
-    if (errorArr[0]) {
-      alert(`错误组件：${errorArr.toString()}`);
+    if (error[0]) {
+      alert(`错误：${error.toString()}`);
     } else {
-      alert('pass');
+      alert('校验通过');
     }
   };
 

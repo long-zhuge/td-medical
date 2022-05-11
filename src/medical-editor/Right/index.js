@@ -103,6 +103,7 @@ const Right = () => {
                           inputProps={{ placeholder: '请用#分割；如：男#女' }}
                         />
                         <FormItem
+                          required={false}
                           name="linkage"
                           label="枚举联动值"
                           itemType="textarea"
@@ -139,7 +140,7 @@ const Right = () => {
             itemType="textarea"
           />
         </Form>
-        <Button type="primary" ghost onClick={onSubmit}>保存组件数据</Button>
+        <Button type="primary" ghost onClick={onSubmit}>保存</Button>
       </div>
     );
   }

@@ -7,7 +7,7 @@ import { useDrag, useDrop } from 'react-dnd';
 import update from 'immutability-helper';
 import { Space } from 'antd';
 import LinkBtn from 'td-antd/es/link-btn';
-import { clone, confirm } from '../../_util';
+import { clone, confirm, permission } from '../../_util';
 import Field from './Field';
 import './index.less';
 
@@ -41,13 +41,15 @@ const DragableItem = ({ data, index }) => {
 
   // 设置组件的禁用项
   const setUpDisabledAll = () => {
-    confirm(`是否将组件中的字段都改为${disabledRef.current ? '非': ''}禁用？`).then(() => {
-      data.fieldList.forEach(item => {
-        item.disabled = !disabledRef.current;
-      });
-      disabledRef.current = !disabledRef.current;
-      dispatch('SELECTED_ELEMENT_LIST', clone(selectedElementList));
-    })
+    permission({ method: data.method }).then(() => {
+      confirm(`是否将组件中的字段都改为${disabledRef.current ? '非': ''}禁用？`).then(() => {
+        data.fieldList.forEach(item => {
+          item.disabled = !disabledRef.current;
+        });
+        disabledRef.current = !disabledRef.current;
+        dispatch('SELECTED_ELEMENT_LIST', clone(selectedElementList));
+      })
+    });
   };
 
   // 删除组件

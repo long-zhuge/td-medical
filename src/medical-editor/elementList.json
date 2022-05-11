@@ -515,16 +515,6 @@
         "required": false
       },
       {
-        "cnName": "痛经",
-        "enName": "dysmenorrhea",
-        "fieldNo": "F00051",
-        "inputType": "select",
-        "map": "有#无",
-        "valueToName": "value1=dysmenorrhea",
-        "valueType": "object",
-        "required": true
-      },
-      {
         "cnName": "VRS评分",
         "enName": "vrs",
         "fieldNo": "F00052",
@@ -722,6 +712,176 @@
         "fieldNo": "F00072",
         "inputType": "textarea",
         "valueToName": "value1=auditStatement",
+        "valueType": "object",
+        "required": true
+      },
+      {
+        "cnName": "主证",
+        "enName": "mainSyndrome",
+        "fieldNo": "F00073",
+        "inputType": "select",
+        "map": "0分#1分#2分#3分",
+        "valueToName": "value1=mainSyndrome",
+        "valueType": "object",
+        "required": true
+      },
+      {
+        "cnName": "引导出血量",
+        "enName": "guidedBleedingVolume",
+        "fieldNo": "F00074",
+        "inputType": "select",
+        "map": "<80ml#100-120ml#80-100ml#>120ml",
+        "valueToName": "value1=guidedBleedingVolume",
+        "valueType": "object",
+        "required": true
+      },
+      {
+        "cnName": "阴道出血时间",
+        "enName": "vaginalBleedingTime",
+        "fieldNo": "F00075",
+        "inputType": "select",
+        "map": "<7天#7-15天#15-30天#>30天",
+        "valueToName": "value1=vaginalBleedingTime",
+        "valueType": "object",
+        "required": true
+      },
+      {
+        "cnName": "月经周期",
+        "enName": "menstrualCycle",
+        "fieldNo": "F00076",
+        "inputType": "select",
+        "map": "28天±30天#28天±15天#28天±7天#无规律",
+        "valueToName": "value1=menstrualCycle",
+        "valueType": "object",
+        "required": true
+      },
+      {
+        "cnName": "腰骶疼痛",
+        "enName": "lumbosacralPain",
+        "fieldNo": "F00077",
+        "inputType": "select",
+        "map": "无#偶尔#反复#持续",
+        "valueToName": "value1=lumbosacralPain",
+        "valueType": "object",
+        "required": true
+      },
+      {
+        "cnName": "头晕耳鸣",
+        "enName": "dizzinessTinnitus",
+        "fieldNo": "F00078",
+        "inputType": "select",
+        "map": "无#经常#偶尔#反复，不易缓解",
+        "valueToName": "value1=dizzinessTinnitus",
+        "valueType": "object",
+        "required": true
+      },
+      {
+        "cnName": "性欲减退",
+        "enName": "decreasedLibido",
+        "fieldNo": "F00079",
+        "inputType": "select",
+        "map": "无#较前减少#无性要求#反感",
+        "valueToName": "value1=decreasedLibido",
+        "valueType": "object",
+        "required": true
+      },
+      {
+        "cnName": "次证",
+        "enName": "secondarySyndrome",
+        "fieldNo": "F00080",
+        "inputType": "select",
+        "map": "0分#1分#2分#3分",
+        "valueToName": "value1=secondarySyndrome",
+        "valueType": "object",
+        "required": true
+      },
+      {
+        "cnName": "面色晦暗",
+        "enName": "darkComplexion",
+        "fieldNo": "F00081",
+        "inputType": "select",
+        "map": "无#轻#明显#严重",
+        "valueToName": "value1=darkComplexion",
+        "valueType": "object",
+        "required": true
+      },
+      {
+        "cnName": "小便异常",
+        "enName": "abnormalUrination",
+        "fieldNo": "F00082",
+        "inputType": "select",
+        "map": "无#偶尔#频发#持续",
+        "valueToName": "value1=abnormalUrination",
+        "valueType": "object",
+        "required": true
+      },
+      {
+        "cnName": "倦怠乏力",
+        "enName": "fatigue",
+        "fieldNo": "F00083",
+        "inputType": "select",
+        "map": "无#轻，不影响工作#明显，不影响活动#重，影响活动",
+        "valueToName": "value1=fatigue",
+        "valueType": "object",
+        "required": true
+      },
+      {
+        "cnName": "经色淡黯",
+        "enName": "meridianColorDim",
+        "fieldNo": "F00084",
+        "inputType": "select",
+        "map": "无#轻#明显#严重",
+        "valueToName": "value1=meridianColorDim",
+        "valueType": "object",
+        "required": true
+      },
+      {
+        "cnName": "经色稀",
+        "enName": "meridianColorDilution",
+        "fieldNo": "F00085",
+        "inputType": "select",
+        "map": "无#轻#明显#严重",
+        "valueToName": "value1=meridianColorDilution",
+        "valueType": "object",
+        "required": true
+      },
+      {
+        "cnName": "痛经",
+        "enName": "dysmenorrhea",
+        "fieldNo": "F00051",
+        "inputType": "select",
+        "map": "无#偶尔#经常#反复，不易缓解",
+        "valueToName": "value1=dysmenorrhea",
+        "valueType": "object",
+        "required": true
+      },
+      {
+        "cnName": "经质异常",
+        "enName": "menstrualAbnormalities",
+        "fieldNo": "F00086",
+        "inputType": "select",
+        "map": "无#质稠#血块少#血块多",
+        "valueToName": "value1=menstrualAbnormalities",
+        "valueType": "object",
+        "required": true
+      },
+      {
+        "cnName": "畏寒肢冷",
+        "enName": "chillyLimbs",
+        "fieldNo": "F00087",
+        "inputType": "select",
+        "map": "无#偶尔#经常#反复，不易缓解",
+        "valueToName": "value1=chillyLimbs",
+        "valueType": "object",
+        "required": true
+      },
+      {
+        "cnName": "小腹空坠",
+        "enName": "emptyBellyDrop",
+        "fieldNo": "F00088",
+        "inputType": "select",
+        "map": "无#轻#明显#严重",
+        "valueToName": "value1=emptyBellyDrop",
         "valueType": "object",
         "required": true
       }
@@ -1423,7 +1583,7 @@
         "enName": "AcneGrade",
         "fieldNo": "F01700",
         "inputType": "radio",
-        "map": "轻度：主要皮损为黑头粉刺，散发至多发，炎性丘疹散发，总病灶数为10～30个/1#较轻中度：主要皮损为粉刺，并有中等数量的丘疹和浅在性脓疱，总病灶数在 31～50 个之间，局限在面部/2#较重中度：主要皮损为深在性炎性丘疹和脓疱，总病灶数在50～100个，结节＜3 个，发生在颜面、颈部、胸背部/3#重度：主要皮损为深在性的炎性丘疹和脓疱，病灶数＞100 个，结节或囊肿＞3个，容易形成瘢痕，发生于上半身/4",
+        "map": "轻度：主要皮损为黑头粉刺，散发至多发，炎性丘疹散发，总病灶数为10～30个/Ⅰ#较轻中度：主要皮损为粉刺，并有中等数量的丘疹和浅在性脓疱，总病灶数在 31～50 个之间，局限在面部/Ⅱ#较重中度：主要皮损为深在性炎性丘疹和脓疱，总病灶数在50～100个，结节＜3 个，发生在颜面、颈部、胸背部/Ⅲ#重度：主要皮损为深在性的炎性丘疹和脓疱，病灶数＞100 个，结节或囊肿＞3个，容易形成瘢痕，发生于上半身/Ⅳ",
         "valueToName": "value1=AcneGrade",
         "valueType": "object",
         "required": false

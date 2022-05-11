@@ -86,9 +86,9 @@ const MedicalDetail = (props) => {
             )}
           >
             {temp.template.map((item, index) => (
-              <Container mothod="readonly" enName={item.enName}>
+              <Container mothod="readonly" enName={item.enName} key={`${item.enName}_${index}`}>
                 {(Component) => (
-                  <FormBox key={`${item.enName}_${index}`} index={index} fieldList={item.fieldList} formData={formData} {...item}>
+                  <FormBox index={index} fieldList={item.fieldList} formData={formData} {...item}>
                     {(res) => (
                       <Component
                         {...item}

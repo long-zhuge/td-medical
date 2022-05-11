@@ -1,7 +1,7 @@
 /*
 * 主容易分发
 * */
-import React, { useState, useEffect } from 'react';
+import { useState } from 'react';
 
 // 编辑组件
 import Nrs from './write/Nrs';
@@ -24,16 +24,16 @@ const readOnlyList = [BaseList2, BaseTable2, Inspect2, SemenRoutineQuota2, Nrs2,
 const containerElementConfig = (components = []) => {
   return {
     // 基本信息、生命体征、门诊主体
-    'base|vitalSigns|outpatientContent': components[0],
+    'base|outpatientContent': components[0],
     // 合并用药
-    'combinedMedication|SFDA|SFDADone': components[1],
+    'combinedMedication|SFDA': components[1],
     // 血常规、尿常规、肝肾功能检查
     'routineBloodTest|urinalysis|liverKidneyTest|serumExamination': components[2],
     // 精液常规检查指标（semenRoutineQuota）、精液增加检查指标
     'semenRoutineQuotaAdd': components[3],
     // NRS 评分
     'NRS': components[4],
-    // 神经痛、外周运动神经障碍、外周感觉神经障碍、生活质量评分
+    // 神经痛、外周运动神经障碍、外周感觉神经障碍、生活质量评分、儿童手足口病等级、痤疮等级评估
     'neuralgia|PMND|PSND|QLS|CHFMD|AcneGrade': components[5],
   }
 };

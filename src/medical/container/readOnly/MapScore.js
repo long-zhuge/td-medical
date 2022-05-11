@@ -1,5 +1,5 @@
 /*
-* 外周运动神经障碍（Peripheral motor nerve disorder）
+* map 中含有分值信息的公共组件
 * */
 
 import React, { useState } from 'react';
@@ -15,7 +15,7 @@ const MapScore = (props) => {
   } = props;
 
   const [dataSource] = useState(mapToScore(fieldList[0].map));
-  const { titleTemplate, titleTemplate2, valueTemplate } = getMapScoreConfig(enName);
+  const [titleTemplate, titleTemplate2, valueTemplate] = getMapScoreConfig(enName);
 
   const columns = [
     {

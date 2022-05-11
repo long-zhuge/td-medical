@@ -16,7 +16,7 @@ const MapScore = (props) => {
   } = props;
 
   const [dataSource] = useState(mapToScore(fieldList[0].map));
-  const { titleTemplate, titleTemplate2, valueTemplate } = getMapScoreConfig(enName);
+  const [titleTemplate, titleTemplate2, valueTemplate] = getMapScoreConfig(enName);
 
   const columns = [
     {

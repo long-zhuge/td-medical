@@ -136,9 +136,9 @@ const MedicalElement = (props) => {
               key={templateOrder}
             >
               {temp.template.map((item, index) => (
-                <Container enName={item.enName}>
+                <Container enName={item.enName} key={`${item.enName}_${index}`}>
                   {(Component) => (
-                    <React.Fragment key={`${item.enName}_${index}`}>
+                    <React.Fragment>
                       <Component {...item} index={index} />
                       <br /><br />
                     </React.Fragment>
