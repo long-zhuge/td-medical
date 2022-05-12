@@ -38,7 +38,7 @@ const containerElementConfig = (components = []) => {
     // 神经痛、外周运动神经障碍、外周感觉神经障碍、生活质量评分、儿童手足口病等级、痤疮等级评估
     'neuralgia|PMND|PSND|QLS|CHFMD|AcneGrade': components[5],
     // 评分改善组件
-    'IQLS': components[6],
+    'IQLS|ISL': components[6],
   }
 };
 

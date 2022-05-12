@@ -13,6 +13,14 @@ const MapScoreImprove = (props) => {
     dataObject = {},
   } = props;
 
+  const remark = fieldList[0].remarks ? [
+    {
+      title: '分值说明',
+      dataIndex: 'remarks',
+      className: 'pre-wrap',
+    },
+  ] : [];
+
   const columns = [
     {
       width: 50,
@@ -22,7 +30,9 @@ const MapScoreImprove = (props) => {
     {
       title: '描述',
       dataIndex: 'cnName',
+      className: 'pre-wrap',
     },
+    ...remark,
     {
       width: 140,
       title: '治疗前',

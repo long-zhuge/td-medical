@@ -1688,5 +1688,53 @@
         "required": true
       }
     ]
+  },
+  {
+    "cnName": "痤疮数量、颜色、肿痛程度评分表",
+    "elementNo": "E00021",
+    "method": "special",
+    "enName": "ISL",
+    "fieldList": [
+      {
+        "cnName": "皮损程度",
+        "enName": "ISL-0",
+        "fieldNo": "F02000",
+        "inputType": "number",
+        "valueToName": "value1=ISL-0_before,value2=ISL-0_after",
+        "valueType": "object",
+        "remarks": "0分：无病灶皮损\n1分：少量粉刺、丘疹、浅表性小脓包、散在分布\n2分：粉刺、丘疹、脓包数量中等，偶有结节\n3分：多为丘疹、脓疱疹，多广泛弥散分布，可见结节和囊肿",
+        "required": true
+      },
+      {
+        "cnName": "皮损数量",
+        "enName": "ISL-1",
+        "fieldNo": "F02001",
+        "inputType": "number",
+        "valueToName": "value1=ISL-1_before,value2=ISL-1_after",
+        "valueType": "object",
+        "remarks": "0分：无病灶皮损\n1分：病灶总个数＜30\n2分：病灶总个数31~50\n3分：病灶总个数51~100，结节＜3个",
+        "required": true
+      },
+      {
+        "cnName": "皮损颜色",
+        "enName": "ISL-2",
+        "fieldNo": "F02002",
+        "inputType": "number",
+        "valueToName": "value1=ISL-2_before,value2=ISL-2_after",
+        "valueType": "object",
+        "remarks": "0分：颜色正常\n1分：粉刺尖端色白或黑，丘疹色白\n2分：粉刺尖端色黑，丘疹色微红\n3分：丘疹色红、鲜红或暗红，脓包黄绿色",
+        "required": true
+      },
+      {
+        "cnName": "皮损疼痛评分",
+        "enName": "ISL-3",
+        "fieldNo": "F02003",
+        "inputType": "number",
+        "valueToName": "value1=ISL-3_before,value2=ISL-3_after",
+        "valueType": "object",
+        "remarks": "0分：无疼痛\n1分：自觉轻微疼痛或用力触摸轻微疼痛\n2分：自觉疼痛，有触痛，尚能忍受\n3分：自觉疼痛明显，轻触即痛或不能触摸",
+        "required": true
+      }
+    ]
   }
 ]
