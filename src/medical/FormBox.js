@@ -19,7 +19,7 @@ const FormBox = (props) => {
     remarks = '',
     fieldList = [],
     customSetFieldsValue, // 自定义数据回显函数
-    onBeforeSave, // 保存前的回调函数，必须返回 fields 相关内容
+    onBeforeSave,         // 保存前的回调函数，必须返回 fields 相关内容
   } = props;
 
   const mainParams = { elementNo, enName, cnName }; // 主对象属性。在提交给后端的数据中，必须携带
@@ -28,12 +28,12 @@ const FormBox = (props) => {
   // 获取到回显数据后，进行表单赋值
   useEffect(() => {
     if (isNonEmptyObject(formData)) {
-      if (customSetFieldsValue) {
-        customSetFieldsValue();
-      } else {
-        const { values } = getFormValues(formData, fieldList, index);
+      const res = getFormValues(formData, fieldList, index);
 
-        form.setFieldsValue(values);
+      if (customSetFieldsValue) {
+        customSetFieldsValue(res);
+      } else {
+        form.setFieldsValue(res.values);
       }
     }
   }, [formData]);

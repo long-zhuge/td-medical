@@ -7,7 +7,7 @@ import React, { useContext, useState } from 'react';
 import DeleteOutlined from '@ant-design/icons/DeleteOutlined';
 import { Table } from 'antd';
 import LinkBtn from 'td-antd/es/link-btn';
-import { getFormName, clone, getFormValues, mobileTableProps, genId } from '../../../_util';
+import { getFormName, clone, mobileTableProps, genId } from '../../../_util';
 
 import { EleFormItem } from '../../_components';
 import FormBox from '../../FormBox';
@@ -20,7 +20,7 @@ const TableList = (props) => {
     fieldList = [],
   } = props;
 
-  const { form, formData } = useContext(EleContext);
+  const { form } = useContext(EleContext);
   const [dataSource, setDataSource] = useState([]);
 
   const columns = fieldList.map(item => ({
@@ -59,9 +59,7 @@ const TableList = (props) => {
   return (
     <FormBox
       {...props}
-      customSetFieldsValue={() => {
-        const { values, newDataSource = [] } = getFormValues(formData, fieldList, index);
-
+      customSetFieldsValue={({ values, newDataSource = [] }) => {
         setDataSource(newDataSource);
         form.setFieldsValue(values);
       }}
