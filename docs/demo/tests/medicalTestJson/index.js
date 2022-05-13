@@ -85,6 +85,26 @@ const Demo = () => {
     })
   };
 
+  // 生成用于 mp_field 的 json 数据
+  const copyFields = () => {
+    const json = elementListJson.reduce((p, c) => [...p, ...c.fieldList], []);
+
+    const json2 = json.map(({ cnName, enName, fieldNo, inputType, valueToName, valueType, unit = '', map = '' }) => ({
+      field_no: fieldNo,
+      cn_name: cnName,
+      en_name: enName,
+      input_type: inputType,
+      map,
+      unit,
+      value_to_name: valueToName,
+      value_type: valueType,
+    }));
+
+    clipboard(JSON.stringify(json2)).then(() => {
+      alert('pass');
+    });
+  };
+
   const filterRecordData = () => {
     prompt('请输入需要清洗的 record 数据').then((response) => {
       try {
@@ -127,7 +147,7 @@ const Demo = () => {
         const filter = JSON.parse(response).reduce((p, c) => {
           const filterTemplate = c.template.reduce((p2, c2) => {
             const filterFieldList = c2.fieldList.reduce((p3, c3) => {
-              const itemData = dataObject[c3.enName];
+              const itemData = dataObject[c3.cnName];
 
               if (itemData) {
                 return [...p3, {...c3, ...itemData, required: c3.required}]
@@ -165,6 +185,7 @@ const Demo = () => {
       <Button onClick={() => copyObj('enName')}>复制对象集合（enName）</Button><br /><br />
       <Button onClick={() => copyObj('cnName')}>复制对象集合（cnName）</Button><br /><br />
       <Button onClick={() => copyObj('fieldNo')}>复制对象集合（fieldNo）</Button><br /><br />
+      <Button onClick={() => copyFields()}>复制字段集合</Button><br /><br />
       <Button onClick={filterRecordData}>清洗数据（record）</Button><br /><br />
       <Button onClick={filterTemplateData}>清洗数据（template）</Button><br /><br />
     </>
