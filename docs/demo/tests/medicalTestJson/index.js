@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Button } from 'antd';
 import clipboard from 'td-antd/es/tools/clipboard';
 import elementListJson from 'td-medical/medical-editor/elementList.json';
+import mpFieldJson from './mp_field.json';
 
 const prompt = (text) => {
   return new Promise((resolve) => {
@@ -87,18 +88,24 @@ const Demo = () => {
 
   // 生成用于 mp_field 的 json 数据
   const copyFields = () => {
+    const obj = mpFieldJson.reduce((p, c) => ({...p, [c.field_no]: c}), {});
     const json = elementListJson.reduce((p, c) => [...p, ...c.fieldList], []);
 
-    const json2 = json.map(({ cnName, enName, fieldNo, inputType, valueToName, valueType, unit = '', map = '' }) => ({
-      field_no: fieldNo,
-      cn_name: cnName,
-      en_name: enName,
-      input_type: inputType,
-      map,
-      unit,
-      value_to_name: valueToName,
-      value_type: valueType,
-    }));
+    const json2 = json.map(({ cnName, enName, fieldNo, inputType, valueToName, valueType, unit = '', map = '' }) => {
+      const currentObj = obj[fieldNo] || {};
+
+      return {
+        field_no: fieldNo,
+        cn_name: cnName,
+        en_name: enName,
+        input_type: inputType,
+        map,
+        unit,
+        value_to_name: valueToName,
+        value_type: valueType,
+        ...currentObj,
+      }
+    });
 
     clipboard(JSON.stringify(json2)).then(() => {
       alert('pass');
@@ -185,7 +192,7 @@ const Demo = () => {
       <Button onClick={() => copyObj('enName')}>复制对象集合（enName）</Button><br /><br />
       <Button onClick={() => copyObj('cnName')}>复制对象集合（cnName）</Button><br /><br />
       <Button onClick={() => copyObj('fieldNo')}>复制对象集合（fieldNo）</Button><br /><br />
-      <Button onClick={() => copyFields()}>复制字段集合</Button><br /><br />
+      <Button onClick={() => copyFields()}>mp_field</Button><br /><br />
       <Button onClick={filterRecordData}>清洗数据（record）</Button><br /><br />
       <Button onClick={filterTemplateData}>清洗数据（template）</Button><br /><br />
     </>

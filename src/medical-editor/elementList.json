@@ -843,6 +843,88 @@
         "valueToName": "value1=emptyBellyDrop",
         "valueType": "object",
         "required": true
+      },
+      {
+        "cnName": "医院名称",
+        "enName": "hospitalName",
+        "fieldNo": "F00089",
+        "inputType": "text",
+        "valueToName": "value1=hospitalName",
+        "valueType": "object",
+        "required": true
+      },
+      {
+        "cnName": "住院号",
+        "enName": "inpatientNumber",
+        "fieldNo": "F00090",
+        "inputType": "text",
+        "valueToName": "value1=inpatientNumber",
+        "valueType": "object",
+        "required": true
+      },
+      {
+        "cnName": "发病部位",
+        "enName": "SiteOnset",
+        "fieldNo": "F00091",
+        "inputType": "text",
+        "valueToName": "value1=SiteOnset",
+        "valueType": "object",
+        "required": true
+      },
+      {
+        "cnName": "手、足臀疱疹分布及颜色",
+        "enName": "distributionFeetButtocks",
+        "fieldNo": "F00092",
+        "inputType": "text",
+        "valueToName": "value1=distributionFeetButtocks",
+        "valueType": "object",
+        "required": true
+      },
+      {
+        "cnName": "入组日期",
+        "enName": "enrollmentDate",
+        "fieldNo": "F00093",
+        "inputType": "month",
+        "valueToName": "value1=enrollmentDate",
+        "valueType": "object",
+        "required": true
+      },
+      {
+        "cnName": "邮编",
+        "enName": "postalCode",
+        "fieldNo": "F00094",
+        "inputType": "text",
+        "valueToName": "value1=postalCode",
+        "valueType": "object",
+        "required": true
+      },
+      {
+        "cnName": "固定电话",
+        "enName": "fixedPhone",
+        "fieldNo": "F00095",
+        "inputType": "text",
+        "valueToName": "value1=fixedPhone",
+        "valueType": "object",
+        "required": true
+      },
+      {
+        "cnName": "联系人姓名",
+        "enName": "contactName",
+        "fieldNo": "F00096",
+        "inputType": "text",
+        "valueToName": "value1=contactName",
+        "valueType": "object",
+        "required": true
+      },
+      {
+        "cnName": "关系",
+        "enName": "relationship",
+        "fieldNo": "F00097",
+        "inputType": "select",
+        "map": "配偶#父母#子女#兄弟#孙子/女#其他",
+        "valueToName": "value1=relationship",
+        "valueType": "object",
+        "required": true
       }
     ]
   },
@@ -1042,6 +1124,56 @@
         "inputType": "number",
         "unit": "10^10/L",
         "valueToName": "value1=rb-PLT_result,value2=rb-PLT_judge,value3=rb-PLT_remark",
+        "valueType": "object",
+        "required": true
+      },
+      {
+        "cnName": "血乳酸(BLA)",
+        "enName": "rb-BLA",
+        "fieldNo": "F00405",
+        "inputType": "number",
+        "unit": "mmol/L",
+        "valueToName": "value1=rb-BLA_result,value2=rb-BLA_judge,value3=rb-BLA_remark",
+        "valueType": "object",
+        "required": true
+      },
+      {
+        "cnName": "C反应蛋白(CRP)",
+        "enName": "rb-CRP",
+        "fieldNo": "F00406",
+        "inputType": "number",
+        "unit": "mg/L",
+        "valueToName": "value1=rb-CRP_result,value2=rb-CRP_judge,value3=rb-CRP_remark",
+        "valueType": "object",
+        "required": true
+      },
+      {
+        "cnName": "中性粒细胞百分比(NEU)",
+        "enName": "rb-NEU",
+        "fieldNo": "F00407",
+        "inputType": "number",
+        "unit": "%",
+        "valueToName": "value1=rb-NEU_result,value2=rb-NEU_judge,value3=rb-NEU_remark",
+        "valueType": "object",
+        "required": true
+      },
+      {
+        "cnName": "干扰素(IFN-γ)",
+        "enName": "rb-IFN-γ",
+        "fieldNo": "F00408",
+        "inputType": "number",
+        "unit": "pg/ml",
+        "valueToName": "value1=rb-IFN-γ_result,value2=rb-IFN-γ_judge,value3=rb-IFN-γ_remark",
+        "valueType": "object",
+        "required": true
+      },
+      {
+        "cnName": "肿瘤坏死因子(TNF-α)",
+        "enName": "rb-TNF-α",
+        "fieldNo": "F00409",
+        "inputType": "number",
+        "unit": "pg/ml",
+        "valueToName": "value1=rb-TNF-α_result,value2=rb-TNF-α_judge,value3=rb-TNF-α_remark",
         "valueType": "object",
         "required": true
       }
@@ -1776,6 +1908,53 @@
         "inputType": "select",
         "map": "是#否",
         "valueToName": "value1=pregnantAfterOperation",
+        "valueType": "object",
+        "required": true
+      }
+    ]
+  },
+  {
+    "cnName": "心肌酶水平",
+    "elementNo": "E00023",
+    "method": "default",
+    "enName": "myocardialEnzymeLevel",
+    "fieldList": [
+      {
+        "cnName": "取样日期",
+        "enName": "mel-sampleDate",
+        "fieldNo": "F02200",
+        "inputType": "date",
+        "valueToName": "value1=MEL-sampleDate",
+        "valueType": "object",
+        "required": true
+      },
+      {
+        "cnName": "乳酸脱氢酶(LDH)",
+        "enName": "mel-LDH",
+        "fieldNo": "F02201",
+        "inputType": "number",
+        "unit": "U/L",
+        "valueToName": "value1=mel-LDH_result,value2=mel-LDH_judge,value3=mel-LDH_remark",
+        "valueType": "object",
+        "required": true
+      },
+      {
+        "cnName": "肌酸激酶同工酶(CK-MB)",
+        "enName": "mel-CK-MB",
+        "fieldNo": "F02202",
+        "inputType": "number",
+        "unit": "U/L",
+        "valueToName": "value1=mel-CK-MB_result,value2=mel-CK-MB_judge,value3=mel-CK-MB_remark",
+        "valueType": "object",
+        "required": true
+      },
+      {
+        "cnName": "肌酸激酶(CK)",
+        "enName": "mel-CK",
+        "fieldNo": "F02203",
+        "inputType": "number",
+        "unit": "U/L",
+        "valueToName": "value1=mel-CK_result,value2=mel-CK_judge,value3=mel-CK_remark",
         "valueType": "object",
         "required": true
       }
