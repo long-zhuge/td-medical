@@ -11,6 +11,7 @@ import MapScore from './write/MapScore';
 import BaseTable from './write/BaseTable';
 import SemenRoutineQuota from './write/SemenRoutineQuota';
 import MapScoreImprove from './write/MapScoreImprove';
+import ReproductiveHistory from './write/ReproductiveHistory';
 
 // 只读组件
 import Nrs2 from './readOnly/Nrs';
@@ -20,9 +21,10 @@ import MapScore2 from './readOnly/MapScore';
 import BaseTable2 from './readOnly/BaseTable';
 import SemenRoutineQuota2 from './readOnly/SemenRoutineQuota';
 import MapScoreImprove2 from './readOnly/MapScoreImprove';
+import ReproductiveHistory2 from './readOnly/ReproductiveHistory';
 
-const writeList = [BaseList, BaseTable, Inspect, SemenRoutineQuota, Nrs, MapScore, MapScoreImprove];
-const readOnlyList = [BaseList2, BaseTable2, Inspect2, SemenRoutineQuota2, Nrs2, MapScore2, MapScoreImprove2];
+const writeList = [BaseList, BaseTable, Inspect, SemenRoutineQuota, Nrs, MapScore, MapScoreImprove, ReproductiveHistory];
+const readOnlyList = [BaseList2, BaseTable2, Inspect2, SemenRoutineQuota2, Nrs2, MapScore2, MapScoreImprove2, ReproductiveHistory2];
 const containerElementConfig = (components = []) => {
   return {
     // 基本信息、生命体征、门诊主体
@@ -39,6 +41,8 @@ const containerElementConfig = (components = []) => {
     'neuralgia|PMND|PSND|QLS|CHFMD|AcneGrade': components[5],
     // 评分改善组件
     'IQLS|ISL': components[6],
+    // 生育史
+    'ReproductiveHistory': components[7],
   }
 };
 

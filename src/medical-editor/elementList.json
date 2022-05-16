@@ -535,47 +535,6 @@
         "required": false
       },
       {
-        "cnName": "既往是否妊娠",
-        "enName": "previousPregnancy",
-        "fieldNo": "F00054",
-        "inputType": "select",
-        "map": "是#否#不知道",
-        "valueToName": "value1=previousPregnancy",
-        "valueType": "object",
-        "required": true
-      },
-      {
-        "cnName": "妊娠(是)",
-        "enName": "gestation",
-        "fieldNo": "F00055",
-        "inputType": "number_unit",
-        "unit": "周",
-        "map": "足月产#早产#自然流产#人工流产或清宫",
-        "valueToName": "value1=gestation,value2=gestation_desc",
-        "valueType": "object",
-        "required": false
-      },
-      {
-        "cnName": "妊娠(否)",
-        "enName": "noGestation",
-        "fieldNo": "F00056",
-        "inputType": "select",
-        "map": "无性生活#避孕#原发不孕",
-        "valueToName": "value1=noGestation",
-        "valueType": "object",
-        "required": false
-      },
-      {
-        "cnName": "是否有意愿术后妊娠",
-        "enName": "pregnantAfterOperation",
-        "fieldNo": "F00057",
-        "inputType": "select",
-        "map": "是#否#不知道",
-        "valueToName": "value1=pregnantAfterOperation",
-        "valueType": "object",
-        "required": true
-      },
-      {
         "cnName": "检查日期",
         "enName": "inspectionDate",
         "fieldNo": "F00058",
@@ -1733,6 +1692,91 @@
         "valueToName": "value1=ISL-3_before,value2=ISL-3_after",
         "valueType": "object",
         "remarks": "0分：无疼痛\n1分：自觉轻微疼痛或用力触摸轻微疼痛\n2分：自觉疼痛，有触痛，尚能忍受\n3分：自觉疼痛明显，轻触即痛或不能触摸",
+        "required": true
+      }
+    ]
+  },
+  {
+    "cnName": "生育史",
+    "elementNo": "E00022",
+    "method": "special",
+    "enName": "ReproductiveHistory",
+    "fieldList": [
+      {
+        "cnName": "既往是否妊娠",
+        "enName": "previousPregnancy",
+        "fieldNo": "F02100",
+        "inputType": "select",
+        "map": "是#否#不知道",
+        "valueToName": "value1=previousPregnancy",
+        "valueType": "object",
+        "required": true
+      },
+      {
+        "cnName": "怀孕次数(G)",
+        "enName": "GPA-G",
+        "fieldNo": "F02101",
+        "inputType": "number",
+        "valueToName": "value1=GPA-G",
+        "valueType": "object",
+        "required": true
+      },
+      {
+        "cnName": "分娩次数(P)",
+        "enName": "GPA-P",
+        "fieldNo": "F02102",
+        "inputType": "number",
+        "valueToName": "value1=GPA-P",
+        "valueType": "object",
+        "required": true
+      },
+      {
+        "cnName": "流产次数(A)",
+        "enName": "GPA-A",
+        "fieldNo": "F02103",
+        "inputType": "number",
+        "valueToName": "value1=GPA-A",
+        "valueType": "object",
+        "required": true
+      },
+      {
+        "cnName": "妊娠结局",
+        "enName": "pregnancyOutcome",
+        "fieldNo": "F02104",
+        "inputType": "select_multiple",
+        "map": "足月产#早产#自然流产#人工流产或清宫",
+        "valueToName": "value1=pregnancyOutcome",
+        "valueType": "object",
+        "required": true
+      },
+      {
+        "cnName": "人工流产或清宫次数",
+        "enName": "artificialAbortionFrequency",
+        "fieldNo": "F02105",
+        "inputType": "select",
+        "map": "1次#2次#3次#3次以上",
+        "valueToName": "value1=artificialAbortionFrequency",
+        "valueType": "object",
+        "required": true
+      },
+      {
+        "cnName": "原因",
+        "enName": "noCauseOfPregnancy",
+        "fieldNo": "F02106",
+        "inputType": "select",
+        "map": "无性生活#避孕#原发不孕",
+        "valueToName": "value1=noCauseOfPregnancy",
+        "valueType": "object",
+        "required": true
+      },
+      {
+        "cnName": "是否有意愿术后妊娠",
+        "enName": "pregnantAfterOperation",
+        "fieldNo": "F02107",
+        "inputType": "select",
+        "map": "是#否",
+        "valueToName": "value1=pregnantAfterOperation",
+        "valueType": "object",
         "required": true
       }
     ]
