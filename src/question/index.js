@@ -114,11 +114,10 @@ export default function Question(props) {
     setCurrentQuestionIndex(prev => prev + 1);
   }
 
-  const handleFillQuestion = (questionValue, skipQuestionNo, error) => {
+  const handleFillQuestion = (questionValue, nextQuestionNo, error) => {
     setQuestionError(error);
-    const nextQuestionNo = skipQuestionNo;
-    if (nextQuestionNo) {
-      const nextQuestion = questions.find(q => q.questionNo === nextQuestionNo);
+    const nextQuestion = questions.find(q => q.questionNo === nextQuestionNo);
+    if (nextQuestion) {
       if (currentQuestionIndex === currentQuestions.length - 1) {
         setCurrentQuestions((prev) => prev.concat(nextQuestion));
       } else if (currentQuestions[currentQuestionIndex + 1].questionNo !== nextQuestionNo) {
