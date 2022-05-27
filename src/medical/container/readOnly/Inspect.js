@@ -6,7 +6,7 @@ import React from 'react';
 import { Table } from 'antd';
 import { getFormName } from '../../../_util';
 
-const SemenRoutineQuota = (props) => {
+const Inspect = (props) => {
   const {
     index = 0,
     fieldList = [],
@@ -40,7 +40,6 @@ const SemenRoutineQuota = (props) => {
   ];
 
   const obj = fieldList.find(item => item.inputType === 'date');
-  const date = dataObject[`${obj.enName}_${index}`];
 
   return (
     <Table
@@ -49,10 +48,10 @@ const SemenRoutineQuota = (props) => {
       rowKey="fieldNo"
       columns={columns}
       pagination={false}
-      title={date ? () => `取样日期：${date}` : null}
+      title={obj ? () => `取样日期：${dataObject[`${obj.enName}_${index}`]}` : null}
       dataSource={fieldList.filter(i => !i.enName.includes('ampleDate'))}
     />
   );
 };
 
-export default SemenRoutineQuota;
+export default Inspect;

@@ -14,7 +14,7 @@ import FormBox from '../../FormBox';
 
 import { EleContext } from '../../index';
 
-const TableList = (props) => {
+const BaseTable = (props) => {
   const {
     index = 0,
     fieldList = [],
@@ -85,4 +85,4 @@ const TableList = (props) => {
   );
 };
 
-export default TableList;
+export default BaseTable;

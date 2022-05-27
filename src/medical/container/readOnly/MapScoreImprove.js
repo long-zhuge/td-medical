@@ -1,8 +1,8 @@
 /*
-* 评分改善类型组件：生活质量评分改善
+* 评分改善类型组件：ISL、IQLS
 * */
 
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Table } from 'antd';
 import { getFormName } from '../../../_util';
 
@@ -13,13 +13,25 @@ const MapScoreImprove = (props) => {
     dataObject = {},
   } = props;
 
-  const remark = fieldList[0].remarks ? [
-    {
-      title: '分值说明',
-      dataIndex: 'remarks',
-      className: 'pre-wrap',
-    },
-  ] : [];
+  const [bool, setBool] = useState(false);
+  const [columnRemark, setColumnRemark] = useState([]);
+
+  useEffect(() => {
+    const obj = fieldList[0];
+
+    if (obj.remarks) {
+      setColumnRemark([{
+        title: '分值说明',
+        dataIndex: 'remarks',
+        className: 'pre-wrap',
+      }])
+    }
+
+    if (getFormName(obj.valueToName, index).length >= 2) {
+      setBool(true);
+    }
+
+  }, [fieldList]);
 
   const columns = [
     {
@@ -32,20 +44,19 @@ const MapScoreImprove = (props) => {
       dataIndex: 'cnName',
       className: 'pre-wrap',
     },
-    ...remark,
+    ...columnRemark,
     {
       width: 140,
-      title: '治疗前',
+      title: bool ? '治疗前' : '评分',
       dataIndex: 'valueToName',
       render: (t) => dataObject[getFormName(t, index)[0]],
     },
-    {
-      width: 140,
-      title: '治疗后',
-      dataIndex: 'valueToName',
-      render: (t) => dataObject[getFormName(t, index)[1]],
-    },
-  ];
+  ].concat(bool ? [{
+    width: 140,
+    title: '治疗后',
+    dataIndex: 'valueToName',
+    render: (t) => dataObject[getFormName(t, index)[1]],
+  }] : []);
 
   return (
     <Table
