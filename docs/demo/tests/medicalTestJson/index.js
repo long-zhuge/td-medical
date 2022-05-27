@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Button } from 'antd';
 import clipboard from 'td-antd/es/tools/clipboard';
 import elementListJson from 'td-medical/medical-editor/elementList.json';
+import { containerElementConfig } from 'td-medical/medical/container';
 import mpFieldJson from './mp_field.json';
 
 const prompt = (text) => {
@@ -29,8 +30,13 @@ const Demo = () => {
     const fieldNos = [];        // 字段 fieldNo
 
     const error = [];        // 错误信息
+    const elementConfig = Object.keys(containerElementConfig());
 
     elementListJson.forEach(({ fieldList = [], ...ele }) => {
+      if (!elementConfig.find(i => i.includes(ele.enName))) {
+        error.push(`${ele.enName} 组件未配置`);
+      }
+
       // 校验组件英文名
       if (eleEnNames.includes(ele.enName)) {
         error.push(ele.enName);

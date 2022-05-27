@@ -25,14 +25,14 @@ import ReproductiveHistory2 from './readOnly/ReproductiveHistory';
 
 const writeList = [BaseList, BaseTable, Inspect, SemenRoutineQuota, Nrs, MapScore, MapScoreImprove, ReproductiveHistory];
 const readOnlyList = [BaseList2, BaseTable2, Inspect2, SemenRoutineQuota2, Nrs2, MapScore2, MapScoreImprove2, ReproductiveHistory2];
-const containerElementConfig = (components = []) => {
+export const containerElementConfig = (components = []) => {
   return {
     // 基本信息、生命体征、门诊主体
     'base|outpatientContent': components[0],
     // 合并用药
     'combinedMedication|SFDA': components[1],
     // 血常规、尿常规、肝肾功能检查
-    'routineBloodTest|urinalysis|liverKidneyTest|serumExamination': components[2],
+    'routineBloodTest|urinalysis|liverKidneyTest|serumExamination|myocardialEnzymeLevel': components[2],
     // 精液常规检查指标（semenRoutineQuota）、精液增加检查指标
     'semenRoutineQuotaAdd': components[3],
     // NRS 评分
