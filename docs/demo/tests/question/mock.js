@@ -44,7 +44,7 @@ export default [{
     "optionType": "rangeDate",
     "questionNo": "2022060149834233",
     "skipQuestionNo": "2022060149658071",
-    "remark": "{\"disabled\":\"weekend\"}",
+    "remark": "{\"disabledWeeks\": [1, 2]}",
   }],
   "productAnalysis": "other",
   "questionName": "执行日期",
