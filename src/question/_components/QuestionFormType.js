@@ -222,8 +222,13 @@ function ProductSelect(props) {
   );
 }
 
+/*
+* 时间范围选择
+* @disabled：自定义的禁用时间
+*   weekend：禁用周六和周日
+* */
 function RangeDate(props) {
-  const { readOnly, initialValue, value, onChange, ...rest } = props;
+  const { readOnly, initialValue, value, onChange, disabled, ...rest } = props;
 
   const handleChange = (date) => {
     onChange(date && [momentToString(date[0]), momentToString(date[1])]);
@@ -234,6 +239,12 @@ function RangeDate(props) {
       type="RangePicker"
       value={value}
       onChange={handleChange}
+      disabledDate={current => {
+        if (disabled && disabled === 'weekend') {
+          return [6, 0].includes(current.weekday());
+        }
+        return false;
+      }}
       {...rest}
     />
   );

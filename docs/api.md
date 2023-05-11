@@ -86,10 +86,56 @@ nav:
 |readOnly|只读，等于true时，会渲染成详情页模式|Boolean|false|
 |questionBankName|题库名称，必传|String|-|
 |questions|渲染所需的题目，必传|Array|-|
-|data|回显所需的数据|Array|-|
+|[data](#data)|回显所需的数据|Array|-|
 |onFinish|点击保存后的回调函数|Function(values)|-|
 |backurl|返回按钮的地址，值为 false 时不显示按钮|String|-|
 |footerHidden|隐藏操作按钮|Boolean|false|
 |productFetch|产品请求地址|String|`/product/getPageList.json`|
 |productParam|产品请求的默认参数|Object|-|
 |submitButtonProps|提交按钮的属性|Object|-|
+
+### data
+
+|参数|说明|类型|默认值|
+|:--|:--|:--|:--|
+|productAnalysis|评价维度，可扩展，非组件强制|String|-|
+|questionName|题目名称|String|-|
+|questionNo|题目编号|String|-|
+|[questionType](#questiontype)|题目类型|Enum|-|
+|type|是否加入标准库<br /> `standard=标准,customize=自定义`|String|-|
+|[optionList](#optionList)|题目选项|Array|-|
+
+### optionList
+
+|参数|说明|类型|默认值|
+|:--|:--|:--|:--|
+|optionName|选项名称|String|-|
+|optionNo|选项编号|String|-|
+|[optionType](#optionType)|选项类型|String|-|
+|questionNo|题目编号|String|-|
+|skipQuestionNo|下一题目的编号|String|-|
+|remark|特殊字段，json字符串|JsonStringify|-|
+
+#### questionType
+
+|枚举值|含义|
+|:--|:--|
+|score|分数型|
+|radio|单选型|
+|checkbox|多选型|
+|form|表单型|
+
+#### optionType
+
+|枚举值|含义|
+|:--|:--|
+|input|文本输入|
+|number|数字输入|
+|price|金额输入|
+|region|地区选择|
+|dept|科室选择|
+|job|职能选择|
+|product|产品选择|
+|rangeDate|时间段选择|
+|image|图片上传|
+|compete|竞品填写|

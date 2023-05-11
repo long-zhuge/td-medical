@@ -1,6 +1,6 @@
 {
   "name": "td-medical",
-  "version": "1.0.10",
+  "version": "1.0.12",
   "description": "病历模板组件，快速生成病历模板和模板表单",
   "main": "lib/index.js",
   "module": "es/index.js",
@@ -62,7 +62,7 @@
     "react-dom": ">=16.9.0",
     "antd": ">=4.x",
     "@ant-design/icons": ">=4.5.0",
-    "td-antd": ">=2.14.0"
+    "td-antd": ">=2.14.7"
   },
   "dependencies": {
     "classnames": "^2.2.6",

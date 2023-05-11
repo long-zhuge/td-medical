@@ -1,7 +1,7 @@
 import React, { useContext, useRef, useState } from 'react';
 import { Button, Space, Row, Col, Tabs, Input } from 'antd';
 import toast from 'td-antd/es/toast';
-import useDebounce from 'td-antd/es/tools/useDebounce';
+import useDebounce from 'td-antd/es/use-hooks/useDebounce';
 import DndProviderBox from '../../_components/DndProviderBox';
 import ModalBox from 'td-antd/es/modal-box';
 import Medical from '../../medical';

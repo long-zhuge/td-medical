@@ -29,7 +29,15 @@ export default function QuestionForm(props) {
       {options.map(o => {
         const formInitialValue = initialValue[o.optionNo];
         const formValue = value[o.optionNo];
-        const formConfig = o.remark ? JSON.parse(o.remark) : null;
+
+        // 表单配置数据，从 remark 中获取
+        let formConfig = {};
+        try {
+          formConfig = JSON.parse(o.remark || '{}');
+        } catch (e) {
+          console.log(e);
+        }
+
         return (
           <div key={o.optionNo} className={`${baseCls}-item`}>
             {o.optionName ? <span className={`${baseCls}-item-label`}>{`${o.optionName}：`}</span> : null}

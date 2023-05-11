@@ -8,7 +8,8 @@ export default [{
     "optionNo": "2022060150397761",
     "optionType": "number",
     "questionNo": "2022060149202368",
-    "skipQuestionNo": "2022060149329200"
+    "skipQuestionNo": "2022060149329200",
+    "remark": "{\"placeholder\":\"请输入产品价格\"}",
   }],
   "productAnalysis": "other",
   "questionName": "产品价格（单位：元）",
@@ -42,7 +43,8 @@ export default [{
     "optionNo": "2022060150134166",
     "optionType": "rangeDate",
     "questionNo": "2022060149834233",
-    "skipQuestionNo": "2022060149658071"
+    "skipQuestionNo": "2022060149658071",
+    "remark": "{\"disabled\":\"weekend\"}",
   }],
   "productAnalysis": "other",
   "questionName": "执行日期",
